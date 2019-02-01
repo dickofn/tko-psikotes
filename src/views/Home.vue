@@ -5,7 +5,9 @@
         <v-card>
           <v-card-title primary-title>
             <v-spacer></v-spacer>
-            <h1 class="headline text-uppercase font-weight-light">Data Diri Kandidat Karyawan</h1>
+            <h1
+              class="headline text-uppercase font-weight-light text-xs-center"
+            >Data Diri Kandidat Karyawan</h1>
             <v-spacer></v-spacer>
           </v-card-title>
           <v-card-text>
@@ -21,6 +23,16 @@
                       :rules="[rules.required]"
                       required
                     ></v-text-field>
+                  </v-flex>
+                </v-layout>
+
+                <v-layout row wrap mb-2>
+                  <v-flex md8 offset-md2 xs12>
+                    <h4>Jenis Kelamin</h4>
+                    <v-radio-group v-model="gender" row :rules="[rules.required]" required>
+                      <v-radio label="Pria" value="pria"></v-radio>
+                      <v-radio label="Wanita" value="wanita"></v-radio>
+                    </v-radio-group>
                   </v-flex>
                 </v-layout>
 
@@ -65,39 +77,231 @@
 
                 <v-layout row wrap mb-2>
                   <v-flex md8 offset-md2 xs12>
-                    <v-textarea
-                      label="Alamat Sekarang dan Kode Pos"
-                      name="addressPermanent"
-                      id="addressPermanent"
-                      v-model="addressPermanent"
-                      :rules="[rules.required]"
-                      required
-                    ></v-textarea>
+                    <h4>Alamat Sekarang</h4>
                   </v-flex>
-                </v-layout>
-
-                <v-layout row wrap mb-2>
                   <v-flex md8 offset-md2 xs12>
                     <v-textarea
-                      label="Alamat Tetap dan Kode Pos"
-                      name="addressCurrent"
-                      id="addressCurrent"
-                      v-model="addressCurrent"
+                      label="Alamat Lengkap"
+                      name="addressCurrentDetail"
+                      id="addressCurrentDetail"
+                      v-model="addressCurrentDetail"
                       :rules="[rules.required]"
                       required
+                      rows="2"
                     ></v-textarea>
                   </v-flex>
-                </v-layout>
-
-                <v-layout row wrap mb-2>
-                  <v-flex md8 offset-md2 xs12>
+                  <v-flex md4 offset-md2 xs12>
                     <v-text-field
-                      label="Telepon dan HP"
-                      name="contactNumber"
-                      id="contactNumber"
-                      v-model="contactNumber"
+                      label="Kelurahan"
+                      name="addressCurrentKelurahan"
+                      id="addressCurrentKelurahan"
+                      v-model="addressCurrentKelurahan"
                       :rules="[rules.required]"
                       required
+                    ></v-text-field>
+                  </v-flex>
+                  <v-flex md4 xs12>
+                    <v-text-field
+                      label="Kecamatan"
+                      name="addressCurrentKecamatan"
+                      id="addressCurrentKecamatan"
+                      v-model="addressCurrentKecamatan"
+                      :rules="[rules.required]"
+                      required
+                    ></v-text-field>
+                  </v-flex>
+                  <v-flex md4 offset-md2 xs12>
+                    <v-text-field
+                      label="Kota"
+                      name="addressCurrentKota"
+                      id="addressCurrentKota"
+                      v-model="addressCurrentKota"
+                      :rules="[rules.required]"
+                      required
+                    ></v-text-field>
+                  </v-flex>
+                  <v-flex md4 xs12>
+                    <v-text-field
+                      label="Propinsi"
+                      name="addressCurrentPropinsi"
+                      id="addressCurrentPropinsi"
+                      v-model="addressCurrentPropinsi"
+                      :rules="[rules.required]"
+                      required
+                    ></v-text-field>
+                  </v-flex>
+                  <v-flex md2 offset-md8 xs12>
+                    <v-text-field
+                      label="Kode Pos"
+                      name="addressCurrentPos"
+                      id="addressCurrentPos"
+                      v-model="addressCurrentPos"
+                      :rules="[rules.required]"
+                      required
+                    ></v-text-field>
+                  </v-flex>
+                </v-layout>
+
+                <v-layout row wrap mb-2>
+                  <v-flex md8 offset-md2 xs12>
+                    <h4>Alamat Tetap</h4>
+                  </v-flex>
+                  <v-flex md8 offset-md2 xs12>
+                    <v-textarea
+                      label="Alamat Lengkap"
+                      name="addressPermanentDetail"
+                      id="addressPermanentDetail"
+                      v-model="addressPermanentDetail"
+                      :rules="[rules.required]"
+                      required
+                      rows="2"
+                    ></v-textarea>
+                  </v-flex>
+                  <v-flex md4 offset-md2 xs12>
+                    <v-text-field
+                      label="Kelurahan"
+                      name="addressPermanentKelurahan"
+                      id="addressPermanentKelurahan"
+                      v-model="addressPermanentKelurahan"
+                      :rules="[rules.required]"
+                      required
+                    ></v-text-field>
+                  </v-flex>
+                  <v-flex md4 xs12>
+                    <v-text-field
+                      label="Kecamatan"
+                      name="addressPermanentKecamatan"
+                      id="addressPermanentKecamatan"
+                      v-model="addressPermanentKecamatan"
+                      :rules="[rules.required]"
+                      required
+                    ></v-text-field>
+                  </v-flex>
+                  <v-flex md4 offset-md2 xs12>
+                    <v-text-field
+                      label="Kota"
+                      name="addressPermanentKota"
+                      id="addressPermanentKota"
+                      v-model="addressPermanentKota"
+                      :rules="[rules.required]"
+                      required
+                    ></v-text-field>
+                  </v-flex>
+                  <v-flex md4 xs12>
+                    <v-text-field
+                      label="Propinsi"
+                      name="addressPermanentPropinsi"
+                      id="addressPermanentPropinsi"
+                      v-model="addressPermanentPropinsi"
+                      :rules="[rules.required]"
+                      required
+                    ></v-text-field>
+                  </v-flex>
+                  <v-flex md2 offset-md8 xs12>
+                    <v-text-field
+                      label="Kode Pos"
+                      name="addressPermanentPos"
+                      id="addressPermanentPos"
+                      v-model="addressPermanentPos"
+                      :rules="[rules.required]"
+                      required
+                    ></v-text-field>
+                  </v-flex>
+                </v-layout>
+
+                <v-layout row wrap mb-2>
+                  <v-flex md8 offset-md2 xs12>
+                    <v-checkbox
+                      :label="'Alamat orang tua sama dengan alamat tetap?'"
+                      v-model="addressParentCheck"
+                    ></v-checkbox>
+                  </v-flex>
+                </v-layout>
+
+                <v-layout row wrap mb-2 v-if="!addressParentCheck">
+                  <v-flex md8 offset-md2 xs12>
+                    <h4>Alamat Orang Tua</h4>
+                  </v-flex>
+                  <v-flex md8 offset-md2 xs12>
+                    <v-textarea
+                      label="Alamat Lengkap"
+                      name="addressParentDetail"
+                      id="addressParentDetail"
+                      v-model="addressParentDetail"
+                      :rules="[rules.required]"
+                      required
+                      rows="2"
+                    ></v-textarea>
+                  </v-flex>
+                  <v-flex md4 offset-md2 xs12>
+                    <v-text-field
+                      label="Kelurahan"
+                      name="addressParentKelurahan"
+                      id="addressParentKelurahan"
+                      v-model="addressParentKelurahan"
+                      :rules="[rules.required]"
+                      required
+                    ></v-text-field>
+                  </v-flex>
+                  <v-flex md4 xs12>
+                    <v-text-field
+                      label="Kecamatan"
+                      name="addressParentKecamatan"
+                      id="addressParentKecamatan"
+                      v-model="addressParentKecamatan"
+                      :rules="[rules.required]"
+                      required
+                    ></v-text-field>
+                  </v-flex>
+                  <v-flex md4 offset-md2 xs12>
+                    <v-text-field
+                      label="Kota"
+                      name="addressParentKota"
+                      id="addressParentKota"
+                      v-model="addressParentKota"
+                      :rules="[rules.required]"
+                      required
+                    ></v-text-field>
+                  </v-flex>
+                  <v-flex md4 xs12>
+                    <v-text-field
+                      label="Propinsi"
+                      name="addressParentPropinsi"
+                      id="addressParentPropinsi"
+                      v-model="addressParentPropinsi"
+                      :rules="[rules.required]"
+                      required
+                    ></v-text-field>
+                  </v-flex>
+                  <v-flex md2 offset-md8 xs12>
+                    <v-text-field
+                      label="Kode Pos"
+                      name="addressParentPos"
+                      id="addressParentPos"
+                      v-model="addressParentPos"
+                      :rules="[rules.required]"
+                      required
+                    ></v-text-field>
+                  </v-flex>
+                </v-layout>
+
+                <v-layout row wrap mb-2>
+                  <v-flex md4 offset-md2 xs12>
+                    <v-text-field
+                      label="Handphone"
+                      name="contactNumberMobile"
+                      id="contactNumberMobile"
+                      v-model="contactNumberMobile"
+                      :rules="[rules.required]"
+                      required
+                    ></v-text-field>
+                  </v-flex>
+                  <v-flex md4 xs12>
+                    <v-text-field
+                      label="Telephone"
+                      name="contactNumberHome"
+                      id="contactNumberHome"
+                      v-model="contactNumberHome"
                     ></v-text-field>
                   </v-flex>
                 </v-layout>
@@ -112,19 +316,6 @@
                       :rules="[rules.required, rules.email]"
                       required
                     ></v-text-field>
-                  </v-flex>
-                </v-layout>
-
-                <v-layout row wrap mb-2>
-                  <v-flex md8 offset-md2 xs12>
-                    <v-textarea
-                      label="Alamat Tetap dan Kode Pos"
-                      name="addressParent"
-                      id="addressParent"
-                      v-model="addressParent"
-                      hint="Jika sama dengan alamat tetap, biarkan kosong"
-                      persistent-hint
-                    ></v-textarea>
                   </v-flex>
                 </v-layout>
 
@@ -170,7 +361,13 @@
 
                 <v-layout row wrap mb-2>
                   <v-flex md2 offset-md2 xs4>
-                    <v-select :items="idTypes" label="Tipe ID" v-model="idType"></v-select>
+                    <v-select
+                      :items="idTypes"
+                      label="Tipe ID"
+                      v-model="idType"
+                      :rules="[rules.required]"
+                      required
+                    ></v-select>
                   </v-flex>
                   <v-flex md4 xs8>
                     <v-text-field
@@ -213,7 +410,7 @@
                       required
                     ></v-select>
                   </v-flex>
-                  <v-flex md4 xs12 v-if="martialStatus!='Belum menikah'">
+                  <v-flex md4 xs12 v-if="martialStatus!='Belum Menikah'">
                     <v-menu
                       :close-on-content-click="false"
                       v-model="martialInfoDate"
@@ -226,12 +423,12 @@
                     >
                       <v-text-field
                         slot="activator"
-                        v-model="martialStatusDate"
+                        v-model="martialInfoDate"
                         label="Sejak Tanggal (YYYY-MM-DD)"
                         prepend-icon="event"
                       ></v-text-field>
                       <v-date-picker
-                        v-model="martialStatusDate"
+                        v-model="martialInfoDate"
                         @input="martialInfoDate = false"
                         :rules="[rules.required]"
                       ></v-date-picker>
@@ -259,26 +456,44 @@ export default {
   data () {
     return {
       name: "",
+      gender: "",
       birthPlace: "",
       birthDate: "",
       birthDateMenu: false,
-      addressCurrent: "",
-      addressPermanent: "",
-      addressParent: "",
-      contactNumber: "",
+      addressCurrentDetail: "",
+      addressCurrentKelurahan: "",
+      addressCurrentKecamatan: "",
+      addressCurrentKota: "",
+      addressCurrentPropinsi: "",
+      addressCurrentPos: "",
+      addressPermanentDetail: "",
+      addressPermanentKelurahan: "",
+      addressPermanentKecamatan: "",
+      addressPermanentKota: "",
+      addressPermanentPropinsi: "",
+      addressPermanentPos: "",
+      addressParentCheck: false,
+      addressParentDetail: "",
+      addressParentKelurahan: "",
+      addressParentKecamatan: "",
+      addressParentKota: "",
+      addressParentPropinsi: "",
+      addressParentPos: "",
+      contactNumberMobile: "",
+      contactNumberHome: "",
       email: "",
       religion: "",
       bodyWeight: "",
       bodyHeight: "",
       bodyAbnormalities: "",
-      idTypes: ["KTP","SIM","Passport"],
+      idTypes: ["KTP", "SIM", "Passport"],
       idType: "",
       idNumber: "",
       bloodTypes: ["A", "B", "AB", "O"],
       bloodType: "",
       nationality: "",
       hobby: "",
-      martialStatuses: ["Belum menikah", "Menikah", "Janda-Duda"],
+      martialStatuses: ["Belum Menikah", "Menikah", "Janda-Duda"],
       martialStatus: "",
       martialInfoDate: "",
       martialInfoDateMenu: false,
