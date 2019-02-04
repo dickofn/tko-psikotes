@@ -78,8 +78,6 @@
                 <v-layout row wrap mb-2>
                   <v-flex md8 offset-md2 xs12>
                     <h4>Alamat Sekarang</h4>
-                  </v-flex>
-                  <v-flex md8 offset-md2 xs12>
                     <v-textarea
                       label="Alamat Lengkap"
                       name="addressCurrentDetail"
@@ -145,8 +143,6 @@
                 <v-layout row wrap mb-2>
                   <v-flex md8 offset-md2 xs12>
                     <h4>Alamat Tetap</h4>
-                  </v-flex>
-                  <v-flex md8 offset-md2 xs12>
                     <v-textarea
                       label="Alamat Lengkap"
                       name="addressPermanentDetail"
@@ -221,8 +217,6 @@
                 <v-layout row wrap mb-2 v-if="!addressParentCheck">
                   <v-flex md8 offset-md2 xs12>
                     <h4>Alamat Orang Tua</h4>
-                  </v-flex>
-                  <v-flex md8 offset-md2 xs12>
                     <v-textarea
                       label="Alamat Lengkap"
                       name="addressParentDetail"
