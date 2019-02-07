@@ -29,7 +29,7 @@
         </v-flex>
       </v-layout>
 
-      <v-layout row wrap mb-2>
+      <v-layout row wrap mb-2 v-if="type!='contact'">
         <v-flex md4 offset-md2 xs12>
           <v-text-field label="Tempat Lahir" name="birthPlace" id="birthPlace" v-model="birthPlace"></v-text-field>
         </v-flex>
@@ -52,6 +52,18 @@
             ></v-text-field>
             <v-date-picker v-model="birthDate" @input="birthDateMenu = false"></v-date-picker>
           </v-menu>
+        </v-flex>
+      </v-layout>
+
+      <v-layout row wrap mb-2 v-if="type=='contact'">
+        <v-flex md8 offset-md2 xs12>
+          <v-textarea
+            label="Alamat"
+            name="addressDetail"
+            id="addressDetail"
+            v-model="addressDetail"
+            rows="2"
+          ></v-textarea>
         </v-flex>
       </v-layout>
 
@@ -100,19 +112,16 @@ export default {
       birthDateMenu: false,
       education: "",
       occupation: "",
+      addressDetail: "",
       data: {}
     }
   },
   methods: {
     add () {
 
-      if (this.relation == "" ||
-        this.name == "" ||
-        this.gender == "" ||
-        this.birthPlace == "" ||
-        this.birthDate == "" ||
-        this.education == "" ||
-        this.occupation == "") {
+      if (
+        (this.relation == "" || this.name == "" || this.gender == "" || this.birthPlace == "" || this.birthDate == "" || this.education == "" || this.occupation == "")
+        && this.type != 'contact') {
         this.dialogValid = false
       } else {
         if (this.type == 'dependent') {
@@ -141,13 +150,39 @@ export default {
           }
           this.$emit('famDataFilled', this.data);
         }
-        this.relation = ""
-        this.name = ""
-        this.gender = ""
-        this.birthPlace = ""
-        this.birthDate = ""
-        this.education = ""
-        this.occupation = ""
+        if (this.type == 'contact') {
+          if (this.relation == "" || this.name == "" || this.gender == "" || this.education == "" || this.occupation == "" || this.addressDetail == "") {
+            this.dialogValid = false;
+          } else {
+            this.dialogValid = true
+            this.data = {
+              conRelation: this.relation,
+              conName: this.name,
+              conGender: this.gender,
+              conAddressDetail: this.addressDetail,
+              conEducation: this.education,
+              conOccupation: this.occupation
+            }
+            this.$emit('conDataFilled', this.data);
+            this.relation = ""
+            this.name = ""
+            this.gender = ""
+            this.addressDetail = ""
+            this.education = ""
+            this.occupation = ""
+            this.addressDetail = ""
+          }
+        }
+        if (this.type != 'contact') {
+          this.relation = ""
+          this.name = ""
+          this.gender = ""
+          this.birthPlace = ""
+          this.birthDate = ""
+          this.education = ""
+          this.occupation = ""
+          this.addressDetail = ""
+        }
       }
     },
     cancel () {
@@ -159,13 +194,20 @@ export default {
       this.birthDate = ""
       this.education = ""
       this.occupation = ""
+      this.addressDetail = ""
       if (this.type == 'dependent') {
         this.$emit('depDataCancelled', this.data);
       }
       if (this.type == 'family') {
         this.$emit('famDataCancelled', this.data);
       }
+      if (this.type == 'contact') {
+        this.$emit('conDataCancelled', this.data);
+      }
     }
+  },
+  created () {
+    console.log(this.type);
   }
 }
 </script>

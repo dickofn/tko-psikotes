@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Home from './views/Home.vue'
-import Family from './views/ApplicationForm/Family.vue'
+import Detail from './views/ApplicationForm/Detail.vue'
 
 Vue.use(Router)
 
@@ -15,9 +15,9 @@ export default new Router({
       component: Home
     },
     {
-      path: '/family',
-      name: 'family',
-      component: Family
+      path: '/detail',
+      name: 'detail',
+      component: Detail
     },
     {
       path: '/about',
