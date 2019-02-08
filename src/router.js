@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Home from './views/Home.vue'
+import Self from './views/ApplicationForm/Self.vue'
 import Detail from './views/ApplicationForm/Detail.vue'
 
 Vue.use(Router)
@@ -13,6 +14,11 @@ export default new Router({
       path: '/',
       name: 'home',
       component: Home
+    },
+    {
+      path: '/self',
+      name: 'self',
+      component: Self
     },
     {
       path: '/detail',

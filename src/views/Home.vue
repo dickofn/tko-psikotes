@@ -98,7 +98,7 @@ export default {
       gender: "",
       birthPlace: "",
       birthDate: "",
-      birthDateMenu: false,      
+      birthDateMenu: false,
       valid: true,
       rules: {
         required: v => !!v || 'Wajib diisi!',

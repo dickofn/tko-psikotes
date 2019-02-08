@@ -89,44 +89,83 @@
                     ></v-textarea>
                   </v-flex>
                   <v-flex md4 offset-md2 xs12>
-                    <v-text-field
-                      label="Kelurahan"
-                      name="addressCurrentKelurahan"
-                      id="addressCurrentKelurahan"
-                      v-model="addressCurrentKelurahan"
-                      :rules="[rules.required]"
-                      required
-                    ></v-text-field>
-                  </v-flex>
-                  <v-flex md4 xs12>
-                    <v-text-field
-                      label="Kecamatan"
-                      name="addressCurrentKecamatan"
-                      id="addressCurrentKecamatan"
-                      v-model="addressCurrentKecamatan"
-                      :rules="[rules.required]"
-                      required
-                    ></v-text-field>
-                  </v-flex>
-                  <v-flex md4 offset-md2 xs12>
-                    <v-text-field
-                      label="Kota"
-                      name="addressCurrentKota"
-                      id="addressCurrentKota"
-                      v-model="addressCurrentKota"
-                      :rules="[rules.required]"
-                      required
-                    ></v-text-field>
-                  </v-flex>
-                  <v-flex md4 xs12>
-                    <v-text-field
+                    <v-autocomplete
                       label="Propinsi"
                       name="addressCurrentPropinsi"
                       id="addressCurrentPropinsi"
                       v-model="addressCurrentPropinsi"
+                      :items="addressPropinsiItems"
+                      :loading="addressLoadingPropinsi"
+                      :search-input.sync="addressPropinsiSearch"
+                      color="blue"
+                      hide-no-data
+                      hide-selected
+                      item-text="name"
+                      item-value="id"
+                      @blur="addressSelectedPropinsi = addressCurrentPropinsi"
                       :rules="[rules.required]"
                       required
-                    ></v-text-field>
+                    ></v-autocomplete>
+                  </v-flex>
+                  <v-flex md4 xs12>
+                    <v-autocomplete
+                      label="Kota"
+                      name="addressCurrentKota"
+                      id="addressCurrentKota"
+                      v-model="addressCurrentKota"
+                      :items="addressKotaItems"
+                      :loading="addressLoadingKota"
+                      :search-input.sync="addressKotaSearch"
+                      color="blue"
+                      hide-no-data
+                      hide-selected
+                      item-text="name"
+                      item-value="id"
+                      @blur="addressSelectedKota = addressCurrentKota"
+                      :disabled="!addressCurrentPropinsi"
+                      :rules="[rules.required]"
+                      required
+                    ></v-autocomplete>
+                  </v-flex>
+                  <v-flex md4 offset-md2 xs12>
+                    <v-autocomplete
+                      label="Kecamatan"
+                      name="addressCurrentKecamatan"
+                      id="addressCurrentKecamatan"
+                      v-model="addressCurrentKecamatan"
+                      :items="addressKecamatanItems"
+                      :loading="addressLoadingKecamatan"
+                      :search-input.sync="addressKecamatanSearch"
+                      color="blue"
+                      hide-no-data
+                      hide-selected
+                      item-text="name"
+                      item-value="id"
+                      @blur="addressSelectedKecamatan = addressCurrentKecamatan"
+                      :disabled="!addressCurrentKota"
+                      :rules="[rules.required]"
+                      required
+                    ></v-autocomplete>
+                  </v-flex>
+                  <v-flex md4 xs12>
+                    <v-autocomplete
+                      label="Kelurahan"
+                      name="addressCurrentKelurahan"
+                      id="addressCurrentKelurahan"
+                      v-model="addressCurrentKelurahan"
+                      :items="addressKelurahanItems"
+                      :loading="addressLoadingKelurahan"
+                      :search-input.sync="addressKelurahanSearch"
+                      color="blue"
+                      hide-no-data
+                      hide-selected
+                      item-text="name"
+                      item-value="id"
+                      @blur="addressSelectedKelurahan = addressCurrentKelurahan"
+                      :disabled="!addressCurrentKota"
+                      :rules="[rules.required]"
+                      required
+                    ></v-autocomplete>
                   </v-flex>
                   <v-flex md2 offset-md8 xs12>
                     <v-text-field
@@ -155,25 +194,15 @@
                   </v-flex>
                   <v-flex md4 offset-md2 xs12>
                     <v-text-field
-                      label="Kelurahan"
-                      name="addressPermanentKelurahan"
-                      id="addressPermanentKelurahan"
-                      v-model="addressPermanentKelurahan"
+                      label="Propinsi"
+                      name="addressPermanentPropinsi"
+                      id="addressPermanentPropinsi"
+                      v-model="addressPermanentPropinsi"
                       :rules="[rules.required]"
                       required
                     ></v-text-field>
                   </v-flex>
                   <v-flex md4 xs12>
-                    <v-text-field
-                      label="Kecamatan"
-                      name="addressPermanentKecamatan"
-                      id="addressPermanentKecamatan"
-                      v-model="addressPermanentKecamatan"
-                      :rules="[rules.required]"
-                      required
-                    ></v-text-field>
-                  </v-flex>
-                  <v-flex md4 offset-md2 xs12>
                     <v-text-field
                       label="Kota"
                       name="addressPermanentKota"
@@ -183,12 +212,22 @@
                       required
                     ></v-text-field>
                   </v-flex>
+                  <v-flex md4 offset-md2 xs12>
+                    <v-text-field
+                      label="Kecamatan"
+                      name="addressPermanentKecamatan"
+                      id="addressPermanentKecamatan"
+                      v-model="addressPermanentKecamatan"
+                      :rules="[rules.required]"
+                      required
+                    ></v-text-field>
+                  </v-flex>
                   <v-flex md4 xs12>
                     <v-text-field
-                      label="Propinsi"
-                      name="addressPermanentPropinsi"
-                      id="addressPermanentPropinsi"
-                      v-model="addressPermanentPropinsi"
+                      label="Kelurahan"
+                      name="addressPermanentKelurahan"
+                      id="addressPermanentKelurahan"
+                      v-model="addressPermanentKelurahan"
                       :rules="[rules.required]"
                       required
                     ></v-text-field>
@@ -229,25 +268,15 @@
                   </v-flex>
                   <v-flex md4 offset-md2 xs12>
                     <v-text-field
-                      label="Kelurahan"
-                      name="addressParentKelurahan"
-                      id="addressParentKelurahan"
-                      v-model="addressParentKelurahan"
+                      label="Propinsi"
+                      name="addressParentPropinsi"
+                      id="addressParentPropinsi"
+                      v-model="addressParentPropinsi"
                       :rules="[rules.required]"
                       required
                     ></v-text-field>
                   </v-flex>
                   <v-flex md4 xs12>
-                    <v-text-field
-                      label="Kecamatan"
-                      name="addressParentKecamatan"
-                      id="addressParentKecamatan"
-                      v-model="addressParentKecamatan"
-                      :rules="[rules.required]"
-                      required
-                    ></v-text-field>
-                  </v-flex>
-                  <v-flex md4 offset-md2 xs12>
                     <v-text-field
                       label="Kota"
                       name="addressParentKota"
@@ -257,12 +286,22 @@
                       required
                     ></v-text-field>
                   </v-flex>
+                  <v-flex md4 offset-md2 xs12>
+                    <v-text-field
+                      label="Kecamatan"
+                      name="addressParentKecamatan"
+                      id="addressParentKecamatan"
+                      v-model="addressParentKecamatan"
+                      :rules="[rules.required]"
+                      required
+                    ></v-text-field>
+                  </v-flex>
                   <v-flex md4 xs12>
                     <v-text-field
-                      label="Propinsi"
-                      name="addressParentPropinsi"
-                      id="addressParentPropinsi"
-                      v-model="addressParentPropinsi"
+                      label="Kelurahan"
+                      name="addressParentKelurahan"
+                      id="addressParentKelurahan"
+                      v-model="addressParentKelurahan"
                       :rules="[rules.required]"
                       required
                     ></v-text-field>
@@ -446,6 +485,15 @@
 </template>
 
 <script>
+/** 
+  *TODO:
+    -Ubah alamat menjadi komponen
+    -Call tiap komponen dan di v-model ke masing-masing alamat (current, permanent, parent)
+    -Tiap komponen di force v-model manual (bind, prop, on-input, emit) ke data terkait
+
+  *FIXME:
+    -Kelurahan masih masalah dengan CORS
+*/
 export default {
   data () {
     return {
@@ -454,6 +502,22 @@ export default {
       birthPlace: "",
       birthDate: "",
       birthDateMenu: false,
+      addressLoadingPropinsi: false,
+      addressPropinsiSearch: null,
+      addressPropinsiItems: [],
+      addressSelectedPropinsi: "",
+      addressLoadingKota: false,
+      addressKotaSearch: null,
+      addressKotaItems: [],
+      addressSelectedKota: "",
+      addressLoadingKecamatan: false,
+      addressKecamatanSearch: null,
+      addressKecamatanItems: [],
+      addressSelectedKecamatan: "",
+      addressLoadingKelurahan: false,
+      addressKelurahanSearch: null,
+      addressKelurahanItems: [],
+      addressSelectedKelurahan: "",
       addressCurrentDetail: "",
       addressCurrentKelurahan: "",
       addressCurrentKecamatan: "",
@@ -503,6 +567,106 @@ export default {
       console.log(this.valid)
       this.$refs.form.reset()
     }
+  },
+  watch: {
+    // eslint-disable-next-line
+    addressPropinsiSearch (val) {
+      if (this.addressSelectedPropinsi != this.addressCurrentPropinsi) this.addressKotaItems = []
+      // Items have already been loaded
+      if (this.addressPropinsiItems.length > 0) return
+
+      // Items have already been requested
+      if (this.addressLoadingPropinsi) return
+
+      this.addressLoadingPropinsi = true
+
+      // Lazily load input items
+      fetch('http://172.24.76.35:8080/api/administratif/get/provinsi')
+        .then(res => res.json())
+        .then(res => {
+          const items = res.data.result
+          this.addressPropinsiItems = items
+        })
+        .catch(err => {
+          console.log(err)
+        })
+        .finally(() => (this.addressLoadingPropinsi = false))
+
+    },
+
+    // eslint-disable-next-line
+    addressKotaSearch (val) {
+      if (this.addressSelectedKota != this.addressCurrentKota) this.addressKecamatanItems = []
+      // Items have already been loaded 
+      if (this.addressKotaItems.length > 0) return
+
+      // Items have already been requested
+      if (this.addressLoadingKota) return
+
+      this.addressLoadingKota = true
+
+      // Lazily load input items
+      fetch('http://172.24.76.35:8080/api/administratif/get/kota/' + this.addressCurrentPropinsi)
+        .then(res => res.json())
+        .then(res => {
+          const items = res.data.result
+          this.addressKotaItems = items
+        })
+        .catch(err => {
+          console.log(err)
+        })
+        .finally(() => (this.addressLoadingKota = false))
+
+
+    },
+
+    // eslint-disable-next-line
+    addressKecamatanSearch (val) {
+      if (this.addressSelectedKecamatan != this.addressCurrentKecamatan) this.addressKelurahanItems = []
+      // Items have already been loaded 
+      if (this.addressKecamatanItems.length > 0) return
+
+      // Items have already been requested
+      if (this.addressLoadingKecamatan) return
+
+      this.addressLoadingKecamatan = true
+
+      // Lazily load input items
+      fetch('http://172.24.76.35:8080/api/administratif/get/kecamatan/' + this.addressCurrentKota)
+        .then(res => res.json())
+        .then(res => {
+          const items = res.data.result
+          this.addressKecamatanItems = items
+        })
+        .catch(err => {
+          console.log(err)
+        })
+        .finally(() => (this.addressLoadingKecamatan = false))
+    },
+
+    // eslint-disable-next-line
+    addressKecamatanSearch (val) {
+      if (this.addressSelectedKelurahan != this.addressCurrentKelurahan) this.addressCurrentPos = ""
+      // Items have already been loaded 
+      if (this.addressKelurahanItems.length > 0) return
+
+      // Items have already been requested
+      if (this.addressLoadingKelurahan) return
+
+      this.addressLoadingKelurahan = true
+
+      // Lazily load input items
+      fetch('http://172.24.76.35:8080/api/administratif/get/kelurahan/' + this.addressCurrentKecamatan)
+        .then(res => res.json())
+        .then(res => {
+          const items = res.data.result
+          this.addressKelurahanItems = items
+        })
+        .catch(err => {
+          console.log(err)
+        })
+        .finally(() => (this.addressLoadingKelurahan = false))
+    },
   }
 }
 </script>

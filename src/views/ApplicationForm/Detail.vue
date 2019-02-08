@@ -50,25 +50,15 @@
                   </v-flex>
                   <v-flex md4 offset-md2 xs12>
                     <v-text-field
-                      label="Kelurahan"
-                      name="addressEmergencyKelurahan"
-                      id="addressEmergencyKelurahan"
-                      v-model="addressEmergencyKelurahan"
+                      label="Propinsi"
+                      name="addressEmergencyPropinsi"
+                      id="addressEmergencyPropinsi"
+                      v-model="addressEmergencyPropinsi"
                       :rules="[rules.required]"
                       required
                     ></v-text-field>
                   </v-flex>
                   <v-flex md4 xs12>
-                    <v-text-field
-                      label="Kecamatan"
-                      name="addressEmergencyKecamatan"
-                      id="addressEmergencyKecamatan"
-                      v-model="addressEmergencyKecamatan"
-                      :rules="[rules.required]"
-                      required
-                    ></v-text-field>
-                  </v-flex>
-                  <v-flex md4 offset-md2 xs12>
                     <v-text-field
                       label="Kota"
                       name="addressEmergencyKota"
@@ -78,12 +68,22 @@
                       required
                     ></v-text-field>
                   </v-flex>
+                  <v-flex md4 offset-md2 xs12>
+                    <v-text-field
+                      label="Kecamatan"
+                      name="addressEmergencyKecamatan"
+                      id="addressEmergencyKecamatan"
+                      v-model="addressEmergencyKecamatan"
+                      :rules="[rules.required]"
+                      required
+                    ></v-text-field>
+                  </v-flex>
                   <v-flex md4 xs12>
                     <v-text-field
-                      label="Propinsi"
-                      name="addressEmergencyPropinsi"
-                      id="addressEmergencyPropinsi"
-                      v-model="addressEmergencyPropinsi"
+                      label="Kelurahan"
+                      name="addressEmergencyKelurahan"
+                      id="addressEmergencyKelurahan"
+                      v-model="addressEmergencyKelurahan"
                       :rules="[rules.required]"
                       required
                     ></v-text-field>
