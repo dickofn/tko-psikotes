@@ -203,9 +203,6 @@
                   </v-flex>
                   <v-dialog v-model="eduDialog" max-width="80vw">
                     <data-input-education
-                      :type="'contact'"
-                      :title="'Kontak yang dapat dihubungi'"
-                      :relations="conRelations"
                       @eduDataFilled="eduAdd"
                       @eduDataCancelled="eduCancel"
                     ></data-input-education>

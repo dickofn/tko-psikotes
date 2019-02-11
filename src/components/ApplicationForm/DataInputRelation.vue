@@ -196,13 +196,13 @@ export default {
       this.occupation = ""
       this.addressDetail = ""
       if (this.type == 'dependent') {
-        this.$emit('depDataCancelled', this.data);
+        this.$emit('depDataCancelled');
       }
       if (this.type == 'family') {
-        this.$emit('famDataCancelled', this.data);
+        this.$emit('famDataCancelled');
       }
       if (this.type == 'contact') {
-        this.$emit('conDataCancelled', this.data);
+        this.$emit('conDataCancelled');
       }
     }
   }

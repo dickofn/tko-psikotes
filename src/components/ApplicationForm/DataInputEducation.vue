@@ -43,7 +43,12 @@
 
       <v-layout row wrap mb-2>
         <v-flex md8 offset-md2 xs12>
-          <v-text-field label="Jurusan (Jenjang>=SMA)" name="eduMajor" id="eduMajor" v-model="eduMajor"></v-text-field>
+          <v-text-field
+            label="Jurusan (Jenjang>=SMA)"
+            name="eduMajor"
+            id="eduMajor"
+            v-model="eduMajor"
+          ></v-text-field>
         </v-flex>
       </v-layout>
 
@@ -96,7 +101,7 @@ export default {
   methods: {
     add () {
       if (
-        (this.eduLevel == "" || this.eduName == "" || this.eduPeriod == "")
+        (this.eduLevel == "" || this.eduName == "" || this.eduPeriodStart == "" || this.eduPeriodEnd == "")
         ||
         ((this.eduLevel != "SD" && this.eduLevel != "SMP") && (this.eduMajor == ""))
         ||
@@ -108,14 +113,15 @@ export default {
         this.data = {
           eduLevel: this.eduLevel,
           eduName: this.eduName,
-          eduPeriod: this.eduPeriod,
+          eduPeriod: this.eduPeriodStart + "-" + this.eduPeriodEnd,
           eduMajor: this.eduMajor,
           eduGrade: this.eduGrade
         }
         this.$emit('eduDataFilled', this.data);
         this.eduLevel = ""
         this.eduName = ""
-        this.eduPeriod = ""
+        this.eduPeriodStart = ""
+        this.eduPeriodEnd = ""
         this.eduMajor = ""
         this.eduGrade = ""
       }
@@ -124,19 +130,12 @@ export default {
       this.dialogValid = true
       this.eduLevel = ""
       this.eduName = ""
-      this.eduPeriod = ""
+      this.eduPeriodStart = ""
+      this.eduPeriodEnd = ""
       this.eduMajor = ""
       this.eduGrade = ""
-      this.$emit('eduDataCancelled', this.data)
+      this.$emit('eduDataCancelled')
     }
-  },
-  computed: {
-    eduPeriod () {
-      return this.eduPeriodStart + "-" + this.eduPeriodEnd
-    }
-  },
-  created () {
-    console.log(this.type);
   }
 }
 </script>
