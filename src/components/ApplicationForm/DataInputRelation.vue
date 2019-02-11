@@ -205,9 +205,6 @@ export default {
         this.$emit('conDataCancelled', this.data);
       }
     }
-  },
-  created () {
-    console.log(this.type);
   }
 }
 </script>

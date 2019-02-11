@@ -35,70 +35,21 @@
                   </v-flex>
                 </v-layout>
 
-                <v-layout row wrap mb-2>
-                  <v-flex md8 offset-md2 xs12>
-                    <h4>Alamat kontak yang dapat dihubungi</h4>
-                    <v-textarea
-                      label="Alamat Lengkap"
-                      name="addressEmergencyDetail"
-                      id="addressEmergencyDetail"
-                      v-model="addressEmergencyDetail"
-                      :rules="[rules.required]"
-                      required
-                      rows="2"
-                    ></v-textarea>
-                  </v-flex>
-                  <v-flex md4 offset-md2 xs12>
-                    <v-text-field
-                      label="Propinsi"
-                      name="addressEmergencyPropinsi"
-                      id="addressEmergencyPropinsi"
-                      v-model="addressEmergencyPropinsi"
-                      :rules="[rules.required]"
-                      required
-                    ></v-text-field>
-                  </v-flex>
-                  <v-flex md4 xs12>
-                    <v-text-field
-                      label="Kota"
-                      name="addressEmergencyKota"
-                      id="addressEmergencyKota"
-                      v-model="addressEmergencyKota"
-                      :rules="[rules.required]"
-                      required
-                    ></v-text-field>
-                  </v-flex>
-                  <v-flex md4 offset-md2 xs12>
-                    <v-text-field
-                      label="Kecamatan"
-                      name="addressEmergencyKecamatan"
-                      id="addressEmergencyKecamatan"
-                      v-model="addressEmergencyKecamatan"
-                      :rules="[rules.required]"
-                      required
-                    ></v-text-field>
-                  </v-flex>
-                  <v-flex md4 xs12>
-                    <v-text-field
-                      label="Kelurahan"
-                      name="addressEmergencyKelurahan"
-                      id="addressEmergencyKelurahan"
-                      v-model="addressEmergencyKelurahan"
-                      :rules="[rules.required]"
-                      required
-                    ></v-text-field>
-                  </v-flex>
-                  <v-flex md2 offset-md8 xs12>
-                    <v-text-field
-                      label="Kode Pos"
-                      name="addressEmergencyPos"
-                      id="addressEmergencyPos"
-                      v-model="addressEmergencyPos"
-                      :rules="[rules.required]"
-                      required
-                    ></v-text-field>
-                  </v-flex>
-                </v-layout>
+                <data-input-address
+                  :title="'kontak yang dapat dihubungi'"
+                  :addressDetail="addressEmergencyDetail"
+                  :addressPropinsi="addressEmergencyPropinsi"
+                  :addressKota="addressEmergencyKota"
+                  :addressKecamatan="addressEmergencyKecamatan"
+                  :addressKelurahan="addressEmergencyKelurahan"
+                  :addressPos="addressEmergencyPos"
+                  @addressDetailUpdated="updateAddressEmergencyDetail"
+                  @addressPropinsiUpdated="updateAddressEmergencyPropinsi"
+                  @addressKotaUpdated="updateAddressEmergencyKota"
+                  @addressKecamatanUpdated="updateAddressEmergencyKecamatan"
+                  @addressKelurahanUpdated="updateAddressEmergencyKelurahan"
+                  @addressPosUpdated="updateAddressEmergencyPos"
+                ></data-input-address>
 
                 <v-layout row wrap mb-2>
                   <v-flex md8 offset-md2 xs12>
@@ -330,6 +281,7 @@
 <script>
 import dataInputRelation from '../../components/ApplicationForm/DataInputRelation'
 import dataInputEducation from '../../components/ApplicationForm/DataInputEducation'
+import dataInputAddress from '../../components/ApplicationForm/DataInputAddress'
 
 export default {
   data () {
@@ -488,6 +440,24 @@ export default {
     }
   },
   methods: {
+    updateAddressEmergencyDetail (i) {
+      this.addressEmergencyDetail = i;
+    },
+    updateAddressEmergencyPropinsi (i) {
+      this.addressEmergencyPropinsi = i;
+    },
+    updateAddressEmergencyKota (i) {
+      this.addressEmergencyKota = i;
+    },
+    updateAddressEmergencyKecamatan (i) {
+      this.addressEmergencyKecamatan = i;
+    },
+    updateAddressEmergencyKelurahan (i) {
+      this.addressEmergencyKelurahan = i;
+    },
+    updateAddressEmergencyPos (i) {
+      this.addressEmergencyPos = i;
+    },
     depAdd (data) {
       this.dependents.push(data)
       this.depDialog = false;
@@ -539,7 +509,8 @@ export default {
   },
   components: {
     dataInputRelation,
-    dataInputEducation
+    dataInputEducation,
+    dataInputAddress
   }
 }
 </script>

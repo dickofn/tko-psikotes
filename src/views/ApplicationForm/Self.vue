@@ -75,174 +75,37 @@
                   </v-flex>
                 </v-layout>
 
-                <v-layout row wrap mb-2>
-                  <v-flex md8 offset-md2 xs12>
-                    <h4>Alamat Sekarang</h4>
-                    <v-textarea
-                      label="Alamat Lengkap"
-                      name="addressCurrentDetail"
-                      id="addressCurrentDetail"
-                      v-model="addressCurrentDetail"
-                      :rules="[rules.required]"
-                      required
-                      rows="2"
-                    ></v-textarea>
-                  </v-flex>
-                  <v-flex md4 offset-md2 xs12>
-                    <v-autocomplete
-                      label="Propinsi"
-                      name="addressCurrentPropinsi"
-                      id="addressCurrentPropinsi"
-                      v-model="addressCurrentPropinsi"
-                      :items="addressPropinsiItems"
-                      :loading="addressLoadingPropinsi"
-                      :search-input.sync="addressPropinsiSearch"
-                      color="blue"
-                      hide-no-data
-                      hide-selected
-                      item-text="name"
-                      item-value="id"
-                      @blur="addressSelectedPropinsi = addressCurrentPropinsi"
-                      :rules="[rules.required]"
-                      required
-                    ></v-autocomplete>
-                  </v-flex>
-                  <v-flex md4 xs12>
-                    <v-autocomplete
-                      label="Kota"
-                      name="addressCurrentKota"
-                      id="addressCurrentKota"
-                      v-model="addressCurrentKota"
-                      :items="addressKotaItems"
-                      :loading="addressLoadingKota"
-                      :search-input.sync="addressKotaSearch"
-                      color="blue"
-                      hide-no-data
-                      hide-selected
-                      item-text="name"
-                      item-value="id"
-                      @blur="addressSelectedKota = addressCurrentKota"
-                      :disabled="!addressCurrentPropinsi"
-                      :rules="[rules.required]"
-                      required
-                    ></v-autocomplete>
-                  </v-flex>
-                  <v-flex md4 offset-md2 xs12>
-                    <v-autocomplete
-                      label="Kecamatan"
-                      name="addressCurrentKecamatan"
-                      id="addressCurrentKecamatan"
-                      v-model="addressCurrentKecamatan"
-                      :items="addressKecamatanItems"
-                      :loading="addressLoadingKecamatan"
-                      :search-input.sync="addressKecamatanSearch"
-                      color="blue"
-                      hide-no-data
-                      hide-selected
-                      item-text="name"
-                      item-value="id"
-                      @blur="addressSelectedKecamatan = addressCurrentKecamatan"
-                      :disabled="!addressCurrentKota"
-                      :rules="[rules.required]"
-                      required
-                    ></v-autocomplete>
-                  </v-flex>
-                  <v-flex md4 xs12>
-                    <v-autocomplete
-                      label="Kelurahan"
-                      name="addressCurrentKelurahan"
-                      id="addressCurrentKelurahan"
-                      v-model="addressCurrentKelurahan"
-                      :items="addressKelurahanItems"
-                      :loading="addressLoadingKelurahan"
-                      :search-input.sync="addressKelurahanSearch"
-                      color="blue"
-                      hide-no-data
-                      hide-selected
-                      item-text="name"
-                      item-value="id"
-                      @blur="addressSelectedKelurahan = addressCurrentKelurahan"
-                      :disabled="!addressCurrentKota"
-                      :rules="[rules.required]"
-                      required
-                    ></v-autocomplete>
-                  </v-flex>
-                  <v-flex md2 offset-md8 xs12>
-                    <v-text-field
-                      label="Kode Pos"
-                      name="addressCurrentPos"
-                      id="addressCurrentPos"
-                      v-model="addressCurrentPos"
-                      :rules="[rules.required]"
-                      required
-                    ></v-text-field>
-                  </v-flex>
-                </v-layout>
+                <data-input-address
+                  :title="'Sekarang'"
+                  :addressDetail="addressCurrentDetail"
+                  :addressPropinsi="addressCurrentPropinsi"
+                  :addressKota="addressCurrentKota"
+                  :addressKecamatan="addressCurrentKecamatan"
+                  :addressKelurahan="addressCurrentKelurahan"
+                  :addressPos="addressCurrentPos"
+                  @addressDetailUpdated="updateAddressCurrentDetail"
+                  @addressPropinsiUpdated="updateAddressCurrentPropinsi"
+                  @addressKotaUpdated="updateAddressCurrentKota"
+                  @addressKecamatanUpdated="updateAddressCurrentKecamatan"
+                  @addressKelurahanUpdated="updateAddressCurrentKelurahan"
+                  @addressPosUpdated="updateAddressCurrentPos"
+                ></data-input-address>
 
-                <v-layout row wrap mb-2>
-                  <v-flex md8 offset-md2 xs12>
-                    <h4>Alamat Tetap</h4>
-                    <v-textarea
-                      label="Alamat Lengkap"
-                      name="addressPermanentDetail"
-                      id="addressPermanentDetail"
-                      v-model="addressPermanentDetail"
-                      :rules="[rules.required]"
-                      required
-                      rows="2"
-                    ></v-textarea>
-                  </v-flex>
-                  <v-flex md4 offset-md2 xs12>
-                    <v-text-field
-                      label="Propinsi"
-                      name="addressPermanentPropinsi"
-                      id="addressPermanentPropinsi"
-                      v-model="addressPermanentPropinsi"
-                      :rules="[rules.required]"
-                      required
-                    ></v-text-field>
-                  </v-flex>
-                  <v-flex md4 xs12>
-                    <v-text-field
-                      label="Kota"
-                      name="addressPermanentKota"
-                      id="addressPermanentKota"
-                      v-model="addressPermanentKota"
-                      :rules="[rules.required]"
-                      required
-                    ></v-text-field>
-                  </v-flex>
-                  <v-flex md4 offset-md2 xs12>
-                    <v-text-field
-                      label="Kecamatan"
-                      name="addressPermanentKecamatan"
-                      id="addressPermanentKecamatan"
-                      v-model="addressPermanentKecamatan"
-                      :rules="[rules.required]"
-                      required
-                    ></v-text-field>
-                  </v-flex>
-                  <v-flex md4 xs12>
-                    <v-text-field
-                      label="Kelurahan"
-                      name="addressPermanentKelurahan"
-                      id="addressPermanentKelurahan"
-                      v-model="addressPermanentKelurahan"
-                      :rules="[rules.required]"
-                      required
-                    ></v-text-field>
-                  </v-flex>
-                  <v-flex md2 offset-md8 xs12>
-                    <v-text-field
-                      label="Kode Pos"
-                      name="addressPermanentPos"
-                      id="addressPermanentPos"
-                      v-model="addressPermanentPos"
-                      :rules="[rules.required]"
-                      required
-                    ></v-text-field>
-                  </v-flex>
-                </v-layout>
+                <data-input-address
+                  :title="'Tetap'"
+                  :addressDetail="addressPermanentDetail"
+                  :addressPropinsi="addressPermanentPropinsi"
+                  :addressKota="addressPermanentKota"
+                  :addressKecamatan="addressPermanentKecamatan"
+                  :addressKelurahan="addressPermanentKelurahan"
+                  :addressPos="addressPermanentPos"
+                  @addressDetailUpdated="updateAddressPermanentDetail"
+                  @addressPropinsiUpdated="updateAddressPermanentPropinsi"
+                  @addressKotaUpdated="updateAddressPermanentKota"
+                  @addressKecamatanUpdated="updateAddressPermanentKecamatan"
+                  @addressKelurahanUpdated="updateAddressPermanentKelurahan"
+                  @addressPosUpdated="updateAddressPermanentPos"
+                ></data-input-address>
 
                 <v-layout row wrap mb-2>
                   <v-flex md8 offset-md2 xs12>
@@ -253,70 +116,21 @@
                   </v-flex>
                 </v-layout>
 
-                <v-layout row wrap mb-2 v-if="!addressParentCheck">
-                  <v-flex md8 offset-md2 xs12>
-                    <h4>Alamat Orang Tua</h4>
-                    <v-textarea
-                      label="Alamat Lengkap"
-                      name="addressParentDetail"
-                      id="addressParentDetail"
-                      v-model="addressParentDetail"
-                      :rules="[rules.required]"
-                      required
-                      rows="2"
-                    ></v-textarea>
-                  </v-flex>
-                  <v-flex md4 offset-md2 xs12>
-                    <v-text-field
-                      label="Propinsi"
-                      name="addressParentPropinsi"
-                      id="addressParentPropinsi"
-                      v-model="addressParentPropinsi"
-                      :rules="[rules.required]"
-                      required
-                    ></v-text-field>
-                  </v-flex>
-                  <v-flex md4 xs12>
-                    <v-text-field
-                      label="Kota"
-                      name="addressParentKota"
-                      id="addressParentKota"
-                      v-model="addressParentKota"
-                      :rules="[rules.required]"
-                      required
-                    ></v-text-field>
-                  </v-flex>
-                  <v-flex md4 offset-md2 xs12>
-                    <v-text-field
-                      label="Kecamatan"
-                      name="addressParentKecamatan"
-                      id="addressParentKecamatan"
-                      v-model="addressParentKecamatan"
-                      :rules="[rules.required]"
-                      required
-                    ></v-text-field>
-                  </v-flex>
-                  <v-flex md4 xs12>
-                    <v-text-field
-                      label="Kelurahan"
-                      name="addressParentKelurahan"
-                      id="addressParentKelurahan"
-                      v-model="addressParentKelurahan"
-                      :rules="[rules.required]"
-                      required
-                    ></v-text-field>
-                  </v-flex>
-                  <v-flex md2 offset-md8 xs12>
-                    <v-text-field
-                      label="Kode Pos"
-                      name="addressParentPos"
-                      id="addressParentPos"
-                      v-model="addressParentPos"
-                      :rules="[rules.required]"
-                      required
-                    ></v-text-field>
-                  </v-flex>
-                </v-layout>
+                <data-input-address v-if="!addressParentCheck"
+                  :title="'Tetap'"
+                  :addressDetail="addressParentDetail"
+                  :addressPropinsi="addressParentPropinsi"
+                  :addressKota="addressParentKota"
+                  :addressKecamatan="addressParentKecamatan"
+                  :addressKelurahan="addressParentKelurahan"
+                  :addressPos="addressParentPos"
+                  @addressDetailUpdated="updateAddressParentDetail"
+                  @addressPropinsiUpdated="updateAddressParentPropinsi"
+                  @addressKotaUpdated="updateAddressParentKota"
+                  @addressKecamatanUpdated="updateAddressParentKecamatan"
+                  @addressKelurahanUpdated="updateAddressParentKelurahan"
+                  @addressPosUpdated="updateAddressParentPos"
+                ></data-input-address>
 
                 <v-layout row wrap mb-2>
                   <v-flex md4 offset-md2 xs12>
@@ -485,15 +299,8 @@
 </template>
 
 <script>
-/** 
-  *TODO:
-    -Ubah alamat menjadi komponen
-    -Call tiap komponen dan di v-model ke masing-masing alamat (current, permanent, parent)
-    -Tiap komponen di force v-model manual (bind, prop, on-input, emit) ke data terkait
+import dataInputAddress from '../../components/ApplicationForm/DataInputAddress'
 
-  *FIXME:
-    -Kelurahan masih masalah dengan CORS
-*/
 export default {
   data () {
     return {
@@ -502,22 +309,6 @@ export default {
       birthPlace: "",
       birthDate: "",
       birthDateMenu: false,
-      addressLoadingPropinsi: false,
-      addressPropinsiSearch: null,
-      addressPropinsiItems: [],
-      addressSelectedPropinsi: "",
-      addressLoadingKota: false,
-      addressKotaSearch: null,
-      addressKotaItems: [],
-      addressSelectedKota: "",
-      addressLoadingKecamatan: false,
-      addressKecamatanSearch: null,
-      addressKecamatanItems: [],
-      addressSelectedKecamatan: "",
-      addressLoadingKelurahan: false,
-      addressKelurahanSearch: null,
-      addressKelurahanItems: [],
-      addressSelectedKelurahan: "",
       addressCurrentDetail: "",
       addressCurrentKelurahan: "",
       addressCurrentKecamatan: "",
@@ -563,110 +354,67 @@ export default {
     }
   },
   methods: {
+    updateAddressCurrentDetail (i) {
+      this.addressCurrentDetail = i;
+    },
+    updateAddressCurrentPropinsi (i) {
+      this.addressCurrentPropinsi = i;
+    },
+    updateAddressCurrentKota (i) {
+      this.addressCurrentKota = i;
+    },
+    updateAddressCurrentKecamatan (i) {
+      this.addressCurrentKecamatan = i;
+    },
+    updateAddressCurrentKelurahan (i) {
+      this.addressCurrentKelurahan = i;
+    },
+    updateAddressCurrentPos (i) {
+      this.addressCurrentPos = i;
+    },
+    updateAddressPermanentDetail (i) {
+      this.addressPermanentDetail = i;
+    },
+    updateAddressPermanentPropinsi (i) {
+      this.addressPermanentPropinsi = i;
+    },
+    updateAddressPermanentKota (i) {
+      this.addressPermanentKota = i;
+    },
+    updateAddressPermanentKecamatan (i) {
+      this.addressPermanentKecamatan = i;
+    },
+    updateAddressPermanentKelurahan (i) {
+      this.addressPermanentKelurahan = i;
+    },
+    updateAddressPermanentPos (i) {
+      this.addressPermanentPos = i;
+    },
+    updateAddressParentDetail (i) {
+      this.addressParentDetail = i;
+    },
+    updateAddressParentPropinsi (i) {
+      this.addressParentPropinsi = i;
+    },
+    updateAddressParentKota (i) {
+      this.addressParentKota = i;
+    },
+    updateAddressParentKecamatan (i) {
+      this.addressParentKecamatan = i;
+    },
+    updateAddressParentKelurahan (i) {
+      this.addressParentKelurahan = i;
+    },
+    updateAddressParentPos (i) {
+      this.addressParentPos = i;
+    },
     reset () {
       console.log(this.valid)
       this.$refs.form.reset()
     }
   },
-  watch: {
-    // eslint-disable-next-line
-    addressPropinsiSearch (val) {
-      if (this.addressSelectedPropinsi != this.addressCurrentPropinsi) this.addressKotaItems = []
-      // Items have already been loaded
-      if (this.addressPropinsiItems.length > 0) return
-
-      // Items have already been requested
-      if (this.addressLoadingPropinsi) return
-
-      this.addressLoadingPropinsi = true
-
-      // Lazily load input items
-      fetch('http://172.24.76.35:8080/api/administratif/get/provinsi')
-        .then(res => res.json())
-        .then(res => {
-          const items = res.data.result
-          this.addressPropinsiItems = items
-        })
-        .catch(err => {
-          console.log(err)
-        })
-        .finally(() => (this.addressLoadingPropinsi = false))
-
-    },
-
-    // eslint-disable-next-line
-    addressKotaSearch (val) {
-      if (this.addressSelectedKota != this.addressCurrentKota) this.addressKecamatanItems = []
-      // Items have already been loaded 
-      if (this.addressKotaItems.length > 0) return
-
-      // Items have already been requested
-      if (this.addressLoadingKota) return
-
-      this.addressLoadingKota = true
-
-      // Lazily load input items
-      fetch('http://172.24.76.35:8080/api/administratif/get/kota/' + this.addressCurrentPropinsi)
-        .then(res => res.json())
-        .then(res => {
-          const items = res.data.result
-          this.addressKotaItems = items
-        })
-        .catch(err => {
-          console.log(err)
-        })
-        .finally(() => (this.addressLoadingKota = false))
-
-
-    },
-
-    // eslint-disable-next-line
-    addressKecamatanSearch (val) {
-      if (this.addressSelectedKecamatan != this.addressCurrentKecamatan) this.addressKelurahanItems = []
-      // Items have already been loaded 
-      if (this.addressKecamatanItems.length > 0) return
-
-      // Items have already been requested
-      if (this.addressLoadingKecamatan) return
-
-      this.addressLoadingKecamatan = true
-
-      // Lazily load input items
-      fetch('http://172.24.76.35:8080/api/administratif/get/kecamatan/' + this.addressCurrentKota)
-        .then(res => res.json())
-        .then(res => {
-          const items = res.data.result
-          this.addressKecamatanItems = items
-        })
-        .catch(err => {
-          console.log(err)
-        })
-        .finally(() => (this.addressLoadingKecamatan = false))
-    },
-
-    // eslint-disable-next-line
-    addressKecamatanSearch (val) {
-      if (this.addressSelectedKelurahan != this.addressCurrentKelurahan) this.addressCurrentPos = ""
-      // Items have already been loaded 
-      if (this.addressKelurahanItems.length > 0) return
-
-      // Items have already been requested
-      if (this.addressLoadingKelurahan) return
-
-      this.addressLoadingKelurahan = true
-
-      // Lazily load input items
-      fetch('http://172.24.76.35:8080/api/administratif/get/kelurahan/' + this.addressCurrentKecamatan)
-        .then(res => res.json())
-        .then(res => {
-          const items = res.data.result
-          this.addressKelurahanItems = items
-        })
-        .catch(err => {
-          console.log(err)
-        })
-        .finally(() => (this.addressLoadingKelurahan = false))
-    },
+  components: {
+    dataInputAddress
   }
 }
 </script>

@@ -3,6 +3,7 @@ import Router from 'vue-router'
 import Home from './views/Home.vue'
 import Self from './views/ApplicationForm/Self.vue'
 import Detail from './views/ApplicationForm/Detail.vue'
+import Experience from './views/ApplicationForm/Experience.vue'
 
 Vue.use(Router)
 
@@ -24,6 +25,11 @@ export default new Router({
       path: '/detail',
       name: 'detail',
       component: Detail
+    },
+    {
+      path: '/experience',
+      name: 'experience',
+      component: Experience
     },
     {
       path: '/about',
