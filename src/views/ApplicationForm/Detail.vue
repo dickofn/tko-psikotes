@@ -238,8 +238,6 @@
                       name="eduReason"
                       id="eduReason"
                       v-model="eduReason"
-                      :rules="[rules.required]"
-                      required
                       rows="2"
                     ></v-textarea>
                   </v-flex>
@@ -253,8 +251,6 @@
                       name="eduPaper"
                       id="eduPaper"
                       v-model="eduPaper"
-                      :rules="[rules.required]"
-                      required
                       rows="2"
                     ></v-textarea>
                   </v-flex>
