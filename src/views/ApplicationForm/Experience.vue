@@ -190,9 +190,9 @@
 
                 <v-layout row wrap mb-2>
                   <v-flex md8 offset-md2 xs12>
-                    <h4>Jelaskan karya ilmiah (skripsi, artikel, karya tulis, dll) yang pernah dibuat:</h4>
+                    <h4>Uraikan secara singkat dan jelas tugas dan tanggung jawab anda pada jabatan terakhir:</h4>
                     <v-textarea
-                      label="Jelaskan"
+                      label="Uraikan"
                       name="workJobDesc"
                       id="workJobDesc"
                       v-model="workJobDesc"
