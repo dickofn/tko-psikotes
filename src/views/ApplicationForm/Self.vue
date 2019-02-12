@@ -117,7 +117,7 @@
                 </v-layout>
 
                 <data-input-address v-if="!addressParentCheck"
-                  :title="'Tetap'"
+                  :title="'Orang Tua'"
                   :addressDetail="addressParentDetail"
                   :addressPropinsi="addressParentPropinsi"
                   :addressKota="addressParentKota"
