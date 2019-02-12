@@ -118,10 +118,12 @@ export default {
   },
   methods: {
     add () {
-
-      if (
+      if
+      (
         (this.relation == "" || this.name == "" || this.gender == "" || this.birthPlace == "" || this.birthDate == "" || this.education == "" || this.occupation == "")
-        && this.type != 'contact') {
+        &&
+        this.type != 'contact'
+      ) {
         this.dialogValid = false
       } else {
         if (this.type == 'dependent') {

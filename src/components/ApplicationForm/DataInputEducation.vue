@@ -58,8 +58,8 @@
             label="Nilai (Jenjang>=D3)"
             name="eduGrade"
             id="eduGrade"
-            type="number"
             v-model="eduGrade"
+            type="number"
           ></v-text-field>
         </v-flex>
       </v-layout>

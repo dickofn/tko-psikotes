@@ -2,42 +2,37 @@
   <v-card>
     <v-card-title class="headline">
       <v-layout row wrap mb-2>
-        <v-flex md8 offset-md2 xs12>Tambah Data Pengalaman Organisasi</v-flex>
+        <v-flex md8 offset-md2 xs12>Tambah Data Pengalaman Training dan Kursus</v-flex>
       </v-layout>
     </v-card-title>
 
     <v-card-text>
       <v-layout row wrap mb-2>
         <v-flex md8 offset-md2 xs12>
-          <v-text-field label="Nama Organisasi" name="orgName" id="orgName" v-model="orgName"></v-text-field>
+          <v-text-field label="Nama Training" name="traName" id="traName" v-model="traName"></v-text-field>
         </v-flex>
       </v-layout>
 
       <v-layout row wrap mb-2>
         <v-flex md8 offset-md2 xs12>
-          <v-text-field label="Jabatan" name="orgTitle" id="orgTitle" v-model="orgTitle"></v-text-field>
+          <v-text-field label="Tahun" name="traYear" id="traYear" v-model="traYear" type="number"></v-text-field>
         </v-flex>
       </v-layout>
 
       <v-layout row wrap mb-2>
-        <v-flex md4 offset-md2 xs6 pr-2>
+        <v-flex md8 offset-md2 xs12>
           <v-text-field
-            label="Tahun Mulai"
-            name="orgPeriodStart"
-            id="orgPeriodStart"
-            type="number"
-            v-model="orgPeriodStart"
+            label="Penyelenggara"
+            name="traOrganizer"
+            id="traOrganizer"
+            v-model="traOrganizer"
           ></v-text-field>
         </v-flex>
+      </v-layout>
 
-        <v-flex md4 xs6 pl-2>
-          <v-text-field
-            label="Tahun Akhir"
-            name="orgPeriodEnd"
-            id="orgPeriodEnd"
-            type="number"
-            v-model="orgPeriodEnd"
-          ></v-text-field>
+      <v-layout row wrap mb-2>
+        <v-flex md8 offset-md2 xs12>
+          <v-text-field label="Peringkat/Grade" name="traGrade" id="traGrade" v-model="traGrade" type="number"></v-text-field>
         </v-flex>
       </v-layout>
 
@@ -64,10 +59,10 @@
 export default {
   data () {
     return {
-      orgName: "",
-      orgTitle: "",
-      orgPeriodStart: "",
-      orgPeriodEnd: "",
+      traName: "",
+      traYear: "",
+      traOrganizer: "",
+      traGrade: "",
       dialogValid: true,
       data: {}
     }
@@ -75,30 +70,31 @@ export default {
   methods: {
     add () {
       if (
-        (this.orgTitle == "" || this.orgName == "" || this.orgPeriodStart == "" || this.orgPeriodEnd == "")
+        (this.traName == "" || this.traYear == "" || this.traOrganizer == "")
       ) {
         this.dialogValid = false
       } else {
         this.dialogValid = true
         this.data = {
-          orgName: this.orgName,
-          orgPeriod: this.orgPeriodStart + "-" + this.orgPeriodEnd,
-          orgTitle: this.orgTitle,
+          traName: this.traName,
+          traYear: this.traYear,
+          traOrganizer: this.traOrganizer,
+          traGrade: this.traGrade,
         }
-        this.$emit('orgDataFilled', this.data);
-        this.orgName = ""
-        this.orgTitle = ""
-        this.orgPeriodStart = ""
-        this.orgPeriodEnd = ""
+        this.$emit('traDataFilled', this.data);
+        this.traName = ""
+        this.traYear = ""
+        this.traOrganizer = ""
+        this.traGrade = ""
       }
     },
     cancel () {
       this.dialogValid = true
-      this.orgName = ""
-      this.orgTitle = ""
-      this.orgPeriodStart = ""
-      this.orgPeriodEnd = ""
-      this.$emit('orgDataCancelled')
+      this.traName = ""
+      this.traYear = ""
+      this.traOrganizer = ""
+      this.traGrade = ""
+      this.$emit('traDataCancelled')
     }
   }
 }
