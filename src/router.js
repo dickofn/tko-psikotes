@@ -4,6 +4,9 @@ import Home from './views/Home.vue'
 import Self from './views/ApplicationForm/Self.vue'
 import Detail from './views/ApplicationForm/Detail.vue'
 import Experience from './views/ApplicationForm/Experience.vue'
+import Question from './views/ApplicationForm/Question.vue'
+
+import Disc from './views/Psychotest/Disc.vue'
 
 Vue.use(Router)
 
@@ -30,6 +33,16 @@ export default new Router({
       path: '/experience',
       name: 'experience',
       component: Experience
+    },
+    {
+      path: '/question',
+      name: 'question',
+      component: Question
+    },
+    {
+      path: '/test/disc',
+      name: 'disc',
+      component: Disc
     },
     {
       path: '/about',
