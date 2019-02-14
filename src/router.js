@@ -7,6 +7,7 @@ import Experience from './views/ApplicationForm/Experience.vue'
 import Question from './views/ApplicationForm/Question.vue'
 
 import Disc from './views/Psychotest/Disc.vue'
+import Mathematic from './views/Psychotest/Mathematic.vue'
 
 Vue.use(Router)
 
@@ -43,6 +44,11 @@ export default new Router({
       path: '/test/disc',
       name: 'disc',
       component: Disc
+    },
+    {
+      path: '/test/math',
+      name: 'math',
+      component: Mathematic
     },
     {
       path: '/about',
