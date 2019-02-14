@@ -15,6 +15,7 @@
           @input="updateAnswer"
           :rules="[rules.required, rules.number]"
           required
+          @keydown.188="preventComma"
         ></v-text-field>
       </v-flex>
     </v-layout>
@@ -28,6 +29,9 @@ export default {
     updateAnswer (i) {
       this.$emit('answerUpdated', i)
       this.$emit('validUpdated', this.valid)
+    },
+    preventComma (e) {
+      e.preventDefault()
     }
   }
 }

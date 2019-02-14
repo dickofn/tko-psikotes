@@ -31,7 +31,7 @@
                     :no="'01. '"
                     :question="'Seorang anak mempunyai 12 pensil. 6 pensil dipinjam temannya. Berapa pensil sisanya?'"
                     :answer="a[0]"
-                    @answerUpdated=updateA0
+                    @answerUpdated="updateA0"
                     :rules="rules"
                     :valid="valid"
                     @validUpdated="updateValid"
@@ -40,7 +40,7 @@
                     :no="'02. '"
                     :question="'Seorang anak mempunyai 12 pensil. 6 pensil dipinjam temannya. Berapa pensil sisanya?'"
                     :answer="a[1]"
-                    @answerUpdated=updateA1
+                    @answerUpdated="updateA1"
                     :rules="rules"
                     :valid="valid"
                     @validUpdated="updateValid"
@@ -49,7 +49,7 @@
                     :no="'03. '"
                     :question="'Seorang anak mempunyai 12 pensil. 6 pensil dipinjam temannya. Berapa pensil sisanya?'"
                     :answer="a[2]"
-                    @answerUpdated=updateA2
+                    @answerUpdated="updateA2"
                     :rules="rules"
                     :valid="valid"
                     @validUpdated="updateValid"
@@ -58,7 +58,7 @@
                     :no="'04. '"
                     :question="'Seorang anak mempunyai 12 pensil. 6 pensil dipinjam temannya. Berapa pensil sisanya?'"
                     :answer="a[3]"
-                    @answerUpdated=updateA3
+                    @answerUpdated="updateA3"
                     :rules="rules"
                     :valid="valid"
                     @validUpdated="updateValid"
@@ -67,7 +67,7 @@
                     :no="'05. '"
                     :question="'Seorang anak mempunyai 12 pensil. 6 pensil dipinjam temannya. Berapa pensil sisanya?'"
                     :answer="a[4]"
-                    @answerUpdated=updateA4
+                    @answerUpdated="updateA4"
                     :rules="rules"
                     :valid="valid"
                     @validUpdated="updateValid"
@@ -76,7 +76,7 @@
                     :no="'06. '"
                     :question="'Seorang anak mempunyai 12 pensil. 6 pensil dipinjam temannya. Berapa pensil sisanya?'"
                     :answer="a[5]"
-                    @answerUpdated=updateA5
+                    @answerUpdated="updateA5"
                     :rules="rules"
                     :valid="valid"
                     @validUpdated="updateValid"
@@ -85,7 +85,7 @@
                     :no="'07. '"
                     :question="'Seorang anak mempunyai 12 pensil. 6 pensil dipinjam temannya. Berapa pensil sisanya?'"
                     :answer="a[6]"
-                    @answerUpdated=updateA6
+                    @answerUpdated="updateA6"
                     :rules="rules"
                     :valid="valid"
                     @validUpdated="updateValid"
@@ -94,7 +94,7 @@
                     :no="'08. '"
                     :question="'Seorang anak mempunyai 12 pensil. 6 pensil dipinjam temannya. Berapa pensil sisanya?'"
                     :answer="a[7]"
-                    @answerUpdated=updateA7
+                    @answerUpdated="updateA7"
                     :rules="rules"
                     :valid="valid"
                     @validUpdated="updateValid"
@@ -103,7 +103,7 @@
                     :no="'09. '"
                     :question="'Seorang anak mempunyai 12 pensil. 6 pensil dipinjam temannya. Berapa pensil sisanya?'"
                     :answer="a[8]"
-                    @answerUpdated=updateA8
+                    @answerUpdated="updateA8"
                     :rules="rules"
                     :valid="valid"
                     @validUpdated="updateValid"
@@ -112,7 +112,7 @@
                     :no="'10. '"
                     :question="'Seorang anak mempunyai 12 pensil. 6 pensil dipinjam temannya. Berapa pensil sisanya?'"
                     :answer="a[9]"
-                    @answerUpdated=updateA9
+                    @answerUpdated="updateA9"
                     :rules="rules"
                     :valid="valid"
                     @validUpdated="updateValid"
@@ -121,7 +121,7 @@
                     :no="'11. '"
                     :question="'Seorang anak mempunyai 12 pensil. 6 pensil dipinjam temannya. Berapa pensil sisanya?'"
                     :answer="a[10]"
-                    @answerUpdated=updateA10
+                    @answerUpdated="updateA10"
                     :rules="rules"
                     :valid="valid"
                     @validUpdated="updateValid"
@@ -130,7 +130,7 @@
                     :no="'12. '"
                     :question="'Seorang anak mempunyai 12 pensil. 6 pensil dipinjam temannya. Berapa pensil sisanya?'"
                     :answer="a[11]"
-                    @answerUpdated=updateA11
+                    @answerUpdated="updateA11"
                     :rules="rules"
                     :valid="valid"
                     @validUpdated="updateValid"
@@ -139,7 +139,7 @@
                     :no="'13. '"
                     :question="'Seorang anak mempunyai 12 pensil. 6 pensil dipinjam temannya. Berapa pensil sisanya?'"
                     :answer="a[12]"
-                    @answerUpdated=updateA12
+                    @answerUpdated="updateA12"
                     :rules="rules"
                     :valid="valid"
                     @validUpdated="updateValid"
@@ -148,7 +148,7 @@
                     :no="'14. '"
                     :question="'Seorang anak mempunyai 12 pensil. 6 pensil dipinjam temannya. Berapa pensil sisanya?'"
                     :answer="a[13]"
-                    @answerUpdated=updateA13
+                    @answerUpdated="updateA13"
                     :rules="rules"
                     :valid="valid"
                     @validUpdated="updateValid"
@@ -157,7 +157,7 @@
                     :no="'15. '"
                     :question="'Seorang anak mempunyai 12 pensil. 6 pensil dipinjam temannya. Berapa pensil sisanya?'"
                     :answer="a[14]"
-                    @answerUpdated=updateA14
+                    @answerUpdated="updateA14"
                     :rules="rules"
                     :valid="valid"
                     @validUpdated="updateValid"
@@ -166,7 +166,7 @@
                     :no="'16. '"
                     :question="'Seorang anak mempunyai 12 pensil. 6 pensil dipinjam temannya. Berapa pensil sisanya?'"
                     :answer="a[15]"
-                    @answerUpdated=updateA15
+                    @answerUpdated="updateA15"
                     :rules="rules"
                     :valid="valid"
                     @validUpdated="updateValid"
@@ -175,7 +175,7 @@
                     :no="'17. '"
                     :question="'Seorang anak mempunyai 12 pensil. 6 pensil dipinjam temannya. Berapa pensil sisanya?'"
                     :answer="a[16]"
-                    @answerUpdated=updateA16
+                    @answerUpdated="updateA16"
                     :rules="rules"
                     :valid="valid"
                     @validUpdated="updateValid"
@@ -184,7 +184,7 @@
                     :no="'18. '"
                     :question="'Seorang anak mempunyai 12 pensil. 6 pensil dipinjam temannya. Berapa pensil sisanya?'"
                     :answer="a[17]"
-                    @answerUpdated=updateA17
+                    @answerUpdated="updateA17"
                     :rules="rules"
                     :valid="valid"
                     @validUpdated="updateValid"
@@ -193,7 +193,7 @@
                     :no="'19. '"
                     :question="'Seorang anak mempunyai 12 pensil. 6 pensil dipinjam temannya. Berapa pensil sisanya?'"
                     :answer="a[18]"
-                    @answerUpdated=updateA18
+                    @answerUpdated="updateA18"
                     :rules="rules"
                     :valid="valid"
                     @validUpdated="updateValid"
@@ -202,7 +202,7 @@
                     :no="'20. '"
                     :question="'Seorang anak mempunyai 12 pensil. 6 pensil dipinjam temannya. Berapa pensil sisanya?'"
                     :answer="a[19]"
-                    @answerUpdated=updateA19
+                    @answerUpdated="updateA19"
                     :rules="rules"
                     :valid="valid"
                     @validUpdated="updateValid"
@@ -289,27 +289,27 @@ export default {
         }, 1000)
       }
     },
-    updateA0 (i) { this.a[0] = i; console.log(this.a[0])},
-    updateA1 (i) { this.a[1] = i; console.log(this.a[1])},
-    updateA2 (i) { this.a[2] = i; console.log(this.a[2])},
-    updateA3 (i) { this.a[3] = i; console.log(this.a[3])},
-    updateA4 (i) { this.a[4] = i; console.log(this.a[4])},
-    updateA5 (i) { this.a[5] = i; console.log(this.a[5])},
-    updateA6 (i) { this.a[6] = i; console.log(this.a[6])},
-    updateA7 (i) { this.a[7] = i; console.log(this.a[7])},
-    updateA8 (i) { this.a[8] = i; console.log(this.a[8])},
-    updateA9 (i) { this.a[9] = i; console.log(this.a[9])},
-    updateA10 (i) { this.a[10] = i; console.log(this.a[10])},
-    updateA11 (i) { this.a[11] = i; console.log(this.a[11])},
-    updateA12 (i) { this.a[12] = i; console.log(this.a[12])},
-    updateA13 (i) { this.a[13] = i; console.log(this.a[13])},
-    updateA14 (i) { this.a[14] = i; console.log(this.a[14])},
-    updateA15 (i) { this.a[15] = i; console.log(this.a[15])},
-    updateA16 (i) { this.a[16] = i; console.log(this.a[16])},
-    updateA17 (i) { this.a[17] = i; console.log(this.a[17])},
-    updateA18 (i) { this.a[18] = i; console.log(this.a[18])},
-    updateA19 (i) { this.a[19] = i; console.log(this.a[19])},
-    updateA20 (i) { this.a[20] = i; console.log(this.a[20])},
+    updateA0 (i) { this.a[0] = i; console.log(this.a[0]) },
+    updateA1 (i) { this.a[1] = i; console.log(this.a[1]) },
+    updateA2 (i) { this.a[2] = i; console.log(this.a[2]) },
+    updateA3 (i) { this.a[3] = i; console.log(this.a[3]) },
+    updateA4 (i) { this.a[4] = i; console.log(this.a[4]) },
+    updateA5 (i) { this.a[5] = i; console.log(this.a[5]) },
+    updateA6 (i) { this.a[6] = i; console.log(this.a[6]) },
+    updateA7 (i) { this.a[7] = i; console.log(this.a[7]) },
+    updateA8 (i) { this.a[8] = i; console.log(this.a[8]) },
+    updateA9 (i) { this.a[9] = i; console.log(this.a[9]) },
+    updateA10 (i) { this.a[10] = i; console.log(this.a[10]) },
+    updateA11 (i) { this.a[11] = i; console.log(this.a[11]) },
+    updateA12 (i) { this.a[12] = i; console.log(this.a[12]) },
+    updateA13 (i) { this.a[13] = i; console.log(this.a[13]) },
+    updateA14 (i) { this.a[14] = i; console.log(this.a[14]) },
+    updateA15 (i) { this.a[15] = i; console.log(this.a[15]) },
+    updateA16 (i) { this.a[16] = i; console.log(this.a[16]) },
+    updateA17 (i) { this.a[17] = i; console.log(this.a[17]) },
+    updateA18 (i) { this.a[18] = i; console.log(this.a[18]) },
+    updateA19 (i) { this.a[19] = i; console.log(this.a[19]) },
+    updateA20 (i) { this.a[20] = i; console.log(this.a[20]) },
     updateValid (i) { this.valid = i; },
     reset () {
       console.log(this.valid)
