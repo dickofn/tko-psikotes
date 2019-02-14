@@ -52,7 +52,7 @@
                   <data-input-disc
                     :m="m[2]"
                     :l="l[2]"
-                    :mv="['I', '*', '*', 'D']"
+                    :mv="['I', '*', '**', 'D']"
                     :lv="['I', 'C', 'S', '*']"
                     :t="['Menyemangati orang,', 'Berusaha sempurna', 'Bagian dari kelompok', 'Ingin membuat tujuan']"
                     @mUpdated="updateM2"
@@ -100,7 +100,7 @@
                   <data-input-disc
                     :m="m[6]"
                     :l="l[6]"
-                    :mv="['S', 'I', '*', '*']"
+                    :mv="['S', 'I', '*', '**']"
                     :lv="['*', 'I', 'C', 'D']"
                     :t="['Tolak perubahan mendadak', 'Cenderung janji berlebihan', 'Tarik diri di tengah tekanan', 'Tidak takut bertempur']"
                     @mUpdated="updateM6"
@@ -124,7 +124,7 @@
                   <data-input-disc
                     :m="m[8]"
                     :l="l[8]"
-                    :mv="['D', 'C', '*', '*']"
+                    :mv="['D', 'C', '*', '**']"
                     :lv="['D', 'C', 'I', 'S']"
                     :t="['Hasil adalah penting', 'Lakukan dengan benar, akurasi penting', 'Dibuat menyenangkan', 'Mari kerjakan bersama']"
                     @mUpdated="updateM8"
@@ -173,7 +173,7 @@
                     :m="m[12]"
                     :l="l[12]"
                     :mv="['D', 'S', 'I', '*']"
-                    :lv="['D', '*', '*', 'C']"
+                    :lv="['D', '*', '**', 'C']"
                     :t="['Ingin kemajuan', 'Puas dengan segalanya, senang', 'Terbuka memperhatikan perasaan', 'Rendah hati, sederhana']"
                     @mUpdated="updateM12"
                     @lUpdated="updateL12"
@@ -209,7 +209,7 @@
                     :m="m[15]"
                     :l="l[15]"
                     :mv="['*', 'C', 'I', 'S']"
-                    :lv="['D', 'S', 'I', 'S']"
+                    :lv="['D', 'S', 'I', 'SS']"
                     :t="['Aturan perlu dipertanyakan', 'Aturan membuat adil', 'Aturan membuat bosan', 'Aturan membuat aman']"
                     @mUpdated="updateM15"
                     @lUpdated="updateL15"
@@ -232,7 +232,7 @@
                   <data-input-disc
                     :m="m[17]"
                     :l="l[17]"
-                    :mv="['D', '*', '*', 'C']"
+                    :mv="['D', '*', '**', 'C']"
                     :lv="['D', 'I', 'S', '*']"
                     :t="['Memimpin, pendekatan langsung', 'Suka bergaul, antusias', 'Dapat diramal, konsisten ', 'Waspada, hati-hati']"
                     @mUpdated="updateM17"
@@ -292,7 +292,7 @@
                   <data-input-disc
                     :m="m[22]"
                     :l="l[22]"
-                    :mv="['*', 'I', 'S', '*']"
+                    :mv="['*', 'I', 'S', '**']"
                     :lv="['D', '*', 'S', 'C']"
                     :t="['Ingin otoritas lebih', 'Ingin kesempatan baru', 'Menghindari konflik', 'Ingin petunjuk yang jelas']"
                     @mUpdated="updateM22"
@@ -305,7 +305,7 @@
                     :m="m[23]"
                     :l="l[23]"
                     :mv="['*', 'I', 'D', 'C']"
-                    :lv="['S', 'I', '*', '*']"
+                    :lv="['S', 'I', '*', '**']"
                     :t="['Dapat diandalkan, dapat dipercaya', 'Kreatif, unik', 'Garis dasar, orientasi hasil', 'Jalankan standar yang tinggi. akurat']"
                     @mUpdated="updateM23"
                     @lUpdated="updateL23"
@@ -345,10 +345,6 @@
 </template>
 
 <script>
-/**
- * FIXME:
- * kalau ada 2 bintang, 2 2 nya kepilih. kalau ada 2 alphabet, 2 2 nya kepilih
- */
 import dataInputDisc from '../../components/Psychotest/DataInputDisc'
 
 export default {

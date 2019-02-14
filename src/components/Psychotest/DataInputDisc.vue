@@ -83,18 +83,28 @@
 <script>
 export default {
   props: ['m', 'l', 'mv', 'lv', 't', 'rules', 'valid'],
-  data(){
+  data () {
     return {
-      radGroupTemp1:'',
-      radGroupTemp2:'',
+      radGroupTemp1: '',
+      radGroupTemp2: '',
     }
   },
   methods: {
     updateM (i) {
+      if (i == "**") {
+        i = "*"
+      } else if (i == "SS") {
+        i = "S"
+      }
       this.$emit('mUpdated', i),
       this.$emit('validUpdated', this.valid)
     },
     updateL (i) {
+      if (i == "**") {
+        i = "*"
+      } else if (i == "SS") {
+        i = "S"
+      }
       this.$emit('lUpdated', i)
       this.$emit('validUpdated', this.valid)
     }
