@@ -38,7 +38,7 @@
                   ></data-input-math>
                   <data-input-math
                     :no="'02. '"
-                    :question="'Seorang anak mempunyai 12 pensil. 6 pensil dipinjam temannya. Berapa pensil sisanya?'"
+                    :question="'Berapa jumlah seluruh siswa di kelas bila siswanya ada 16 orang dan siswinya ada 18 orang?'"
                     :answer="a[1]"
                     @answerUpdated="updateA1"
                     :rules="rules"
@@ -47,7 +47,7 @@
                   ></data-input-math>
                   <data-input-math
                     :no="'03. '"
-                    :question="'Seorang anak mempunyai 12 pensil. 6 pensil dipinjam temannya. Berapa pensil sisanya?'"
+                    :question="'Seorang petani mempunyai 8 ekor ayam. Ia membeli lagi 5 ekor. Berapa ekor ayamnya sekarang?'"
                     :answer="a[2]"
                     @answerUpdated="updateA2"
                     :rules="rules"
@@ -56,7 +56,7 @@
                   ></data-input-math>
                   <data-input-math
                     :no="'04. '"
-                    :question="'Seorang anak mempunyai 12 pensil. 6 pensil dipinjam temannya. Berapa pensil sisanya?'"
+                    :question="'Seorang penjahit menyelesaikan 7 baju sehari. Berapa baju dapat diselesaikan dalam 6 hari?'"
                     :answer="a[3]"
                     @answerUpdated="updateA3"
                     :rules="rules"
@@ -65,7 +65,7 @@
                   ></data-input-math>
                   <data-input-math
                     :no="'05. '"
-                    :question="'Seorang anak mempunyai 12 pensil. 6 pensil dipinjam temannya. Berapa pensil sisanya?'"
+                    :question="'Suatu rumah berdiri diatas tanah yang panjangnya 21 meter dan lebarnya 12 meter Berapa meter persegi luas tanah rumah itu?'"
                     :answer="a[4]"
                     @answerUpdated="updateA4"
                     :rules="rules"
@@ -74,7 +74,7 @@
                   ></data-input-math>
                   <data-input-math
                     :no="'06. '"
-                    :question="'Seorang anak mempunyai 12 pensil. 6 pensil dipinjam temannya. Berapa pensil sisanya?'"
+                    :question="'Seorang anak membeli permen seharga Rp. 250.-. Berapa Permen diperolehnya kalau 3 permen harganya Rp. 50,-?'"
                     :answer="a[5]"
                     @answerUpdated="updateA5"
                     :rules="rules"
@@ -83,7 +83,7 @@
                   ></data-input-math>
                   <data-input-math
                     :no="'07. '"
-                    :question="'Seorang anak mempunyai 12 pensil. 6 pensil dipinjam temannya. Berapa pensil sisanya?'"
+                    :question="'Perjalanan ke sekolah biasanya memakan waktu 35 menit, tetapi karena macet perlu waktu 1 jam 10 menit. Berapa menit lebih lama perjalanan itu?'"
                     :answer="a[6]"
                     @answerUpdated="updateA6"
                     :rules="rules"
@@ -92,7 +92,7 @@
                   ></data-input-math>
                   <data-input-math
                     :no="'08. '"
-                    :question="'Seorang anak mempunyai 12 pensil. 6 pensil dipinjam temannya. Berapa pensil sisanya?'"
+                    :question="'Seorang ibu menggunakan seperempat (1/4) waktu kerjanya untuk memasak. Bila waktu kerjanya 14 jam sehari. berapa jam sehari ibu ini memasak?'"
                     :answer="a[7]"
                     @answerUpdated="updateA7"
                     :rules="rules"
@@ -101,7 +101,7 @@
                   ></data-input-math>
                   <data-input-math
                     :no="'09. '"
-                    :question="'Seorang anak mempunyai 12 pensil. 6 pensil dipinjam temannya. Berapa pensil sisanya?'"
+                    :question="'Secarik kain yang panjangnya 9 yard ( 1 yard = 90 cm ) dipotong 7 kaki (1 kaki = 30 cm). Berapa cm. sisa panjang kain itu?'"
                     :answer="a[8]"
                     @answerUpdated="updateA8"
                     :rules="rules"
@@ -110,7 +110,7 @@
                   ></data-input-math>
                   <data-input-math
                     :no="'10. '"
-                    :question="'Seorang anak mempunyai 12 pensil. 6 pensil dipinjam temannya. Berapa pensil sisanya?'"
+                    :question="'Seorang pegawai mendapat upah Rp 1.250,- sehari. la telah bekerja selama lima hari dan mendapat tambahan uang lembur Rp. 1.800,- untuk lima hari tersebut. Berapa upah seluruhnya?'"
                     :answer="a[9]"
                     @answerUpdated="updateA9"
                     :rules="rules"
@@ -119,7 +119,7 @@
                   ></data-input-math>
                   <data-input-math
                     :no="'11. '"
-                    :question="'Seorang anak mempunyai 12 pensil. 6 pensil dipinjam temannya. Berapa pensil sisanya?'"
+                    :question="'Berapa jam dibutuhkan sebuah mobil untuk menempuh jarak 400 km, bila kecepatannya 60 km /jam?'"
                     :answer="a[10]"
                     @answerUpdated="updateA10"
                     :rules="rules"
@@ -128,7 +128,7 @@
                   ></data-input-math>
                   <data-input-math
                     :no="'12. '"
-                    :question="'Seorang anak mempunyai 12 pensil. 6 pensil dipinjam temannya. Berapa pensil sisanya?'"
+                    :question="'Delapan orang menyelesaikan pengecetan sebuah gedung dalam empat hari. Berapa orang dibutuhkan untuk mengecet gedung dalam dua hari?'"
                     :answer="a[11]"
                     @answerUpdated="updateA11"
                     :rules="rules"
@@ -137,7 +137,7 @@
                   ></data-input-math>
                   <data-input-math
                     :no="'13. '"
-                    :question="'Seorang anak mempunyai 12 pensil. 6 pensil dipinjam temannya. Berapa pensil sisanya?'"
+                    :question="'Seorang pegawai berpenghasilan Rp. 150.000.- per bulan. 2% dari jumlah itu untuk melunasi pajak. Berapa besar pajak yang dibayarnya dalam satu tahun?'"
                     :answer="a[12]"
                     @answerUpdated="updateA12"
                     :rules="rules"
@@ -146,7 +146,7 @@
                   ></data-input-math>
                   <data-input-math
                     :no="'14. '"
-                    :question="'Seorang anak mempunyai 12 pensil. 6 pensil dipinjam temannya. Berapa pensil sisanya?'"
+                    :question="'Suatu sekolah menerima pendaftaran calon murid sebanyak 1100 orang. Namun yang dapat diterima setelah diseleksi hanya 35%. Berapa anak yang ditolak masuk?'"
                     :answer="a[13]"
                     @answerUpdated="updateA13"
                     :rules="rules"
@@ -155,7 +155,7 @@
                   ></data-input-math>
                   <data-input-math
                     :no="'15. '"
-                    :question="'Seorang anak mempunyai 12 pensil. 6 pensil dipinjam temannya. Berapa pensil sisanya?'"
+                    :question="'Seorang pedagang membeli sepeda bekas seharga Rp. 30.000.- la menjual lagi dengan keuntungan 15%. Berapa harga penjualan sepeda itu?'"
                     :answer="a[14]"
                     @answerUpdated="updateA14"
                     :rules="rules"
@@ -164,7 +164,7 @@
                   ></data-input-math>
                   <data-input-math
                     :no="'16. '"
-                    :question="'Seorang anak mempunyai 12 pensil. 6 pensil dipinjam temannya. Berapa pensil sisanya?'"
+                    :question="'Sebuah bak ikan berukuran 13.5 meter kubik. Bila lebar dan dalamnya sama-sama 1,5 meter, berapakah panjang bak ikan itu?'"
                     :answer="a[15]"
                     @answerUpdated="updateA15"
                     :rules="rules"
@@ -173,7 +173,7 @@
                   ></data-input-math>
                   <data-input-math
                     :no="'17. '"
-                    :question="'Seorang anak mempunyai 12 pensil. 6 pensil dipinjam temannya. Berapa pensil sisanya?'"
+                    :question="'Ibu membeli 11/2 kg beras seharga Rp. 1.125,- . Berapa kg. beras ibu peroleh dengan uang sebanyak Rp. 4.125,-?'"
                     :answer="a[16]"
                     @answerUpdated="updateA16"
                     :rules="rules"
@@ -182,7 +182,7 @@
                   ></data-input-math>
                   <data-input-math
                     :no="'18. '"
-                    :question="'Seorang anak mempunyai 12 pensil. 6 pensil dipinjam temannya. Berapa pensil sisanya?'"
+                    :question="'Seorang tukang memasang ubin yang berukuran 2 dm x 3 dm. untuk sebuah ruangan yang luas lantainya 3m. x 4m. Berapa banyak ubin yang diperlukan?'"
                     :answer="a[17]"
                     @answerUpdated="updateA17"
                     :rules="rules"
@@ -191,7 +191,7 @@
                   ></data-input-math>
                   <data-input-math
                     :no="'19. '"
-                    :question="'Seorang anak mempunyai 12 pensil. 6 pensil dipinjam temannya. Berapa pensil sisanya?'"
+                    :question="'Perbaikan sebuah rumah mempekerjakan 3 orang tukang. Mereka masing-masing dibayar 1.000,-; Rp 1.250,-; Rp. 1 500,- per jam. Dalam sehari mereka bekerja selama 7 jam. Setelah selesai mereka dibayar Rp. 315.000.-. Berapa harikah yang diperlukan untuk mengerjakan rumah itu?'"
                     :answer="a[18]"
                     @answerUpdated="updateA18"
                     :rules="rules"
@@ -200,7 +200,7 @@
                   ></data-input-math>
                   <data-input-math
                     :no="'20. '"
-                    :question="'Seorang anak mempunyai 12 pensil. 6 pensil dipinjam temannya. Berapa pensil sisanya?'"
+                    :question="'Seorang anak menggunakan 1/8 dari uang sakunya untuk membeli alat tulis, dan tiga kali dari itu untuk jajan. Dari sisanya separuh ditabung, dan ia masih punya Rp 1.600,- Berapa uangnya semula?'"
                     :answer="a[19]"
                     @answerUpdated="updateA19"
                     :rules="rules"
