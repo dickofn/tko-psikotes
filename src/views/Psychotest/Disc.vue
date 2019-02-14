@@ -340,7 +340,7 @@
       </v-flex>
     </v-layout>
 
-    <v-bottom-nav :value="true" fixed v-if="isStarted && !isFinished" height="30">Waktu yang tersisa {{ prettyTime }}</v-bottom-nav>
+    <v-bottom-nav :value="true" fixed v-if="isStarted && !isFinished" height="20">Waktu yang tersisa {{ prettyTime }}</v-bottom-nav>
   </v-container>
 </template>
 
