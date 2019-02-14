@@ -16,7 +16,7 @@
                     <h1>INSTRUKSI</h1>
                     <p>
                       <b>&rarr;</b> Setiap kotak dibawah ini memuat empat kalimat. Bacalah dengan seksama setiap kalimat itu, lalu pilihlah salah satu tanda D, I, S, C, atau * di bawah kolom M, disamping kalimat yang
-                      <b>PALING</b> menggambarkan diri Anda. 
+                      <b>PALING</b> menggambarkan diri Anda.
                       <br>
                       <b>&rarr;</b> Selanjutanya pilihlah salah satu tanda D, I, S, C, atau * di bawah kolom M, disamping kalimat yang
                       <b>PALING TIDAK</b> menggambarkan diri Anda. Untuk setiap kolom hanya dapat memilih satu saja.
@@ -330,8 +330,6 @@
 
 <script>
 /**
- * TODO:
- * Tambah hasil dari DISC testnya, computed MD MI MS MC M* dari foreach m[] dan LD LI LS LC L* dari foreach l[]
  * FIXME:
  * kalau ada 2 bintang, 2 2 nya kepilih. kalau ada 2 alphabet, 2 2 nya kepilih
  */
@@ -399,7 +397,7 @@ export default {
     updateL23 (i) { this.l[23] = i; },
     updateM24 (i) { this.m[24] = i; },
     updateL24 (i) { this.l[24] = i; },
-    updateValid (i) { this.valid = i; }, 
+    updateValid (i) { this.valid = i; },
     reset () {
       console.log(this.valid)
       this.$refs.form.reset()
