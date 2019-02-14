@@ -1,7 +1,7 @@
 <template>
   <v-layout row wrap mb-2>
     <v-flex md8 offset-md2 xs12>
-      <h4>Alamat {{title}}</h4>
+      <h4>Alamat {{ title }}</h4>
       <v-textarea
         label="Alamat Lengkap"
         name="addressDetail"
