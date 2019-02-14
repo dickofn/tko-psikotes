@@ -24,299 +24,313 @@
                   </v-flex>
                 </v-layout>
 
-                <data-input-disc
-                  :m="m[0]"
-                  :l="l[0]"
-                  :mv="['S', 'I', '*', 'C']"
-                  :lv="['S', 'I', 'D', 'C']"
-                  :t="['Gampangan, mudah setuju', 'Percaya, percaya pada orang', 'Petualang, mengambil resiko', 'Toleran, menghormati']"
-                  @mUpdated="updateM0"
-                  @lUpdated="updateL0"
-                  :rules="rules"
-                  :valid="valid"
-                  @validUpdated="updateValid"
-                ></data-input-disc>
-                <data-input-disc
-                  :m="m[1]"
-                  :l="l[1]"
-                  :mv="['C', 'D', '*', 'S']"
-                  :lv="['*', 'D', 'I', 'S']"
-                  :t="['Lembut suara, pendiam,', 'Optimistik, visioner', 'Pusat perhatian, suka gaul', 'Pendamai, membawa harmoni']"
-                  @mUpdated="updateM1"
-                  @lUpdated="updateL1"
-                  :rules="rules"
-                  :valid="valid"
-                  @validUpdated="updateValid"
-                ></data-input-disc>
-                <data-input-disc
-                  :m="m[2]"
-                  :l="l[2]"
-                  :mv="['I', '*', '*', 'D']"
-                  :lv="['I', 'C', 'S', '*']"
-                  :t="['Menyemangati orang,', 'Berusaha sempurna', 'Bagian dari kelompok', 'Ingin membuat tujuan']"
-                  @mUpdated="updateM2"
-                  @lUpdated="updateL2"
-                  :rules="rules"
-                  :valid="valid"
-                  @validUpdated="updateValid"
-                ></data-input-disc>
-                <data-input-disc
-                  :m="m[3]"
-                  :l="l[3]"
-                  :mv="['C', 'S', '*', 'D']"
-                  :lv="['C', 'S', 'I', 'D']"
-                  :t="['Menjadi frustasi', 'Menyimpan perasaan saya', 'Menceritakan sisi saya', 'Siap beroposisi']"
-                  @mUpdated="updateM3"
-                  @lUpdated="updateL3"
-                  :rules="rules"
-                  :valid="valid"
-                  @validUpdated="updateValid"
-                ></data-input-disc>
-                <data-input-disc
-                  :m="m[4]"
-                  :l="l[4]"
-                  :mv="['I', 'D', 'S', '*']"
-                  :lv="['*', 'D', 'S', 'C']"
-                  :t="['Hidup, suka bicara', 'Gerakan cepat, tekun', 'Usaha menjadi keseimbangan', 'Usaha mengikuti aturan']"
-                  @mUpdated="updateM4"
-                  @lUpdated="updateL4"
-                  :rules="rules"
-                  :valid="valid"
-                  @validUpdated="updateValid"
-                ></data-input-disc>
-                <data-input-disc
-                  :m="m[5]"
-                  :l="l[5]"
-                  :mv="['C', 'D', 'I', 'S']"
-                  :lv="['*', 'D', 'I', 'S']"
-                  :t="['Kelola waktu secara efisien', 'Sering terburu-buru, merasa tertekan', 'Masalah sosial itu penting', 'Suka selesaikan apa yang saya mulai']"
-                  @mUpdated="updateM5"
-                  @lUpdated="updateL5"
-                  :rules="rules"
-                  :valid="valid"
-                  @validUpdated="updateValid"
-                ></data-input-disc>
-                <data-input-disc
-                  :m="m[6]"
-                  :l="l[6]"
-                  :mv="['S', 'I', '*', '*']"
-                  :lv="['*', 'I', 'C', 'D']"
-                  :t="['Tolak perubahan mendadak', 'Cenderung janji berlebihan', 'Tarik diri di tengah tekanan', 'Tidak takut bertempur']"
-                  @mUpdated="updateM6"
-                  @lUpdated="updateL6"
-                  :rules="rules"
-                  :valid="valid"
-                  @validUpdated="updateValid"
-                ></data-input-disc>
-                <data-input-disc
-                  :m="m[7]"
-                  :l="l[7]"
-                  :mv="['I', 'S', 'C', 'D']"
-                  :lv="['I', 'S', 'C', 'D']"
-                  :t="['Penyemangat yang baik', 'Pendengar yang baik', 'Penganalisa yang baik', 'Delegator yang baik']"
-                  @mUpdated="updateM7"
-                  @lUpdated="updateL7"
-                  :rules="rules"
-                  :valid="valid"
-                  @validUpdated="updateValid"
-                ></data-input-disc>
-                <data-input-disc
-                  :m="m[8]"
-                  :l="l[8]"
-                  :mv="['D', 'C', '*', '*']"
-                  :lv="['D', 'C', 'I', 'S']"
-                  :t="['Hasil adalah penting', 'Lakukan dengan benar, akurasi penting', 'Dibuat menyenangkan', 'Mari kerjakan bersama']"
-                  @mUpdated="updateM8"
-                  @lUpdated="updateL8"
-                  :rules="rules"
-                  :valid="valid"
-                  @validUpdated="updateValid"
-                ></data-input-disc>
-                <data-input-disc
-                  :m="m[9]"
-                  :l="l[9]"
-                  :mv="['*', 'D', 'S', 'I']"
-                  :lv="['C', 'D', 'S', '*']"
-                  :t="['Akan berjalan terus tanpa kontrol diri', 'Akan membeli sesuai dorongan hati', 'Akan menunggu, tanpa tekanan', 'Akan mengusahakan apa yang kuinginkan']"
-                  @mUpdated="updateM9"
-                  @lUpdated="updateL9"
-                  :rules="rules"
-                  :valid="valid"
-                  @validUpdated="updateValid"
-                ></data-input-disc>
-                <data-input-disc
-                  :m="m[10]"
-                  :l="l[10]"
-                  :mv="['S', '*', 'D', 'C']"
-                  :lv="['*', 'I', 'D', 'C']"
-                  :t="['Ramah, mudah bergabung', 'Unik, bosan rutinitas', 'Aktif mengubah sesuatu, tanpa tekanan', 'Ingin hal-hal yang pasti']"
-                  @mUpdated="updateM10"
-                  @lUpdated="updateL10"
-                  :rules="rules"
-                  :valid="valid"
-                  @validUpdated="updateValid"
-                ></data-input-disc>
-                <data-input-disc
-                  :m="m[11]"
-                  :l="l[11]"
-                  :mv="['*', 'C', 'I', 'D']"
-                  :lv="['S', '*', 'I', 'D']"
-                  :t="['Non - konfrontasi, menyerah', 'Dipenuhi hal detail', 'Perubahan pada menit terakhir', 'Menuntut, kasar']"
-                  @mUpdated="updateM11"
-                  @lUpdated="updateL11"
-                  :rules="rules"
-                  :valid="valid"
-                  @validUpdated="updateValid"
-                ></data-input-disc>
-                <data-input-disc
-                  :m="m[12]"
-                  :l="l[12]"
-                  :mv="['D', 'S', 'I', '*']"
-                  :lv="['D', '*', '*', 'C']"
-                  :t="['Ingin kemajuan', 'Puas dengan segalanya, senang', 'Terbuka memperhatikan perasaan', 'Rendah hati, sederhana']"
-                  @mUpdated="updateM12"
-                  @lUpdated="updateL12"
-                  :rules="rules"
-                  :valid="valid"
-                  @validUpdated="updateValid"
-                ></data-input-disc>
-                <data-input-disc
-                  :m="m[13]"
-                  :l="l[13]"
-                  :mv="['C', 'I', 'S', 'D']"
-                  :lv="['C', 'I', '*', 'D']"
-                  :t="['Tenang, pendiam', 'Bahagia, tanpa beban', 'Menyenangkan, baik hati', 'Tak gentar, berani']"
-                  @mUpdated="updateM13"
-                  @lUpdated="updateL13"
-                  :rules="rules"
-                  :valid="valid"
-                  @validUpdated="updateValid"
-                ></data-input-disc>
-                <data-input-disc
-                  :m="m[14]"
-                  :l="l[14]"
-                  :mv="['S', 'C', 'I', 'D']"
-                  :lv="['S', '*', 'I', 'D']"
-                  :t="['Menggunakan waktu berkualitas dengan teman', 'Rencanakan masa depan, bersiap', 'Berpergian demi petualangan baru', 'Menerima ganjaran atau tujuan yang tercapai']"
-                  @mUpdated="updateM14"
-                  @lUpdated="updateL14"
-                  :rules="rules"
-                  :valid="valid"
-                  @validUpdated="updateValid"
-                ></data-input-disc>
-                <data-input-disc
-                  :m="m[15]"
-                  :l="l[15]"
-                  :mv="['*', 'C', 'I', 'S']"
-                  :lv="['D', 'S', 'I', 'S']"
-                  :t="['Aturan perlu dipertanyakan', 'Aturan membuat adil', 'Aturan membuat bosan', 'Aturan membuat aman']"
-                  @mUpdated="updateM15"
-                  @lUpdated="updateL15"
-                  :rules="rules"
-                  :valid="valid"
-                  @validUpdated="updateValid"
-                ></data-input-disc>
-                <data-input-disc
-                  :m="m[16]"
-                  :l="l[16]"
-                  :mv="['*', 'D', 'S', 'I']"
-                  :lv="['C', 'D', 'S', '*']"
-                  :t="['Pendidikan, kebudayaan', 'Prestasi, ganjaran', 'Keselamatan, keamanan ', 'Sosial, perkumpulan kelompok']"
-                  @mUpdated="updateM16"
-                  @lUpdated="updateL16"
-                  :rules="rules"
-                  :valid="valid"
-                  @validUpdated="updateValid"
-                ></data-input-disc>
-                <data-input-disc
-                  :m="m[17]"
-                  :l="l[17]"
-                  :mv="['D', '*', '*', 'C']"
-                  :lv="['D', 'I', 'S', '*']"
-                  :t="['Memimpin, pendekatan langsung', 'Suka bergaul, antusias', 'Dapat diramal, konsisten ', 'Waspada, hati-hati']"
-                  @mUpdated="updateM17"
-                  @lUpdated="updateL17"
-                  :rules="rules"
-                  :valid="valid"
-                  @validUpdated="updateValid"
-                ></data-input-disc>
-                <data-input-disc
-                  :m="m[18]"
-                  :l="l[18]"
-                  :mv="['D', 'S', 'I', '*']"
-                  :lv="['D', '*', 'I', 'C']"
-                  :t="['Tidak mudah dikalahkan', 'Kerjakan sesuai perintah, ikut pemimpin', 'Mudah terangsang, riang ', 'Ingin segalanya teratur, rapi']"
-                  @mUpdated="updateM18"
-                  @lUpdated="updateL18"
-                  :rules="rules"
-                  :valid="valid"
-                  @validUpdated="updateValid"
-                ></data-input-disc>
-                <data-input-disc
-                  :m="m[19]"
-                  :l="l[19]"
-                  :mv="['D', 'S', 'I', 'C']"
-                  :lv="['*', 'S', 'I', '*']"
-                  :t="['Saya akan pimpin mereka', 'Saya akan melaksanakan', 'Saya akan meyakinkan mereka', 'Saya dapatkan fakta']"
-                  @mUpdated="updateM19"
-                  @lUpdated="updateL19"
-                  :rules="rules"
-                  :valid="valid"
-                  @validUpdated="updateValid"
-                ></data-input-disc>
-                <data-input-disc
-                  :m="m[20]"
-                  :l="l[20]"
-                  :mv="['S', 'D', 'I', '*']"
-                  :lv="['S', 'D', 'I', 'C']"
-                  :t="['Memikirkan orang dahulu', 'Kompetitif, suka tantangan', 'Optimis, positif', 'Pemikiran logis, sistematik']"
-                  @mUpdated="updateM20"
-                  @lUpdated="updateL20"
-                  :rules="rules"
-                  :valid="valid"
-                  @validUpdated="updateValid"
-                ></data-input-disc>
-                <data-input-disc
-                  :m="m[21]"
-                  :l="l[21]"
-                  :mv="['S', '*', 'D', 'C']"
-                  :lv="['S', 'I', 'D', 'C']"
-                  :t="['Menyenangkan orang. Mudah setuju', 'Tertawa lepas, hidup', 'Berani, tak gentar', 'Tenang, pendiam']"
-                  @mUpdated="updateM21"
-                  @lUpdated="updateL21"
-                  :rules="rules"
-                  :valid="valid"
-                  @validUpdated="updateValid"
-                ></data-input-disc>
-                <data-input-disc
-                  :m="m[22]"
-                  :l="l[22]"
-                  :mv="['*', 'I', 'S', '*']"
-                  :lv="['D', '*', 'S', 'C']"
-                  :t="['Ingin otoritas lebih', 'Ingin kesempatan baru', 'Menghindari konflik', 'Ingin petunjuk yang jelas']"
-                  @mUpdated="updateM22"
-                  @lUpdated="updateL22"
-                  :rules="rules"
-                  :valid="valid"
-                  @validUpdated="updateValid"
-                ></data-input-disc>
-                <data-input-disc
-                  :m="m[23]"
-                  :l="l[23]"
-                  :mv="['*', 'I', 'D', 'C']"
-                  :lv="['S', 'I', '*', '*']"
-                  :t="['Dapat diandalkan, dapat dipercaya', 'Kreatif, unik', 'Garis dasar, orientasi hasil', 'Jalankan standar yang tinggi. akurat']"
-                  @mUpdated="updateM23"
-                  @lUpdated="updateL23"
-                  :rules="rules"
-                  :valid="valid"
-                  @validUpdated="updateValid"
-                ></data-input-disc>
+                <template v-if="isStarted && !isFinished">
+                  <data-input-disc
+                    :m="m[0]"
+                    :l="l[0]"
+                    :mv="['S', 'I', '*', 'C']"
+                    :lv="['S', 'I', 'D', 'C']"
+                    :t="['Gampangan, mudah setuju', 'Percaya, percaya pada orang', 'Petualang, mengambil resiko', 'Toleran, menghormati']"
+                    @mUpdated="updateM0"
+                    @lUpdated="updateL0"
+                    :rules="rules"
+                    :valid="valid"
+                    @validUpdated="updateValid"
+                  ></data-input-disc>
+                  <data-input-disc
+                    :m="m[1]"
+                    :l="l[1]"
+                    :mv="['C', 'D', '*', 'S']"
+                    :lv="['*', 'D', 'I', 'S']"
+                    :t="['Lembut suara, pendiam,', 'Optimistik, visioner', 'Pusat perhatian, suka gaul', 'Pendamai, membawa harmoni']"
+                    @mUpdated="updateM1"
+                    @lUpdated="updateL1"
+                    :rules="rules"
+                    :valid="valid"
+                    @validUpdated="updateValid"
+                  ></data-input-disc>
+                  <data-input-disc
+                    :m="m[2]"
+                    :l="l[2]"
+                    :mv="['I', '*', '*', 'D']"
+                    :lv="['I', 'C', 'S', '*']"
+                    :t="['Menyemangati orang,', 'Berusaha sempurna', 'Bagian dari kelompok', 'Ingin membuat tujuan']"
+                    @mUpdated="updateM2"
+                    @lUpdated="updateL2"
+                    :rules="rules"
+                    :valid="valid"
+                    @validUpdated="updateValid"
+                  ></data-input-disc>
+                  <data-input-disc
+                    :m="m[3]"
+                    :l="l[3]"
+                    :mv="['C', 'S', '*', 'D']"
+                    :lv="['C', 'S', 'I', 'D']"
+                    :t="['Menjadi frustasi', 'Menyimpan perasaan saya', 'Menceritakan sisi saya', 'Siap beroposisi']"
+                    @mUpdated="updateM3"
+                    @lUpdated="updateL3"
+                    :rules="rules"
+                    :valid="valid"
+                    @validUpdated="updateValid"
+                  ></data-input-disc>
+                  <data-input-disc
+                    :m="m[4]"
+                    :l="l[4]"
+                    :mv="['I', 'D', 'S', '*']"
+                    :lv="['*', 'D', 'S', 'C']"
+                    :t="['Hidup, suka bicara', 'Gerakan cepat, tekun', 'Usaha menjadi keseimbangan', 'Usaha mengikuti aturan']"
+                    @mUpdated="updateM4"
+                    @lUpdated="updateL4"
+                    :rules="rules"
+                    :valid="valid"
+                    @validUpdated="updateValid"
+                  ></data-input-disc>
+                  <data-input-disc
+                    :m="m[5]"
+                    :l="l[5]"
+                    :mv="['C', 'D', 'I', 'S']"
+                    :lv="['*', 'D', 'I', 'S']"
+                    :t="['Kelola waktu secara efisien', 'Sering terburu-buru, merasa tertekan', 'Masalah sosial itu penting', 'Suka selesaikan apa yang saya mulai']"
+                    @mUpdated="updateM5"
+                    @lUpdated="updateL5"
+                    :rules="rules"
+                    :valid="valid"
+                    @validUpdated="updateValid"
+                  ></data-input-disc>
+                  <data-input-disc
+                    :m="m[6]"
+                    :l="l[6]"
+                    :mv="['S', 'I', '*', '*']"
+                    :lv="['*', 'I', 'C', 'D']"
+                    :t="['Tolak perubahan mendadak', 'Cenderung janji berlebihan', 'Tarik diri di tengah tekanan', 'Tidak takut bertempur']"
+                    @mUpdated="updateM6"
+                    @lUpdated="updateL6"
+                    :rules="rules"
+                    :valid="valid"
+                    @validUpdated="updateValid"
+                  ></data-input-disc>
+                  <data-input-disc
+                    :m="m[7]"
+                    :l="l[7]"
+                    :mv="['I', 'S', 'C', 'D']"
+                    :lv="['I', 'S', 'C', 'D']"
+                    :t="['Penyemangat yang baik', 'Pendengar yang baik', 'Penganalisa yang baik', 'Delegator yang baik']"
+                    @mUpdated="updateM7"
+                    @lUpdated="updateL7"
+                    :rules="rules"
+                    :valid="valid"
+                    @validUpdated="updateValid"
+                  ></data-input-disc>
+                  <data-input-disc
+                    :m="m[8]"
+                    :l="l[8]"
+                    :mv="['D', 'C', '*', '*']"
+                    :lv="['D', 'C', 'I', 'S']"
+                    :t="['Hasil adalah penting', 'Lakukan dengan benar, akurasi penting', 'Dibuat menyenangkan', 'Mari kerjakan bersama']"
+                    @mUpdated="updateM8"
+                    @lUpdated="updateL8"
+                    :rules="rules"
+                    :valid="valid"
+                    @validUpdated="updateValid"
+                  ></data-input-disc>
+                  <data-input-disc
+                    :m="m[9]"
+                    :l="l[9]"
+                    :mv="['*', 'D', 'S', 'I']"
+                    :lv="['C', 'D', 'S', '*']"
+                    :t="['Akan berjalan terus tanpa kontrol diri', 'Akan membeli sesuai dorongan hati', 'Akan menunggu, tanpa tekanan', 'Akan mengusahakan apa yang kuinginkan']"
+                    @mUpdated="updateM9"
+                    @lUpdated="updateL9"
+                    :rules="rules"
+                    :valid="valid"
+                    @validUpdated="updateValid"
+                  ></data-input-disc>
+                  <data-input-disc
+                    :m="m[10]"
+                    :l="l[10]"
+                    :mv="['S', '*', 'D', 'C']"
+                    :lv="['*', 'I', 'D', 'C']"
+                    :t="['Ramah, mudah bergabung', 'Unik, bosan rutinitas', 'Aktif mengubah sesuatu, tanpa tekanan', 'Ingin hal-hal yang pasti']"
+                    @mUpdated="updateM10"
+                    @lUpdated="updateL10"
+                    :rules="rules"
+                    :valid="valid"
+                    @validUpdated="updateValid"
+                  ></data-input-disc>
+                  <data-input-disc
+                    :m="m[11]"
+                    :l="l[11]"
+                    :mv="['*', 'C', 'I', 'D']"
+                    :lv="['S', '*', 'I', 'D']"
+                    :t="['Non - konfrontasi, menyerah', 'Dipenuhi hal detail', 'Perubahan pada menit terakhir', 'Menuntut, kasar']"
+                    @mUpdated="updateM11"
+                    @lUpdated="updateL11"
+                    :rules="rules"
+                    :valid="valid"
+                    @validUpdated="updateValid"
+                  ></data-input-disc>
+                  <data-input-disc
+                    :m="m[12]"
+                    :l="l[12]"
+                    :mv="['D', 'S', 'I', '*']"
+                    :lv="['D', '*', '*', 'C']"
+                    :t="['Ingin kemajuan', 'Puas dengan segalanya, senang', 'Terbuka memperhatikan perasaan', 'Rendah hati, sederhana']"
+                    @mUpdated="updateM12"
+                    @lUpdated="updateL12"
+                    :rules="rules"
+                    :valid="valid"
+                    @validUpdated="updateValid"
+                  ></data-input-disc>
+                  <data-input-disc
+                    :m="m[13]"
+                    :l="l[13]"
+                    :mv="['C', 'I', 'S', 'D']"
+                    :lv="['C', 'I', '*', 'D']"
+                    :t="['Tenang, pendiam', 'Bahagia, tanpa beban', 'Menyenangkan, baik hati', 'Tak gentar, berani']"
+                    @mUpdated="updateM13"
+                    @lUpdated="updateL13"
+                    :rules="rules"
+                    :valid="valid"
+                    @validUpdated="updateValid"
+                  ></data-input-disc>
+                  <data-input-disc
+                    :m="m[14]"
+                    :l="l[14]"
+                    :mv="['S', 'C', 'I', 'D']"
+                    :lv="['S', '*', 'I', 'D']"
+                    :t="['Menggunakan waktu berkualitas dengan teman', 'Rencanakan masa depan, bersiap', 'Berpergian demi petualangan baru', 'Menerima ganjaran atau tujuan yang tercapai']"
+                    @mUpdated="updateM14"
+                    @lUpdated="updateL14"
+                    :rules="rules"
+                    :valid="valid"
+                    @validUpdated="updateValid"
+                  ></data-input-disc>
+                  <data-input-disc
+                    :m="m[15]"
+                    :l="l[15]"
+                    :mv="['*', 'C', 'I', 'S']"
+                    :lv="['D', 'S', 'I', 'S']"
+                    :t="['Aturan perlu dipertanyakan', 'Aturan membuat adil', 'Aturan membuat bosan', 'Aturan membuat aman']"
+                    @mUpdated="updateM15"
+                    @lUpdated="updateL15"
+                    :rules="rules"
+                    :valid="valid"
+                    @validUpdated="updateValid"
+                  ></data-input-disc>
+                  <data-input-disc
+                    :m="m[16]"
+                    :l="l[16]"
+                    :mv="['*', 'D', 'S', 'I']"
+                    :lv="['C', 'D', 'S', '*']"
+                    :t="['Pendidikan, kebudayaan', 'Prestasi, ganjaran', 'Keselamatan, keamanan ', 'Sosial, perkumpulan kelompok']"
+                    @mUpdated="updateM16"
+                    @lUpdated="updateL16"
+                    :rules="rules"
+                    :valid="valid"
+                    @validUpdated="updateValid"
+                  ></data-input-disc>
+                  <data-input-disc
+                    :m="m[17]"
+                    :l="l[17]"
+                    :mv="['D', '*', '*', 'C']"
+                    :lv="['D', 'I', 'S', '*']"
+                    :t="['Memimpin, pendekatan langsung', 'Suka bergaul, antusias', 'Dapat diramal, konsisten ', 'Waspada, hati-hati']"
+                    @mUpdated="updateM17"
+                    @lUpdated="updateL17"
+                    :rules="rules"
+                    :valid="valid"
+                    @validUpdated="updateValid"
+                  ></data-input-disc>
+                  <data-input-disc
+                    :m="m[18]"
+                    :l="l[18]"
+                    :mv="['D', 'S', 'I', '*']"
+                    :lv="['D', '*', 'I', 'C']"
+                    :t="['Tidak mudah dikalahkan', 'Kerjakan sesuai perintah, ikut pemimpin', 'Mudah terangsang, riang ', 'Ingin segalanya teratur, rapi']"
+                    @mUpdated="updateM18"
+                    @lUpdated="updateL18"
+                    :rules="rules"
+                    :valid="valid"
+                    @validUpdated="updateValid"
+                  ></data-input-disc>
+                  <data-input-disc
+                    :m="m[19]"
+                    :l="l[19]"
+                    :mv="['D', 'S', 'I', 'C']"
+                    :lv="['*', 'S', 'I', '*']"
+                    :t="['Saya akan pimpin mereka', 'Saya akan melaksanakan', 'Saya akan meyakinkan mereka', 'Saya dapatkan fakta']"
+                    @mUpdated="updateM19"
+                    @lUpdated="updateL19"
+                    :rules="rules"
+                    :valid="valid"
+                    @validUpdated="updateValid"
+                  ></data-input-disc>
+                  <data-input-disc
+                    :m="m[20]"
+                    :l="l[20]"
+                    :mv="['S', 'D', 'I', '*']"
+                    :lv="['S', 'D', 'I', 'C']"
+                    :t="['Memikirkan orang dahulu', 'Kompetitif, suka tantangan', 'Optimis, positif', 'Pemikiran logis, sistematik']"
+                    @mUpdated="updateM20"
+                    @lUpdated="updateL20"
+                    :rules="rules"
+                    :valid="valid"
+                    @validUpdated="updateValid"
+                  ></data-input-disc>
+                  <data-input-disc
+                    :m="m[21]"
+                    :l="l[21]"
+                    :mv="['S', '*', 'D', 'C']"
+                    :lv="['S', 'I', 'D', 'C']"
+                    :t="['Menyenangkan orang. Mudah setuju', 'Tertawa lepas, hidup', 'Berani, tak gentar', 'Tenang, pendiam']"
+                    @mUpdated="updateM21"
+                    @lUpdated="updateL21"
+                    :rules="rules"
+                    :valid="valid"
+                    @validUpdated="updateValid"
+                  ></data-input-disc>
+                  <data-input-disc
+                    :m="m[22]"
+                    :l="l[22]"
+                    :mv="['*', 'I', 'S', '*']"
+                    :lv="['D', '*', 'S', 'C']"
+                    :t="['Ingin otoritas lebih', 'Ingin kesempatan baru', 'Menghindari konflik', 'Ingin petunjuk yang jelas']"
+                    @mUpdated="updateM22"
+                    @lUpdated="updateL22"
+                    :rules="rules"
+                    :valid="valid"
+                    @validUpdated="updateValid"
+                  ></data-input-disc>
+                  <data-input-disc
+                    :m="m[23]"
+                    :l="l[23]"
+                    :mv="['*', 'I', 'D', 'C']"
+                    :lv="['S', 'I', '*', '*']"
+                    :t="['Dapat diandalkan, dapat dipercaya', 'Kreatif, unik', 'Garis dasar, orientasi hasil', 'Jalankan standar yang tinggi. akurat']"
+                    @mUpdated="updateM23"
+                    @lUpdated="updateL23"
+                    :rules="rules"
+                    :valid="valid"
+                    @validUpdated="updateValid"
+                  ></data-input-disc>
+                </template>
+
+                <v-layout row warp justify-center align-center text-xs-center v-if="isFinished">
+                  <v-flex xs12>
+                    <h1>WAKTU ANDA HABIS</h1>
+                  </v-flex>
+                </v-layout>
 
                 <v-layout row wrap mt-5 justify-end>
                   <v-flex offset-md6 offset-lg7 offset-xl8>
-                    <v-btn :disabled="!valid" color="success">Submit</v-btn>
-                    <v-btn color="error" @click="reset">Reset Form</v-btn>
+                    <template v-if="!isStarted && !isFinished">
+                      <v-btn color="info" @click="startTest">Start</v-btn>
+                      <span>
+                        <h2>Waktu pengerjaan {{ prettyTime }}</h2>
+                      </span>
+                    </template>
+                    <v-btn :disabled="!valid" color="success" v-if="isStarted">Submit</v-btn>
+                    <v-btn color="error" @click="reset" v-if="isStarted && !isFinished">Reset Form</v-btn>
                   </v-flex>
                 </v-layout>
               </v-form>
@@ -325,6 +339,8 @@
         </v-card>
       </v-flex>
     </v-layout>
+
+    <v-bottom-nav :value="true" fixed v-if="isStarted && !isFinished" height="30">Waktu yang tersisa {{ prettyTime }}</v-bottom-nav>
   </v-container>
 </template>
 
@@ -338,6 +354,10 @@ import dataInputDisc from '../../components/Psychotest/DataInputDisc'
 export default {
   data () {
     return {
+      time: 480,
+      timer: null,
+      isStarted: false,
+      isFinished: false,
       m: new Array(24),
       l: new Array(24),
       valid: true,
@@ -346,7 +366,34 @@ export default {
       }
     }
   },
+  computed: {
+    prettyTime () {
+      let time = this.time / 60
+      let minutes = parseInt(time)
+      let secondes = Math.round((time - minutes) * 60)
+      if (minutes < 10) {
+        minutes = "0" + minutes
+      }
+      if (secondes < 10) {
+        secondes = "0" + secondes
+      }
+      return minutes + ":" + secondes
+    }
+  },
   methods: {
+    startTest () {
+      this.isStarted = true;
+      if (!this.timer) {
+        this.timer = setInterval(() => {
+          if (this.time > 0) {
+            this.time--
+          } else {
+            clearInterval(this.timer)
+            this.isFinished = true;
+          }
+        }, 1000)
+      }
+    },
     updateM0 (i) { this.m[0] = i; },
     updateL0 (i) { this.l[0] = i; },
     updateM1 (i) { this.m[1] = i; },
