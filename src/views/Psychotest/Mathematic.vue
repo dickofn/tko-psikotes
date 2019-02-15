@@ -7,7 +7,7 @@
             <v-spacer></v-spacer>
             <h1
               class="headline text-uppercase font-weight-light text-xs-center"
-            >Psikotes - Berhitung</h1>
+            >Psikotes - Berhitung TKD-5</h1>
             <v-spacer></v-spacer>
           </v-card-title>
           <v-card-text>
