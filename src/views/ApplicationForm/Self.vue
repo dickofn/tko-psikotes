@@ -260,7 +260,7 @@
                   <v-flex md4 xs12 v-if="martialStatus!='Belum Menikah'">
                     <v-menu
                       :close-on-content-click="false"
-                      v-model="martialInfoDate"
+                      v-model="martialInfoDateMenu"
                       :nudge-right="40"
                       lazy
                       transition="scale-transition"
@@ -276,7 +276,7 @@
                       ></v-text-field>
                       <v-date-picker
                         v-model="martialInfoDate"
-                        @input="martialInfoDate = false"
+                        @input="martialInfoDateMenu = false"
                         :rules="[rules.required]"
                       ></v-date-picker>
                     </v-menu>
