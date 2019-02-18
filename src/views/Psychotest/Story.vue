@@ -17,19 +17,15 @@
                   <v-flex md8 offset-md2 xs12>
                     <h1>INSTRUKSI</h1>
                     <p>
-                      <b>&rarr;</b> Soal merupakan soal deret aritmatika. Anda akan diberikan enam deret bilangan yang memiliki pola.
+                      <b>&rarr;</b> Bacalah baik-baik satu bacaan, kemudian jawablah setiap pertanyaan mengenai isi bacaan tersebut dengan memilih satu jawaban yang PALING TEPAT.
                       <br>
-                      <b>&rarr;</b> Anda silahkan mengisi dua deret bilangan selanjutnya, sesuai dengan pola enam angka yang sudah diberikan.
-                      <br>
-                      <b>&rarr;</b> Jika deret sudah menggunakan pecahan maka isi dengan pecahan ('/') tetapi jika tidak maka isi dengan desimal hingga dua angka desimal.
-                      <br>
-                      <b>&rarr;</b> Pemisah angka desimal menggunakan simbol titik ('.') dan bukan koma (',').
+                      <b>&rarr;</b> Jawablah pertanyaan-pertanyaan berdasarkan isi yang tertulis maupun yang dapat disimpulkan dari bacaan.
                     </p>
                   </v-flex>
                 </v-layout>
 
                 <template v-if="isStarted && !isFinished">
-                  
+                  <component :is="page" :rules="rules" :valid="valid"></component>
                 </template>
 
                 <v-layout row warp justify-center align-center text-xs-center v-if="isFinished">
@@ -38,6 +34,14 @@
                   </v-flex>
                 </v-layout>
 
+                <v-layout row wrap mt-5 justify-end>
+                  <v-flex offset-md6 offset-lg7 offset-xl8>
+                    <template v-if="isStarted && !isFinished">
+                      <v-btn color="info" :disabled="currPage==1" @click="pageBack">&larr; Back</v-btn>
+                      <v-btn color="info" :disabled="currPage==3" @click="pageNext">Next &rarr;</v-btn>
+                    </template>
+                  </v-flex>
+                </v-layout>
                 <v-layout row wrap mt-5 justify-end>
                   <v-flex offset-md6 offset-lg7 offset-xl8>
                     <template v-if="!isStarted && !isFinished">
@@ -67,20 +71,22 @@
 </template>
 
 <script>
-import dataInputStory from '../../components/Psychotest/Input/DataInputStory'
+import storyPage1 from '../../components/Psychotest/Story/StoryPage1'
+import storyPage2 from '../../components/Psychotest/Story/StoryPage2'
+import storyPage3 from '../../components/Psychotest/Story/StoryPage3'
 
 export default {
   data () {
     return {
-      time: 1200,
+      currPage: 1,
+      time: 900,
       timer: null,
       isStarted: false,
       isFinished: false,
       a: new Array(30),
       valid: true,
       rules: {
-        required: v => !!v || 'Wajib diisi!',
-        number: v => !isNaN(v) || 'Harus berupa angka!'
+        required: v => !!v || '',
       }
     }
   },
@@ -96,7 +102,16 @@ export default {
         secondes = "0" + secondes
       }
       return minutes + ":" + secondes
-    }
+    },
+    page () {
+      if (this.currPage == 1) {
+        return 'storyPage1'
+      } else if (this.currPage == 2) {
+        return 'storyPage2'
+      } else {
+        return 'storyPage3'
+      }
+    },
   },
   methods: {
     startTest () {
@@ -146,10 +161,22 @@ export default {
     reset () {
       console.log(this.valid)
       this.$refs.form.reset()
-    }
+    },
+    pageBack () {
+      if (this.currPage > 1) {
+        this.currPage--;
+      }
+    },
+    pageNext () {
+      if (this.currPage < 3) {
+        this.currPage++;
+      }
+    },
   },
   components: {
-    dataInputStory
+    storyPage1,
+    storyPage2,
+    storyPage3
   }
 }
 </script>
