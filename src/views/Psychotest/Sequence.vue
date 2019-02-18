@@ -275,7 +275,7 @@ export default {
       timer: null,
       isStarted: false,
       isFinished: false,
-      a: new Array(20),
+      a: new Array(25),
       valid: true,
       rules: {
         required: v => !!v || 'Wajib diisi!',
