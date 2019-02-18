@@ -244,7 +244,7 @@
 </template>
 
 <script>
-import dataInputMath from '../../components/Psychotest/DataInputMath'
+import dataInputMath from '../../components/Psychotest/Input/DataInputMath'
 
 export default {
   data () {

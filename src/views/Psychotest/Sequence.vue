@@ -266,7 +266,7 @@
 </template>
 
 <script>
-import dataInputSeq from '../../components/Psychotest/DataInputSeq'
+import dataInputSeq from '../../components/Psychotest/Input/DataInputSeq'
 
 export default {
   data () {

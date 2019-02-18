@@ -345,7 +345,7 @@
 </template>
 
 <script>
-import dataInputDisc from '../../components/Psychotest/DataInputDisc'
+import dataInputDisc from '../../components/Psychotest/Input/DataInputDisc'
 
 export default {
   data () {
