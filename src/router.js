@@ -9,6 +9,7 @@ import Question from './views/ApplicationForm/Question.vue'
 import Disc from './views/Psychotest/Disc.vue'
 import Mathematic from './views/Psychotest/Mathematic.vue'
 import Sequence from './views/Psychotest/Sequence.vue'
+import Story from './views/Psychotest/Story.vue'
 
 Vue.use(Router)
 
@@ -55,6 +56,11 @@ export default new Router({
       path: '/test/seq',
       name: 'seq',
       component: Sequence
+    },
+    {
+      path: '/test/story',
+      name: 'story',
+      component: Story
     },
     {
       path: '/about',
