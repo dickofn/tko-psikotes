@@ -7,7 +7,7 @@
             <v-spacer></v-spacer>
             <h1
               class="headline text-uppercase font-weight-light text-xs-center"
-            >Psikotes - Deret Bilangan TKD-6</h1>
+            >Psikotes - Bacaan TKD-1</h1>
             <v-spacer></v-spacer>
           </v-card-title>
           <v-card-text>
@@ -25,7 +25,17 @@
                 </v-layout>
 
                 <template v-if="isStarted && !isFinished">
-                  <component :is="page" :rules="rules" :valid="valid"></component>
+                  <component
+                    :is="page"
+                    :rules="rules"
+                    @a0Updated="updateA0"
+                    @a1Updated="updateA1"
+                    @a10Updated="updateA10"
+                    @a20Updated="updateA20"
+                    :a="a"
+                    :valid="valid"
+                    @validUpdated="updateValid"
+                  ></component>
                 </template>
 
                 <v-layout row warp justify-center align-center text-xs-center v-if="isFinished">
@@ -78,19 +88,37 @@ import storyPage3 from '../../components/Psychotest/Story/StoryPage3'
 export default {
   data () {
     return {
-      currPage: 1,
       time: 900,
       timer: null,
       isStarted: false,
       isFinished: false,
+      currPage: 1,
       a: new Array(30),
       valid: true,
-      rules: {
-        required: v => !!v || '',
-      }
     }
   },
   computed: {
+    rules () {
+      const rules = []
+      if (this.a) {
+        const rule = () => {
+          const isArrEmpty = false
+          for (let index = 0; index < this.a.length; index++) {
+            const element = this.a[index];
+            if (element == null || element == undefined || element == "") isArrEmpty == true;
+          }
+
+          if (isArrEmpty) {
+            return false
+          } else {
+            return true;
+          }
+        }
+
+        rules.push(rule)
+      }
+      return rules
+    },
     prettyTime () {
       let time = this.time / 60
       let minutes = parseInt(time)
@@ -127,37 +155,49 @@ export default {
         }, 1000)
       }
     },
-    updateA0 (i) { this.a[0] = i; },
-    updateA1 (i) { this.a[1] = i; },
-    updateA2 (i) { this.a[2] = i; },
-    updateA3 (i) { this.a[3] = i; },
-    updateA4 (i) { this.a[4] = i; },
-    updateA5 (i) { this.a[5] = i; },
-    updateA6 (i) { this.a[6] = i; },
-    updateA7 (i) { this.a[7] = i; },
-    updateA8 (i) { this.a[8] = i; },
-    updateA9 (i) { this.a[9] = i; },
-    updateA10 (i) { this.a[10] = i; },
-    updateA11 (i) { this.a[11] = i; },
-    updateA12 (i) { this.a[12] = i; },
-    updateA13 (i) { this.a[13] = i; },
-    updateA14 (i) { this.a[14] = i; },
-    updateA15 (i) { this.a[15] = i; },
-    updateA16 (i) { this.a[16] = i; },
-    updateA17 (i) { this.a[17] = i; },
-    updateA18 (i) { this.a[18] = i; },
-    updateA19 (i) { this.a[19] = i; },
-    updateA20 (i) { this.a[20] = i; },
-    updateA21 (i) { this.a[21] = i; },
-    updateA22 (i) { this.a[22] = i; },
-    updateA23 (i) { this.a[23] = i; },
-    updateA24 (i) { this.a[24] = i; },
-    updateA25 (i) { this.a[25] = i; },
-    updateA26 (i) { this.a[26] = i; },
-    updateA27 (i) { this.a[27] = i; },
-    updateA28 (i) { this.a[28] = i; },
-    updateA29 (i) { this.a[29] = i; },
-    updateValid (i) { this.valid = i; },
+    updateA0 (i) { this.a[0] = i; console.log(this.a[0]) },
+    updateA1 (i) { this.a[1] = i; console.log(this.a[1]) },
+    updateA2 (i) { this.a[2] = i; console.log(this.a[2]) },
+    updateA3 (i) { this.a[3] = i; console.log(this.a[3]) },
+    updateA4 (i) { this.a[4] = i; console.log(this.a[4]) },
+    updateA5 (i) { this.a[5] = i; console.log(this.a[5]) },
+    updateA6 (i) { this.a[6] = i; console.log(this.a[6]) },
+    updateA7 (i) { this.a[7] = i; console.log(this.a[7]) },
+    updateA8 (i) { this.a[8] = i; console.log(this.a[8]) },
+    updateA9 (i) { this.a[9] = i; console.log(this.a[9]) },
+    updateA10 (i) { this.a[10] = i; console.log(this.a[10]) },
+    updateA11 (i) { this.a[11] = i; console.log(this.a[11]) },
+    updateA12 (i) { this.a[12] = i; console.log(this.a[12]) },
+    updateA13 (i) { this.a[13] = i; console.log(this.a[13]) },
+    updateA14 (i) { this.a[14] = i; console.log(this.a[14]) },
+    updateA15 (i) { this.a[15] = i; console.log(this.a[15]) },
+    updateA16 (i) { this.a[16] = i; console.log(this.a[16]) },
+    updateA17 (i) { this.a[17] = i; console.log(this.a[17]) },
+    updateA18 (i) { this.a[18] = i; console.log(this.a[18]) },
+    updateA19 (i) { this.a[19] = i; console.log(this.a[19]) },
+    updateA20 (i) { this.a[20] = i; console.log(this.a[20]) },
+    updateA21 (i) { this.a[21] = i; console.log(this.a[21]) },
+    updateA22 (i) { this.a[22] = i; console.log(this.a[22]) },
+    updateA23 (i) { this.a[23] = i; console.log(this.a[23]) },
+    updateA24 (i) { this.a[24] = i; console.log(this.a[24]) },
+    updateA25 (i) { this.a[25] = i; console.log(this.a[25]) },
+    updateA26 (i) { this.a[26] = i; console.log(this.a[26]) },
+    updateA27 (i) { this.a[27] = i; console.log(this.a[27]) },
+    updateA28 (i) { this.a[28] = i; console.log(this.a[28]) },
+    updateA29 (i) { this.a[29] = i; console.log(this.a[29]) },
+    updateValid (i) {
+      const isArrEmpty = false
+      for (let index = 0; index < this.a.length; index++) {
+        const element = this.a[index];
+        if (element == null || element == undefined || element == "") isArrEmpty == true;
+      }
+
+      if (isArrEmpty) {
+        this.valid = false
+      } else {
+        this.valid = i;
+      }
+    },
     reset () {
       console.log(this.valid)
       this.$refs.form.reset()
