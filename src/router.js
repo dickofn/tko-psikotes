@@ -10,6 +10,7 @@ import Disc from './views/Psychotest/Disc.vue'
 import Mathematic from './views/Psychotest/Mathematic.vue'
 import Sequence from './views/Psychotest/Sequence.vue'
 import Story from './views/Psychotest/Story.vue'
+import English from './views/Psychotest/English.vue'
 
 Vue.use(Router)
 
@@ -61,6 +62,11 @@ export default new Router({
       path: '/test/story',
       name: 'story',
       component: Story
+    },
+    {
+      path: '/test/eng',
+      name: 'eng',
+      component: English
     },
     {
       path: '/about',
