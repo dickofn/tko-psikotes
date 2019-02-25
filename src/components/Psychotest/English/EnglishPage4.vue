@@ -1,0 +1,141 @@
+<template>
+  <span>
+    <v-layout row wrap mb-2>
+      <v-flex md8 offset-md2 xs12>
+        <h4>Page 4</h4>
+      </v-flex>
+    </v-layout>
+    <data-input-english
+      :no="'61. '"
+      :c="['', '']"
+      :a1="a[60]"
+      @aUpdated="updateA60"
+      :no2="'62. '"
+      :c2="['','']"
+      :a2="a[61]"
+      @a2Updated="updateA61"
+    ></data-input-english>
+    <data-input-english
+      :no="'63. '"
+      :c="['', '']"
+      :a1="a[62]"
+      @aUpdated="updateA62"
+      :no2="'64. '"
+      :c2="['','']"
+      :a2="a[63]"
+      @a2Updated="updateA63"
+    ></data-input-english>
+    <data-input-english
+      :no="'65. '"
+      :c="['', '']"
+      :a1="a[64]"
+      @aUpdated="updateA64"
+      :no2="'66. '"
+      :c2="['','']"
+      :a2="a[65]"
+      @a2Updated="updateA65"
+    ></data-input-english>
+    <data-input-english
+      :no="'67. '"
+      :c="['', '']"
+      :a1="a[66]"
+      @aUpdated="updateA66"
+      :no2="'68. '"
+      :c2="['','']"
+      :a2="a[67]"
+      @a2Updated="updateA67"
+    ></data-input-english>
+    <data-input-english
+      :no="'69. '"
+      :c="['', '']"
+      :a1="a[68]"
+      @aUpdated="updateA68"
+      :no2="'70. '"
+      :c2="['','']"
+      :a2="a[69]"
+      @a2Updated="updateA69"
+    ></data-input-english>
+    <data-input-english
+      :no="'71. '"
+      :c="['', '']"
+      :a1="a[70]"
+      @aUpdated="updateA70"
+      :no2="'72. '"
+      :c2="['','']"
+      :a2="a[71]"
+      @a2Updated="updateA71"
+    ></data-input-english>
+    <data-input-english
+      :no="'73. '"
+      :c="['', '']"
+      :a1="a[72]"
+      @aUpdated="updateA72"
+      :no2="'74. '"
+      :c2="['','']"
+      :a2="a[73]"
+      @a2Updated="updateA73"
+    ></data-input-english>
+    <data-input-english
+      :no="'75. '"
+      :c="['', '']"
+      :a1="a[74]"
+      @aUpdated="updateA74"
+      :no2="'76. '"
+      :c2="['','']"
+      :a2="a[75]"
+      @a2Updated="updateA75"
+    ></data-input-english>
+    <data-input-english
+      :no="'77. '"
+      :c="['', '']"
+      :a1="a[76]"
+      @aUpdated="updateA76"
+      :no2="'78. '"
+      :c2="['','']"
+      :a2="a[77]"
+      @a2Updated="updateA77"
+    ></data-input-english>
+    <data-input-english
+      :no="'79. '"
+      :c="['', '']"
+      :a1="a[78]"
+      @aUpdated="updateA78"
+      :no2="'80. '"
+      :c2="['','']"
+      :a2="a[79]"
+      @a2Updated="updateA79"
+    ></data-input-english>
+  </span>
+</template>
+
+<script>
+import dataInputEnglish from '../Input/DataInputEnglish'
+export default {
+  props: ['a'],
+  components: {
+    dataInputEnglish
+  },
+  methods: {
+    updateA60 (i) { this.$emit('a60Updated', i); },
+    updateA61 (i) { this.$emit('a61Updated', i); },
+    updateA62 (i) { this.$emit('a62Updated', i); },
+    updateA63 (i) { this.$emit('a63Updated', i); },
+    updateA64 (i) { this.$emit('a64Updated', i); },
+    updateA65 (i) { this.$emit('a65Updated', i); },
+    updateA66 (i) { this.$emit('a66Updated', i); },
+    updateA67 (i) { this.$emit('a67Updated', i); },
+    updateA68 (i) { this.$emit('a68Updated', i); },
+    updateA69 (i) { this.$emit('a69Updated', i); },
+    updateA70 (i) { this.$emit('a70Updated', i); },
+    updateA71 (i) { this.$emit('a71Updated', i); },
+    updateA72 (i) { this.$emit('a72Updated', i); },
+    updateA73 (i) { this.$emit('a73Updated', i); },
+    updateA74 (i) { this.$emit('a74Updated', i); },
+    updateA75 (i) { this.$emit('a75Updated', i); },
+    updateA76 (i) { this.$emit('a76Updated', i); },
+    updateA77 (i) { this.$emit('a77Updated', i); },
+    updateA78 (i) { this.$emit('a78Updated', i); },
+    updateA79 (i) { this.$emit('a79Updated', i); },
+  }
+}
+</script>
