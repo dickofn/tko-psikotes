@@ -121,9 +121,6 @@ export default {
     }
   },
   computed: {
-    aLength: function () {
-      return this.a.length;
-    },
     prettyTime () {
       let time = this.time / 60
       let minutes = parseInt(time)
