@@ -12,7 +12,7 @@
           </v-card-title>
           <v-card-text>
             <v-container>
-              <v-form ref="form" v-model="valid">
+              <v-form ref="form">
                 <v-layout row wrap mb-2>
                   <v-flex md8 offset-md2 xs12>
                     <h1>INSTRUKSI</h1>
@@ -27,14 +27,37 @@
                 <template v-if="isStarted && !isFinished">
                   <component
                     :is="page"
-                    :rules="rules"
                     @a0Updated="updateA0"
                     @a1Updated="updateA1"
+                    @a2Updated="updateA2"
+                    @a3Updated="updateA3"
+                    @a4Updated="updateA4"
+                    @a5Updated="updateA5"
+                    @a6Updated="updateA6"
+                    @a7Updated="updateA7"
+                    @a8Updated="updateA8"
+                    @a9Updated="updateA9"
                     @a10Updated="updateA10"
+                    @a11Updated="updateA11"
+                    @a12Updated="updateA12"
+                    @a13Updated="updateA13"
+                    @a14Updated="updateA14"
+                    @a15Updated="updateA15"
+                    @a16Updated="updateA16"
+                    @a17Updated="updateA17"
+                    @a18Updated="updateA18"
+                    @a19Updated="updateA19"
                     @a20Updated="updateA20"
+                    @a21Updated="updateA21"
+                    @a22Updated="updateA22"
+                    @a23Updated="updateA23"
+                    @a24Updated="updateA24"
+                    @a25Updated="updateA25"
+                    @a26Updated="updateA26"
+                    @a27Updated="updateA27"
+                    @a28Updated="updateA28"
+                    @a29Updated="updateA29"
                     :a="a"
-                    :valid="valid"
-                    @validUpdated="updateValid"
                   ></component>
                 </template>
 
@@ -94,30 +117,12 @@ export default {
       isFinished: false,
       currPage: 1,
       a: new Array(30),
-      valid: true,
+      valid: false,
     }
   },
   computed: {
-    rules () {
-      const rules = []
-      if (this.a) {
-        const rule = () => {
-          const isArrEmpty = false
-          for (let index = 0; index < this.a.length; index++) {
-            const element = this.a[index];
-            if (element == null || element == undefined || element == "") isArrEmpty == true;
-          }
-
-          if (isArrEmpty) {
-            return false
-          } else {
-            return true;
-          }
-        }
-
-        rules.push(rule)
-      }
-      return rules
+    aLength: function () {
+      return this.a.length;
     },
     prettyTime () {
       let time = this.time / 60
@@ -151,40 +156,50 @@ export default {
           } else {
             clearInterval(this.timer)
             this.isFinished = true;
+            this.valid = true
           }
         }, 1000)
       }
     },
-    updateA0 (i) { this.a[0] = i; console.log(this.a[0]) },
-    updateA1 (i) { this.a[1] = i; console.log(this.a[1]) },
-    updateA2 (i) { this.a[2] = i; console.log(this.a[2]) },
-    updateA3 (i) { this.a[3] = i; console.log(this.a[3]) },
-    updateA4 (i) { this.a[4] = i; console.log(this.a[4]) },
-    updateA5 (i) { this.a[5] = i; console.log(this.a[5]) },
-    updateA6 (i) { this.a[6] = i; console.log(this.a[6]) },
-    updateA7 (i) { this.a[7] = i; console.log(this.a[7]) },
-    updateA8 (i) { this.a[8] = i; console.log(this.a[8]) },
-    updateA9 (i) { this.a[9] = i; console.log(this.a[9]) },
-    updateA10 (i) { this.a[10] = i; console.log(this.a[10]) },
-    updateA11 (i) { this.a[11] = i; console.log(this.a[11]) },
-    updateA12 (i) { this.a[12] = i; console.log(this.a[12]) },
-    updateA13 (i) { this.a[13] = i; console.log(this.a[13]) },
-    updateA14 (i) { this.a[14] = i; console.log(this.a[14]) },
-    updateA15 (i) { this.a[15] = i; console.log(this.a[15]) },
-    updateA16 (i) { this.a[16] = i; console.log(this.a[16]) },
-    updateA17 (i) { this.a[17] = i; console.log(this.a[17]) },
-    updateA18 (i) { this.a[18] = i; console.log(this.a[18]) },
-    updateA19 (i) { this.a[19] = i; console.log(this.a[19]) },
-    updateA20 (i) { this.a[20] = i; console.log(this.a[20]) },
-    updateA21 (i) { this.a[21] = i; console.log(this.a[21]) },
-    updateA22 (i) { this.a[22] = i; console.log(this.a[22]) },
-    updateA23 (i) { this.a[23] = i; console.log(this.a[23]) },
-    updateA24 (i) { this.a[24] = i; console.log(this.a[24]) },
-    updateA25 (i) { this.a[25] = i; console.log(this.a[25]) },
-    updateA26 (i) { this.a[26] = i; console.log(this.a[26]) },
-    updateA27 (i) { this.a[27] = i; console.log(this.a[27]) },
-    updateA28 (i) { this.a[28] = i; console.log(this.a[28]) },
-    updateA29 (i) { this.a[29] = i; console.log(this.a[29]) },
+    checkA () {
+      var checkEl = true;
+      for (let index = 0; index < this.a.length; index++) {
+        const element = this.a[index];
+        if (element == null || element == undefined || element == '') { checkEl = false; break }
+      }
+      if (checkEl || this.isFinished) { this.valid = true }
+      else { this.valid = false }
+    },
+    updateA0 (i) { this.a[0] = i; this.checkA(); console.log(this.a) },
+    updateA1 (i) { this.a[1] = i; this.checkA(); console.log(this.a) },
+    updateA2 (i) { this.a[2] = i; this.checkA(); console.log(this.a) },
+    updateA3 (i) { this.a[3] = i; this.checkA(); console.log(this.a) },
+    updateA4 (i) { this.a[4] = i; this.checkA(); console.log(this.a) },
+    updateA5 (i) { this.a[5] = i; this.checkA(); console.log(this.a) },
+    updateA6 (i) { this.a[6] = i; this.checkA(); console.log(this.a) },
+    updateA7 (i) { this.a[7] = i; this.checkA(); console.log(this.a) },
+    updateA8 (i) { this.a[8] = i; this.checkA(); console.log(this.a) },
+    updateA9 (i) { this.a[9] = i; this.checkA(); console.log(this.a) },
+    updateA10 (i) { this.a[10] = i; this.checkA(); console.log(this.a) },
+    updateA11 (i) { this.a[11] = i; this.checkA(); console.log(this.a) },
+    updateA12 (i) { this.a[12] = i; this.checkA(); console.log(this.a) },
+    updateA13 (i) { this.a[13] = i; this.checkA(); console.log(this.a) },
+    updateA14 (i) { this.a[14] = i; this.checkA(); console.log(this.a) },
+    updateA15 (i) { this.a[15] = i; this.checkA(); console.log(this.a) },
+    updateA16 (i) { this.a[16] = i; this.checkA(); console.log(this.a) },
+    updateA17 (i) { this.a[17] = i; this.checkA(); console.log(this.a) },
+    updateA18 (i) { this.a[18] = i; this.checkA(); console.log(this.a) },
+    updateA19 (i) { this.a[19] = i; this.checkA(); console.log(this.a) },
+    updateA20 (i) { this.a[20] = i; this.checkA(); console.log(this.a) },
+    updateA21 (i) { this.a[21] = i; this.checkA(); console.log(this.a) },
+    updateA22 (i) { this.a[22] = i; this.checkA(); console.log(this.a) },
+    updateA23 (i) { this.a[23] = i; this.checkA(); console.log(this.a) },
+    updateA24 (i) { this.a[24] = i; this.checkA(); console.log(this.a) },
+    updateA25 (i) { this.a[25] = i; this.checkA(); console.log(this.a) },
+    updateA26 (i) { this.a[26] = i; this.checkA(); console.log(this.a) },
+    updateA27 (i) { this.a[27] = i; this.checkA(); console.log(this.a) },
+    updateA28 (i) { this.a[28] = i; this.checkA(); console.log(this.a) },
+    updateA29 (i) { this.a[29] = i; this.checkA(); console.log(this.a) },
     updateValid (i) {
       const isArrEmpty = false
       for (let index = 0; index < this.a.length; index++) {

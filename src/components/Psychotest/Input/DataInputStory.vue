@@ -11,7 +11,7 @@
 
     <v-layout row wrap align-center>
       <v-flex md8 offset-md2 xs12>
-        <v-radio-group :value="a" :rules="[rules.required]" @change="updateA" required>
+        <v-radio-group :value="a" @change="updateA" required>
           <v-radio :label="'a. ' + c[0]" value="a"></v-radio>
           <v-radio :label="'b. ' + c[1]" value="b"></v-radio>
           <v-radio :label="'c. ' + c[2]" value="c"></v-radio>
@@ -25,11 +25,10 @@
 
 <script>
 export default {
-  props: ['no', 'q', 'a', 'c', 'rules', 'valid'],
+  props: ['no', 'q', 'a', 'c'],
   methods: {
     updateA (i) {
       this.$emit('aUpdated', i)
-      this.$emit('validUpdated', this.valid)
     }
   }
 }
