@@ -19,7 +19,7 @@
                     <p>
                       <b>&rarr;</b> Bacalah kalimat A dan kalimat B. Setiap nomor memiliki satu kalimat dengan penulisan yang tidak tepat. 
                       <br>
-                      <b>&rarr;</b> Pilihlah kalimat dengan penulisan yang tepat menurut kalian.
+                      <b>&rarr;</b> Pilihlah kalimat dengan penulisan yang tepat menurut anda.
                     </p>
                   </v-flex>
                 </v-layout>
