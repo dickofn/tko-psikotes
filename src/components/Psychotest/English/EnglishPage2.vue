@@ -8,7 +8,7 @@
     <data-input-english
       :no="'21. '"
       :c="['The pupil gave his examination', 'The pupil took his examination']"
-      :a1="a[20]"
+      :a="a[20]"
       @aUpdated="updateA20"
       :no2="'22. '"
       :c2="['We took a walk along the river','We take a walk along the river']"
@@ -18,7 +18,7 @@
     <data-input-english
       :no="'23. '"
       :c="['Shall we go there with the feet?', 'Shall we go there on foot?']"
-      :a1="a[22]"
+      :a="a[22]"
       @aUpdated="updateA22"
       :no2="'24. '"
       :c2="['I saw a strange dream last night','I had a strange dream last night']"
@@ -28,7 +28,7 @@
     <data-input-english
       :no="'25. '"
       :c="['I did one mistake in dictation', 'I made one mistake in dictation']"
-      :a1="a[24]"
+      :a="a[24]"
       @aUpdated="updateA24"
       :no2="'26. '"
       :c2="['He came and asked my book','He came and asked for my book']"
@@ -38,7 +38,7 @@
     <data-input-english
       :no="'27. '"
       :c="['She explained me to the matter', 'She explained the matter to me']"
-      :a1="a[26]"
+      :a="a[26]"
       @aUpdated="updateA26"
       :no2="'28. '"
       :c2="['Who is knocking the door?','Who is knocking at the door?']"
@@ -48,7 +48,7 @@
     <data-input-english
       :no="'29. '"
       :c="['I shall speak to him about that', 'I shall speak him about that']"
-      :a1="a[28]"
+      :a="a[28]"
       @aUpdated="updateA28"
       :no2="'30. '"
       :c2="['Can you supply me with all I need?','Can you supply me all I need?']"
@@ -58,7 +58,7 @@
     <data-input-english
       :no="'31. '"
       :c="['English are fond of sports', 'The English are fond of sports']"
-      :a1="a[30]"
+      :a="a[30]"
       @aUpdated="updateA30"
       :no2="'32. '"
       :c2="['I told them not to make a noises','I told them not to make noises']"
@@ -68,7 +68,7 @@
     <data-input-english
       :no="'33. '"
       :c="['Hundred years make a century', 'A Hundred years make a century']"
-      :a1="a[32]"
+      :a="a[32]"
       @aUpdated="updateA32"
       :no2="'34. '"
       :c2="['He drank half glass of milk','He drank half a glass of milk']"
@@ -78,7 +78,7 @@
     <data-input-english
       :no="'35. '"
       :c="['A boy’s hat is different from a girl', 'A boy’s hat is different from a girls']"
-      :a1="a[34]"
+      :a="a[34]"
       @aUpdated="updateA34"
       :no2="'36. '"
       :c2="['Please answer to my question','Please answer my question']"
@@ -88,7 +88,7 @@
     <data-input-english
       :no="'37. '"
       :c="['We entered the classroom', 'We entered into the classroom']"
-      :a1="a[36]"
+      :a="a[36]"
       @aUpdated="updateA36"
       :no2="'38. '"
       :c2="['He left from England last week','He left England last week']"
@@ -98,7 +98,7 @@
     <data-input-english
       :no="'39. '"
       :c="['I told to him to come at once', 'I told him to come at once']"
-      :a1="a[38]"
+      :a="a[38]"
       @aUpdated="updateA38"
       :no2="'40. '"
       :c2="['We reached the school early','We reached at the school early']"

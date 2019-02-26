@@ -8,7 +8,7 @@
     <data-input-english
       :no="'61. '"
       :c="['Not all people are hard-working', 'All people are not hard-working']"
-      :a1="a[60]"
+      :a="a[60]"
       @aUpdated="updateA60"
       :no2="'62. '"
       :c2="['He asked me what game I played','He asked me what game did I play']"
@@ -18,7 +18,7 @@
     <data-input-english
       :no="'63. '"
       :c="['I showed to him some of my stamps', 'I showed some of my stamp to him']"
-      :a1="a[62]"
+      :a="a[62]"
       @aUpdated="updateA62"
       :no2="'64. '"
       :c2="['The ordered goods have not arrived','The goods ordered have not arrived']"
@@ -28,7 +28,7 @@
     <data-input-english
       :no="'65. '"
       :c="['A boy has a donkey who is our class', 'A boy who is in our class has a donkey']"
-      :a1="a[64]"
+      :a="a[64]"
       @aUpdated="updateA64"
       :no2="'66. '"
       :c2="['We come at school every morning','We come to school every morning']"
@@ -38,7 +38,7 @@
     <data-input-english
       :no="'67. '"
       :c="['We walked till the river and back', 'We walked to the river and back']"
-      :a1="a[66]"
+      :a="a[66]"
       @aUpdated="updateA66"
       :no2="'68. '"
       :c2="['I spent my holidays in Bali','I spent my holidays at Bali']"
@@ -48,7 +48,7 @@
     <data-input-english
       :no="'69. '"
       :c="['I bought a book at Rp.500', 'I bought a book for Rp.500']"
-      :a1="a[68]"
+      :a="a[68]"
       @aUpdated="updateA68"
       :no2="'70. '"
       :c2="['There was a fight among two boys','There was a fight between two boys']"
@@ -58,7 +58,7 @@
     <data-input-english
       :no="'71. '"
       :c="['He told that he would go home', 'He said that would go home']"
-      :a1="a[70]"
+      :a="a[70]"
       @aUpdated="updateA70"
       :no2="'72. '"
       :c2="['You must make your work carefully','You must do your work carefully']"
@@ -68,7 +68,7 @@
     <data-input-english
       :no="'73. '"
       :c="['I am going to lie down for an hour', 'I am going to lay down for an hour']"
-      :a1="a[72]"
+      :a="a[72]"
       @aUpdated="updateA72"
       :no2="'74. '"
       :c2="['He raises very early in the morning','He rises very early in the morning']"
@@ -78,7 +78,7 @@
     <data-input-english
       :no="'75. '"
       :c="['Everybody love polite people', 'Everybody like polite people']"
-      :a1="a[74]"
+      :a="a[74]"
       @aUpdated="updateA74"
       :no2="'76. '"
       :c2="['Everyone of the two boy was wrong','Each one of the two boy was wrong']"
@@ -88,7 +88,7 @@
     <data-input-english
       :no="'77. '"
       :c="['She read each book of the library', 'She read every book of the library']"
-      :a1="a[76]"
+      :a="a[76]"
       @aUpdated="updateA76"
       :no2="'78. '"
       :c2="['I have read an interested story','I have read every book of the library']"
@@ -98,7 +98,7 @@
     <data-input-english
       :no="'79. '"
       :c="['New York is further than Paris', 'New York is farther than Paris']"
-      :a1="a[78]"
+      :a="a[78]"
       @aUpdated="updateA78"
       :no2="'80. '"
       :c2="['Have you some lessons to prepare?','Have you any lessons to prepare?']"

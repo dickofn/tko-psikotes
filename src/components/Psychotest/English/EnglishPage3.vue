@@ -8,7 +8,7 @@
     <data-input-english
       :no="'41. '"
       :c="['He speaks the English very well', 'He speaks English very well']"
-      :a1="a[40]"
+      :a="a[40]"
       @aUpdated="updateA40"
       :no2="'42. '"
       :c2="['We shall start after breakfast','We shall start after the breakfast']"
@@ -18,7 +18,7 @@
     <data-input-english
       :no="'43. '"
       :c="['The smell is one of the five senses', 'Smell is one of the five senses']"
-      :a1="a[42]"
+      :a="a[42]"
       @aUpdated="updateA42"
       :no2="'44. '"
       :c2="['On Friday I go to mosque','On Friday I go to the mosque']"
@@ -28,7 +28,7 @@
     <data-input-english
       :no="'45. '"
       :c="['The man is born a sinner', 'Man is born a sinner']"
-      :a1="a[44]"
+      :a="a[44]"
       @aUpdated="updateA44"
       :no2="'46. '"
       :c2="['I watched the boys play hockey','I watched the boys to play hockey']"
@@ -38,7 +38,7 @@
     <data-input-english
       :no="'47. '"
       :c="['You can’t make him understand', 'You can’t make him to understand']"
-      :a1="a[46]"
+      :a="a[46]"
       @aUpdated="updateA46"
       :no2="'48. '"
       :c2="['We heard him to speak in English','We heard him speak in English']"
@@ -48,7 +48,7 @@
     <data-input-english
       :no="'49. '"
       :c="['May I to trouble you for a moment?', 'May I trouble you for a moment?']"
-      :a1="a[48]"
+      :a="a[48]"
       @aUpdated="updateA48"
       :no2="'50. '"
       :c2="['I could feel his heart to beat','I could feel his heart beat']"
@@ -58,7 +58,7 @@
     <data-input-english
       :no="'51. '"
       :c="['I went to market and bought fruit', 'I went to market and I bought fruit']"
-      :a1="a[50]"
+      :a="a[50]"
       @aUpdated="updateA50"
       :no2="'52. '"
       :c2="['My little brother he is at school','My little brother is at school']"
@@ -68,7 +68,7 @@
     <data-input-english
       :no="'53. '"
       :c="['The man having finished his work he received his pay', 'The man having finished his work received his pay']"
-      :a1="a[52]"
+      :a="a[52]"
       @aUpdated="updateA52"
       :no2="'54. '"
       :c2="['The doctor I know him very well','I know the doctor very well']"
@@ -78,7 +78,7 @@
     <data-input-english
       :no="'55. '"
       :c="['She has returned to school', 'She has returned back to the school']"
-      :a1="a[54]"
+      :a="a[54]"
       @aUpdated="updateA54"
       :no2="'56. '"
       :c2="['The come always late to school','The always come late to school']"
@@ -88,7 +88,7 @@
     <data-input-english
       :no="'57. '"
       :c="['He wrote carefully his exercises', 'He wrote his exercises carefully']"
-      :a1="a[56]"
+      :a="a[56]"
       @aUpdated="updateA56"
       :no2="'58. '"
       :c2="['Is the room enough large of you?','Is the room large enough for you?']"
@@ -98,7 +98,7 @@
     <data-input-english
       :no="'59. '"
       :c="['I should have not gone', 'I should not have gone']"
-      :a1="a[58]"
+      :a="a[58]"
       @aUpdated="updateA58"
       :no2="'60. '"
       :c2="['I told him not to come on Monday','I told him to not come on Monday']"
