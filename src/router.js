@@ -11,6 +11,7 @@ import Mathematic from './views/Psychotest/Mathematic.vue'
 import Sequence from './views/Psychotest/Sequence.vue'
 import Story from './views/Psychotest/Story.vue'
 import English from './views/Psychotest/English.vue'
+import Papikostik from './views/Psychotest/Papikostik.vue'
 
 Vue.use(Router)
 
@@ -67,6 +68,11 @@ export default new Router({
       path: '/test/eng',
       name: 'eng',
       component: English
+    },
+    {
+      path: '/test/pap',
+      name: 'pap',
+      component: Papikostik
     },
     {
       path: '/about',
