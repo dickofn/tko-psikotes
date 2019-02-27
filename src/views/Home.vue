@@ -27,16 +27,6 @@
                 </v-layout>
 
                 <v-layout row wrap mb-2>
-                  <v-flex md8 offset-md2 xs12>
-                    <h4>Jenis Kelamin</h4>
-                    <v-radio-group v-model="gender" row :rules="[rules.required]" required>
-                      <v-radio label="Pria" value="pria"></v-radio>
-                      <v-radio label="Wanita" value="wanita"></v-radio>
-                    </v-radio-group>
-                  </v-flex>
-                </v-layout>
-
-                <v-layout row wrap mb-2>
                   <v-flex md4 offset-md2 xs12>
                     <v-text-field
                       label="Tempat Lahir"
