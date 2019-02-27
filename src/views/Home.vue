@@ -67,7 +67,7 @@
 
                 <v-layout row wrap mt-5 justify-end>
                   <v-flex offset-md6 offset-lg7 offset-xl8>
-                    <v-btn :disabled="!valid" color="success">Submit</v-btn>
+                    <v-btn :disabled="!valid" color="success" @click="submit">Submit</v-btn>
                     <v-btn color="error" @click="reset">Reset Form</v-btn>
                   </v-flex>
                 </v-layout>
@@ -96,6 +96,7 @@ export default {
     }
   },
   methods: {
+    submit () { },
     reset () {
       console.log(this.valid)
       this.$refs.form.reset()
