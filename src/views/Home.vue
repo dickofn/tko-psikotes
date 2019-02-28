@@ -95,8 +95,15 @@ export default {
       }
     }
   },
+  computed:{
+    test(){
+      return this.$store.state.test.note
+    }
+  },
   methods: {
-    submit () { },
+    submit () {
+      this.$store.dispatch('actionTest', "lol changed")
+    },
     reset () {
       console.log(this.valid)
       this.$refs.form.reset()

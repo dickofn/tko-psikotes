@@ -1,7 +1,15 @@
 export default {
   state: {
-    note: "emptiness"
+    note: null
   },
-  mutations: {},
-  actions: {}
+  mutations: {
+    TEST_IT(state, payload) {
+      state.note = payload;
+    }
+  },
+  actions: {
+    actionTest({ commit }, payload) {
+      commit("TEST_IT", payload);
+    }
+  }
 };
