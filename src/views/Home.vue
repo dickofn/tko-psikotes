@@ -102,7 +102,12 @@ export default {
   },
   methods: {
     submit () {
-      this.$store.dispatch('actionTest', "lol changed")
+      const data = {
+        name: this.name,
+        placeBirth: this.birthPlace,
+        dateBirth: this.birthDate
+      }
+      this.$store.dispatch('newTestCandidate', data)
     },
     reset () {
       console.log(this.valid)

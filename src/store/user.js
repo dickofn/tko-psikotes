@@ -1,7 +1,19 @@
 export default {
   state: {
-    user: "test"
+    user: null
   },
-  mutations: {},
-  actions: {}
+  mutations: {
+    UPDATE_USER(state, payload) {
+      state.user = payload;
+    }
+  },
+  actions: {
+    newTestCandidate({ commit }, candidateData) {
+      this.$axios
+        .get(process.env.VUE_APP_API_URL + "/administratif/get/provinsi")
+        .then(res => {
+          console.log(res);
+        });
+    }
+  }
 };
