@@ -170,7 +170,7 @@ export default {
       this.addressLoadingPropinsi = true
 
       // Lazily load input items
-      fetch('http://172.24.76.35:8080/api/administratif/get/provinsi')
+      fetch(process.env.VUE_APP_API_URL + '/administratif/get/provinsi')
         .then(res => res.json())
         .then(res => {
           const items = res.data.result
@@ -198,7 +198,7 @@ export default {
       this.addressLoadingKota = true
 
       // Lazily load input items
-      fetch('http://172.24.76.35:8080/api/administratif/get/kota/' + this.addressPropinsi)
+      fetch(process.env.VUE_APP_API_URL + '/administratif/get/kota/' + this.addressPropinsi)
         .then(res => res.json())
         .then(res => {
           const items = res.data.result
@@ -224,7 +224,7 @@ export default {
       this.addressLoadingKecamatan = true
 
       // Lazily load input items
-      fetch('http://172.24.76.35:8080/api/administratif/get/kecamatan/' + this.addressKota)
+      fetch(process.env.VUE_APP_API_URL + '/administratif/get/kecamatan/' + this.addressKota)
         .then(res => res.json())
         .then(res => {
           const items = res.data.result
@@ -248,7 +248,7 @@ export default {
       this.addressLoadingKelurahan = true
 
       // Lazily load input items
-      fetch('http://172.24.76.35:8080/api/administratif/get/kelurahan/' + this.addressKecamatan)
+      fetch(process.env.VUE_APP_API_URL + '/administratif/get/kelurahan/' + this.addressKecamatan)
         .then(res => res.json())
         .then(res => {
           const items = res.data.result
