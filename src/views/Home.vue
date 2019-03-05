@@ -100,7 +100,7 @@ export default {
       return this.$store.state.shared.isLoading
     },
     examId () {
-      return this.$store.state.user.examId
+      return this.$store.state.user.examApplicantId
     }
   },
   methods: {

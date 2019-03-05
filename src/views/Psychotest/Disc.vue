@@ -381,7 +381,7 @@ export default {
       return minutes + ":" + secondes
     },
     applicantName () {
-      return this.$store.state.user.examApplicant
+      return this.$store.state.user.examApplicantName
     }
   },
   methods: {

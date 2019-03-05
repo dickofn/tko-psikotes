@@ -4,13 +4,16 @@ import Vuex from "vuex";
 Vue.use(Vuex);
 
 import user from './store/user'
-import test from './store/test'
 import shared from './store/shared'
+import exam from './store/exam'
+
+
+
 
 export default new Vuex.Store({
   modules: {
     user,
-    test,
-    shared
+    shared,
+    exam
   }
 });
