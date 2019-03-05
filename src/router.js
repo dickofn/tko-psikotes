@@ -45,32 +45,32 @@ export default new Router({
       component: Question
     },
     {
-      path: '/test/disc',
+      path: '/test/disc/:examId',
       name: 'disc',
       component: Disc
     },
     {
-      path: '/test/math',
+      path: '/test/math/:examId',
       name: 'math',
       component: Mathematic
     },
     {
-      path: '/test/seq',
+      path: '/test/seq/:examId',
       name: 'seq',
       component: Sequence
     },
     {
-      path: '/test/story',
+      path: '/test/story/:examId',
       name: 'story',
       component: Story
     },
     {
-      path: '/test/eng',
+      path: '/test/eng/:examId',
       name: 'eng',
       component: English
     },
     {
-      path: '/test/pap',
+      path: '/test/pap/:examId',
       name: 'pap',
       component: Papikostik
     },

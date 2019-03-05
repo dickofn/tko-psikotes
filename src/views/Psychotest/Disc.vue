@@ -10,7 +10,7 @@
           </v-card-title>
           <v-card-text>
             <v-container>
-              <v-form ref="form" v-model="valid">
+              <v-form ref="form" v-model="valid" @submit.prevent="submit">
                 <v-layout row wrap mb-2>
                   <v-flex md8 offset-md2 xs12>
                     <h1>INSTRUKSI</h1>
@@ -329,7 +329,7 @@
                         <h2>Waktu pengerjaan {{ prettyTime }}</h2>
                       </span>
                     </template>
-                    <v-btn :disabled="!valid" color="success" v-if="isStarted">Submit</v-btn>
+                    <v-btn :disabled="!valid" color="success" v-if="isStarted" type="submit">Submit</v-btn>
                     <v-btn color="error" @click="reset" v-if="isStarted && !isFinished">Reset Form</v-btn>
                   </v-flex>
                 </v-layout>
@@ -340,7 +340,12 @@
       </v-flex>
     </v-layout>
 
-    <v-bottom-nav :value="true" fixed v-if="isStarted && !isFinished" height="20">Waktu yang tersisa {{ prettyTime }}</v-bottom-nav>
+    <v-bottom-nav
+      :value="true"
+      fixed
+      v-if="isStarted && !isFinished"
+      height="20"
+    >Hello {{ applicantName }}! Waktu yang tersisa {{ prettyTime }}</v-bottom-nav>
   </v-container>
 </template>
 
@@ -374,6 +379,9 @@ export default {
         secondes = "0" + secondes
       }
       return minutes + ":" + secondes
+    },
+    applicantName () {
+      return this.$store.state.user.examApplicant
     }
   },
   methods: {
@@ -444,10 +452,16 @@ export default {
     reset () {
       console.log(this.valid)
       this.$refs.form.reset()
+    },
+    submit () {
+      this.$store.dispatch('')
     }
   },
   components: {
     dataInputDisc
+  },
+  created () {
+    this.$store.dispatch('getApplicant', { examInfoId: this.$route.params.examId })
   }
 }
 </script>

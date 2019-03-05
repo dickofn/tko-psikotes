@@ -12,7 +12,7 @@
           </v-card-title>
           <v-card-text>
             <v-container>
-              <v-form ref="form" v-model="valid">
+              <v-form ref="form" v-model="valid" @submit.prevent="submit">
                 <v-layout row wrap mb-2>
                   <v-flex md8 offset-md2 xs12>
                     <v-text-field
@@ -67,7 +67,7 @@
 
                 <v-layout row wrap mt-5 justify-end>
                   <v-flex offset-md6 offset-lg7 offset-xl8>
-                    <v-btn :disabled="!valid" color="success" @click="submit">Submit</v-btn>
+                    <v-btn :disabled="!valid || isLoading" color="success" type="submit">Submit</v-btn>
                     <v-btn color="error" @click="reset">Reset Form</v-btn>
                   </v-flex>
                 </v-layout>
@@ -95,6 +95,14 @@ export default {
       }
     }
   },
+  computed: {
+    isLoading () {
+      return this.$store.state.shared.isLoading
+    },
+    examId () {
+      return this.$store.state.user.examId
+    }
+  },
   methods: {
     submit () {
       const data = {
@@ -102,11 +110,18 @@ export default {
         placeBirth: this.birthPlace,
         dateBirth: this.birthDate
       }
-      this.$store.dispatch('newTestCandidate', data)
+      this.$store.dispatch('newApplicant', data)        
     },
     reset () {
       console.log(this.valid)
       this.$refs.form.reset()
+    }
+  },
+  watch:{
+    examId(value){
+      if (value != undefined || value != null) {
+        this.$router.push({ name: 'disc', params: { examId: value } })
+      }
     }
   }
 }
