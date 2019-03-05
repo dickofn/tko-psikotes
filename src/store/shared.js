@@ -13,10 +13,10 @@ export default {
   },
   actions: {
     loadingError({ commit }, status) {
-      commit("UPDATE_ERROR", status);
+      commit('UPDATE_ERROR', status);
     },
     loadingStatus({ commit }, status) {
-      commit("UPDATE_LOADING", status);
+      commit('UPDATE_LOADING', status);
     }
   }
 };
