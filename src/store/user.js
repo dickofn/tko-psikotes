@@ -1,3 +1,5 @@
+import Axios from "axios";
+
 export default {
   state: {
     user: null
@@ -8,9 +10,8 @@ export default {
     }
   },
   actions: {
-    newTestCandidate({ commit }, candidateData) {
-      this.$axios
-        .get(process.env.VUE_APP_API_URL + "/administratif/get/provinsi")
+    async newTestCandidate({ commit }, candidateData) {
+      await Axios.get(process.env.VUE_APP_API_URL + "/administratif/get/provinsi")
         .then(res => {
           console.log(res);
         });
