@@ -240,7 +240,7 @@
                 <v-layout row wrap mt-5 justify-end>
                   <v-flex offset-md6 offset-lg7 offset-xl8>
                     <template v-if="!isStarted && !isFinished">
-                      <v-btn color="info" @click="startTest">Start</v-btn>
+                      <v-btn color="info" @click="startExam">Start</v-btn>
                       <span>
                         <h2>Waktu pengerjaan {{ prettyTime }}</h2>
                       </span>
@@ -298,7 +298,7 @@ export default {
     }
   },
   methods: {
-    startTest () {
+    startExam () {
       this.isStarted = true;
       if (!this.timer) {
         this.timer = setInterval(() => {
