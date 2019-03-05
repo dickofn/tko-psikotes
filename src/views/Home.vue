@@ -95,11 +95,6 @@ export default {
       }
     }
   },
-  computed:{
-    test(){
-      return this.$store.state.test.note
-    }
-  },
   methods: {
     submit () {
       const data = {
