@@ -1,15 +1,11 @@
 export default {
   state: {
-    note: null
+    answerListDisc: null
   },
   mutations: {
-    TEST_IT(state, payload) {
-      state.note = payload;
+    UPDATE_ANSWERLISTDISC(state, payload) {
+      state.answerListDisc = payload;
     }
   },
-  actions: {
-    actionTest({ commit }, payload) {
-      commit("TEST_IT", payload);
-    }
-  }
+  actions: {}
 };
