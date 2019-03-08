@@ -19,7 +19,7 @@
                     <p>
                       <b>&rarr;</b> Bacalah pernyataan A dan pernyataan B. 
                       <br>
-                      <b>&rarr;</b> Pilihlah satu pernyataan yang menurut kalian paling sesuai dengan diri anda.
+                      <b>&rarr;</b> Pilihlah satu pernyataan yang menurut anda paling sesuai dengan diri anda.
                     </p>
                   </v-flex>
                 </v-layout>
