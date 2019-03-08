@@ -458,7 +458,17 @@ export default {
         }, 1000)
       }
     },
-    updateAnswer (i) { this.a.push({ questionNo: i.n, answer: i.a }); },
+    updateAnswer (i) {
+      for (let index = 0; index < this.a.length; index++) {
+        const n = this.a[index].questionNo;
+        const a = this.a[index].answer;
+        if (a.substr(0,1) == i.a.substr(0,1) && n == i.n) {
+          this.a.splice(index, 1);
+          break;
+        }
+      }
+      this.a.push({ questionNo: i.n, answer: i.a });
+    },
     updateValid (i) { this.valid = i; },
     reset () {
       console.log(this.valid)
