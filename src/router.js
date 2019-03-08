@@ -7,6 +7,7 @@ import Experience from './views/ApplicationForm/Experience.vue'
 import Question from './views/ApplicationForm/Question.vue'
 
 import Disc from './views/Psychotest/Disc.vue'
+import Apm from './views/Psychotest/Apm.vue'
 import Mathematic from './views/Psychotest/Mathematic.vue'
 import Sequence from './views/Psychotest/Sequence.vue'
 import Story from './views/Psychotest/Story.vue'
@@ -48,6 +49,11 @@ export default new Router({
       path: '/exam/disc/:examId',
       name: 'disc',
       component: Disc
+    },
+    {
+      path: '/exam/apm/:examId',
+      name: 'apm',
+      component: Apm
     },
     {
       path: '/exam/math/:examId',

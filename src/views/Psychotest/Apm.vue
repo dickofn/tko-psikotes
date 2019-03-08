@@ -5,7 +5,7 @@
         <v-card>
           <v-card-title primary-title>
             <v-spacer></v-spacer>
-            <h1 class="headline text-uppercase font-weight-light text-xs-center">Psikotes - DISC</h1>
+            <h1 class="headline text-uppercase font-weight-light text-xs-center">Psikotes - APM</h1>
             <v-spacer></v-spacer>
           </v-card-title>
           <v-card-text>
@@ -15,11 +15,9 @@
                   <v-flex md8 offset-md2 xs12>
                     <h1>INSTRUKSI</h1>
                     <p>
-                      <b>&rarr;</b> Setiap kotak dibawah ini memuat empat kalimat. Bacalah dengan seksama setiap kalimat itu, lalu pilihlah salah satu tanda D, I, S, C, atau * di bawah kolom M, disamping kalimat yang
-                      <b>PALING</b> menggambarkan diri Anda.
+                      <b>&rarr;</b> Lihatlah gambar utama yang memiliki 8 pola sudah terisi dan 1 pola kosong.
                       <br>
-                      <b>&rarr;</b> Selanjutanya pilihlah salah satu tanda D, I, S, C, atau * di bawah kolom M, disamping kalimat yang
-                      <b>PALING TIDAK</b> menggambarkan diri Anda. Untuk setiap kolom hanya dapat memilih satu saja.
+                      <b>&rarr;</b> Pilihlah 1 pola yang paling tepat untuk melengkapi 8 pola yang sudah terisi pada gambar utama.
                     </p>
                   </v-flex>
                 </v-layout>
