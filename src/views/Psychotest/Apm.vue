@@ -23,342 +23,17 @@
                 </v-layout>
 
                 <template v-if="(isStarted && !isFinished) || isCompleted">
-                  <data-input-disc
-                    :no="1"
-                    :m="m[0]"
-                    :l="l[0]"
-                    :mv="['S', 'I', '*', 'C']"
-                    :lv="['S', 'I', 'D', 'C']"
-                    :t="['Gampangan, mudah setuju', 'Percaya, percaya pada orang', 'Petualang, mengambil resiko', 'Toleran, menghormati']"
-                    @mUpdated="updateAnswer"
-                    @lUpdated="updateAnswer"
+                  <data-input-apm
+                    v-for="(url, index) in u "
+                    :no="(index+1)"
+                    :u="url"
+                    :c="c[index]"
+                    @cUpdated="updateAnswer"
                     :rules="rules"
                     :valid="valid"
                     @validUpdated="updateValid"
-                    :key="comKey[0]"
-                  ></data-input-disc>
-                  <data-input-disc
-                    :no="2"
-                    :m="m[1]"
-                    :l="l[1]"
-                    :mv="['C', 'D', '*', 'S']"
-                    :lv="['*', 'D', 'I', 'S']"
-                    :t="['Lembut suara, pendiam,', 'Optimistik, visioner', 'Pusat perhatian, suka gaul', 'Pendamai, membawa harmoni']"
-                    @mUpdated="updateAnswer"
-                    @lUpdated="updateAnswer"
-                    :rules="rules"
-                    :valid="valid"
-                    @validUpdated="updateValid"
-                    :key="comKey[1]"
-                  ></data-input-disc>
-                  <data-input-disc
-                    :no="3"
-                    :m="m[2]"
-                    :l="l[2]"
-                    :mv="['I', '*', '**', 'D']"
-                    :lv="['I', 'C', 'S', '*']"
-                    :t="['Menyemangati orang,', 'Berusaha sempurna', 'Bagian dari kelompok', 'Ingin membuat tujuan']"
-                    @mUpdated="updateAnswer"
-                    @lUpdated="updateAnswer"
-                    :rules="rules"
-                    :valid="valid"
-                    @validUpdated="updateValid"
-                    :key="comKey[2]"
-                  ></data-input-disc>
-                  <data-input-disc
-                    :no="4"
-                    :m="m[3]"
-                    :l="l[3]"
-                    :mv="['C', 'S', '*', 'D']"
-                    :lv="['C', 'S', 'I', 'D']"
-                    :t="['Menjadi frustasi', 'Menyimpan perasaan saya', 'Menceritakan sisi saya', 'Siap beroposisi']"
-                    @mUpdated="updateAnswer"
-                    @lUpdated="updateAnswer"
-                    :rules="rules"
-                    :valid="valid"
-                    @validUpdated="updateValid"
-                    :key="comKey[3]"
-                  ></data-input-disc>
-                  <data-input-disc
-                    :no="5"
-                    :m="m[4]"
-                    :l="l[4]"
-                    :mv="['I', 'D', 'S', '*']"
-                    :lv="['*', 'D', 'S', 'C']"
-                    :t="['Hidup, suka bicara', 'Gerakan cepat, tekun', 'Usaha menjadi keseimbangan', 'Usaha mengikuti aturan']"
-                    @mUpdated="updateAnswer"
-                    @lUpdated="updateAnswer"
-                    :rules="rules"
-                    :valid="valid"
-                    @validUpdated="updateValid"
-                    :key="comKey[4]"
-                  ></data-input-disc>
-                  <data-input-disc
-                    :no="6"
-                    :m="m[5]"
-                    :l="l[5]"
-                    :mv="['C', 'D', 'I', 'S']"
-                    :lv="['*', 'D', 'I', 'S']"
-                    :t="['Kelola waktu secara efisien', 'Sering terburu-buru, merasa tertekan', 'Masalah sosial itu penting', 'Suka selesaikan apa yang saya mulai']"
-                    @mUpdated="updateAnswer"
-                    @lUpdated="updateAnswer"
-                    :rules="rules"
-                    :valid="valid"
-                    @validUpdated="updateValid"
-                    :key="comKey[5]"
-                  ></data-input-disc>
-                  <data-input-disc
-                    :no="7"
-                    :m="m[6]"
-                    :l="l[6]"
-                    :mv="['S', 'I', '*', '**']"
-                    :lv="['*', 'I', 'C', 'D']"
-                    :t="['Tolak perubahan mendadak', 'Cenderung janji berlebihan', 'Tarik diri di tengah tekanan', 'Tidak takut bertempur']"
-                    @mUpdated="updateAnswer"
-                    @lUpdated="updateAnswer"
-                    :rules="rules"
-                    :valid="valid"
-                    @validUpdated="updateValid"
-                    :key="comKey[6]"
-                  ></data-input-disc>
-                  <data-input-disc
-                    :no="8"
-                    :m="m[7]"
-                    :l="l[7]"
-                    :mv="['I', 'S', 'C', 'D']"
-                    :lv="['I', 'S', 'C', 'D']"
-                    :t="['Penyemangat yang baik', 'Pendengar yang baik', 'Penganalisa yang baik', 'Delegator yang baik']"
-                    @mUpdated="updateAnswer"
-                    @lUpdated="updateAnswer"
-                    :rules="rules"
-                    :valid="valid"
-                    @validUpdated="updateValid"
-                    :key="comKey[7]"
-                  ></data-input-disc>
-                  <data-input-disc
-                    :no="9"
-                    :m="m[8]"
-                    :l="l[8]"
-                    :mv="['D', 'C', '*', '**']"
-                    :lv="['D', 'C', 'I', 'S']"
-                    :t="['Hasil adalah penting', 'Lakukan dengan benar, akurasi penting', 'Dibuat menyenangkan', 'Mari kerjakan bersama']"
-                    @mUpdated="updateAnswer"
-                    @lUpdated="updateAnswer"
-                    :rules="rules"
-                    :valid="valid"
-                    @validUpdated="updateValid"
-                    :key="comKey[8]"
-                  ></data-input-disc>
-                  <data-input-disc
-                    :no="10"
-                    :m="m[9]"
-                    :l="l[9]"
-                    :mv="['*', 'D', 'S', 'I']"
-                    :lv="['C', 'D', 'S', '*']"
-                    :t="['Akan berjalan terus tanpa kontrol diri', 'Akan membeli sesuai dorongan hati', 'Akan menunggu, tanpa tekanan', 'Akan mengusahakan apa yang kuinginkan']"
-                    @mUpdated="updateAnswer"
-                    @lUpdated="updateAnswer"
-                    :rules="rules"
-                    :valid="valid"
-                    @validUpdated="updateValid"
-                    :key="comKey[9]"
-                  ></data-input-disc>
-                  <data-input-disc
-                    :no="11"
-                    :m="m[10]"
-                    :l="l[10]"
-                    :mv="['S', '*', 'D', 'C']"
-                    :lv="['*', 'I', 'D', 'C']"
-                    :t="['Ramah, mudah bergabung', 'Unik, bosan rutinitas', 'Aktif mengubah sesuatu, tanpa tekanan', 'Ingin hal-hal yang pasti']"
-                    @mUpdated="updateAnswer"
-                    @lUpdated="updateAnswer"
-                    :rules="rules"
-                    :valid="valid"
-                    @validUpdated="updateValid"
-                    :key="comKey[10]"
-                  ></data-input-disc>
-                  <data-input-disc
-                    :no="12"
-                    :m="m[11]"
-                    :l="l[11]"
-                    :mv="['*', 'C', 'I', 'D']"
-                    :lv="['S', '*', 'I', 'D']"
-                    :t="['Non - konfrontasi, menyerah', 'Dipenuhi hal detail', 'Perubahan pada menit terakhir', 'Menuntut, kasar']"
-                    @mUpdated="updateAnswer"
-                    @lUpdated="updateAnswer"
-                    :rules="rules"
-                    :valid="valid"
-                    @validUpdated="updateValid"
-                    :key="comKey[11]"
-                  ></data-input-disc>
-                  <data-input-disc
-                    :no="13"
-                    :m="m[12]"
-                    :l="l[12]"
-                    :mv="['D', 'S', 'I', '*']"
-                    :lv="['D', '*', '**', 'C']"
-                    :t="['Ingin kemajuan', 'Puas dengan segalanya, senang', 'Terbuka memperhatikan perasaan', 'Rendah hati, sederhana']"
-                    @mUpdated="updateAnswer"
-                    @lUpdated="updateAnswer"
-                    :rules="rules"
-                    :valid="valid"
-                    @validUpdated="updateValid"
-                    :key="comKey[12]"
-                  ></data-input-disc>
-                  <data-input-disc
-                    :no="14"
-                    :m="m[13]"
-                    :l="l[13]"
-                    :mv="['C', 'I', 'S', 'D']"
-                    :lv="['C', 'I', '*', 'D']"
-                    :t="['Tenang, pendiam', 'Bahagia, tanpa beban', 'Menyenangkan, baik hati', 'Tak gentar, berani']"
-                    @mUpdated="updateAnswer"
-                    @lUpdated="updateAnswer"
-                    :rules="rules"
-                    :valid="valid"
-                    @validUpdated="updateValid"
-                    :key="comKey[13]"
-                  ></data-input-disc>
-                  <data-input-disc
-                    :no="15"
-                    :m="m[14]"
-                    :l="l[14]"
-                    :mv="['S', 'C', 'I', 'D']"
-                    :lv="['S', '*', 'I', 'D']"
-                    :t="['Menggunakan waktu berkualitas dengan teman', 'Rencanakan masa depan, bersiap', 'Berpergian demi petualangan baru', 'Menerima ganjaran atau tujuan yang tercapai']"
-                    @mUpdated="updateAnswer"
-                    @lUpdated="updateAnswer"
-                    :rules="rules"
-                    :valid="valid"
-                    @validUpdated="updateValid"
-                    :key="comKey[14]"
-                  ></data-input-disc>
-                  <data-input-disc
-                    :no="16"
-                    :m="m[15]"
-                    :l="l[15]"
-                    :mv="['*', 'C', 'I', 'S']"
-                    :lv="['D', 'S', 'I', 'SS']"
-                    :t="['Aturan perlu dipertanyakan', 'Aturan membuat adil', 'Aturan membuat bosan', 'Aturan membuat aman']"
-                    @mUpdated="updateAnswer"
-                    @lUpdated="updateAnswer"
-                    :rules="rules"
-                    :valid="valid"
-                    @validUpdated="updateValid"
-                    :key="comKey[15]"
-                  ></data-input-disc>
-                  <data-input-disc
-                    :no="17"
-                    :m="m[16]"
-                    :l="l[16]"
-                    :mv="['*', 'D', 'S', 'I']"
-                    :lv="['C', 'D', 'S', '*']"
-                    :t="['Pendidikan, kebudayaan', 'Prestasi, ganjaran', 'Keselamatan, keamanan ', 'Sosial, perkumpulan kelompok']"
-                    @mUpdated="updateAnswer"
-                    @lUpdated="updateAnswer"
-                    :rules="rules"
-                    :valid="valid"
-                    @validUpdated="updateValid"
-                    :key="comKey[16]"
-                  ></data-input-disc>
-                  <data-input-disc
-                    :no="18"
-                    :m="m[17]"
-                    :l="l[17]"
-                    :mv="['D', '*', '**', 'C']"
-                    :lv="['D', 'I', 'S', '*']"
-                    :t="['Memimpin, pendekatan langsung', 'Suka bergaul, antusias', 'Dapat diramal, konsisten ', 'Waspada, hati-hati']"
-                    @mUpdated="updateAnswer"
-                    @lUpdated="updateAnswer"
-                    :rules="rules"
-                    :valid="valid"
-                    @validUpdated="updateValid"
-                    :key="comKey[17]"
-                  ></data-input-disc>
-                  <data-input-disc
-                    :no="19"
-                    :m="m[18]"
-                    :l="l[18]"
-                    :mv="['D', 'S', 'I', '*']"
-                    :lv="['D', '*', 'I', 'C']"
-                    :t="['Tidak mudah dikalahkan', 'Kerjakan sesuai perintah, ikut pemimpin', 'Mudah terangsang, riang ', 'Ingin segalanya teratur, rapi']"
-                    @mUpdated="updateAnswer"
-                    @lUpdated="updateAnswer"
-                    :rules="rules"
-                    :valid="valid"
-                    @validUpdated="updateValid"
-                    :key="comKey[18]"
-                  ></data-input-disc>
-                  <data-input-disc
-                    :no="20"
-                    :m="m[19]"
-                    :l="l[19]"
-                    :mv="['D', 'S', 'I', 'C']"
-                    :lv="['*', 'S', 'I', '**']"
-                    :t="['Saya akan pimpin mereka', 'Saya akan melaksanakan', 'Saya akan meyakinkan mereka', 'Saya dapatkan fakta']"
-                    @mUpdated="updateAnswer"
-                    @lUpdated="updateAnswer"
-                    :rules="rules"
-                    :valid="valid"
-                    @validUpdated="updateValid"
-                    :key="comKey[19]"
-                  ></data-input-disc>
-                  <data-input-disc
-                    :no="21"
-                    :m="m[20]"
-                    :l="l[20]"
-                    :mv="['S', 'D', 'I', '*']"
-                    :lv="['S', 'D', 'I', 'C']"
-                    :t="['Memikirkan orang dahulu', 'Kompetitif, suka tantangan', 'Optimis, positif', 'Pemikiran logis, sistematik']"
-                    @mUpdated="updateAnswer"
-                    @lUpdated="updateAnswer"
-                    :rules="rules"
-                    :valid="valid"
-                    @validUpdated="updateValid"
-                    :key="comKey[20]"
-                  ></data-input-disc>
-                  <data-input-disc
-                    :no="22"
-                    :m="m[21]"
-                    :l="l[21]"
-                    :mv="['S', '*', 'D', 'C']"
-                    :lv="['S', 'I', 'D', 'C']"
-                    :t="['Menyenangkan orang. Mudah setuju', 'Tertawa lepas, hidup', 'Berani, tak gentar', 'Tenang, pendiam']"
-                    @mUpdated="updateAnswer"
-                    @lUpdated="updateAnswer"
-                    :rules="rules"
-                    :valid="valid"
-                    @validUpdated="updateValid"
-                    :key="comKey[21]"
-                  ></data-input-disc>
-                  <data-input-disc
-                    :no="23"
-                    :m="m[22]"
-                    :l="l[22]"
-                    :mv="['*', 'I', 'S', '**']"
-                    :lv="['D', '*', 'S', 'C']"
-                    :t="['Ingin otoritas lebih', 'Ingin kesempatan baru', 'Menghindari konflik', 'Ingin petunjuk yang jelas']"
-                    @mUpdated="updateAnswer"
-                    @lUpdated="updateAnswer"
-                    :rules="rules"
-                    :valid="valid"
-                    @validUpdated="updateValid"
-                    :key="comKey[22]"
-                  ></data-input-disc>
-                  <data-input-disc
-                    :no="24"
-                    :m="m[23]"
-                    :l="l[23]"
-                    :mv="['*', 'I', 'D', 'C']"
-                    :lv="['S', 'I', '*', '**']"
-                    :t="['Dapat diandalkan, dapat dipercaya', 'Kreatif, unik', 'Garis dasar, orientasi hasil', 'Jalankan standar yang tinggi. akurat']"
-                    @mUpdated="updateAnswer"
-                    @lUpdated="updateAnswer"
-                    :rules="rules"
-                    :valid="valid"
-                    @validUpdated="updateValid"
-                    :key="comKey[23]"
-                  ></data-input-disc>
+                    :key="comKey[index]"
+                  ></data-input-apm>
                 </template>
 
                 <v-layout row warp justify-center align-center text-xs-center v-if="isFinished">
@@ -396,17 +71,54 @@
 </template>
 
 <script>
-import dataInputDisc from '../../components/Psychotest/Input/DataInputDisc'
+import dataInputApm from '../../components/Psychotest/Input/DataInputApm'
 
 export default {
   data () {
     return {
-      time: 480,
+      time: 1200,
       timer: null,
       isStarted: false,
       isFinished: false,
-      m: new Array,
-      l: new Array,
+      u: [
+        "/assets/PSIKOTEST-01.webp",
+        "/assets/PSIKOTEST-02.webp",
+        "/assets/PSIKOTEST-03.webp",
+        "/assets/PSIKOTEST-04.webp",
+        "/assets/PSIKOTEST-05.webp",
+        "/assets/PSIKOTEST-06.webp",
+        "/assets/PSIKOTEST-07.webp",
+        "/assets/PSIKOTEST-08.webp",
+        "/assets/PSIKOTEST-09.webp",
+        "/assets/PSIKOTEST-10.webp",
+        "/assets/PSIKOTEST-11.webp",
+        "/assets/PSIKOTEST-12.webp",
+        "/assets/PSIKOTEST-13.webp",
+        "/assets/PSIKOTEST-14.webp",
+        "/assets/PSIKOTEST-15.webp",
+        "/assets/PSIKOTEST-16.webp",
+        "/assets/PSIKOTEST-17.webp",
+        "/assets/PSIKOTEST-18.webp",
+        "/assets/PSIKOTEST-19.webp",
+        "/assets/PSIKOTEST-20.webp",
+        "/assets/PSIKOTEST-21.webp",
+        "/assets/PSIKOTEST-22.webp",
+        "/assets/PSIKOTEST-23.webp",
+        "/assets/PSIKOTEST-24.webp",
+        "/assets/PSIKOTEST-25.webp",
+        "/assets/PSIKOTEST-26.webp",
+        "/assets/PSIKOTEST-27.webp",
+        "/assets/PSIKOTEST-28.webp",
+        "/assets/PSIKOTEST-29.webp",
+        "/assets/PSIKOTEST-30.webp",
+        "/assets/PSIKOTEST-31.webp",
+        "/assets/PSIKOTEST-32.webp",
+        "/assets/PSIKOTEST-33.webp",
+        "/assets/PSIKOTEST-34.webp",
+        "/assets/PSIKOTEST-35.webp",
+        "/assets/PSIKOTEST-36.webp",
+      ],
+      c: new Array,
       a: new Array,
       valid: true,
       comKey: new Array,
@@ -456,7 +168,15 @@ export default {
         }, 1000)
       }
     },
-    updateAnswer (i) { this.a.push({ questionNo: i.n, answer: i.a }); },
+    updateAnswer (payload) {
+      if (this.a[payload.index]) {
+        this.a.splice(payload.index, 1);
+      }
+      this.a.push({
+        questionNo: payload.i.n,
+        answer: payload.i.a
+      })
+    },
     updateValid (i) { this.valid = i; },
     reset () {
       console.log(this.valid)
@@ -465,35 +185,22 @@ export default {
     submit () {
       const data = {
         examInfoId: this.$route.params.examId,
-        examTypeId: 1,
+        examTypeId: 2,
         examAnswer: this.a
       }
       this.$store.dispatch('postAnswerList', data)
         .then(() => {
-          this.$router.push({ name: 'apm', params: { examId: this.$route.params.examId } })
+          this.$router.push({ name: 'eng', params: { examId: this.$route.params.examId } })
         })
     },
     getAnswer (answerArr) {
       for (let index = 0; index < answerArr.length; index++) {
         const questionNo = answerArr[index].questionNo
         const answer = answerArr[index].answer
-        if (answer.substr(0, 1) == "M") {
-          if (answer.substr(2) == "Star") {
-            this.m[questionNo - 1] = "*"
-          } else {
-            this.m[questionNo - 1] = answer.substr(2)
-          }
-          this.comKey[questionNo - 1] = questionNo
-        } else {
-          if (answer.substr(2) == "Star") {
-            this.l[questionNo - 1] = "*"
-          } else {
-            this.l[questionNo - 1] = answer.substr(2)
-          }
-          this.comKey[questionNo - 1] = questionNo
-        }
+        this.c[questionNo - 1] = answer
+        this.comKey[questionNo - 1] = questionNo //Key changed will force component re-rende
+        this.$forceUpdate() //Still re-render when hard refresh (ctrl + f5)  
       }
-      this.$forceUpdate();
     }
   },
   watch: {
@@ -504,14 +211,14 @@ export default {
     }
   },
   components: {
-    dataInputDisc
+    dataInputApm
   },
   created () {
     this.$store.dispatch('getApplicant', { examInfoId: this.$route.params.examId })
-    this.$store.dispatch('getCompletedStatus', { examType: 1, examInfoId: this.$route.params.examId })
+    this.$store.dispatch('getCompletedStatus', { examType: 2, examInfoId: this.$route.params.examId })
       .then(() => {
         if (this.isCompleted) {
-          this.$store.dispatch('getAnswerList', { examType: 1, examInfoId: this.$route.params.examId })
+          this.$store.dispatch('getAnswerList', { examType: 2, examInfoId: this.$route.params.examId })
         }
       })
   }

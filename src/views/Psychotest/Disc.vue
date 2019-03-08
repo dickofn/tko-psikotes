@@ -505,7 +505,7 @@ export default {
           this.comKey[questionNo - 1] = questionNo //Key changed will force component re-rende
         }
       }
-      this.$forceUpdate(); //Still re-render when hard refresh (ctrl + f5)
+      this.$forceUpdate() //Still re-render when hard refresh (ctrl + f5)
     }
   },
   watch: {
