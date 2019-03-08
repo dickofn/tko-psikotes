@@ -485,17 +485,17 @@ export default {
           } else {
             this.m[questionNo - 1] = answer.substr(2)
           }
-          this.comKey[questionNo - 1] = questionNo
+          this.comKey[questionNo - 1] = questionNo //Key changed will force component re-rende
         } else {
           if (answer.substr(2) == "Star") {
             this.l[questionNo - 1] = "*"
           } else {
             this.l[questionNo - 1] = answer.substr(2)
           }
-          this.comKey[questionNo - 1] = questionNo
+          this.comKey[questionNo - 1] = questionNo //Key changed will force component re-rende
         }
       }
-      this.$forceUpdate();
+      this.$forceUpdate(); //Still re-render when hard refresh (ctrl + f5)
     }
   },
   watch: {
