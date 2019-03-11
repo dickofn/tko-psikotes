@@ -12,7 +12,7 @@
           </v-card-title>
           <v-card-text>
             <v-container>
-              <v-form ref="form">
+              <v-form ref="form" @submit.prevent="submit">
                 <v-layout row wrap mb-2>
                   <v-flex md8 offset-md2 xs12>
                     <h1>INSTRUKSI</h1>
@@ -24,41 +24,16 @@
                   </v-flex>
                 </v-layout>
 
-                <template v-if="isStarted && !isFinished">
-                  <component
-                    :is="page"
-                    @a0Updated="updateA0"
-                    @a1Updated="updateA1"
-                    @a2Updated="updateA2"
-                    @a3Updated="updateA3"
-                    @a4Updated="updateA4"
-                    @a5Updated="updateA5"
-                    @a6Updated="updateA6"
-                    @a7Updated="updateA7"
-                    @a8Updated="updateA8"
-                    @a9Updated="updateA9"
-                    @a10Updated="updateA10"
-                    @a11Updated="updateA11"
-                    @a12Updated="updateA12"
-                    @a13Updated="updateA13"
-                    @a14Updated="updateA14"
-                    @a15Updated="updateA15"
-                    @a16Updated="updateA16"
-                    @a17Updated="updateA17"
-                    @a18Updated="updateA18"
-                    @a19Updated="updateA19"
-                    @a20Updated="updateA20"
-                    @a21Updated="updateA21"
-                    @a22Updated="updateA22"
-                    @a23Updated="updateA23"
-                    @a24Updated="updateA24"
-                    @a25Updated="updateA25"
-                    @a26Updated="updateA26"
-                    @a27Updated="updateA27"
-                    @a28Updated="updateA28"
-                    @a29Updated="updateA29"
-                    :a="a"
-                  ></component>
+                <template v-if="(isStarted && !isFinished) || isCompleted">
+                  <data-input-story
+                    :no="currPage"
+                    :s="currStory"
+                    :q="currQuestion"
+                    :o="currOption"
+                    :c="c[index]"
+                    @cUpdated="updateC"
+                    :key="comKey"
+                  ></data-input-story>
                 </template>
 
                 <v-layout row warp justify-center align-center text-xs-center v-if="isFinished">
@@ -69,13 +44,13 @@
 
                 <v-layout row wrap mt-5 justify-end>
                   <v-flex offset-md6 offset-lg7 offset-xl8>
-                    <template v-if="isStarted && !isFinished">
+                    <template v-if="(isStarted && !isFinished) || isCompleted">
                       <v-btn color="info" :disabled="currPage==1" @click="pageBack">&larr; Back</v-btn>
-                      <v-btn color="info" :disabled="currPage==3" @click="pageNext">Next &rarr;</v-btn>
+                      <v-btn color="info" :disabled="currPage==30" @click="pageNext">Next &rarr;</v-btn>
                     </template>
                   </v-flex>
                 </v-layout>
-                <v-layout row wrap mt-5 justify-end>
+                <v-layout row wrap mt-5 justify-end v-if="!isCompleted">
                   <v-flex offset-md6 offset-lg7 offset-xl8>
                     <template v-if="!isStarted && !isFinished">
                       <v-btn color="info" @click="startExam">Start</v-btn>
@@ -83,7 +58,7 @@
                         <h2>Waktu pengerjaan {{ prettyTime }}</h2>
                       </span>
                     </template>
-                    <v-btn :disabled="!valid" color="success" v-if="isStarted">Submit</v-btn>
+                    <v-btn :disabled="!valid" color="success" v-if="isStarted" type="submit">Submit</v-btn>
                     <v-btn color="error" @click="reset" v-if="isStarted && !isFinished">Reset Form</v-btn>
                   </v-flex>
                 </v-layout>
@@ -104,9 +79,8 @@
 </template>
 
 <script>
-import storyPage1 from '../../components/Psychotest/Story/StoryPage1'
-import storyPage2 from '../../components/Psychotest/Story/StoryPage2'
-import storyPage3 from '../../components/Psychotest/Story/StoryPage3'
+import dataInputStory from '../../components/Psychotest/Input/DataInputStory'
+
 
 export default {
   data () {
@@ -115,9 +89,83 @@ export default {
       timer: null,
       isStarted: false,
       isFinished: false,
+      stories: [
+        "Seorang penjaga kios dijatuhi hukuman mati oleh pengadilan tinggi Kuala Lumpur karena mengedarkan 384.17 gram kanabis tiga tahun lalu. Hakim pengadilan tinggi menyatakan Ismail Mohamad (disingkat IM), 22, bersalah melakukan pelanggaran ini pada 23 Juni 1987. Ismail tampak tenang tetapi ibunya menangis tersedu-sedu ketika vonis dijatuhkan. Undang-undang obat terlarang menuntut hukuman mati bagi siapa saja yang tertangkap dengan 15 gram atau lebih heroin, 200 gram kanabis, atau satu kilogram candu. Lebih dari 70 orang termasuk 26 orang asing, telah digantung karena.pelanggaran obat terlarang sejak 1975.",
+        "Pengendalian hama memerlukan pengetahuan dan keterampilan khusus yang umumnya dimiliki oleh perusahaan pengendalian hama yang profesional. Meskipun telah digunakan sarana baku yang canggih. seperti penggunaan bahan kimia maupun cara mekanik, tetapi cara tradisional pun masih diterapkan bila perlu. Sebelum melaksanakan pembasmian, pemeriksaan lapangan dan identifikasi jenis hama perlu diadakan, yaitu melalui jejak kaki, jejak ekor, tinja atau urine. Ada tiga jenis hama yang dapat tinggal dalam satu bangunan, masing-masing mempunyai teritorial sendiri tanpa saling mengganggu. Ukuran badan, kesukaan makanan, dan jumlah kelahiran anak berbeda, namun sifat kecurigaan terhadap barang baru sama. Mereka sangat peka terhadap perubahan cahaya dan-mempunyai kebiasaan mengerat apa saja dari kayu, paralon, kabel sampai kasa kawat. Tujuan mengerat terutama untuk mengasah gigi pengeratnya yang selalu bertambah panjang (yang dapat menyebabkan kematiannya). Selain itu hama ini mengerat untuk dapat menembus benda yang menghalangi mereka keluar-masuk. Kebiasaan yang merupakan kelemahan mereka adalah tidak mengubah trayek lalu lintas mereka, kecuali dalam keadaan terpaksa.",
+        "Dari Pentagon diumumkan bahwa rencana anggaran militer Amerika Serikat (AS) untuk lima tahun mendatang akan berkurang 50 milyar dolar. Dana tersebut akan dialihkan untuk program-program lain termasuk untuk usaha mengatasi kesulitan ekonomi. Pengurangan anggaran tersebut pasti akan mempengaruhi program-program militer dasar. Namun belum ada keputusan terakhir tentang ini. Menteri pertahanan dan kepala staf gabungan telah memerintahkan peninjauan kembali secara menyeluruh kebutuhan-kebutuhan militer di masa mendatang untuk disesuaikan. Tidak terelakkan, AS harus mengurangi pasukannya. pesawat dan kapal-kapal tempur. Dengan pengurangan tersebut anggaran militer untuk lima tahun mendatang turun menjadi 240 milyar dolar.<br> Pengurangan ini merupakan hasil dari tekanan rakyat atas anggaran militer yang dinilai terlalu besar. Sebagian rakyat tidak melihat lagi relevansi anggaran militer yang besar setelah tenggelamnya komunisme di banyak negara termasuk Uni Soviet dan berakhirnya Perang Dingin. Berbagai pihak mendesak untuk menempatkan program-program dalam negeri pada prioritas yang lebih tinggi. Sedang anggaran militer cukup untuk menghadapi kemungkinan yang terburuk pada masa yang akan datang. Namun kemungkinan yang terburuk itu sangat tipis terjadi bila melihat situasi dunia sekarang. Kemungkinan, Pentagon akan mengurangi divisi-divisi angkatan daratnya yang aktif, angkatan udaranya terpaksa harus mengurangi wing-wing tempur, dan angkatan lautnya harus mengurangi kapal induk. Program-program senjata canggih seperti pembom B-2 Stealth, jet tempur F-22 dan kapal selam seawolf kemungkinan akan dibatalkan atau ditunda."
+      ],
+      questions: [
+        "Dalam peristiwa ini IM disebut : ",
+        "Sejak ditangkap sampai digantung diperlukan waktu : ",
+        "Ismail Mohamad tergolong : ",
+        "Bacaan ini ditulis pada tahun : ",
+        "Polisi narkotik menangkap IM atas tuduhan sebagai : ",
+        "Hukuman mati berkaitan dengan narkotika ini berlaku untuk semua : ",
+        "Ketika vonis dijatuhkan ibunya menangis dengan : ",
+        "Menurut undang-undang tersebut obat terlarang yang dianggap paling berbahaya bagi umat adalah : ",
+        "Pernyataan yang paling tepat bagi isi cerita ini adalah : ",
+        "Sejak undang-undang berlaku sampai ditulisnya baccan ini, RATA-RATA setiap tahun yang telah menjalani hukuman gantung sekitar : ",
+        "Hama yang disebut tadi adalah : ",
+        "Pengendalian hama yang profesional perlu pengetahuan : ",
+        "Satu perusahaan disebut profesional bila perusahaan itu : ",
+        "Hama ini mengerat untuk membuat : ",
+        "Untuk mengenali hama ini dilakukan pemeriksaan : ",
+        "Jenis-jenis hama ini dapat memenuhi satu tempat dan mereka saling : ",
+        "Pemeriksaan dilapangan guna pemberantasan hama tersebut dimaksudkan untuk mengenali : ",
+        "Membasmi hama ini perlu memanfaatkan kebiasaan hama yang menetap, ialah cara mereka : ",
+        "Gambaran keistimewaan hama ini adalah gigi serinya : ",
+        "Sejak undang-undang berlaku sampai ditulisnya baccan ini, RATA-RATA setiap tahun yang telah menjalani hukuman gantung sekitar : ",
+        "Pentagon berarti  : ",
+        "Departemen yang menghuni Pentagon adalah Departemen : ",
+        "Tertulis dengan angka, banyaknya nol dalam “50 milyar” ada : ",
+        "Semula, berapakah anggaran militer AS lima tahunan : ",
+        "Tinjauan menyeluruh kebutuhan-kebutuhan militer dilakukan untuk disesuaikan dengan : ",
+        "Pengurangan anggaran ini adalah kehendak : ",
+        "Anggaran militer besar-besaran tidak diperlukan lagi sebab tidak ada lagi ancaman dari : ",
+        "Saat bacaan ini ditulis, AS sedang mengalami kesulitan : ",
+        "F-22 adalah sejenis : ",
+        "Saat bacaan ini ditulis, B-2, F-22 dan Seawolf, besar kemungkinan sedang dalam proses :'"
+      ],
+      options: [
+        ['terdakwa', 'tahanan', 'tanpa pembela', 'terpidana', 'terperdaya'],
+        ['1-4 tahun', '5-10 tahun', 'puluhan tahun', 'tidak menentu', 'tak disebutkan'],
+        ['penjaga keamanan', 'tukang tadah', 'setengah baya', 'pemuda', 'remaja'],
+        ['tidak diketahui', '1998', '1987', '1980', '1975'],
+        ['cukong', 'abonemen', 'sub-agen', 'konsumen', 'produsen'],
+        ['warga negara', 'terdakwa', 'penduduk', 'orang', 'penduduk yang menetap'],
+        ['isakan', 'ratapan', 'histeris', 'wajah sendu', 'penuh sesal'],
+        ['kanabis', 'heroin', 'cocain', 'morfin', 'candu'],
+        ['hukuman kejam bagi pelanggar belum tentu efektif', 'hukuman gantung bagi generasi muda', 'hukuman dilaksanakan tanpa pandang bulu', 'banyak orang asing tidak menyadari hukum gantung ini', 'hukuman gantung paling efektif memberantas narkotika'],
+        ['2 sampai 10 orang', 'belasan orang', 'dua puluhan orang', 'lebih dari 70 orang', 'tidak terhitung'],
+        ['rayap', 'bangsat', 'pengerat', 'tikus', 'kucing'],
+        ['ekologi', 'parasitologi', 'teknik mekanik', 'khusus', 'tradisional'],
+        ['besar', 'komersial', 'handal', 'canggih', 'modern'],
+        ['perlindungan', 'teritorial', 'sarang', 'bangunan', 'terowongan'],
+        ['bercak kaki', 'air seni', 'bekas gigitan', 'bekas trayek', 'apa saja yang dikerat'],
+        ['komunikasi lewat trayek', 'bantu-membantu', 'menghormati wilayah', 'Menghindari satu sama lain', 'curiga-mencurigai'],
+        ['kerusakannya', 'pembiakannya', 'variestasnya', 'kelemahannya', 'pengasahan giginya'],
+        ['pulang-pergi', 'mengerat makanan', 'mengasah gigi', 'menembus benda', 'berkembang biak'],
+        ['sekuat kawat', 'besar tetap pendek', 'sangat tajam', 'tumbuh terus', 'berbisa mematikan'],
+        ['cahaya terang', 'barang asing', 'pergantian cahaya', 'bahan kimia', 'trayek lalu lintas'],
+        ['tiga', 'empat', 'lima', 'enam', 'tujuh'],
+        ['Dalam Negeri', 'Luar Negeri', 'Tenaga Kerja', 'Pertahanan', 'Keuangan'],
+        ['tiga belas', 'dua belas', 'sebelas', 'sepuluh', 'sembilan'],
+        ['240 milyar', '245 milyar', '260 milyar', '280 milyar', '290 milyar'],
+        ['penciutan anggaran', 'berakhirnya perang dingin', 'perintah kepala staf', 'kesulitan ekonomi', 'departemen keuangan AS'],
+        ['Rakyat AS', 'Pemerintah AS', 'Menteri Pertahanan dan Kepala Staf Gabungan', 'Departemen Ekonomi', 'Pembatalan dan penundaan'],
+        ['situasi dunia', 'dalam negeri', 'ekonomi buruk', 'komunisme', 'separatis'],
+        ['militer', 'politik', 'ekonomi', 'keamanan', 'prioritas'],
+        ['kapal perang', 'pesawat udara', 'pesawat amphibi', 'senjata nuklir', 'misil balistik'],
+        ['dibatalkan', 'ditunda', 'disempurnakan', 'diuji coba', 'dirancang']
+      ],
       currPage: 1,
-      a: new Array(30),
+      c: new Array(30),
+      a: new Array,
+      comKey: 0,
       valid: false,
+      rules: {
+        required: v => !!v || '',
+      }
     }
   },
   computed: {
@@ -133,15 +181,34 @@ export default {
       }
       return minutes + ":" + secondes
     },
-    page () {
-      if (this.currPage == 1) {
-        return 'storyPage1'
-      } else if (this.currPage == 2) {
-        return 'storyPage2'
+    currStory () {
+      if (this.currPage <= 10) {
+        return this.stories[0]
+      } else if (this.currPage <= 20) {
+        return this.stories[1]
       } else {
-        return 'storyPage3'
+        return this.stories[2]
       }
     },
+    currQuestion () {
+      return this.questions[this.index]
+    },
+    currOption () {
+      return this.options[this.index]
+    },
+    index () {
+      return this.currPage - 1
+    },
+    isCompleted () {
+      if (this.$store.state.exam.isCompleted == 0) {
+        return false
+      } else {
+        return true
+      }
+    },
+    answerList () {
+      return this.$store.state.exam.answerList
+    }
   },
   methods: {
     startExam () {
@@ -158,57 +225,34 @@ export default {
         }, 1000)
       }
     },
-    checkA () {
+    updateC (payload) {
+      this.c[payload.index] = payload.i
+      this.checkC()
+      this.updateA(payload.i)
+    },
+    checkC () {
       var checkEl = true;
-      for (let index = 0; index < this.a.length; index++) {
-        const element = this.a[index];
+      for (let index = 0; index < this.c.length; index++) {
+        const element = this.c[index];
         if (element == null || element == undefined || element == '') { checkEl = false; break }
       }
       if (checkEl || this.isFinished) { this.valid = true }
       else { this.valid = false }
     },
-    updateA0 (i) { this.a[0] = i; this.checkA(); },
-    updateA1 (i) { this.a[1] = i; this.checkA(); },
-    updateA2 (i) { this.a[2] = i; this.checkA(); },
-    updateA3 (i) { this.a[3] = i; this.checkA(); },
-    updateA4 (i) { this.a[4] = i; this.checkA(); },
-    updateA5 (i) { this.a[5] = i; this.checkA(); },
-    updateA6 (i) { this.a[6] = i; this.checkA(); },
-    updateA7 (i) { this.a[7] = i; this.checkA(); },
-    updateA8 (i) { this.a[8] = i; this.checkA(); },
-    updateA9 (i) { this.a[9] = i; this.checkA(); },
-    updateA10 (i) { this.a[10] = i; this.checkA(); },
-    updateA11 (i) { this.a[11] = i; this.checkA(); },
-    updateA12 (i) { this.a[12] = i; this.checkA(); },
-    updateA13 (i) { this.a[13] = i; this.checkA(); },
-    updateA14 (i) { this.a[14] = i; this.checkA(); },
-    updateA15 (i) { this.a[15] = i; this.checkA(); },
-    updateA16 (i) { this.a[16] = i; this.checkA(); },
-    updateA17 (i) { this.a[17] = i; this.checkA(); },
-    updateA18 (i) { this.a[18] = i; this.checkA(); },
-    updateA19 (i) { this.a[19] = i; this.checkA(); },
-    updateA20 (i) { this.a[20] = i; this.checkA(); },
-    updateA21 (i) { this.a[21] = i; this.checkA(); },
-    updateA22 (i) { this.a[22] = i; this.checkA(); },
-    updateA23 (i) { this.a[23] = i; this.checkA(); },
-    updateA24 (i) { this.a[24] = i; this.checkA(); },
-    updateA25 (i) { this.a[25] = i; this.checkA(); },
-    updateA26 (i) { this.a[26] = i; this.checkA(); },
-    updateA27 (i) { this.a[27] = i; this.checkA(); },
-    updateA28 (i) { this.a[28] = i; this.checkA(); },
-    updateA29 (i) { this.a[29] = i; this.checkA(); },
-    updateValid (i) {
-      const isArrEmpty = false
+    updateA (i) {
       for (let index = 0; index < this.a.length; index++) {
-        const element = this.a[index];
-        if (element == null || element == undefined || element == "") isArrEmpty == true;
+        const n = this.a[index].questionNo;
+        const a = this.a[index].answer;
+        if (n == this.currPage && a) {
+          this.a.splice(index, 1);
+          break;
+        }
       }
-
-      if (isArrEmpty) {
-        this.valid = false
-      } else {
-        this.valid = i;
-      }
+      this.a.push({
+        questionNo: this.currPage,
+        answer: i
+      })
+      console.log(this.a)
     },
     reset () {
       console.log(this.valid)
@@ -220,15 +264,50 @@ export default {
       }
     },
     pageNext () {
-      if (this.currPage < 3) {
+      if (this.currPage < 30) {
         this.currPage++;
       }
     },
+    submit () {
+      const data = {
+        examInfoId: this.$route.params.examId,
+        examTypeId: 4,
+        examAnswer: this.a
+      }
+      this.$store.dispatch('postAnswerList', data)
+        .then(() => {
+          this.$router.push({ name: 'math', params: { examId: this.$route.params.examId } })
+        })
+    },
+    getAnswer (answerArr) {
+      for (let index = 0; index < answerArr.length; index++) {
+        const questionNo = answerArr[index].questionNo
+        const answer = answerArr[index].answer
+        this.c[questionNo - 1] = answer
+        this.comKey = questionNo //Key changed will force component re-rende
+        this.$forceUpdate() //Still re-render when hard refresh (ctrl + f5)  
+      }
+    }
+
+  },
+  watch: {
+    answerList (value) {
+      if (value != null || value != undefined) {
+        this.getAnswer(value)
+      }
+    }
   },
   components: {
-    storyPage1,
-    storyPage2,
-    storyPage3
+    dataInputStory
+  },
+  created () {
+    this.$store.dispatch('getApplicant', { examInfoId: this.$route.params.examId })
+    this.$store.dispatch('getCompletedStatus', { examType: 4, examInfoId: this.$route.params.examId })
+      .then(() => {
+        if (this.isCompleted) {
+          this.$store.dispatch('getAnswerList', { examType: 4, examInfoId: this.$route.params.examId })
+        }
+      })
   }
 }
 </script>
