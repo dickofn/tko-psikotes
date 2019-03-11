@@ -128,7 +128,7 @@
                     @a98Updated="updateA98"
                     @a99Updated="updateA99"
                     :a="a"
-                    :key=comKey
+                    :key="comKey"
                   ></component>
                 </template>
 
@@ -189,7 +189,7 @@ export default {
       isStarted: false,
       isFinished: false,
       currPage: 1,
-      a: new Array,
+      a: new Array(100),
       answer: new Array,
       comKey: 0,
       valid: false,
@@ -373,19 +373,6 @@ export default {
     updateA97 (i) { this.a[97] = i; this.checkA(); this.updateAnswer({ index: 97, i }) },
     updateA98 (i) { this.a[98] = i; this.checkA(); this.updateAnswer({ index: 98, i }) },
     updateA99 (i) { this.a[99] = i; this.checkA(); this.updateAnswer({ index: 99, i }) },
-    updateValid (i) {
-      const isArrEmpty = false
-      for (let index = 0; index < this.a.length; index++) {
-        const element = this.a[index];
-        if (element == null || element == undefined || element == "") isArrEmpty == true;
-      }
-
-      if (isArrEmpty) {
-        this.valid = false
-      } else {
-        this.valid = i;
-      }
-    },
     reset () {
       console.log(this.valid)
       this.$refs.form.reset()
