@@ -12,19 +12,19 @@
           </v-card-title>
           <v-card-text>
             <v-container>
-              <v-form ref="form">
+              <v-form ref="form" @submit.prevent="submit">
                 <v-layout row wrap mb-2>
                   <v-flex md8 offset-md2 xs12>
                     <h1>INSTRUKSI</h1>
                     <p>
-                      <b>&rarr;</b> Bacalah kalimat A dan kalimat B. Setiap nomor memiliki satu kalimat dengan penulisan yang tidak tepat. 
+                      <b>&rarr;</b> Bacalah kalimat A dan kalimat B. Setiap nomor memiliki satu kalimat dengan penulisan yang tidak tepat.
                       <br>
                       <b>&rarr;</b> Pilihlah kalimat dengan penulisan yang tepat menurut anda.
                     </p>
                   </v-flex>
                 </v-layout>
 
-                <template v-if="isStarted && !isFinished">
+                <template v-if="(isStarted && !isFinished) || isCompleted">
                   <component
                     :is="page"
                     @a0Updated="updateA0"
@@ -128,6 +128,7 @@
                     @a98Updated="updateA98"
                     @a99Updated="updateA99"
                     :a="a"
+                    :key=comKey
                   ></component>
                 </template>
 
@@ -139,13 +140,13 @@
 
                 <v-layout row wrap mt-5 justify-end>
                   <v-flex offset-md6 offset-lg7 offset-xl8>
-                    <template v-if="isStarted && !isFinished">
+                    <template v-if="(isStarted && !isFinished) || isCompleted">
                       <v-btn color="info" :disabled="currPage==1" @click="pageBack">&larr; Back</v-btn>
                       <v-btn color="info" :disabled="currPage==5" @click="pageNext">Next &rarr;</v-btn>
                     </template>
                   </v-flex>
                 </v-layout>
-                <v-layout row wrap mt-5 justify-end>
+                <v-layout row wrap mt-5 justify-end v-if="!isCompleted">
                   <v-flex offset-md6 offset-lg7 offset-xl8>
                     <template v-if="!isStarted && !isFinished">
                       <v-btn color="info" @click="startExam">Start</v-btn>
@@ -153,7 +154,7 @@
                         <h2>Waktu pengerjaan {{ prettyTime }}</h2>
                       </span>
                     </template>
-                    <v-btn :disabled="!valid" color="success" v-if="isStarted">Submit</v-btn>
+                    <v-btn :disabled="!valid" color="success" v-if="isStarted" type="submit">Submit</v-btn>
                     <v-btn color="error" @click="reset" v-if="isStarted && !isFinished">Reset Form</v-btn>
                   </v-flex>
                 </v-layout>
@@ -188,7 +189,9 @@ export default {
       isStarted: false,
       isFinished: false,
       currPage: 1,
-      a: new Array(100),
+      a: new Array,
+      answer: new Array,
+      comKey: 0,
       valid: false,
     }
   },
@@ -218,6 +221,19 @@ export default {
         return 'englishPage5'
       }
     },
+    applicantName () {
+      return this.$store.state.user.examApplicantName
+    },
+    isCompleted () {
+      if (this.$store.state.exam.isCompleted == 0) {
+        return false
+      } else {
+        return true
+      }
+    },
+    answerList () {
+      return this.$store.state.exam.answerList
+    }
   },
   methods: {
     startExam () {
@@ -243,106 +259,120 @@ export default {
       if (checkEl || this.isFinished) { this.valid = true }
       else { this.valid = false }
     },
-    updateA0 (i) { this.a[0] = i; this.checkA(); },
-    updateA1 (i) { this.a[1] = i; this.checkA(); },
-    updateA2 (i) { this.a[2] = i; this.checkA(); },
-    updateA3 (i) { this.a[3] = i; this.checkA(); },
-    updateA4 (i) { this.a[4] = i; this.checkA(); },
-    updateA5 (i) { this.a[5] = i; this.checkA(); },
-    updateA6 (i) { this.a[6] = i; this.checkA(); },
-    updateA7 (i) { this.a[7] = i; this.checkA(); },
-    updateA8 (i) { this.a[8] = i; this.checkA(); },
-    updateA9 (i) { this.a[9] = i; this.checkA(); },
-    updateA10 (i) { this.a[10] = i; this.checkA(); },
-    updateA11 (i) { this.a[11] = i; this.checkA(); },
-    updateA12 (i) { this.a[12] = i; this.checkA(); },
-    updateA13 (i) { this.a[13] = i; this.checkA(); },
-    updateA14 (i) { this.a[14] = i; this.checkA(); },
-    updateA15 (i) { this.a[15] = i; this.checkA(); },
-    updateA16 (i) { this.a[16] = i; this.checkA(); },
-    updateA17 (i) { this.a[17] = i; this.checkA(); },
-    updateA18 (i) { this.a[18] = i; this.checkA(); },
-    updateA19 (i) { this.a[19] = i; this.checkA(); },
-    updateA20 (i) { this.a[20] = i; this.checkA(); },
-    updateA21 (i) { this.a[21] = i; this.checkA(); },
-    updateA22 (i) { this.a[22] = i; this.checkA(); },
-    updateA23 (i) { this.a[23] = i; this.checkA(); },
-    updateA24 (i) { this.a[24] = i; this.checkA(); },
-    updateA25 (i) { this.a[25] = i; this.checkA(); },
-    updateA26 (i) { this.a[26] = i; this.checkA(); },
-    updateA27 (i) { this.a[27] = i; this.checkA(); },
-    updateA28 (i) { this.a[28] = i; this.checkA(); },
-    updateA29 (i) { this.a[29] = i; this.checkA(); },
-    updateA30 (i) { this.a[30] = i; this.checkA(); },
-    updateA31 (i) { this.a[31] = i; this.checkA(); },
-    updateA32 (i) { this.a[32] = i; this.checkA(); },
-    updateA33 (i) { this.a[33] = i; this.checkA(); },
-    updateA34 (i) { this.a[34] = i; this.checkA(); },
-    updateA35 (i) { this.a[35] = i; this.checkA(); },
-    updateA36 (i) { this.a[36] = i; this.checkA(); },
-    updateA37 (i) { this.a[37] = i; this.checkA(); },
-    updateA38 (i) { this.a[38] = i; this.checkA(); },
-    updateA39 (i) { this.a[39] = i; this.checkA(); },
-    updateA40 (i) { this.a[40] = i; this.checkA(); },
-    updateA41 (i) { this.a[41] = i; this.checkA(); },
-    updateA42 (i) { this.a[42] = i; this.checkA(); },
-    updateA43 (i) { this.a[43] = i; this.checkA(); },
-    updateA44 (i) { this.a[44] = i; this.checkA(); },
-    updateA45 (i) { this.a[45] = i; this.checkA(); },
-    updateA46 (i) { this.a[46] = i; this.checkA(); },
-    updateA47 (i) { this.a[47] = i; this.checkA(); },
-    updateA48 (i) { this.a[48] = i; this.checkA(); },
-    updateA49 (i) { this.a[49] = i; this.checkA(); },
-    updateA50 (i) { this.a[50] = i; this.checkA(); },
-    updateA51 (i) { this.a[51] = i; this.checkA(); },
-    updateA52 (i) { this.a[52] = i; this.checkA(); },
-    updateA53 (i) { this.a[53] = i; this.checkA(); },
-    updateA54 (i) { this.a[54] = i; this.checkA(); },
-    updateA55 (i) { this.a[55] = i; this.checkA(); },
-    updateA56 (i) { this.a[56] = i; this.checkA(); },
-    updateA57 (i) { this.a[57] = i; this.checkA(); },
-    updateA58 (i) { this.a[58] = i; this.checkA(); },
-    updateA59 (i) { this.a[59] = i; this.checkA(); },
-    updateA60 (i) { this.a[60] = i; this.checkA(); },
-    updateA61 (i) { this.a[61] = i; this.checkA(); },
-    updateA62 (i) { this.a[62] = i; this.checkA(); },
-    updateA63 (i) { this.a[63] = i; this.checkA(); },
-    updateA64 (i) { this.a[64] = i; this.checkA(); },
-    updateA65 (i) { this.a[65] = i; this.checkA(); },
-    updateA66 (i) { this.a[66] = i; this.checkA(); },
-    updateA67 (i) { this.a[67] = i; this.checkA(); },
-    updateA68 (i) { this.a[68] = i; this.checkA(); },
-    updateA69 (i) { this.a[69] = i; this.checkA(); },
-    updateA70 (i) { this.a[70] = i; this.checkA(); },
-    updateA71 (i) { this.a[71] = i; this.checkA(); },
-    updateA72 (i) { this.a[72] = i; this.checkA(); },
-    updateA73 (i) { this.a[73] = i; this.checkA(); },
-    updateA74 (i) { this.a[74] = i; this.checkA(); },
-    updateA75 (i) { this.a[75] = i; this.checkA(); },
-    updateA76 (i) { this.a[76] = i; this.checkA(); },
-    updateA77 (i) { this.a[77] = i; this.checkA(); },
-    updateA78 (i) { this.a[78] = i; this.checkA(); },
-    updateA79 (i) { this.a[79] = i; this.checkA(); },
-    updateA80 (i) { this.a[80] = i; this.checkA(); },
-    updateA81 (i) { this.a[81] = i; this.checkA(); },
-    updateA82 (i) { this.a[82] = i; this.checkA(); },
-    updateA83 (i) { this.a[83] = i; this.checkA(); },
-    updateA84 (i) { this.a[84] = i; this.checkA(); },
-    updateA85 (i) { this.a[85] = i; this.checkA(); },
-    updateA86 (i) { this.a[86] = i; this.checkA(); },
-    updateA87 (i) { this.a[87] = i; this.checkA(); },
-    updateA88 (i) { this.a[88] = i; this.checkA(); },
-    updateA89 (i) { this.a[89] = i; this.checkA(); },
-    updateA90 (i) { this.a[90] = i; this.checkA(); },
-    updateA91 (i) { this.a[91] = i; this.checkA(); },
-    updateA92 (i) { this.a[92] = i; this.checkA(); },
-    updateA93 (i) { this.a[93] = i; this.checkA(); },
-    updateA94 (i) { this.a[94] = i; this.checkA(); },
-    updateA95 (i) { this.a[95] = i; this.checkA(); },
-    updateA96 (i) { this.a[96] = i; this.checkA(); },
-    updateA97 (i) { this.a[97] = i; this.checkA(); },
-    updateA98 (i) { this.a[98] = i; this.checkA(); },
-    updateA99 (i) { this.a[99] = i; this.checkA(); },
+    updateAnswer (i) {
+      for (let index = 0; index < this.answer.length; index++) {
+        const n = this.answer[index].questionNo;
+        const a = this.answer[index].answer;
+        if (n == i.index + 1 && a) {
+          this.answer.splice(index, 1);
+          break;
+        }
+      }
+      this.answer.push({
+        questionNo: i.index + 1,
+        answer: i.i
+      })
+    },
+    updateA0 (i) { this.a[0] = i; this.checkA(); this.updateAnswer({ index: 0, i }) },
+    updateA1 (i) { this.a[1] = i; this.checkA(); this.updateAnswer({ index: 1, i }) },
+    updateA2 (i) { this.a[2] = i; this.checkA(); this.updateAnswer({ index: 2, i }) },
+    updateA3 (i) { this.a[3] = i; this.checkA(); this.updateAnswer({ index: 3, i }) },
+    updateA4 (i) { this.a[4] = i; this.checkA(); this.updateAnswer({ index: 4, i }) },
+    updateA5 (i) { this.a[5] = i; this.checkA(); this.updateAnswer({ index: 5, i }) },
+    updateA6 (i) { this.a[6] = i; this.checkA(); this.updateAnswer({ index: 6, i }) },
+    updateA7 (i) { this.a[7] = i; this.checkA(); this.updateAnswer({ index: 7, i }) },
+    updateA8 (i) { this.a[8] = i; this.checkA(); this.updateAnswer({ index: 8, i }) },
+    updateA9 (i) { this.a[9] = i; this.checkA(); this.updateAnswer({ index: 9, i }) },
+    updateA10 (i) { this.a[10] = i; this.checkA(); this.updateAnswer({ index: 10, i }) },
+    updateA11 (i) { this.a[11] = i; this.checkA(); this.updateAnswer({ index: 11, i }) },
+    updateA12 (i) { this.a[12] = i; this.checkA(); this.updateAnswer({ index: 12, i }) },
+    updateA13 (i) { this.a[13] = i; this.checkA(); this.updateAnswer({ index: 13, i }) },
+    updateA14 (i) { this.a[14] = i; this.checkA(); this.updateAnswer({ index: 14, i }) },
+    updateA15 (i) { this.a[15] = i; this.checkA(); this.updateAnswer({ index: 15, i }) },
+    updateA16 (i) { this.a[16] = i; this.checkA(); this.updateAnswer({ index: 16, i }) },
+    updateA17 (i) { this.a[17] = i; this.checkA(); this.updateAnswer({ index: 17, i }) },
+    updateA18 (i) { this.a[18] = i; this.checkA(); this.updateAnswer({ index: 18, i }) },
+    updateA19 (i) { this.a[19] = i; this.checkA(); this.updateAnswer({ index: 19, i }) },
+    updateA20 (i) { this.a[20] = i; this.checkA(); this.updateAnswer({ index: 20, i }) },
+    updateA21 (i) { this.a[21] = i; this.checkA(); this.updateAnswer({ index: 21, i }) },
+    updateA22 (i) { this.a[22] = i; this.checkA(); this.updateAnswer({ index: 22, i }) },
+    updateA23 (i) { this.a[23] = i; this.checkA(); this.updateAnswer({ index: 23, i }) },
+    updateA24 (i) { this.a[24] = i; this.checkA(); this.updateAnswer({ index: 24, i }) },
+    updateA25 (i) { this.a[25] = i; this.checkA(); this.updateAnswer({ index: 25, i }) },
+    updateA26 (i) { this.a[26] = i; this.checkA(); this.updateAnswer({ index: 26, i }) },
+    updateA27 (i) { this.a[27] = i; this.checkA(); this.updateAnswer({ index: 27, i }) },
+    updateA28 (i) { this.a[28] = i; this.checkA(); this.updateAnswer({ index: 28, i }) },
+    updateA29 (i) { this.a[29] = i; this.checkA(); this.updateAnswer({ index: 29, i }) },
+    updateA30 (i) { this.a[30] = i; this.checkA(); this.updateAnswer({ index: 30, i }) },
+    updateA31 (i) { this.a[31] = i; this.checkA(); this.updateAnswer({ index: 31, i }) },
+    updateA32 (i) { this.a[32] = i; this.checkA(); this.updateAnswer({ index: 32, i }) },
+    updateA33 (i) { this.a[33] = i; this.checkA(); this.updateAnswer({ index: 33, i }) },
+    updateA34 (i) { this.a[34] = i; this.checkA(); this.updateAnswer({ index: 34, i }) },
+    updateA35 (i) { this.a[35] = i; this.checkA(); this.updateAnswer({ index: 35, i }) },
+    updateA36 (i) { this.a[36] = i; this.checkA(); this.updateAnswer({ index: 36, i }) },
+    updateA37 (i) { this.a[37] = i; this.checkA(); this.updateAnswer({ index: 37, i }) },
+    updateA38 (i) { this.a[38] = i; this.checkA(); this.updateAnswer({ index: 38, i }) },
+    updateA39 (i) { this.a[39] = i; this.checkA(); this.updateAnswer({ index: 39, i }) },
+    updateA40 (i) { this.a[40] = i; this.checkA(); this.updateAnswer({ index: 40, i }) },
+    updateA41 (i) { this.a[41] = i; this.checkA(); this.updateAnswer({ index: 41, i }) },
+    updateA42 (i) { this.a[42] = i; this.checkA(); this.updateAnswer({ index: 42, i }) },
+    updateA43 (i) { this.a[43] = i; this.checkA(); this.updateAnswer({ index: 43, i }) },
+    updateA44 (i) { this.a[44] = i; this.checkA(); this.updateAnswer({ index: 44, i }) },
+    updateA45 (i) { this.a[45] = i; this.checkA(); this.updateAnswer({ index: 45, i }) },
+    updateA46 (i) { this.a[46] = i; this.checkA(); this.updateAnswer({ index: 46, i }) },
+    updateA47 (i) { this.a[47] = i; this.checkA(); this.updateAnswer({ index: 47, i }) },
+    updateA48 (i) { this.a[48] = i; this.checkA(); this.updateAnswer({ index: 48, i }) },
+    updateA49 (i) { this.a[49] = i; this.checkA(); this.updateAnswer({ index: 49, i }) },
+    updateA50 (i) { this.a[50] = i; this.checkA(); this.updateAnswer({ index: 50, i }) },
+    updateA51 (i) { this.a[51] = i; this.checkA(); this.updateAnswer({ index: 51, i }) },
+    updateA52 (i) { this.a[52] = i; this.checkA(); this.updateAnswer({ index: 52, i }) },
+    updateA53 (i) { this.a[53] = i; this.checkA(); this.updateAnswer({ index: 53, i }) },
+    updateA54 (i) { this.a[54] = i; this.checkA(); this.updateAnswer({ index: 54, i }) },
+    updateA55 (i) { this.a[55] = i; this.checkA(); this.updateAnswer({ index: 55, i }) },
+    updateA56 (i) { this.a[56] = i; this.checkA(); this.updateAnswer({ index: 56, i }) },
+    updateA57 (i) { this.a[57] = i; this.checkA(); this.updateAnswer({ index: 57, i }) },
+    updateA58 (i) { this.a[58] = i; this.checkA(); this.updateAnswer({ index: 58, i }) },
+    updateA59 (i) { this.a[59] = i; this.checkA(); this.updateAnswer({ index: 59, i }) },
+    updateA60 (i) { this.a[60] = i; this.checkA(); this.updateAnswer({ index: 60, i }) },
+    updateA61 (i) { this.a[61] = i; this.checkA(); this.updateAnswer({ index: 61, i }) },
+    updateA62 (i) { this.a[62] = i; this.checkA(); this.updateAnswer({ index: 62, i }) },
+    updateA63 (i) { this.a[63] = i; this.checkA(); this.updateAnswer({ index: 63, i }) },
+    updateA64 (i) { this.a[64] = i; this.checkA(); this.updateAnswer({ index: 64, i }) },
+    updateA65 (i) { this.a[65] = i; this.checkA(); this.updateAnswer({ index: 65, i }) },
+    updateA66 (i) { this.a[66] = i; this.checkA(); this.updateAnswer({ index: 66, i }) },
+    updateA67 (i) { this.a[67] = i; this.checkA(); this.updateAnswer({ index: 67, i }) },
+    updateA68 (i) { this.a[68] = i; this.checkA(); this.updateAnswer({ index: 68, i }) },
+    updateA69 (i) { this.a[69] = i; this.checkA(); this.updateAnswer({ index: 69, i }) },
+    updateA70 (i) { this.a[70] = i; this.checkA(); this.updateAnswer({ index: 70, i }) },
+    updateA71 (i) { this.a[71] = i; this.checkA(); this.updateAnswer({ index: 71, i }) },
+    updateA72 (i) { this.a[72] = i; this.checkA(); this.updateAnswer({ index: 72, i }) },
+    updateA73 (i) { this.a[73] = i; this.checkA(); this.updateAnswer({ index: 73, i }) },
+    updateA74 (i) { this.a[74] = i; this.checkA(); this.updateAnswer({ index: 74, i }) },
+    updateA75 (i) { this.a[75] = i; this.checkA(); this.updateAnswer({ index: 75, i }) },
+    updateA76 (i) { this.a[76] = i; this.checkA(); this.updateAnswer({ index: 76, i }) },
+    updateA77 (i) { this.a[77] = i; this.checkA(); this.updateAnswer({ index: 77, i }) },
+    updateA78 (i) { this.a[78] = i; this.checkA(); this.updateAnswer({ index: 78, i }) },
+    updateA79 (i) { this.a[79] = i; this.checkA(); this.updateAnswer({ index: 79, i }) },
+    updateA80 (i) { this.a[80] = i; this.checkA(); this.updateAnswer({ index: 80, i }) },
+    updateA81 (i) { this.a[81] = i; this.checkA(); this.updateAnswer({ index: 81, i }) },
+    updateA82 (i) { this.a[82] = i; this.checkA(); this.updateAnswer({ index: 82, i }) },
+    updateA83 (i) { this.a[83] = i; this.checkA(); this.updateAnswer({ index: 83, i }) },
+    updateA84 (i) { this.a[84] = i; this.checkA(); this.updateAnswer({ index: 84, i }) },
+    updateA85 (i) { this.a[85] = i; this.checkA(); this.updateAnswer({ index: 85, i }) },
+    updateA86 (i) { this.a[86] = i; this.checkA(); this.updateAnswer({ index: 86, i }) },
+    updateA87 (i) { this.a[87] = i; this.checkA(); this.updateAnswer({ index: 87, i }) },
+    updateA88 (i) { this.a[88] = i; this.checkA(); this.updateAnswer({ index: 88, i }) },
+    updateA89 (i) { this.a[89] = i; this.checkA(); this.updateAnswer({ index: 89, i }) },
+    updateA90 (i) { this.a[90] = i; this.checkA(); this.updateAnswer({ index: 90, i }) },
+    updateA91 (i) { this.a[91] = i; this.checkA(); this.updateAnswer({ index: 91, i }) },
+    updateA92 (i) { this.a[92] = i; this.checkA(); this.updateAnswer({ index: 92, i }) },
+    updateA93 (i) { this.a[93] = i; this.checkA(); this.updateAnswer({ index: 93, i }) },
+    updateA94 (i) { this.a[94] = i; this.checkA(); this.updateAnswer({ index: 94, i }) },
+    updateA95 (i) { this.a[95] = i; this.checkA(); this.updateAnswer({ index: 95, i }) },
+    updateA96 (i) { this.a[96] = i; this.checkA(); this.updateAnswer({ index: 96, i }) },
+    updateA97 (i) { this.a[97] = i; this.checkA(); this.updateAnswer({ index: 97, i }) },
+    updateA98 (i) { this.a[98] = i; this.checkA(); this.updateAnswer({ index: 98, i }) },
+    updateA99 (i) { this.a[99] = i; this.checkA(); this.updateAnswer({ index: 99, i }) },
     updateValid (i) {
       const isArrEmpty = false
       for (let index = 0; index < this.a.length; index++) {
@@ -370,6 +400,33 @@ export default {
         this.currPage++;
       }
     },
+    submit () {
+      const data = {
+        examInfoId: this.$route.params.examId,
+        examTypeId: 3,
+        examAnswer: this.answer
+      }
+      this.$store.dispatch('postAnswerList', data)
+        .then(() => {
+          this.$router.push({ name: 'story', params: { examId: this.$route.params.examId } })
+        })
+    },
+    getAnswer (answerArr) {
+      for (let index = 0; index < answerArr.length; index++) {
+        const questionNo = answerArr[index].questionNo
+        const answer = answerArr[index].answer
+        this.a[questionNo - 1] = answer
+        this.comKey = questionNo //Key changed will force component re-rende
+        this.$forceUpdate() //Still re-render when hard refresh (ctrl + f5)  
+      }
+    }
+  },
+  watch: {
+    answerList (value) {
+      if (value != null || value != undefined) {
+        this.getAnswer(value)
+      }
+    }
   },
   components: {
     englishPage1,
@@ -377,6 +434,15 @@ export default {
     englishPage3,
     englishPage4,
     englishPage5
+  },
+  created () {
+    this.$store.dispatch('getApplicant', { examInfoId: this.$route.params.examId })
+    this.$store.dispatch('getCompletedStatus', { examType: 3, examInfoId: this.$route.params.examId })
+      .then(() => {
+        if (this.isCompleted) {
+          this.$store.dispatch('getAnswerList', { examType: 3, examInfoId: this.$route.params.examId })
+        }
+      })
   }
 }
 </script>
