@@ -168,14 +168,20 @@ export default {
         }, 1000)
       }
     },
-    updateAnswer (payload) {
-      if (this.a[payload.index]) {
-        this.a.splice(payload.index, 1);
+    updateAnswer (i) {
+      for (let index = 0; index < this.a.length; index++) {
+        const n = this.a[index].questionNo;
+        const a = this.a[index].answer;
+        if (n == i.n && a) {
+          this.a.splice(index, 1);
+          break;
+        }
       }
       this.a.push({
-        questionNo: payload.i.n,
-        answer: payload.i.a
+        questionNo: i.n,
+        answer: i.a
       })
+      console.log(this.a)
     },
     updateValid (i) { this.valid = i; },
     reset () {

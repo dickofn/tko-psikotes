@@ -59,9 +59,7 @@ export default {
   },
   methods: {
     updateA (i) {
-      i = { n: this.no, a: i }
-      const index = this.no - 1
-      this.$emit('cUpdated', { i, index })
+      this.$emit('cUpdated', { n: this.no, a: i })
       this.$emit('validUpdated', this.valid)
     },
     handleResize() {
