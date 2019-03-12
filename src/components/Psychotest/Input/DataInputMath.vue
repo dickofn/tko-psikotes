@@ -16,6 +16,7 @@
           :rules="[rules.required, rules.number]"
           required
           @keydown.188="preventComma"
+          :disabled="isCompleted"
         ></v-text-field>
       </v-flex>
     </v-layout>
@@ -32,6 +33,15 @@ export default {
     },
     preventComma (e) {
       e.preventDefault()
+    }
+  },
+  computed: {
+    isCompleted () {
+      if (this.$store.state.exam.isCompleted == 0) {
+        return false
+      } else {
+        return true
+      }
     }
   }
 }

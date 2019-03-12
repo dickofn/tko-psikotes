@@ -12,7 +12,7 @@
           </v-card-title>
           <v-card-text>
             <v-container>
-              <v-form ref="form" v-model="valid">
+              <v-form ref="form" v-model="valid" @submit.prevent="submit">
                 <v-layout row wrap mb-2>
                   <v-flex md8 offset-md2 xs12>
                     <h1>INSTRUKSI</h1>
@@ -26,7 +26,7 @@
                   </v-flex>
                 </v-layout>
 
-                <template v-if="isStarted && !isFinished">
+                <template v-if="(isStarted && !isFinished) || isCompleted">
                   <data-input-math
                     :no="'01. '"
                     :question="'Seorang anak mempunyai 12 pensil. 6 pensil dipinjam temannya. Berapa pensil sisanya?'"
@@ -215,7 +215,7 @@
                   </v-flex>
                 </v-layout>
 
-                <v-layout row wrap mt-5 justify-end>
+                <v-layout row wrap mt-5 justify-end v-if="!isCompleted">
                   <v-flex offset-md6 offset-lg7 offset-xl8>
                     <template v-if="!isStarted && !isFinished">
                       <v-btn color="info" @click="startExam">Start</v-btn>
@@ -223,7 +223,7 @@
                         <h2>Waktu pengerjaan {{ prettyTime }}</h2>
                       </span>
                     </template>
-                    <v-btn :disabled="!valid" color="success" v-if="isStarted">Submit</v-btn>
+                    <v-btn :disabled="!valid" color="success" v-if="isStarted" type="submit">Submit</v-btn>
                     <v-btn color="error" @click="reset" v-if="isStarted && !isFinished">Reset Form</v-btn>
                   </v-flex>
                 </v-layout>
@@ -254,6 +254,8 @@ export default {
       isStarted: false,
       isFinished: false,
       a: new Array(20),
+      answer: new Array,
+      comKey: new Array,
       valid: true,
       rules: {
         required: v => !!v || 'Wajib diisi!',
@@ -273,6 +275,16 @@ export default {
         secondes = "0" + secondes
       }
       return minutes + ":" + secondes
+    },
+    isCompleted () {
+      if (this.$store.state.exam.isCompleted == 0) {
+        return false
+      } else {
+        return true
+      }
+    },
+    answerList () {
+      return this.$store.state.exam.answerList
     }
   },
   methods: {
@@ -310,13 +322,60 @@ export default {
     updateA18 (i) { this.a[18] = i; },
     updateA19 (i) { this.a[19] = i; },
     updateValid (i) { this.valid = i; },
+    submit () {
+      for (let index = 0; index < this.a.length; index++) {
+        const el = this.a[index];
+        const qNo = index + 1;
+        if (el != null || el != undefined) {
+          this.answer.push({
+            questionNo: qNo,
+            answer: el
+          })
+        }
+      }
+
+      const data = {
+        examInfoId: this.$route.params.examId,
+        examTypeId: 5,
+        examAnswer: this.answer
+      }
+      this.$store.dispatch('postAnswerList', data)
+        .then(() => {
+          this.$router.push({ name: 'seq', params: { examId: this.$route.params.examId } })
+        })
+    },
     reset () {
       console.log(this.valid)
       this.$refs.form.reset()
+    },
+    getAnswer (answerArr) {
+      for (let index = 0; index < answerArr.length; index++) {
+        const questionNo = answerArr[index].questionNo
+        const answer = answerArr[index].answer
+        this.a[questionNo - 1] = answer
+        this.comKey[questionNo - 1] = questionNo //Key changed will force component re-rende
+        this.$forceUpdate() //Still re-render when hard refresh (ctrl + f5)  
+      }
+    }
+  },
+  watch: {
+    answerList (value) {
+      if (value != null || value != undefined) {
+        this.getAnswer(value)
+      }
     }
   },
   components: {
     dataInputMath
+  },
+  created () {
+    this.$store.dispatch('getApplicant', { examInfoId: this.$route.params.examId })
+    this.$store.dispatch('getCompletedStatus', { examType: 5, examInfoId: this.$route.params.examId })
+      .then(() => {
+        if (this.isCompleted) {
+          this.$store.dispatch('getAnswerList', { examType: 5, examInfoId: this.$route.params.examId })
+        }
+      })
   }
 }
 </script>
