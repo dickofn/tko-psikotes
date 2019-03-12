@@ -259,7 +259,7 @@
       fixed
       v-if="isStarted && !isFinished"
       height="20"
-    >Waktu yang tersisa {{ prettyTime }}</v-bottom-nav>
+    >Hello {{ applicantName }}! Waktu yang tersisa {{ prettyTime }}</v-bottom-nav>
   </v-container>
 </template>
 
@@ -295,6 +295,9 @@ export default {
         secondes = "0" + secondes
       }
       return minutes + ":" + secondes
+    },
+    applicantName () {
+      return this.$store.state.user.examApplicantName
     },
     isCompleted () {
       if (this.$store.state.exam.isCompleted == 0) {
