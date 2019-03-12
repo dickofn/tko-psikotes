@@ -181,7 +181,6 @@ export default {
         questionNo: i.n,
         answer: i.a
       })
-      console.log(this.a)
     },
     updateValid (i) { this.valid = i; },
     reset () {
