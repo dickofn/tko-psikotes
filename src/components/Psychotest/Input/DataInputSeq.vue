@@ -18,6 +18,7 @@
           :rules="[rules.required, rules.number]"
           required
           @keydown.188="preventComma"
+          :disabled="isCompleted"
         ></v-text-field>
       </v-flex>
       <v-flex md1 xs2 pl-1 pr-1>
@@ -29,6 +30,7 @@
           :rules="[rules.required, rules.number]"
           required
           @keydown.188="preventComma"
+          :disabled="isCompleted"
         ></v-text-field>
       </v-flex>
     </v-layout>
@@ -37,7 +39,7 @@
 
 <script>
 export default {
-  props: ['no', 'q', 'rules', 'valid'],
+  props: ['no', 'q', 'a', 'rules', 'valid'],
   data () {
     return {
       answer1: "",
@@ -52,6 +54,23 @@ export default {
     preventComma (e) {
       e.preventDefault()
     }
+  },
+  computed: {
+    isCompleted () {
+      if (this.$store.state.exam.isCompleted == 0) {
+        return false
+      } else {
+        return true
+      }
+    }
+  },
+  created () {
+    setTimeout(() => {
+      if (this.$store.state.exam.isCompleted == 1) {
+        this.answer1 = this.a.split(',')[0]
+        this.answer2 = this.a.split(',')[1]
+      }
+    }, 100);
   }
 }
 </script>
