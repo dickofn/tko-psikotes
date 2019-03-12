@@ -170,7 +170,7 @@
       fixed
       v-if="isStarted && !isFinished"
       height="20"
-    >Waktu yang tersisa {{ prettyTime }}</v-bottom-nav>
+    >Hello {{ applicantName }}! Waktu yang tersisa {{ prettyTime }}</v-bottom-nav>
   </v-container>
 </template>
 
