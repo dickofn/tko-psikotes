@@ -118,7 +118,7 @@ export default {
         "/assets/PSIKOTEST-35.webp",
         "/assets/PSIKOTEST-36.webp",
       ],
-      c: new Array,
+      c: new Array(36),
       a: new Array,
       valid: true,
       comKey: new Array,
