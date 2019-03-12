@@ -35,6 +35,7 @@
                     :rules="rules"
                     :valid="valid"
                     @validUpdated="updateValid"
+                    :key="comKey[0]"
                   ></data-input-math>
                   <data-input-math
                     :no="'02. '"
@@ -44,6 +45,7 @@
                     :rules="rules"
                     :valid="valid"
                     @validUpdated="updateValid"
+                    :key="comKey[1]"
                   ></data-input-math>
                   <data-input-math
                     :no="'03. '"
@@ -53,6 +55,7 @@
                     :rules="rules"
                     :valid="valid"
                     @validUpdated="updateValid"
+                    :key="comKey[2]"
                   ></data-input-math>
                   <data-input-math
                     :no="'04. '"
@@ -62,6 +65,7 @@
                     :rules="rules"
                     :valid="valid"
                     @validUpdated="updateValid"
+                    :key="comKey[3]"
                   ></data-input-math>
                   <data-input-math
                     :no="'05. '"
@@ -71,6 +75,7 @@
                     :rules="rules"
                     :valid="valid"
                     @validUpdated="updateValid"
+                    :key="comKey[4]"
                   ></data-input-math>
                   <data-input-math
                     :no="'06. '"
@@ -80,6 +85,7 @@
                     :rules="rules"
                     :valid="valid"
                     @validUpdated="updateValid"
+                    :key="comKey[5]"
                   ></data-input-math>
                   <data-input-math
                     :no="'07. '"
@@ -89,6 +95,7 @@
                     :rules="rules"
                     :valid="valid"
                     @validUpdated="updateValid"
+                    :key="comKey[6]"
                   ></data-input-math>
                   <data-input-math
                     :no="'08. '"
@@ -98,6 +105,7 @@
                     :rules="rules"
                     :valid="valid"
                     @validUpdated="updateValid"
+                    :key="comKey[7]"
                   ></data-input-math>
                   <data-input-math
                     :no="'09. '"
@@ -107,6 +115,7 @@
                     :rules="rules"
                     :valid="valid"
                     @validUpdated="updateValid"
+                    :key="comKey[8]"
                   ></data-input-math>
                   <data-input-math
                     :no="'10. '"
@@ -116,6 +125,7 @@
                     :rules="rules"
                     :valid="valid"
                     @validUpdated="updateValid"
+                    :key="comKey[9]"
                   ></data-input-math>
                   <data-input-math
                     :no="'11. '"
@@ -125,6 +135,7 @@
                     :rules="rules"
                     :valid="valid"
                     @validUpdated="updateValid"
+                    :key="comKey[10]"
                   ></data-input-math>
                   <data-input-math
                     :no="'12. '"
@@ -134,6 +145,7 @@
                     :rules="rules"
                     :valid="valid"
                     @validUpdated="updateValid"
+                    :key="comKey[11]"
                   ></data-input-math>
                   <data-input-math
                     :no="'13. '"
@@ -143,6 +155,7 @@
                     :rules="rules"
                     :valid="valid"
                     @validUpdated="updateValid"
+                    :key="comKey[12]"
                   ></data-input-math>
                   <data-input-math
                     :no="'14. '"
@@ -152,6 +165,7 @@
                     :rules="rules"
                     :valid="valid"
                     @validUpdated="updateValid"
+                    :key="comKey[13]"
                   ></data-input-math>
                   <data-input-math
                     :no="'15. '"
@@ -161,6 +175,7 @@
                     :rules="rules"
                     :valid="valid"
                     @validUpdated="updateValid"
+                    :key="comKey[14]"
                   ></data-input-math>
                   <data-input-math
                     :no="'16. '"
@@ -170,6 +185,7 @@
                     :rules="rules"
                     :valid="valid"
                     @validUpdated="updateValid"
+                    :key="comKey[15]"
                   ></data-input-math>
                   <data-input-math
                     :no="'17. '"
@@ -179,6 +195,7 @@
                     :rules="rules"
                     :valid="valid"
                     @validUpdated="updateValid"
+                    :key="comKey[16]"
                   ></data-input-math>
                   <data-input-math
                     :no="'18. '"
@@ -188,6 +205,7 @@
                     :rules="rules"
                     :valid="valid"
                     @validUpdated="updateValid"
+                    :key="comKey[17]"
                   ></data-input-math>
                   <data-input-math
                     :no="'19. '"
@@ -197,6 +215,7 @@
                     :rules="rules"
                     :valid="valid"
                     @validUpdated="updateValid"
+                    :key="comKey[18]"
                   ></data-input-math>
                   <data-input-math
                     :no="'20. '"
@@ -206,6 +225,7 @@
                     :rules="rules"
                     :valid="valid"
                     @validUpdated="updateValid"
+                    :key="comKey[19]"
                   ></data-input-math>
                 </template>
 
