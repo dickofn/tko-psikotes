@@ -19,9 +19,10 @@
                       label="Nama Lengkap"
                       name="name"
                       id="name"
-                      v-model="name"
+                      :value="applicantName"
                       :rules="[rules.required]"
                       required
+                      disabled
                     ></v-text-field>
                   </v-flex>
                 </v-layout>
@@ -42,9 +43,10 @@
                       label="Tempat Lahir"
                       name="birthPlace"
                       id="birthPlace"
-                      v-model="birthPlace"
+                      :value="applicantBirthPlace"
                       :rules="[rules.required]"
                       required
+                      disabled
                     ></v-text-field>
                   </v-flex>
                   <v-flex md4 xs12>
@@ -57,17 +59,19 @@
                       offset-y
                       full-width
                       min-width="290px"
+                      disabled
                     >
                       <v-text-field
                         slot="activator"
-                        v-model="birthDate"
+                        :value="applicantBirthDate"
                         label="Tanggal Lahir (YYYY-MM-DD)"
                         prepend-icon="event"
                         :rules="[rules.required]"
                         required
+                        disabled
                       ></v-text-field>
                       <v-date-picker
-                        v-model="birthDate"
+                        :value="applicantBirthDate"
                         @input="birthDateMenu = false"
                         :rules="[rules.required]"
                       ></v-date-picker>
@@ -116,7 +120,8 @@
                   </v-flex>
                 </v-layout>
 
-                <data-input-address v-if="!addressParentCheck"
+                <data-input-address
+                  v-if="!addressParentCheck"
                   :title="'Orang Tua'"
                   :addressDetail="addressParentDetail"
                   :addressPropinsi="addressParentPropinsi"
@@ -168,14 +173,13 @@
 
                 <v-layout row wrap mb-2>
                   <v-flex md8 offset-md2 xs12>
-                    <v-text-field
+                    <v-select
+                      :items="religions"
                       label="Agama"
-                      name="religion"
-                      id="religion"
                       v-model="religion"
                       :rules="[rules.required]"
                       required
-                    ></v-text-field>
+                    ></v-select>
                   </v-flex>
                 </v-layout>
 
@@ -186,6 +190,7 @@
                       name="bodyWeight"
                       id="bodyWeight"
                       v-model="bodyWeight"
+                      type="number"
                     ></v-text-field>
                   </v-flex>
                   <v-flex md2 xs12>
@@ -194,6 +199,7 @@
                       name="bodyHeight"
                       id="bodyHeight"
                       v-model="bodyHeight"
+                      type="number"
                     ></v-text-field>
                   </v-flex>
                   <v-flex md4 xs12>
@@ -222,7 +228,7 @@
                       name="idNumber"
                       id="idNumber"
                       v-model="idNumber"
-                      :rules="[rules.required]"
+                      :rules="[rules.required, rules.number]"
                       required
                     ></v-text-field>
                   </v-flex>
@@ -304,10 +310,7 @@ import dataInputAddress from '../../components/ApplicationForm/DataInputAddress'
 export default {
   data () {
     return {
-      name: "",
       gender: "",
-      birthPlace: "",
-      birthDate: "",
       birthDateMenu: false,
       addressCurrentDetail: "",
       addressCurrentKelurahan: "",
@@ -331,6 +334,7 @@ export default {
       contactNumberMobile: "",
       contactNumberHome: "",
       email: "",
+      religions: ["Aliran Kepercayaan", "Buddha", "Hindu", "Islam", "Katolik", "Kong Hu Cu", "Kristen"],
       religion: "",
       bodyWeight: "",
       bodyHeight: "",
@@ -349,9 +353,21 @@ export default {
       valid: true,
       rules: {
         required: v => !!v || 'Wajib diisi!',
-        email: v => /.+@.+/.test(v) || 'Format email tidak sesuai!'
+        email: v => /.+@.+/.test(v) || 'Format email tidak sesuai!',
+        number: v => (/^[0-9]+$/.test(v)) || 'Harus berupa angka!' //Using regex to allow only [0-9]
       }
     }
+  },
+  computed: {
+    applicantName () {
+      return this.$store.state.user.examApplicantName
+    },
+    applicantBirthPlace () {
+      return this.$store.state.user.examApplicantBirthPlace
+    },
+    applicantBirthDate () {
+      return this.$store.state.user.examApplicantBirthDate
+    },
   },
   methods: {
     updateAddressCurrentDetail (i) {
@@ -415,6 +431,9 @@ export default {
   },
   components: {
     dataInputAddress
+  },
+  created () {
+    this.$store.dispatch('getApplicant', { examInfoId: this.$route.params.examId })
   }
 }
 </script>
