@@ -375,7 +375,7 @@ export default {
       }
       this.$store.dispatch('postAnswerList', data)
         .then(() => {
-          this.$router.push({ name: 'story', params: { examId: this.$route.params.examId } })
+          this.$router.push({ name: 'self', params: { examId: this.$route.params.examId } })
         })
     },
     getAnswer (answerArr) {

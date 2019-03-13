@@ -26,22 +26,22 @@ export default new Router({
       component: Home
     },
     {
-      path: '/self',
+      path: '/self/:examId',
       name: 'self',
       component: Self
     },
     {
-      path: '/detail',
+      path: '/detail/:examId',
       name: 'detail',
       component: Detail
     },
     {
-      path: '/experience',
+      path: '/experience/:examId',
       name: 'experience',
       component: Experience
     },
     {
-      path: '/question',
+      path: '/question/:examId',
       name: 'question',
       component: Question
     },
