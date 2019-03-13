@@ -3,14 +3,16 @@ import Axios from "axios";
 export default {
   state: {
     examApplicantId: null,
-    examApplicantName: null
+    examApplicantName: null,
+    examApplicantBirthPlace: null,
+    examApplicantBirthDate: null
   },
   mutations: {
-    UPDATE_EXAMAPPID(state, payload) {
-      state.examApplicantId = payload;
-    },
-    UPDATE_EXAMAPPNAME(state, payload) {
-      state.examApplicantName = payload;
+    UPDATE_EXAMAPP(state, payload) {
+      state.examApplicantId = payload.examInfoId;
+      state.examApplicantName = payload.name;
+      state.examApplicantBirthPlace = payload.placeBirth;
+      state.examApplicantBirthDate = payload.dateBirth;
     }
   },
   actions: {
@@ -18,8 +20,7 @@ export default {
       commit("UPDATE_LOADING", true);
       Axios.post(process.env.VUE_APP_API_URL + "/exam/start", applicantData)
         .then(res => {
-          commit("UPDATE_EXAMAPPID", res.data.data.examInfoId);
-          commit("UPDATE_EXAMAPPNAME", res.data.data.name);
+          commit("UPDATE_EXAMAPP", res.data.data);
           commit("UPDATE_LOADING", false);
         })
         .catch(e => {
@@ -30,8 +31,7 @@ export default {
     getApplicant({ commit }, applicantExamId) {
       Axios.post(process.env.VUE_APP_API_URL + "/exam/info", applicantExamId)
         .then(res => {
-          commit("UPDATE_EXAMAPPID", res.data.data.examInfoId);
-          commit("UPDATE_EXAMAPPNAME", res.data.data.name);
+          commit("UPDATE_EXAMAPP", res.data.data);
           commit("UPDATE_LOADING", false);
         })
         .catch(e => {
