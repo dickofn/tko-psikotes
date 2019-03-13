@@ -148,18 +148,22 @@ export default {
       this.$emit('addressPosUpdated', i)
     }
   },
-
-/** 
-  *FIXME:
-    -Ketika ganti region yang kastanya lebih tinggi, yang ke reset hanya kasta 1 dibawahnya, e.g: line 159
-*/
   watch: {
     // eslint-disable-next-line
     addressPropinsiSearch (val) {
-      if (this.addressSelectedPropinsi != this.addressPropinsi) {
+      if (this.addressSelectedPropinsi != "" && this.addressSelectedPropinsi != this.addressPropinsi) {
+        this.updateKota("")
         this.addressKotaItems = []
+        this.addressSelectedKota = ""
+        this.updateKecamatan("")
         this.addressKecamatanItems = []
+        this.addressSelectedKecamatan = ""
+        this.updateKelurahan("")
         this.addressKelurahanItems = []
+        this.addressSelectedKelurahan = ""
+        this.addressPos = ""
+        return
+
       }
       // Items have already been loaded
       if (this.addressPropinsiItems.length > 0) return
@@ -185,15 +189,27 @@ export default {
 
     // eslint-disable-next-line
     addressKotaSearch (val) {
-      if (this.addressSelectedKota != this.addressKota) {
+      if (
+        (this.addressSelectedKota != "" && this.addressSelectedKota != this.addressKota) &&
+        (this.addressSelectedPropinsi != "" && this.addressSelectedPropinsi != this.addressPropinsi)
+      ) {
+        this.updateKecamatan("")
         this.addressKecamatanItems = []
+        this.addressSelectedKecamatan = ""
+        this.updateKelurahan("")
         this.addressKelurahanItems = []
+        this.addressSelectedKelurahan = ""
+        this.addressPos = ""
+        return
       }
       // Items have already been loaded 
       if (this.addressKotaItems.length > 0) return
 
       // Items have already been requested
       if (this.addressLoadingKota) return
+
+      // Nothing to search
+      if (this.addressPropinsi == "") return
 
       this.addressLoadingKota = true
 
@@ -214,12 +230,26 @@ export default {
 
     // eslint-disable-next-line
     addressKecamatanSearch (val) {
-      if (this.addressSelectedKecamatan != this.addressKecamatan) this.addressKelurahanItems = []
+      if (
+        (this.addressSelectedKecamatan != "" && this.addressSelectedKecamatan != this.addressKecamatan) &&
+        (this.addressSelectedKota != "" && this.addressSelectedKota != this.addressKota) &&
+        (this.addressSelectedPropinsi != "" && this.addressSelectedPropinsi != this.addressPropinsi)
+      ) {
+        this.updateKelurahan("")
+        this.addressKelurahanItems = []
+        this.addressSelectedKelurahan = ""
+        this.addressPos = ""
+        return
+      }
+
       // Items have already been loaded 
       if (this.addressKecamatanItems.length > 0) return
 
       // Items have already been requested
       if (this.addressLoadingKecamatan) return
+
+      // Nothing to search
+      if (this.addressKota == "") return
 
       this.addressLoadingKecamatan = true
 
@@ -238,12 +268,24 @@ export default {
 
     // eslint-disable-next-line
     addressKelurahanSearch (val) {
-      if (this.addressSelectedKelurahan != this.addressKelurahan) this.addressPos = ""
+      if (
+        (this.addressSelectedKelurahan != "" && this.addressSelectedKelurahan != this.addressKelurahan) &&
+        (this.addressSelectedKecamatan != "" && this.addressSelectedKecamatan != this.addressKecamatan) &&
+        (this.addressSelectedKota != "" && this.addressSelectedKota != this.addressKota) &&
+        (this.addressSelectedPropinsi != "" && this.addressSelectedPropinsi != this.addressPropinsi)
+      ) {
+        this.addressPos = ""
+        return
+      }
+
       // Items have already been loaded 
       if (this.addressKelurahanItems.length > 0) return
 
       // Items have already been requested
       if (this.addressLoadingKelurahan) return
+
+      // Nothing to search
+      if (this.addressKecamatan == "") return
 
       this.addressLoadingKelurahan = true
 
