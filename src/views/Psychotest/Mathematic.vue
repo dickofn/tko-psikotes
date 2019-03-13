@@ -22,6 +22,9 @@
                       <b>&rarr;</b> Jawaban merupakan angka, bila jawaban desimal maka jawablah hingga dua angka desimal.
                       <br>
                       <b>&rarr;</b> Pemisah angka desimal menggunakan simbol titik ('.') dan bukan koma (',').
+                      <br>
+                      <br>
+                      <b>&rarr;</b> Bagian ini terdiri dari 1 halaman dengan total 20 soal, mohon perhatikan waktu yang anda miliki!
                     </p>
                   </v-flex>
                 </v-layout>

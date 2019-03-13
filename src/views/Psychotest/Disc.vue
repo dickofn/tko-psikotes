@@ -20,6 +20,9 @@
                       <br>
                       <b>&rarr;</b> Selanjutanya pilihlah salah satu tanda D, I, S, C, atau * di bawah kolom M, disamping kalimat yang
                       <b>PALING TIDAK</b> menggambarkan diri Anda. Untuk setiap kolom hanya dapat memilih satu saja.
+                      <br>
+                      <br>
+                      <b>&rarr;</b> Bagian ini terdiri dari 1 halaman dengan total 24 soal, mohon perhatikan waktu yang anda miliki!
                     </p>
                   </v-flex>
                 </v-layout>

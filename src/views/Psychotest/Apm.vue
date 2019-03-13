@@ -18,6 +18,9 @@
                       <b>&rarr;</b> Lihatlah gambar utama yang memiliki 8 pola sudah terisi dan 1 pola kosong.
                       <br>
                       <b>&rarr;</b> Pilihlah 1 pola yang paling tepat untuk melengkapi 8 pola yang sudah terisi pada gambar utama.
+                      <br>
+                      <br>
+                      <b>&rarr;</b> Bagian ini terdiri dari 1 halaman dengan total 36 soal, mohon perhatikan waktu yang anda miliki!
                     </p>
                   </v-flex>
                 </v-layout>

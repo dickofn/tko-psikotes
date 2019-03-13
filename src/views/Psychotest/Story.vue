@@ -20,6 +20,9 @@
                       <b>&rarr;</b> Bacalah baik-baik satu bacaan, kemudian jawablah setiap pertanyaan mengenai isi bacaan tersebut dengan memilih satu jawaban yang PALING TEPAT.
                       <br>
                       <b>&rarr;</b> Jawablah pertanyaan-pertanyaan berdasarkan isi yang tertulis maupun yang dapat disimpulkan dari bacaan.
+                      <br>
+                      <br>
+                      <b>&rarr;</b> Bagian ini terdiri dari 30 halaman dengan 1 bacaan tiap 10 soal dan total 30 soal, mohon perhatikan waktu yang anda miliki!
                     </p>
                   </v-flex>
                 </v-layout>

@@ -24,6 +24,9 @@
                       <b>&rarr;</b> Jika deret sudah menggunakan pecahan maka isi dengan pecahan ('/') tetapi jika tidak maka isi dengan desimal hingga dua angka desimal.
                       <br>
                       <b>&rarr;</b> Pemisah angka desimal menggunakan simbol titik ('.') dan bukan koma (',').
+                      <br>
+                      <br>
+                      <b>&rarr;</b> Bagian ini terdiri dari 1 halaman dengan total 25 soal, mohon perhatikan waktu yang anda miliki!
                     </p>
                   </v-flex>
                 </v-layout>

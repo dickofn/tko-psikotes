@@ -20,6 +20,9 @@
                       <b>&rarr;</b> Bacalah kalimat A dan kalimat B. Setiap nomor memiliki satu kalimat dengan penulisan yang tidak tepat.
                       <br>
                       <b>&rarr;</b> Pilihlah kalimat dengan penulisan yang tepat menurut anda.
+                      <br>
+                      <br>
+                      <b>&rarr;</b> Bagian ini terdiri dari 5 halaman dengan total 100 soal, mohon perhatikan waktu yang anda miliki!
                     </p>
                   </v-flex>
                 </v-layout>

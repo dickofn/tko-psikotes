@@ -20,6 +20,9 @@
                       <b>&rarr;</b> Bacalah pernyataan A dan pernyataan B.
                       <br>
                       <b>&rarr;</b> Pilihlah satu pernyataan yang menurut anda paling sesuai dengan diri anda.
+                      <br>
+                      <br>
+                      <b>&rarr;</b> Bagian ini terdiri dari 5 halaman dengan total 90 soal, mohon perhatikan waktu yang anda miliki!
                     </p>
                   </v-flex>
                 </v-layout>
