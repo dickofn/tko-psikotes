@@ -12,7 +12,7 @@
           </v-card-title>
           <v-card-text>
             <v-container>
-              <v-form ref="form" v-model="valid">
+              <v-form ref="form" v-model="valid" @submit.prevent="submit">
                 <v-layout row wrap mb-2>
                   <v-flex md8 offset-md2 xs12>
                     <v-text-field
@@ -31,8 +31,8 @@
                   <v-flex md8 offset-md2 xs12>
                     <h4>Jenis Kelamin</h4>
                     <v-radio-group v-model="gender" row :rules="[rules.required]" required>
-                      <v-radio label="Pria" value="pria"></v-radio>
-                      <v-radio label="Wanita" value="wanita"></v-radio>
+                      <v-radio label="Pria" value="M"></v-radio>
+                      <v-radio label="Wanita" value="F"></v-radio>
                     </v-radio-group>
                   </v-flex>
                 </v-layout>
@@ -87,12 +87,15 @@
                   :addressKecamatan="addressCurrentKecamatan"
                   :addressKelurahan="addressCurrentKelurahan"
                   :addressPos="addressCurrentPos"
+                  :rules="rules"
+                  :valid="valid"
                   @addressDetailUpdated="updateAddressCurrentDetail"
                   @addressPropinsiUpdated="updateAddressCurrentPropinsi"
                   @addressKotaUpdated="updateAddressCurrentKota"
                   @addressKecamatanUpdated="updateAddressCurrentKecamatan"
                   @addressKelurahanUpdated="updateAddressCurrentKelurahan"
                   @addressPosUpdated="updateAddressCurrentPos"
+                  @validUpdated="updateValid"
                 ></data-input-address>
 
                 <data-input-address
@@ -103,12 +106,15 @@
                   :addressKecamatan="addressPermanentKecamatan"
                   :addressKelurahan="addressPermanentKelurahan"
                   :addressPos="addressPermanentPos"
+                  :rules="rules"
+                  :valid="valid"
                   @addressDetailUpdated="updateAddressPermanentDetail"
                   @addressPropinsiUpdated="updateAddressPermanentPropinsi"
                   @addressKotaUpdated="updateAddressPermanentKota"
                   @addressKecamatanUpdated="updateAddressPermanentKecamatan"
                   @addressKelurahanUpdated="updateAddressPermanentKelurahan"
                   @addressPosUpdated="updateAddressPermanentPos"
+                  @validUpdated="updateValid"
                 ></data-input-address>
 
                 <v-layout row wrap mb-2>
@@ -129,12 +135,15 @@
                   :addressKecamatan="addressParentKecamatan"
                   :addressKelurahan="addressParentKelurahan"
                   :addressPos="addressParentPos"
+                  :rules="rules"
+                  :valid="valid"
                   @addressDetailUpdated="updateAddressParentDetail"
                   @addressPropinsiUpdated="updateAddressParentPropinsi"
                   @addressKotaUpdated="updateAddressParentKota"
                   @addressKecamatanUpdated="updateAddressParentKecamatan"
                   @addressKelurahanUpdated="updateAddressParentKelurahan"
                   @addressPosUpdated="updateAddressParentPos"
+                  @validUpdated="updateValid"
                 ></data-input-address>
 
                 <v-layout row wrap mb-2>
@@ -144,7 +153,7 @@
                       name="contactNumberMobile"
                       id="contactNumberMobile"
                       v-model="contactNumberMobile"
-                      :rules="[rules.required]"
+                      :rules="[rules.required, rules.number]"
                       required
                     ></v-text-field>
                   </v-flex>
@@ -291,7 +300,7 @@
 
                 <v-layout row wrap mt-5 justify-end>
                   <v-flex offset-md6 offset-lg7 offset-xl8>
-                    <v-btn :disabled="!valid" color="success">Submit</v-btn>
+                    <v-btn :disabled="!valid" color="success" type="submit">Submit</v-btn>
                     <v-btn color="error" @click="reset">Reset Form</v-btn>
                   </v-flex>
                 </v-layout>
@@ -423,6 +432,79 @@ export default {
     },
     updateAddressParentPos (i) {
       this.addressParentPos = i;
+    },
+    updateValid (i) {
+      this.valid = i;
+    },
+    submit () {
+      if (this.addressParentCheck) {
+        this.addressParentDetail = this.addressPermanentDetail
+        this.addressParentKelurahan = this.addressPermanentKelurahan
+        this.addressParentKecamatan = this.addressPermanentKecamatan
+        this.addressParentKota = this.addressPermanentKota
+        this.addressParentPropinsi = this.addressPermanentPropinsi
+        this.addressParentPos = this.addressPermanentPos
+      }
+      const data = {
+        applicant: {
+          examInfoId: this.$route.params.examId,
+          picture: "",
+          fullName: this.applicantName,
+          sex: this.gender,
+          placeBirth: this.applicantBirthPlace,
+          dateBirth: this.applicantBirthDate,
+          handphone: this.contactNumberMobile,
+          telephone: this.contactNumberHome,
+          emailAddress: this.email,
+          religion: this.religion,
+          weight: this.bodyWeight,
+          height: this.bodyHeight,
+          physicalImpairment: this.bodyAbnormalities,
+          idType: this.idType,
+          idNumber: this.idNumber,
+          typeBlood: this.bloodType,
+          nationality: this.nationality,
+          martialStatus: this.martialStatus,
+          martialDate: this.martialDate,
+          hobby: this.hobby
+        },
+        applicantAddress: [
+          {
+            addressTypeId: 1,
+            detailAddress: this.addressCurrentDetail,
+            kelurahan: this.addressCurrentKelurahan,
+            kecamatan: this.addressCurrentKecamatan,
+            city: this.addressCurrentKota,
+            province: this.addressCurrentPropinsi,
+            postalCode: this.addressCurrentPos,
+            country: "Indonesia"
+          },
+          {
+            addressTypeId: 2,
+            detailAddress: this.addressPermanentDetail,
+            kelurahan: this.addressPermanentKelurahan,
+            kecamatan: this.addressPermanentKecamatan,
+            city: this.addressPermanentKota,
+            province: this.addressPermanentPropinsi,
+            postalCode: this.addressPermanentPos,
+            country: "Indonesia"
+          },
+          {
+            addressTypeId: 3,
+            detailAddress: this.addressParentDetail,
+            kelurahan: this.addressParentKelurahan,
+            kecamatan: this.addressParentKecamatan,
+            city: this.addressParentKota,
+            province: this.addressParentPropinsi,
+            postalCode: this.addressParentPos,
+            country: "Indonesia"
+          }
+        ]
+      }
+      this.$store.dispatch('newSelf', data)
+        .then(() => {
+          this.$router.push({ name: 'detail', params: { examId: this.$route.params.examId } })
+        })
     },
     reset () {
       console.log(this.valid)
