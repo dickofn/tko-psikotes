@@ -9,6 +9,8 @@
         rows="2"
         :value="addressDetail"
         @input="updateDetail"
+        :rules="[rules.required]"
+        required
       ></v-textarea>
     </v-flex>
     <v-flex md4 offset-md2 xs12>
@@ -27,6 +29,8 @@
         @blur="addressSelectedPropinsi = addressPropinsi"
         :value="addressPropinsi"
         @input="updatePropinsi"
+        :rules="[rules.required]"
+        required
       ></v-autocomplete>
     </v-flex>
     <v-flex md4 xs12>
@@ -46,6 +50,8 @@
         :disabled="!addressPropinsi"
         :value="addressKota"
         @input="updateKota"
+        :rules="[rules.required]"
+        required
       ></v-autocomplete>
     </v-flex>
     <v-flex md4 offset-md2 xs12>
@@ -65,6 +71,8 @@
         :disabled="!addressKota"
         :value="addressKecamatan"
         @input="updateKecamatan"
+        :rules="[rules.required]"
+        required
       ></v-autocomplete>
     </v-flex>
     <v-flex md4 xs12>
@@ -84,6 +92,8 @@
         :disabled="!addressKecamatan"
         :value="addressKelurahan"
         @input="updateKelurahan"
+        :rules="[rules.required]"
+        required
       ></v-autocomplete>
     </v-flex>
     <v-flex md2 offset-md8 xs12>
@@ -93,6 +103,8 @@
         id="addressPos"
         :value="addressPos"
         @input="updatePos"
+        :rules="[rules.required, rules.number]"
+        required
       ></v-text-field>
     </v-flex>
   </v-layout>
@@ -107,7 +119,9 @@ export default {
     'addressKota',
     'addressKecamatan',
     'addressKelurahan',
-    'addressPos'
+    'addressPos',
+    'rules',
+    'valid'
   ],
   data () {
     return {
@@ -131,21 +145,33 @@ export default {
   methods: {
     updateDetail (i) {
       this.$emit('addressDetailUpdated', i)
+      this.$emit('validUpdated', this.valid)
+
     },
     updatePropinsi (i) {
       this.$emit('addressPropinsiUpdated', i)
+      this.$emit('validUpdated', this.valid)
+
     },
     updateKota (i) {
       this.$emit('addressKotaUpdated', i)
+      this.$emit('validUpdated', this.valid)
+
     },
     updateKecamatan (i) {
       this.$emit('addressKecamatanUpdated', i)
+      this.$emit('validUpdated', this.valid)
+
     },
     updateKelurahan (i) {
       this.$emit('addressKelurahanUpdated', i)
+      this.$emit('validUpdated', this.valid)
+
     },
     updatePos (i) {
       this.$emit('addressPosUpdated', i)
+      this.$emit('validUpdated', this.valid)
+
     }
   },
   watch: {
