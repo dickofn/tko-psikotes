@@ -272,6 +272,10 @@
 </template>
 
 <script>
+/**
+ * TODO: passing rules and valid to dataInputAddress
+ */
+
 import dataInputRelation from '../../components/ApplicationForm/DataInputRelation'
 import dataInputEducation from '../../components/ApplicationForm/DataInputEducation'
 import dataInputAddress from '../../components/ApplicationForm/DataInputAddress'
