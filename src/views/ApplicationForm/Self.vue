@@ -7,8 +7,9 @@
             <v-spacer></v-spacer>
             <h1
               class="headline text-uppercase font-weight-light text-xs-center"
-            >Data Diri Kandidat Karyawan Sudah Pernah Diisi</h1> 
-           </v-card-title>
+            >Data Diri Kandidat Karyawan Sudah Pernah Diisi</h1>
+            <v-spacer></v-spacer>
+          </v-card-title>
         </v-card>
         <v-card v-else>
           <v-card-title primary-title>
@@ -376,6 +377,13 @@ export default {
     }
   },
   computed: {
+    martial () {
+      if(this.martialStatus == "Belum Menikah"){
+        return false
+      } else {
+        return true
+      }
+    },
     applicantName () {
       return this.$store.state.user.examApplicantName
     },
@@ -514,7 +522,7 @@ export default {
       }
       this.$store.dispatch('setSelf', data)
         .then(() => {
-          this.$router.push({ name: 'detail', params: { examId: this.$route.params.examId } })
+          this.$router.push({ name: 'detail', params: { examId: this.$route.params.examId }, query: { martial: 'talent' } })
         })
     },
     reset () {
