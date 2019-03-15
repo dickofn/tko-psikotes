@@ -23,8 +23,8 @@
         <v-flex md8 offset-md2 xs12>
           <h4>Jenis Kelamin</h4>
           <v-radio-group v-model="gender" row>
-            <v-radio label="Pria" value="pria"></v-radio>
-            <v-radio label="Wanita" value="wanita"></v-radio>
+            <v-radio label="Pria" value="M"></v-radio>
+            <v-radio label="Wanita" value="F"></v-radio>
           </v-radio-group>
         </v-flex>
       </v-layout>
