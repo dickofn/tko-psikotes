@@ -110,7 +110,7 @@ export default {
         placeBirth: this.birthPlace,
         dateBirth: this.birthDate
       }
-      this.$store.dispatch('newApplicant', data)        
+      this.$store.dispatch('setApplicant', data)        
     },
     reset () {
       console.log(this.valid)
