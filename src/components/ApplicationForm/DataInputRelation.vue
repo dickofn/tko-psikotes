@@ -69,7 +69,7 @@
 
       <v-layout row wrap mb-2>
         <v-flex md8 offset-md2 xs12>
-          <v-text-field label="Pendidikan" name="education" id="education" v-model="education"></v-text-field>
+          <v-select :items="educations" label="Pendidikan" v-model="education"></v-select>
         </v-flex>
       </v-layout>
 
@@ -110,6 +110,7 @@ export default {
       birthPlace: "",
       birthDate: "",
       birthDateMenu: false,
+      educations: ["SD", "SMP", "SMA", "D3", "S1", "S2", "S3"],
       education: "",
       occupation: "",
       addressDetail: "",
