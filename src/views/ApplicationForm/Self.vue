@@ -522,7 +522,7 @@ export default {
       }
       this.$store.dispatch('setSelf', data)
         .then(() => {
-          this.$router.push({ name: 'detail', params: { examId: this.$route.params.examId }, query: { martial: 'talent' } })
+          this.$router.push({ name: 'detail', params: { examId: this.$route.params.examId }, query: { martial: this.martial } })
         })
     },
     reset () {
