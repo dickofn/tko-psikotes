@@ -110,7 +110,7 @@ export default {
       birthPlace: "",
       birthDate: "",
       birthDateMenu: false,
-      educations: ["SD", "SMP", "SMA", "D3", "S1", "S2", "S3"],
+      educations: ["SD", "SMP", "SMA", "Diploma", "S1", "S2", "S3"],
       education: "",
       occupation: "",
       addressDetail: "",
