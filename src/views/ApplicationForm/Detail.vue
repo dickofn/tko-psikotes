@@ -10,7 +10,7 @@
           </v-card-title>
           <v-card-text>
             <v-container>
-              <v-form ref="form" v-model="valid">
+              <v-form ref="form" v-model="valid" @submit.prevent="submit">
                 <v-layout row wrap mb-2>
                   <v-flex md8 offset-md2 xs12>
                     <h4>Kontak yang dapat dihubungi dalam keadaan darurat</h4>
@@ -258,7 +258,8 @@
 
                 <v-layout row wrap mt-5 justify-end>
                   <v-flex offset-md6 offset-lg7 offset-xl8>
-                    <v-btn :disabled="!valid" color="success">Submit</v-btn>
+                    <v-btn color="warning" @click="test">test</v-btn>
+                    <v-btn :disabled="!valid" color="success" type="submit">Submit</v-btn>
                     <v-btn color="error" @click="reset">Reset Form</v-btn>
                   </v-flex>
                 </v-layout>
@@ -273,7 +274,8 @@
 
 <script>
 /**
- * TODO: passing rules and valid to dataInputAddress
+ * TODO: Kolom baru di dependents , kolom Desc, udah di foto check gallery hp
+ * TODO: Kolom baru di families , kolom Desc, udah di foto check gallery hp
  */
 
 import dataInputRelation from '../../components/ApplicationForm/DataInputRelation'
@@ -439,6 +441,9 @@ export default {
     }
   },
   methods: {
+    test () {
+      console.log(this.families)
+    },
     updateAddressEmergencyDetail (i) {
       this.addressEmergencyDetail = i;
     },
@@ -503,6 +508,144 @@ export default {
     },
     eduCancel () {
       this.eduDialog = false;
+    },
+    submit () {
+      var addresses = [
+        {
+          addressTypeId: 4,
+          detailAddress: this.addressEmergencyDetail,
+          kelurahan: this.addressEmergencyKelurahan,
+          kecamatan: this.addressEmergencyKecamatan,
+          city: this.addressEmergencyKota,
+          province: this.addressEmergencyPropinsi,
+          postalCode: this.addressEmergencyPos,
+          country: "Indonesia"
+        }
+      ]
+      for (let i = 0; i < this.contacts.length; i++) {
+        const el = this.contacts[i].conAddressDetail;
+        addresses.push({
+          addressTypeId: 5,
+          detailAddress: el,
+          country: "Indonesia"
+        })
+      }
+
+      var families = []
+      for (let i = 0; i < this.families.length; i++) {
+        const el = this.families[i]
+        var relationshipTypeId
+        if (el.famRelation == 'Ayah') relationshipTypeId = 1
+        else if (el.famRelation == 'Ibu') relationshipTypeId = 2
+        else if (el.famRelation == 'Anak kandung') relationshipTypeId = 6
+        var educationTypeId
+        if (el.famEducation == "SD") educationTypeId = 1
+        else if (el.famEducation == "SMP") educationTypeId = 2
+        else if (el.famEducation == "SMA") educationTypeId = 3
+        else if (el.famEducation == "Diploma") educationTypeId = 4
+        else if (el.famEducation == "S1") educationTypeId = 5
+        else if (el.famEducation == "S2") educationTypeId = 6
+        else if (el.famEducation == "S3") educationTypeId = 7
+          families.push({
+            relationshipTypeId: relationshipTypeId,
+            educationTypeId: educationTypeId,
+            name: el.famName,
+            sex: el.famGender,
+            placeBirth: el.famBirthPlace,
+            dateBirth: el.famBirthDate,
+            occupation: el.famOccupation,
+            desc: ""
+          })
+      }
+
+      const data = {
+        applicantEmergency: {
+          relationshipTypeId: 1,
+          emergencyName: this.emergencyName,
+          emergencyContact: this.emergencyNumber
+        },
+        applicantAddress: addresses,
+        applicantFamily: families, //TODO: tambah dependents juga jadi 1 table, baru families ajah
+        applicantContact: [
+          {
+            relationshipTypeId: 1,
+            description: "",
+            name: "G. Narasoma",
+            sex: "M",
+            contact: "085973812815",
+            occupation: "BUMN"
+          },
+          {
+            relationshipTypeId: 6,
+            description: "",
+            name: "C. Junior",
+            sex: "M",
+            contact: "082233116642",
+            occupation: "TU Swasta"
+          }
+        ],
+        applicantEducation: [
+          {
+            educationTypeId: 1,
+            institution: "SD Sarimulya IV",
+            startYear: "1994",
+            endYear: "2000",
+            major: "",
+            gpa: "",
+            desc: ""
+          },
+          {
+            educationTypeId: 2,
+            institution: "SMP Pupuk Kujang",
+            startYear: "2000",
+            endYear: "2003",
+            major: "",
+            gpa: "",
+            desc: ""
+          },
+          {
+            educationTypeId: 3,
+            institution: "SMAN 2 Purwakarta",
+            startYear: "2003",
+            endYear: "2006",
+            major: "IPS",
+            gpa: "",
+            desc: ""
+          },
+          {
+            educationTypeId: 4,
+            institution: "Unpad Bandung",
+            startYear: "2006",
+            endYear: "2009",
+            major: "Adm. Bisnis",
+            gpa: "3.41",
+            desc: ""
+          },
+          {
+            educationTypeId: 5,
+            institution: "Pelita Bangsa Bekasi",
+            startYear: "2007",
+            endYear: "2011",
+            major: "Management",
+            gpa: "3.09",
+            desc: ""
+          },
+          {
+            educationTypeId: 6,
+            institution: "Trisakti",
+            startYear: "2012",
+            endYear: "",
+            major: "Management",
+            gpa: "",
+            desc: ""
+          }
+        ],
+        applicantDescription: {
+          educationMajorDesc: this.eduReason,
+          educationPaperDesc: this.eduPaper
+        }
+      }
+      console.log(data)
     },
     reset () {
       console.log(this.valid)
