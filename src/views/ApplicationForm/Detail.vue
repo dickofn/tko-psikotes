@@ -43,12 +43,15 @@
                   :addressKecamatan="addressEmergencyKecamatan"
                   :addressKelurahan="addressEmergencyKelurahan"
                   :addressPos="addressEmergencyPos"
+                  :rules="rules"
+                  :valid="valid"
                   @addressDetailUpdated="updateAddressEmergencyDetail"
                   @addressPropinsiUpdated="updateAddressEmergencyPropinsi"
                   @addressKotaUpdated="updateAddressEmergencyKota"
                   @addressKecamatanUpdated="updateAddressEmergencyKecamatan"
                   @addressKelurahanUpdated="updateAddressEmergencyKelurahan"
                   @addressPosUpdated="updateAddressEmergencyPos"
+                  @validUpdated="updateValid "
                 ></data-input-address>
 
                 <v-layout row wrap mb-2>
@@ -64,7 +67,7 @@
                   </v-flex>
                 </v-layout>
 
-                <v-layout row wrap mb-2>
+                <v-layout row wrap mb-2 v-if="isMartial">
                   <v-flex md8 offset-md2 xs12>
                     <h4>Data tanggungan (Suami/Istri/Anak)</h4>
                   </v-flex>
@@ -202,10 +205,7 @@
                     </v-btn>
                   </v-flex>
                   <v-dialog v-model="eduDialog" max-width="80vw">
-                    <data-input-education
-                      @eduDataFilled="eduAdd"
-                      @eduDataCancelled="eduCancel"
-                    ></data-input-education>
+                    <data-input-education @eduDataFilled="eduAdd" @eduDataCancelled="eduCancel"></data-input-education>
                   </v-dialog>
                   <!-- eslint-disable-next-line -->
                   <v-flex md8 offset-md2 xs12>
@@ -283,6 +283,7 @@ import dataInputAddress from '../../components/ApplicationForm/DataInputAddress'
 export default {
   data () {
     return {
+      isMartial: false,
       emergencyName: "",
       emergencyRelations: ["Saudara", "Keluarga", "Teman Dekat"],
       emergencyRelation: "",
@@ -433,6 +434,7 @@ export default {
       valid: true,
       rules: {
         required: v => !!v || 'Wajib diisi!',
+        number: v => (/^[0-9]+$/.test(v)) || 'Harus berupa angka!' //Using regex to allow only [0-9]
       }
     }
   },
@@ -454,6 +456,9 @@ export default {
     },
     updateAddressEmergencyPos (i) {
       this.addressEmergencyPos = i;
+    },
+    updateValid (i) {
+      this.valid = i;
     },
     depAdd (data) {
       this.dependents.push(data)
@@ -508,6 +513,9 @@ export default {
     dataInputRelation,
     dataInputEducation,
     dataInputAddress
+  },
+  created () {
+    this.$route.query.martial == 'false' ? this.isMartial = false : this.isMartial = true
   }
 }
 </script>
