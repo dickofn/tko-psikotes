@@ -8,6 +8,7 @@ export default {
     examApplicantBirthDate: null,
     applicantId: null,
     self: {
+      isCompleted: null,
       applicant: {
         examInfoId: null,
         picture: null,
@@ -71,15 +72,15 @@ export default {
       state.examApplicantBirthPlace = payload.placeBirth;
       state.examApplicantBirthDate = payload.dateBirth;
     },
-    UPDATE_APPLICANTID(state, payload){
-      state.applicantId = payload
+    UPDATE_APPLICANTID(state, payload) {
+      state.applicantId = payload;
     },
     UPDATE_SELF(state, payload) {
       state.self = payload;
     }
   },
   actions: {
-    newApplicant({ commit }, applicantData) {
+    setApplicant({ commit }, applicantData) {
       commit("UPDATE_LOADING", true);
       Axios.post(process.env.VUE_APP_API_URL + "/exam/start", applicantData)
         .then(res => {
@@ -92,6 +93,7 @@ export default {
         });
     },
     getApplicant({ commit }, applicantExamId) {
+      commit("UPDATE_LOADING", true);
       Axios.post(process.env.VUE_APP_API_URL + "/exam/info", applicantExamId)
         .then(res => {
           commit("UPDATE_EXAMAPP", res.data.data);
@@ -102,11 +104,26 @@ export default {
           commit("UPDATE_LOADING", false);
         });
     },
-    newSelf({ commit }, selfData) {
+    setSelf({ commit }, selfData) {
+      commit("UPDATE_LOADING", true);
       Axios.post(process.env.VUE_APP_API_URL + "/applicant/new/self", selfData)
         .then(res => {
           commit("UPDATE_APPLICANTID", res.data.data);
           commit("UPDATE_SELF", selfData);
+          commit("UPDATE_LOADING", false);
+        })
+        .catch(e => {
+          console.log(e);
+          commit("UPDATE_LOADING", false);
+        });
+    },
+    getSelf({ commit }, applicantExamId) {
+      commit("UPDATE_LOADING", true);
+      Axios.get(
+        process.env.VUE_APP_API_URL + "/applicant/get/self/" + applicantExamId
+      )
+        .then(res => {
+          console.log(res.data.data);
           commit("UPDATE_LOADING", false);
         })
         .catch(e => {

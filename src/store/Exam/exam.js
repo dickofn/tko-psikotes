@@ -15,6 +15,7 @@ export default {
   },
   actions: {
     getCompletedStatus({ commit }, examInfo) {
+      commit("UPDATE_LOADING", true);
       Axios.post(
         process.env.VUE_APP_API_URL + "/exam/answer/get/" + examInfo.examType,
         { examInfoId: examInfo.examInfoId }
@@ -29,6 +30,7 @@ export default {
         });
     },
     postAnswerList({ commit }, answerInfo) {
+      commit("UPDATE_LOADING", true);
       Axios.post(process.env.VUE_APP_API_URL + "/exam/answer/new", answerInfo)
         .then(res => {
           commit("UPDATE_ANSWERLIST", res.data.data.examAnswer);
@@ -40,6 +42,7 @@ export default {
         });
     },
     getAnswerList({ commit }, examInfo) {
+      commit("UPDATE_LOADING", true);
       Axios.post(
         process.env.VUE_APP_API_URL + "/exam/answer/get/" + examInfo.examType,
         { examInfoId: examInfo.examInfoId }
