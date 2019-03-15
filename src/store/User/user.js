@@ -77,6 +77,9 @@ export default {
     },
     UPDATE_SELF(state, payload) {
       state.self = payload;
+    },
+    UPDATE_SELFSTATUS(state, payload) {
+      state.self.isCompleted = payload;
     }
   },
   actions: {
@@ -110,6 +113,7 @@ export default {
         .then(res => {
           commit("UPDATE_APPLICANTID", res.data.data);
           commit("UPDATE_SELF", selfData);
+          commit("UPDATE_SELFSTATUS", true);
           commit("UPDATE_LOADING", false);
         })
         .catch(e => {
@@ -119,11 +123,12 @@ export default {
     },
     getSelf({ commit }, applicantExamId) {
       commit("UPDATE_LOADING", true);
-      Axios.get(
-        process.env.VUE_APP_API_URL + "/applicant/get/self/" + applicantExamId
+      Axios.post(
+        process.env.VUE_APP_API_URL + "/applicant/get/complete/self",
+        applicantExamId
       )
         .then(res => {
-          console.log(res.data.data);
+          commit("UPDATE_SELFSTATUS", res.data.data);
           commit("UPDATE_LOADING", false);
         })
         .catch(e => {

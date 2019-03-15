@@ -2,7 +2,15 @@
   <v-container grid-list-xs>
     <v-layout row>
       <v-flex xs12>
-        <v-card>
+        <v-card v-if="isCompleted">
+          <v-card-title primary-title>
+            <v-spacer></v-spacer>
+            <h1
+              class="headline text-uppercase font-weight-light text-xs-center"
+            >Data Diri Kandidat Karyawan Sudah Pernah Diisi</h1> 
+           </v-card-title>
+        </v-card>
+        <v-card v-else>
           <v-card-title primary-title>
             <v-spacer></v-spacer>
             <h1
@@ -377,6 +385,9 @@ export default {
     applicantBirthDate () {
       return this.$store.state.user.examApplicantBirthDate
     },
+    isCompleted () {
+      return this.$store.state.user.self.isCompleted
+    }
   },
   methods: {
     updateAddressCurrentDetail (i) {
@@ -501,7 +512,7 @@ export default {
           }
         ]
       }
-      this.$store.dispatch('newSelf', data)
+      this.$store.dispatch('setSelf', data)
         .then(() => {
           this.$router.push({ name: 'detail', params: { examId: this.$route.params.examId } })
         })
@@ -516,6 +527,7 @@ export default {
   },
   created () {
     this.$store.dispatch('getApplicant', { examInfoId: this.$route.params.examId })
+    this.$store.dispatch('getSelf', { examInfoId: this.$route.params.examId })
   }
 }
 </script>
