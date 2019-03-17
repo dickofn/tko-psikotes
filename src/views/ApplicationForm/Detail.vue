@@ -278,12 +278,12 @@
  * TODO: Kolom baru di families , kolom Desc, udah di foto check gallery hp
  */
 
-import dataInputRelation from '../../components/ApplicationForm/DataInputRelation'
-import dataInputEducation from '../../components/ApplicationForm/DataInputEducation'
-import dataInputAddress from '../../components/ApplicationForm/DataInputAddress'
+import dataInputRelation from "../../components/ApplicationForm/DataInputRelation";
+import dataInputEducation from "../../components/ApplicationForm/DataInputEducation";
+import dataInputAddress from "../../components/ApplicationForm/DataInputAddress";
 
 export default {
-  data () {
+  data() {
     return {
       isMartial: false,
       emergencyName: "",
@@ -329,7 +329,7 @@ export default {
           value: "depOccupation"
         },
         {
-          text: 'Actions',
+          text: "Actions",
           sortable: false
         }
       ],
@@ -366,7 +366,7 @@ export default {
           value: "famOccupation"
         },
         {
-          text: 'Actions',
+          text: "Actions",
           sortable: false
         }
       ],
@@ -399,7 +399,7 @@ export default {
           value: "conOccupation"
         },
         {
-          text: 'Actions',
+          text: "Actions",
           sortable: false
         }
       ],
@@ -427,7 +427,7 @@ export default {
           value: "eduGrade"
         },
         {
-          text: 'Actions',
+          text: "Actions",
           sortable: false
         }
       ],
@@ -435,81 +435,103 @@ export default {
       eduPaper: "",
       valid: true,
       rules: {
-        required: v => !!v || 'Wajib diisi!',
-        number: v => (/^[0-9]+$/.test(v)) || 'Harus berupa angka!' //Using regex to allow only [0-9]
+        required: v => !!v || "Wajib diisi!",
+        number: v => /^[0-9]+$/.test(v) || "Harus berupa angka!" //Using regex to allow only [0-9]
       }
-    }
+    };
   },
   methods: {
-    test () {
-      console.log(this.families)
+    test() {
+      var a = this.relationshipTypeId("Anak kandung");
+      console.log(a);
     },
-    updateAddressEmergencyDetail (i) {
+    relationshipTypeId(relation) {
+      if (relation == "Ayah") return 1;
+      else if (relation == "Ibu") return 2;
+      else if (relation == "Suami") return 3;
+      else if (relation == "Istri") return 4;
+      else if (relation == "Anak") return 5;
+      else if (relation == "Anak kandung") return 6;
+    },
+    educationTypeId(education) {
+      if (education == "SD") return 1;
+      else if (education == "SMP") return 2;
+      else if (education == "SMA") return 3;
+      else if (education == "Diploma") return 4;
+      else if (education == "S1") return 5;
+      else if (education == "S2") return 6;
+      else if (education == "S3") return 7;
+    },
+    updateAddressEmergencyDetail(i) {
       this.addressEmergencyDetail = i;
     },
-    updateAddressEmergencyPropinsi (i) {
+    updateAddressEmergencyPropinsi(i) {
       this.addressEmergencyPropinsi = i;
     },
-    updateAddressEmergencyKota (i) {
+    updateAddressEmergencyKota(i) {
       this.addressEmergencyKota = i;
     },
-    updateAddressEmergencyKecamatan (i) {
+    updateAddressEmergencyKecamatan(i) {
       this.addressEmergencyKecamatan = i;
     },
-    updateAddressEmergencyKelurahan (i) {
+    updateAddressEmergencyKelurahan(i) {
       this.addressEmergencyKelurahan = i;
     },
-    updateAddressEmergencyPos (i) {
+    updateAddressEmergencyPos(i) {
       this.addressEmergencyPos = i;
     },
-    updateValid (i) {
+    updateValid(i) {
       this.valid = i;
     },
-    depAdd (data) {
-      this.dependents.push(data)
+    depAdd(data) {
+      this.dependents.push(data);
       this.depDialog = false;
     },
-    depDelete (item) {
-      const index = this.dependents.indexOf(item)
-      confirm('Are you sure you want to delete this item?') && this.dependents.splice(index, 1)
+    depDelete(item) {
+      const index = this.dependents.indexOf(item);
+      confirm("Are you sure you want to delete this item?") &&
+        this.dependents.splice(index, 1);
     },
-    depCancel () {
+    depCancel() {
       this.depDialog = false;
     },
-    famAdd (data) {
-      this.families.push(data)
+    famAdd(data) {
+      this.families.push(data);
       this.famDialog = false;
     },
-    famDelete (item) {
-      const index = this.families.indexOf(item)
-      confirm('Are you sure you want to delete this item?') && this.families.splice(index, 1)
+    famDelete(item) {
+      const index = this.families.indexOf(item);
+      confirm("Are you sure you want to delete this item?") &&
+        this.families.splice(index, 1);
     },
-    famCancel () {
+    famCancel() {
       this.famDialog = false;
     },
-    conAdd (data) {
-      this.contacts.push(data)
+    conAdd(data) {
+      this.contacts.push(data);
       this.conDialog = false;
     },
-    conDelete (item) {
-      const index = this.contacts.indexOf(item)
-      confirm('Are you sure you want to delete this item?') && this.contacts.splice(index, 1)
+    conDelete(item) {
+      const index = this.contacts.indexOf(item);
+      confirm("Are you sure you want to delete this item?") &&
+        this.contacts.splice(index, 1);
     },
-    conCancel () {
+    conCancel() {
       this.conDialog = false;
     },
-    eduAdd (data) {
-      this.educations.push(data)
+    eduAdd(data) {
+      this.educations.push(data);
       this.eduDialog = false;
     },
-    eduDelete (item) {
-      const index = this.educations.indexOf(item)
-      confirm('Are you sure you want to delete this item?') && this.educations.splice(index, 1)
+    eduDelete(item) {
+      const index = this.educations.indexOf(item);
+      confirm("Are you sure you want to delete this item?") &&
+        this.educations.splice(index, 1);
     },
-    eduCancel () {
+    eduCancel() {
       this.eduDialog = false;
     },
-    submit () {
+    submit() {
       var addresses = [
         {
           addressTypeId: 4,
@@ -521,41 +543,46 @@ export default {
           postalCode: this.addressEmergencyPos,
           country: "Indonesia"
         }
-      ]
+      ];
       for (let i = 0; i < this.contacts.length; i++) {
         const el = this.contacts[i].conAddressDetail;
         addresses.push({
           addressTypeId: 5,
           detailAddress: el,
           country: "Indonesia"
-        })
+        });
       }
 
-      var families = []
+      var families = [];
       for (let i = 0; i < this.families.length; i++) {
-        const el = this.families[i]
-        var relationshipTypeId
-        if (el.famRelation == 'Ayah') relationshipTypeId = 1
-        else if (el.famRelation == 'Ibu') relationshipTypeId = 2
-        else if (el.famRelation == 'Anak kandung') relationshipTypeId = 6
-        var educationTypeId
-        if (el.famEducation == "SD") educationTypeId = 1
-        else if (el.famEducation == "SMP") educationTypeId = 2
-        else if (el.famEducation == "SMA") educationTypeId = 3
-        else if (el.famEducation == "Diploma") educationTypeId = 4
-        else if (el.famEducation == "S1") educationTypeId = 5
-        else if (el.famEducation == "S2") educationTypeId = 6
-        else if (el.famEducation == "S3") educationTypeId = 7
-          families.push({
-            relationshipTypeId: relationshipTypeId,
-            educationTypeId: educationTypeId,
-            name: el.famName,
-            sex: el.famGender,
-            placeBirth: el.famBirthPlace,
-            dateBirth: el.famBirthDate,
-            occupation: el.famOccupation,
-            desc: ""
-          })
+        const el = this.families[i];
+        const relationshipTypeId = this.relationshipTypeId(el.famRelation);
+        const educationTypeId =this.educationTypeId(el.famEducation);
+        families.push({
+          relationshipTypeId: relationshipTypeId,
+          educationTypeId: educationTypeId,
+          name: el.famName,
+          sex: el.famGender,
+          placeBirth: el.famBirthPlace,
+          dateBirth: el.famBirthDate,
+          occupation: el.famOccupation,
+          desc: ""
+        });
+      }
+      for (let i = 0; i < this.dependents.length; i++) {
+        const el = this.dependents[i];
+        const relationshipTypeId = this.relationshipTypeId(el.depRelation);
+        const educationTypeId =this.educationTypeId(el.depEducation);
+        families.push({
+          relationshipTypeId: relationshipTypeId,
+          educationTypeId: educationTypeId,
+          name: el.depName,
+          sex: el.depGender,
+          placeBirth: el.depBirthPlace,
+          dateBirth: el.depBirthDate,
+          occupation: el.depOccupation,
+          desc: ""
+        });
       }
 
       const data = {
@@ -565,8 +592,8 @@ export default {
           emergencyContact: this.emergencyNumber
         },
         applicantAddress: addresses,
-        applicantFamily: families, //TODO: tambah dependents juga jadi 1 table, baru families ajah
-        applicantContact: [
+        applicantFamily: families,
+        applicantContact: [ //TODO: tanya Septovan, bukannya harusnya ada alamat disini
           {
             relationshipTypeId: 1,
             description: "",
@@ -644,12 +671,12 @@ export default {
           educationMajorDesc: this.eduReason,
           educationPaperDesc: this.eduPaper
         }
-      }
-      console.log(data)
+      };
+      console.log(data);
     },
-    reset () {
-      console.log(this.valid)
-      this.$refs.form.reset()
+    reset() {
+      console.log(this.valid);
+      this.$refs.form.reset();
     }
   },
   components: {
@@ -657,8 +684,10 @@ export default {
     dataInputEducation,
     dataInputAddress
   },
-  created () {
-    this.$route.query.martial == 'false' ? this.isMartial = false : this.isMartial = true
+  created() {
+    this.$route.query.martial == "false"
+      ? (this.isMartial = false)
+      : (this.isMartial = true);
   }
-}
+};
 </script>
