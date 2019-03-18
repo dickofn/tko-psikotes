@@ -90,7 +90,7 @@ export default {
         applicantExamId
       )
         .then(res => {
-          commit("UPDATE_SELFSTATUS", res.data.data);
+          commit("UPDATE_SELFSTATUS", res.data.data.isComplete);
           commit("UPDATE_LOADING", false);
         })
         .catch(e => {
@@ -122,7 +122,7 @@ export default {
         applicantExamId
       )
         .then(res => {
-          commit("UPDATE_DETAILSTATUS", res.data.data);
+          commit("UPDATE_DETAILSTATUS", res.data.data.isComplete);
           commit("UPDATE_LOADING", false);
         })
         .catch(e => {

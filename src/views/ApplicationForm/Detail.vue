@@ -466,7 +466,7 @@ export default {
   },
   computed: {
     isCompleted () {
-      return this.$store.state.user.detail.isComplete
+      return this.$store.state.user.detail.isCompleted
     }
   },
   methods: {
@@ -499,7 +499,7 @@ export default {
       else if (relation == "Teman" || relation == "Teman Dekat") return 7;
       else if (relation == "Saudara") return 8;
       else if (relation == "Keluarga") return 9;
-    }, 
+    },
     educationTypeId (education) {
       if (education == "SD") return 1;
       else if (education == "SMP") return 2;
@@ -680,7 +680,7 @@ export default {
       };
       this.$store.dispatch('setDetail', { examId: this.$route.params.examId, data })
         .then(() => {
-          this.$router.push({ name: 'experience', params: { examId: this.$route.params.examId }, query: { martial: this.martial } })
+          this.$router.push({ name: 'experience', params: { examId: this.$route.params.examId } })
         })
     },
     reset () {
