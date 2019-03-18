@@ -466,7 +466,7 @@ export default {
   },
   computed: {
     isCompleted () {
-      return this.$store.state.user.detail.isCompleted
+      return this.$store.state.user.detail.isComplete
     }
   },
   methods: {
