@@ -496,10 +496,10 @@ export default {
       else if (relation == "Istri") return 4;
       else if (relation == "Anak") return 5;
       else if (relation == "Anak kandung") return 6;
-      else if (relation == "Teman") return 7;
+      else if (relation == "Teman" || relation == "Teman Dekat") return 7;
       else if (relation == "Saudara") return 8;
       else if (relation == "Keluarga") return 9;
-    },
+    }, 
     educationTypeId (education) {
       if (education == "SD") return 1;
       else if (education == "SMP") return 2;
@@ -665,7 +665,7 @@ export default {
 
       const data = {
         applicantEmergency: {
-          relationshipTypeId: 1,
+          relationshipTypeId: this.relationshipTypeId(this.emergencyRelation),
           emergencyName: this.emergencyName,
           emergencyContact: this.emergencyNumber
         },
