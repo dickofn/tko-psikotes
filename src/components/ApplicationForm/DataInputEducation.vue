@@ -27,6 +27,7 @@
             id="eduPeriodStart"
             type="number"
             v-model="eduPeriodStart"
+            :rules="[rules.year]"
           ></v-text-field>
         </v-flex>
 
@@ -37,6 +38,7 @@
             id="eduPeriodEnd"
             type="number"
             v-model="eduPeriodEnd"
+            :rules="[rules.year]"
           ></v-text-field>
         </v-flex>
       </v-layout>
@@ -60,6 +62,17 @@
             id="eduGrade"
             v-model="eduGrade"
             type="number"
+          ></v-text-field>
+        </v-flex>
+      </v-layout>
+      
+      <v-layout row wrap mb-2>
+        <v-flex md8 offset-md2 xs12>
+          <v-text-field
+            label="Keterangan"
+            name="eduDesc"
+            id="eduDesc"
+            v-model="eduDesc"
           ></v-text-field>
         </v-flex>
       </v-layout>
@@ -94,7 +107,11 @@ export default {
       eduPeriodEnd: "",
       eduMajor: "",
       eduGrade: "",
+      eduDesc: "",
       dialogValid: true,
+      rules: {
+        year: v => v >= 0 || 'Tahun tidak boleh di bawah nol!' //Using regex to allow only [0-9]
+      },
       data: {}
     }
   },
@@ -115,7 +132,8 @@ export default {
           eduName: this.eduName,
           eduPeriod: this.eduPeriodStart + "-" + this.eduPeriodEnd,
           eduMajor: this.eduMajor,
-          eduGrade: this.eduGrade
+          eduGrade: this.eduGrade,
+          eduDesc: this.eduDesc
         }
         this.$emit('eduDataFilled', this.data);
         this.eduLevel = ""
@@ -124,6 +142,7 @@ export default {
         this.eduPeriodEnd = ""
         this.eduMajor = ""
         this.eduGrade = ""
+        this.eduDesc = ""
       }
     },
     cancel () {
@@ -134,6 +153,7 @@ export default {
       this.eduPeriodEnd = ""
       this.eduMajor = ""
       this.eduGrade = ""
+      this.eduDesc = ""
       this.$emit('eduDataCancelled')
     }
   }

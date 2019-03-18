@@ -225,6 +225,7 @@
                         <td>{{ props.item.eduPeriod }}</td>
                         <td>{{ props.item.eduMajor }}</td>
                         <td>{{ props.item.eduGrade }}</td>
+                        <td>{{ props.item.eduDesc }}</td>
                         <td class="justify-center layout px-0">
                           <v-icon small @click="eduDelete(props.item)">delete</v-icon>
                         </td>
@@ -276,11 +277,6 @@
 </template>
 
 <script>
-/**
- * TODO: Kolom baru di dependents , kolom Desc, udah di foto check gallery hp
- * TODO: Kolom baru di families , kolom Desc, udah di foto check gallery hp
- */
-
 import dataInputRelation from "../../components/ApplicationForm/DataInputRelation";
 import dataInputEducation from "../../components/ApplicationForm/DataInputEducation";
 import dataInputAddress from "../../components/ApplicationForm/DataInputAddress";
@@ -442,6 +438,10 @@ export default {
           value: "eduGrade"
         },
         {
+          text: "Keterangan",
+          value: "eduDesc"
+        },
+        {
           text: "Actions",
           sortable: false
         }
@@ -457,7 +457,23 @@ export default {
   },
   methods: {
     test () {
-      console.log(this.contacts)
+      var educations = [];
+      for (let i = 0; i < this.educations.length; i++) {
+        const el = this.educations[i];
+        const educationTypeId = this.educationTypeId(el.eduLevel);
+        const startYear = el.eduPeriod.split('-')[0]
+        const endYear = el.eduPeriod.split('-')[1]
+        educations.push({
+          educationTypeId: educationTypeId,
+          institution: el.eduName,
+          startYear: startYear,
+          endYear: endYear,
+          major: el.eduMajor,
+          gpa: el.eduGrade,
+          desc: el.eduDesc
+        })
+      }
+      console.log(educations)
     },
     relationshipTypeId (relation) {
       if (relation == "Ayah") return 1;
@@ -616,6 +632,23 @@ export default {
         })
       }
 
+      var educations = [];
+      for (let i = 0; i < this.educations.length; i++) {
+        const el = this.educations[i];
+        const educationTypeId = this.educationTypeId(el.eduLevel);
+        const startYear = el.eduPeriod.split('-')[0]
+        const endYear = el.eduPeriod.split('-')[1]
+        educations.push({
+          educationTypeId: educationTypeId,
+          institution: el.eduName,
+          startYear: startYear,
+          endYear: endYear,
+          major: el.eduMajor,
+          gpa: el.eduGrade,
+          desc: el.eduDesc
+        })
+      }
+
       const data = {
         applicantEmergency: {
           relationshipTypeId: 1,
@@ -625,67 +658,13 @@ export default {
         applicantAddress: addresses,
         applicantFamily: families,
         applicantContact: contacts,
-        applicantEducation: [
-          {
-            educationTypeId: 1,
-            institution: "SD Sarimulya IV",
-            startYear: "1994",
-            endYear: "2000",
-            major: "",
-            gpa: "",
-            desc: ""
-          },
-          {
-            educationTypeId: 2,
-            institution: "SMP Pupuk Kujang",
-            startYear: "2000",
-            endYear: "2003",
-            major: "",
-            gpa: "",
-            desc: ""
-          },
-          {
-            educationTypeId: 3,
-            institution: "SMAN 2 Purwakarta",
-            startYear: "2003",
-            endYear: "2006",
-            major: "IPS",
-            gpa: "",
-            desc: ""
-          },
-          {
-            educationTypeId: 4,
-            institution: "Unpad Bandung",
-            startYear: "2006",
-            endYear: "2009",
-            major: "Adm. Bisnis",
-            gpa: "3.41",
-            desc: ""
-          },
-          {
-            educationTypeId: 5,
-            institution: "Pelita Bangsa Bekasi",
-            startYear: "2007",
-            endYear: "2011",
-            major: "Management",
-            gpa: "3.09",
-            desc: ""
-          },
-          {
-            educationTypeId: 6,
-            institution: "Trisakti",
-            startYear: "2012",
-            endYear: "",
-            major: "Management",
-            gpa: "",
-            desc: ""
-          }
-        ],
+        applicantEducation: educations,
         applicantDescription: {
           educationMajorDesc: this.eduReason,
           educationPaperDesc: this.eduPaper
         }
       };
+      
       console.log(data);
     },
     reset () {

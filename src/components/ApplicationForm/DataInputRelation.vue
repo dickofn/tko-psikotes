@@ -197,10 +197,11 @@ export default {
             this.relation = ""
             this.name = ""
             this.gender = ""
-            this.addressDetail = ""
             this.education = ""
             this.occupation = ""
             this.addressDetail = ""
+            this.contactNumber = ""
+            this.description = ""
           }
         }
         if (this.type != 'contact') {
@@ -212,6 +213,8 @@ export default {
           this.education = ""
           this.occupation = ""
           this.addressDetail = ""
+          this.contactNumber = ""
+          this.description = ""
         }
       }
     },
