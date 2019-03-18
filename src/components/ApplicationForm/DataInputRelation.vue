@@ -67,7 +67,18 @@
         </v-flex>
       </v-layout>
 
-      <v-layout row wrap mb-2>
+      <v-layout row wrap mb-2 v-if="type=='contact'">
+        <v-flex md8 offset-md2 xs12>
+          <v-text-field
+            label="Telephone"
+            name="contactNumber"
+            id="contactNumber"
+            v-model="contactNumber"
+          ></v-text-field>
+        </v-flex>
+      </v-layout>
+
+      <v-layout row wrap mb-2 v-if="type!='contact'">
         <v-flex md8 offset-md2 xs12>
           <v-select :items="educations" label="Pendidikan" v-model="education"></v-select>
         </v-flex>
@@ -125,6 +136,7 @@ export default {
       education: "",
       occupation: "",
       addressDetail: "",
+      contactNumber: "",
       description: "",
       data: {}
     }
@@ -168,7 +180,7 @@ export default {
           this.$emit('famDataFilled', this.data);
         }
         if (this.type == 'contact') {
-          if (this.relation == "" || this.name == "" || this.gender == "" || this.education == "" || this.occupation == "" || this.addressDetail == "") {
+          if (this.relation == "" || this.name == "" || this.gender == "" || this.contactNumber == "" || this.occupation == "" || this.addressDetail == "") {
             this.dialogValid = false;
           } else {
             this.dialogValid = true
@@ -177,8 +189,9 @@ export default {
               conName: this.name,
               conGender: this.gender,
               conAddressDetail: this.addressDetail,
-              conEducation: this.education,
-              conOccupation: this.occupation
+              conNumber: this.contactNumber,
+              conOccupation: this.occupation,
+              conDesc: this.description
             }
             this.$emit('conDataFilled', this.data);
             this.relation = ""

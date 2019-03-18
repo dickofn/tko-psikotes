@@ -187,8 +187,9 @@
                         <td>{{ props.item.conName }}</td>
                         <td>{{ props.item.conGender }}</td>
                         <td>{{ props.item.conAddressDetail }}</td>
-                        <td>{{ props.item.conEducation }}</td>
+                        <td>{{ props.item.conNumber }}</td>
                         <td>{{ props.item.conOccupation }}</td>
+                        <td>{{ props.item.conDesc }}</td>
                         <td class="justify-center layout px-0">
                           <v-icon small @click="conDelete(props.item)">delete</v-icon>
                         </td>
@@ -285,7 +286,7 @@ import dataInputEducation from "../../components/ApplicationForm/DataInputEducat
 import dataInputAddress from "../../components/ApplicationForm/DataInputAddress";
 
 export default {
-  data() {
+  data () {
     return {
       isMartial: false,
       emergencyName: "",
@@ -401,12 +402,16 @@ export default {
           value: "conAddressDetail"
         },
         {
-          text: "Hubungan",
-          value: "conRelation2"
+          text: "Telephone",
+          value: "conNumber"
         },
         {
           text: "Pekerjaan",
           value: "conOccupation"
+        },
+        {
+          text: "Keterangan",
+          value: "conDesc"
         },
         {
           text: "Actions",
@@ -439,7 +444,7 @@ export default {
         {
           text: "Actions",
           sortable: false
-        } 
+        }
       ],
       eduReason: "",
       eduPaper: "",
@@ -451,18 +456,21 @@ export default {
     };
   },
   methods: {
-    test() {
+    test () {
       console.log(this.contacts)
     },
-    relationshipTypeId(relation) {
+    relationshipTypeId (relation) {
       if (relation == "Ayah") return 1;
       else if (relation == "Ibu") return 2;
       else if (relation == "Suami") return 3;
       else if (relation == "Istri") return 4;
       else if (relation == "Anak") return 5;
       else if (relation == "Anak kandung") return 6;
+      else if (relation == "Teman") return 7;
+      else if (relation == "Saudara") return 8;
+      else if (relation == "Keluarga") return 9;
     },
-    educationTypeId(education) {
+    educationTypeId (education) {
       if (education == "SD") return 1;
       else if (education == "SMP") return 2;
       else if (education == "SMA") return 3;
@@ -471,76 +479,76 @@ export default {
       else if (education == "S2") return 6;
       else if (education == "S3") return 7;
     },
-    updateAddressEmergencyDetail(i) {
+    updateAddressEmergencyDetail (i) {
       this.addressEmergencyDetail = i;
     },
-    updateAddressEmergencyPropinsi(i) {
+    updateAddressEmergencyPropinsi (i) {
       this.addressEmergencyPropinsi = i;
     },
-    updateAddressEmergencyKota(i) {
+    updateAddressEmergencyKota (i) {
       this.addressEmergencyKota = i;
     },
-    updateAddressEmergencyKecamatan(i) {
+    updateAddressEmergencyKecamatan (i) {
       this.addressEmergencyKecamatan = i;
     },
-    updateAddressEmergencyKelurahan(i) {
+    updateAddressEmergencyKelurahan (i) {
       this.addressEmergencyKelurahan = i;
     },
-    updateAddressEmergencyPos(i) {
+    updateAddressEmergencyPos (i) {
       this.addressEmergencyPos = i;
     },
-    updateValid(i) {
+    updateValid (i) {
       this.valid = i;
     },
-    depAdd(data) {
+    depAdd (data) {
       this.dependents.push(data);
       this.depDialog = false;
     },
-    depDelete(item) {
+    depDelete (item) {
       const index = this.dependents.indexOf(item);
       confirm("Are you sure you want to delete this item?") &&
         this.dependents.splice(index, 1);
     },
-    depCancel() {
+    depCancel () {
       this.depDialog = false;
     },
-    famAdd(data) {
+    famAdd (data) {
       this.families.push(data);
       this.famDialog = false;
     },
-    famDelete(item) {
+    famDelete (item) {
       const index = this.families.indexOf(item);
       confirm("Are you sure you want to delete this item?") &&
         this.families.splice(index, 1);
     },
-    famCancel() {
+    famCancel () {
       this.famDialog = false;
     },
-    conAdd(data) {
+    conAdd (data) {
       this.contacts.push(data);
       this.conDialog = false;
     },
-    conDelete(item) {
+    conDelete (item) {
       const index = this.contacts.indexOf(item);
       confirm("Are you sure you want to delete this item?") &&
         this.contacts.splice(index, 1);
     },
-    conCancel() {
+    conCancel () {
       this.conDialog = false;
     },
-    eduAdd(data) {
+    eduAdd (data) {
       this.educations.push(data);
       this.eduDialog = false;
     },
-    eduDelete(item) {
+    eduDelete (item) {
       const index = this.educations.indexOf(item);
       confirm("Are you sure you want to delete this item?") &&
         this.educations.splice(index, 1);
     },
-    eduCancel() {
+    eduCancel () {
       this.eduDialog = false;
     },
-    submit() {
+    submit () {
       var addresses = [
         {
           addressTypeId: 4,
@@ -566,7 +574,7 @@ export default {
       for (let i = 0; i < this.families.length; i++) {
         const el = this.families[i];
         const relationshipTypeId = this.relationshipTypeId(el.famRelation);
-        const educationTypeId =this.educationTypeId(el.famEducation);
+        const educationTypeId = this.educationTypeId(el.famEducation);
         families.push({
           relationshipTypeId: relationshipTypeId,
           educationTypeId: educationTypeId,
@@ -581,7 +589,7 @@ export default {
       for (let i = 0; i < this.dependents.length; i++) {
         const el = this.dependents[i];
         const relationshipTypeId = this.relationshipTypeId(el.depRelation);
-        const educationTypeId =this.educationTypeId(el.depEducation);
+        const educationTypeId = this.educationTypeId(el.depEducation);
         families.push({
           relationshipTypeId: relationshipTypeId,
           educationTypeId: educationTypeId,
@@ -594,6 +602,20 @@ export default {
         });
       }
 
+      var contacts = [];
+      for (let i = 0; i < this.contacts.length; i++) {
+        const el = this.contacts[i];
+        const relationshipTypeId = this.relationshipTypeId(el.conRelation);
+        contacts.push({
+          relationshipTypeId: relationshipTypeId,
+          name: el.conName,
+          sex: el.conGender,
+          contact: el.conNumber,
+          occupation: el.conOccupation,
+          description: el.conDesc
+        })
+      }
+
       const data = {
         applicantEmergency: {
           relationshipTypeId: 1,
@@ -602,24 +624,7 @@ export default {
         },
         applicantAddress: addresses,
         applicantFamily: families,
-        applicantContact: [
-          {
-            relationshipTypeId: 1,
-            description: "", 
-            name: "G. Narasoma",
-            sex: "M",
-            contact: "085973812815",
-            occupation: "BUMN"
-          },
-          {
-            relationshipTypeId: 6,
-            description: "",
-            name: "C. Junior",
-            sex: "M",
-            contact: "082233116642",
-            occupation: "TU Swasta"
-          }
-        ],
+        applicantContact: contacts,
         applicantEducation: [
           {
             educationTypeId: 1,
@@ -683,7 +688,7 @@ export default {
       };
       console.log(data);
     },
-    reset() {
+    reset () {
       console.log(this.valid);
       this.$refs.form.reset();
     }
@@ -693,7 +698,7 @@ export default {
     dataInputEducation,
     dataInputAddress
   },
-  created() {
+  created () {
     this.$route.query.martial == "false"
       ? (this.isMartial = false)
       : (this.isMartial = true);
