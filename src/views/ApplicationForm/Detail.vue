@@ -70,7 +70,7 @@
                       name="emergencyNumber"
                       id="emergencyNumber"
                       v-model="emergencyNumber"
-                      :rules="[rules.required]"
+                      :rules="[rules.required, rules.number]"
                       required
                     ></v-text-field>
                   </v-flex>
