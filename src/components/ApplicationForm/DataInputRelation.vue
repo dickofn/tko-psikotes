@@ -133,7 +133,7 @@ export default {
     add () {
       if
       (
-        (this.relation == "" || this.name == "" || this.gender == "" || this.birthPlace == "" || this.birthDate == "" || this.education == "" || this.occupation == "" || this.description == "")
+        (this.relation == "" || this.name == "" || this.gender == "" || this.birthPlace == "" || this.birthDate == "" || this.education == "" || this.occupation == "")
         &&
         this.type != 'contact'
       ) {
