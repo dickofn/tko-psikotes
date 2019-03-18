@@ -102,6 +102,7 @@
                         <td>{{ props.item.depBirthDate }}</td>
                         <td>{{ props.item.depEducation }}</td>
                         <td>{{ props.item.depOccupation }}</td>
+                        <td>{{ props.item.depDesc }}</td>
                         <td class="justify-center layout px-0">
                           <v-icon small @click="depDelete(props.item)">delete</v-icon>
                         </td>
@@ -145,6 +146,7 @@
                         <td>{{ props.item.famBirthDate }}</td>
                         <td>{{ props.item.famEducation }}</td>
                         <td>{{ props.item.famOccupation }}</td>
+                        <td>{{ props.item.famDesc }}</td>
                         <td class="justify-center layout px-0">
                           <v-icon small @click="famDelete(props.item)">delete</v-icon>
                         </td>
@@ -329,6 +331,10 @@ export default {
           value: "depOccupation"
         },
         {
+          text: "Keterangan",
+          value: "depDesc"
+        },
+        {
           text: "Actions",
           sortable: false
         }
@@ -364,6 +370,10 @@ export default {
         {
           text: "Pekerjaan",
           value: "famOccupation"
+        },
+        {
+          text: "Keterangan",
+          value: "famDesc"
         },
         {
           text: "Actions",
@@ -429,7 +439,7 @@ export default {
         {
           text: "Actions",
           sortable: false
-        }
+        } 
       ],
       eduReason: "",
       eduPaper: "",
@@ -442,8 +452,7 @@ export default {
   },
   methods: {
     test() {
-      var a = this.relationshipTypeId("Anak kandung");
-      console.log(a);
+      console.log(this.contacts)
     },
     relationshipTypeId(relation) {
       if (relation == "Ayah") return 1;
@@ -566,7 +575,7 @@ export default {
           placeBirth: el.famBirthPlace,
           dateBirth: el.famBirthDate,
           occupation: el.famOccupation,
-          desc: ""
+          desc: el.famDesc
         });
       }
       for (let i = 0; i < this.dependents.length; i++) {
@@ -581,7 +590,7 @@ export default {
           placeBirth: el.depBirthPlace,
           dateBirth: el.depBirthDate,
           occupation: el.depOccupation,
-          desc: ""
+          desc: el.depDesc
         });
       }
 
@@ -593,10 +602,10 @@ export default {
         },
         applicantAddress: addresses,
         applicantFamily: families,
-        applicantContact: [ //TODO: tanya Septovan, bukannya harusnya ada alamat disini
+        applicantContact: [
           {
             relationshipTypeId: 1,
-            description: "",
+            description: "", 
             name: "G. Narasoma",
             sex: "M",
             contact: "085973812815",

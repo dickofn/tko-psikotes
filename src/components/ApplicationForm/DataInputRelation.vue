@@ -79,6 +79,17 @@
         </v-flex>
       </v-layout>
 
+      <v-layout row wrap mb-2>
+        <v-flex md8 offset-md2 xs12>
+          <v-text-field
+            label="Keterangan"
+            name="description"
+            id="description"
+            v-model="description"
+          ></v-text-field>
+        </v-flex>
+      </v-layout>
+
       <v-layout row wrap mt-4>
         <v-flex md8 offset-md2 xs12>
           <h4 v-if="!dialogValid">Masih ada field yang kosong!</h4>
@@ -114,6 +125,7 @@ export default {
       education: "",
       occupation: "",
       addressDetail: "",
+      description: "",
       data: {}
     }
   },
@@ -121,7 +133,7 @@ export default {
     add () {
       if
       (
-        (this.relation == "" || this.name == "" || this.gender == "" || this.birthPlace == "" || this.birthDate == "" || this.education == "" || this.occupation == "")
+        (this.relation == "" || this.name == "" || this.gender == "" || this.birthPlace == "" || this.birthDate == "" || this.education == "" || this.occupation == "" || this.description == "")
         &&
         this.type != 'contact'
       ) {
@@ -136,7 +148,8 @@ export default {
             depBirthPlace: this.birthPlace,
             depBirthDate: this.birthDate,
             depEducation: this.education,
-            depOccupation: this.occupation
+            depOccupation: this.occupation,
+            depDesc: this.description
           }
           this.$emit('depDataFilled', this.data);
         }
@@ -149,7 +162,8 @@ export default {
             famBirthPlace: this.birthPlace,
             famBirthDate: this.birthDate,
             famEducation: this.education,
-            famOccupation: this.occupation
+            famOccupation: this.occupation,
+            famDesc: this.description
           }
           this.$emit('famDataFilled', this.data);
         }
