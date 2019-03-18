@@ -2,7 +2,16 @@
   <v-container grid-list-xs>
     <v-layout row>
       <v-flex xs12>
-        <v-card>
+        <v-card v-if="isCompleted">
+          <v-card-title primary-title>
+            <v-spacer></v-spacer>
+            <h1
+              class="headline text-uppercase font-weight-light text-xs-center"
+            >Data Lengkap Sudah Pernah Diisi</h1>
+            <v-spacer></v-spacer>
+          </v-card-title>
+        </v-card>
+        <v-card v-else>
           <v-card-title primary-title>
             <v-spacer></v-spacer>
             <h1 class="headline text-uppercase text-xs-center font-weight-light">Data Lengkap</h1>
@@ -455,6 +464,11 @@ export default {
       }
     };
   },
+  computed: {
+    isCompleted () {
+      return this.$store.state.user.detail.isCompleted
+    }
+  },
   methods: {
     test () {
       var educations = [];
@@ -664,8 +678,10 @@ export default {
           educationPaperDesc: this.eduPaper
         }
       };
-      
-      console.log(data);
+      this.$store.dispatch('setDetail', { examId: this.$route.params.examId, data })
+        .then(() => {
+          this.$router.push({ name: 'experience', params: { examId: this.$route.params.examId }, query: { martial: this.martial } })
+        })
     },
     reset () {
       console.log(this.valid);
@@ -681,6 +697,7 @@ export default {
     this.$route.query.martial == "false"
       ? (this.isMartial = false)
       : (this.isMartial = true);
+    this.$store.dispatch('getDetail', { examInfoId: this.$route.params.examId })
   }
 };
 </script>
