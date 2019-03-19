@@ -110,7 +110,7 @@ export default {
       eduDesc: "",
       dialogValid: true,
       rules: {
-        year: v => v >= 0 || 'Tahun tidak boleh di bawah nol!' //Using regex to allow only [0-9]
+        year: v => v >= 0 || 'Tahun tidak boleh di bawah nol!'
       },
       data: {}
     }
