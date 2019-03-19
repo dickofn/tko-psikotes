@@ -271,7 +271,6 @@
 
                 <v-layout row wrap mt-5 justify-end>
                   <v-flex offset-md6 offset-lg7 offset-xl8>
-                    <v-btn color="warning" @click="test">test</v-btn>
                     <v-btn :disabled="!valid" color="success" type="submit">Submit</v-btn>
                     <v-btn color="error" @click="reset">Reset Form</v-btn>
                   </v-flex>
@@ -470,25 +469,6 @@ export default {
     }
   },
   methods: {
-    test () {
-      var educations = [];
-      for (let i = 0; i < this.educations.length; i++) {
-        const el = this.educations[i];
-        const educationTypeId = this.educationTypeId(el.eduLevel);
-        const startYear = el.eduPeriod.split('-')[0]
-        const endYear = el.eduPeriod.split('-')[1]
-        educations.push({
-          educationTypeId: educationTypeId,
-          institution: el.eduName,
-          startYear: startYear,
-          endYear: endYear,
-          major: el.eduMajor,
-          gpa: el.eduGrade,
-          desc: el.eduDesc
-        })
-      }
-      console.log(educations)
-    },
     relationshipTypeId (relation) {
       if (relation == "Ayah") return 1;
       else if (relation == "Ibu") return 2;
