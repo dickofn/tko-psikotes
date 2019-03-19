@@ -19,6 +19,15 @@ export default {
       applicantContact: [],
       applicantEducation: [],
       applicantDescription: {}
+    },
+    experience: {
+      isCompleted: null,
+      applicantOrganization: [],
+      applicantTraining: [],
+      applicantLanguage: [],
+      applicantExperience: [],
+      applicantAddress: [],
+      applicantDescription: {}
     }
   },
   mutations: {
@@ -42,6 +51,12 @@ export default {
     },
     UPDATE_DETAILSTATUS(state, payload) {
       state.detail.isCompleted = payload;
+    },
+    UPDATE_EXPERIENCE(state, payload) {
+      state.experience = payload;
+    },
+    UPDATE_EXPERIENCESTATUS(state, payload) {
+      state.experience.isCompleted = payload;
     }
   },
   actions: {
@@ -123,6 +138,38 @@ export default {
       )
         .then(res => {
           commit("UPDATE_DETAILSTATUS", res.data.data.isComplete);
+          commit("UPDATE_LOADING", false);
+        })
+        .catch(e => {
+          console.log(e);
+          commit("UPDATE_LOADING", false);
+        });
+    },
+    setExperience({ commit }, payload) {
+      commit("UPDATE_LOADING", true);
+      Axios.post(
+        process.env.VUE_APP_API_URL + "/applicant/new/experience/" + payload.examId,
+        payload.data
+      )
+        .then(res => {
+          commit("UPDATE_APPLICANTID", res.data.data);
+          commit("UPDATE_EXPERIENCE", payload.data);
+          commit("UPDATE_EXPERIENCESTATUS", true);
+          commit("UPDATE_LOADING", false);
+        })
+        .catch(e => {
+          console.log(e);
+          commit("UPDATE_LOADING", false);
+        });
+    },
+    getExperience({ commit }, applicantExamId) {
+      commit("UPDATE_LOADING", true);
+      Axios.post(
+        process.env.VUE_APP_API_URL + "/applicant/get/complete/experience",
+        applicantExamId
+      )
+        .then(res => {
+          commit("UPDATE_EXPERIENCESTATUS", res.data.data.isComplete);
           commit("UPDATE_LOADING", false);
         })
         .catch(e => {
