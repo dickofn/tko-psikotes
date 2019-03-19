@@ -26,6 +26,7 @@
             id="workPeriodStart"
             type="number"
             v-model="workPeriodStart"
+            :rules="[rules.year]"
           ></v-text-field>
         </v-flex>
 
@@ -36,21 +37,27 @@
             id="workPeriodEnd"
             type="number"
             v-model="workPeriodEnd"
+            :rules="[rules.year]"
           ></v-text-field>
         </v-flex>
       </v-layout>
 
-      <v-layout row wrap mb-2>
-        <v-flex md8 offset-md2 xs12>
-          <v-textarea
-            label="Alamat"
-            name="workAddressDetail"
-            id="workAddressDetail"
-            v-model="workAddressDetail"
-            rows="2"
-          ></v-textarea>
-        </v-flex>
-      </v-layout>
+      <data-input-address
+        :title="'Perusahaan'"
+        :addressDetail="addressCompanyDetail"
+        :addressPropinsi="addressCompanyPropinsi"
+        :addressKota="addressCompanyKota"
+        :addressKecamatan="addressCompanyKecamatan"
+        :addressKelurahan="addressCompanyKelurahan"
+        :addressPos="addressCompanyPos"
+        :rules="rules"
+        @addressDetailUpdated="updateAddressCompanyDetail"
+        @addressPropinsiUpdated="updateAddressCompanyPropinsi"
+        @addressKotaUpdated="updateAddressCompanyKota"
+        @addressKecamatanUpdated="updateAddressCompanyKecamatan"
+        @addressKelurahanUpdated="updateAddressCompanyKelurahan"
+        @addressPosUpdated="updateAddressCompanyPos"
+      ></data-input-address>
 
       <v-layout row wrap mb-2>
         <v-flex md8 offset-md2 xs12>
@@ -59,6 +66,7 @@
             name="workNumber"
             id="workNumber"
             v-model="workNumber"
+            :rules="[rules.number]"
           ></v-text-field>
         </v-flex>
       </v-layout>
@@ -140,13 +148,29 @@
 </template>
 
 <script>
+import dataInputAddress from "./DataInputAddress";
+
+
 export default {
   data () {
     return {
       workCompany: "",
       workPeriodStart: "",
       workPeriodEnd: "",
+      addressCompanyDetail: "",
+      addressCompanyKelurahan: "",
+      addressCompanyKecamatan: "",
+      addressCompanyKota: "",
+      addressCompanyPropinsi: "",
+      addressCompanyPos: "",
+      addressCompanyDetailText: "",
+      addressCompanyKelurahanText: "",
+      addressCompanyKecamatanText: "",
+      addressCompanyKotaText: "",
+      addressCompanyPropinsiText: "",
+      addressCompanyPosText: "",
       workAddressDetail: "",
+      emergencyNumber: "",
       workNumber: "",
       workFirstJob: "",
       workLastJob: "",
@@ -154,13 +178,72 @@ export default {
       workReason: "",
       workSalary: "",
       dialogValid: true,
+      rules: {
+        required: v => !!v || "Wajib diisi!",
+        number: v => /^[0-9]+$/.test(v) || "Harus berupa angka!", //Using regex to allow only [0-9]
+        year: v => v >= 0 || 'Tahun tidak boleh di bawah nol!' //Using regex to allow only [0-9]
+      },
       data: {}
     }
   },
   methods: {
-    add () {
+    updateAddressCompanyDetail (i) {
+      this.addressCompanyDetail = i;
+    },
+    updateAddressCompanyPropinsi (i) {
+      this.addressCompanyPropinsi = i;
+    },
+    updateAddressCompanyKota (i) {
+      this.addressCompanyKota = i;
+    },
+    updateAddressCompanyKecamatan (i) {
+      this.addressCompanyKecamatan = i;
+    },
+    updateAddressCompanyKelurahan (i) {
+      this.addressCompanyKelurahan = i;
+    },
+    updateAddressCompanyPos (i) {
+      this.addressCompanyPos = i;
+    },
+    getAddressCompanyKelurahan () {
+      this.axios.get(process.env.VUE_APP_API_URL + '/administratif/get/kelurahan/' + this.addressCompanyKelurahan)
+        .then((res) => {
+          this.addressCompanyKelurahanText = res.data.data.result[0].name
+        })
+        .then(()=>{
+          this.addFunction()
+        })
+    },
+    getAddressCompanyKecamatan () {
+      this.axios.get(process.env.VUE_APP_API_URL + '/administratif/get/kecamatan/' + this.addressCompanyKecamatan)
+        .then((res) => {
+          this.addressCompanyKecamatanText = res.data.data.result[0].name
+        })
+        .then(() => {
+          this.getAddressCompanyKelurahan()
+        })
+    },
+    getAddressCompanyKota () {
+      this.axios.get(process.env.VUE_APP_API_URL + '/administratif/get/kota/' + this.addressCompanyKota)
+        .then((res) => {
+          this.addressCompanyKotaText = res.data.data.result[0].name
+        })
+        .then(() => {
+          this.getAddressCompanyKecamatan()
+        })
+    },
+    getAddressCompanyPropinsi () {
+      this.axios.get(process.env.VUE_APP_API_URL + '/administratif/get/provinsi/' + this.addressCompanyPropinsi)
+        .then((res) => {
+          this.addressCompanyPropinsiText = res.data.data.result[0].name
+        })
+        .then(() => {
+          this.getAddressCompanyKota()
+        })
+    },
+    addFunction () {
       if (
-        (this.workCompany == "" || this.workPeriodStart == "" || this.workPeriodEnd == "" || this.workAddressDetail == "" || this.workNumber == "" || this.workFirstJob == "" || this.workLastJob == "" || this.workLeader == "" || this.workReason == "" || this.workSalary == "")
+        (this.workCompany == "" || this.workPeriodStart == "" || this.workPeriodEnd == "" || this.addressCompanyKelurahan == "" || this.workNumber == "" || this.workFirstJob == "" || this.workLastJob == "" || this.workLeader == "" || this.workReason == "" || this.workSalary == "")
       ) {
         this.dialogValid = false
       } else {
@@ -168,7 +251,7 @@ export default {
         this.data = {
           workCompany: this.workCompany,
           workPeriod: this.workPeriodStart + "-" + this.workPeriodEnd,
-          workAddressDetail: this.workAddressDetail,
+          workAddressDetail: this.addressCompanyDetail + ", " + this.addressCompanyKelurahanText + ", " + this.addressCompanyKecamatanText + ", " + this.addressCompanyKotaText + ", " + this.addressCompanyPropinsiText + " " + this.addressCompanyPos,
           workNumber: this.workNumber,
           workFirstJob: this.workFirstJob,
           workLastJob: this.workLastJob,
@@ -180,6 +263,12 @@ export default {
         this.workCompany = ""
         this.workPeriodStart = ""
         this.workPeriodEnd = ""
+        this.addressCompanyDetail = ""
+        this.addressCompanyKelurahan = ""
+        this.addressCompanyKecamatan = ""
+        this.addressCompanyKota = ""
+        this.addressCompanyPropinsi = ""
+        this.addressCompanyPos = ""
         this.workAddressDetail = ""
         this.workNumber = ""
         this.workFirstJob = ""
@@ -189,11 +278,20 @@ export default {
         this.workSalary = ""
       }
     },
+    add () {
+      this.getAddressCompanyPropinsi()
+    },
     cancel () {
       this.dialogValid = true
       this.workCompany = ""
       this.workPeriodStart = ""
       this.workPeriodEnd = ""
+      this.addressCompanyDetail = ""
+      this.addressCompanyKelurahan = ""
+      this.addressCompanyKecamatan = ""
+      this.addressCompanyKota = ""
+      this.addressCompanyPropinsi = ""
+      this.addressCompanyPos = ""
       this.workAddressDetail = ""
       this.workNumber = ""
       this.workFirstJob = ""
@@ -203,6 +301,9 @@ export default {
       this.workSalary = ""
       this.$emit('workDataCancelled')
     }
+  },
+  components: {
+    dataInputAddress
   }
 }
 </script>

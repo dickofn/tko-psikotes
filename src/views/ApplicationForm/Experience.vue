@@ -2,7 +2,16 @@
   <v-container grid-list-xs>
     <v-layout row>
       <v-flex xs12>
-        <v-card>
+        <v-card v-if="isCompleted">
+          <v-card-title primary-title>
+            <v-spacer></v-spacer>
+            <h1
+              class="headline text-uppercase font-weight-light text-xs-center"
+            >Data Pengalaman Sudah Pernah Diisi</h1>
+            <v-spacer></v-spacer>
+          </v-card-title>
+        </v-card>
+        <v-card v-else>
           <v-card-title primary-title>
             <v-spacer></v-spacer>
             <h1 class="headline text-uppercase text-xs-center font-weight-light">Data Pengalaman</h1>
@@ -10,7 +19,7 @@
           </v-card-title>
           <v-card-text>
             <v-container>
-              <v-form ref="form" v-model="valid">
+              <v-form ref="form" @submit.prevent="submit">
                 <v-layout row wrap mb-2>
                   <v-flex md8 offset-md2 xs12>
                     <h4>Pengalaman Organisasi</h4>
@@ -203,7 +212,7 @@
 
                 <v-layout row wrap mt-5 justify-end>
                   <v-flex offset-md6 offset-lg7 offset-xl8>
-                    <v-btn :disabled="!valid" color="success">Submit</v-btn>
+                    <v-btn :disabled="!valid" color="success" type="submit">Submit</v-btn>
                     <v-btn color="error" @click="reset">Reset Form</v-btn>
                   </v-flex>
                 </v-layout>
@@ -295,10 +304,17 @@ export default {
       works: [],
       workDialog: false,
       workJobDesc: "",
-      valid: true,
       rules: {
         required: v => !!v || 'Wajib diisi!',
       }
+    }
+  },
+  computed: {
+    valid () {
+      return this.works.length <= 0 ? false : true
+    },
+    isCompleted () {
+      return this.$store.state.user.experience.isCompleted
     }
   },
   methods: {
@@ -346,6 +362,87 @@ export default {
     workCancel () {
       this.workDialog = false;
     },
+    submit () {
+      var applicantOrganization = []
+      for (let i = 0; i < this.organisations.length; i++) {
+        const el = this.organisations[i];
+        const startYear = el.orgPeriod.split('-')[0]
+        const endYear = el.orgPeriod.split('-')[1]
+        applicantOrganization.push({
+          organizationName: el.orgName,
+          organizationTitle: el.orgTitle,
+          startYear: startYear,
+          endYear: endYear
+        })
+      }
+
+      var applicantTraining = []
+      for (let i = 0; i < this.trainings.length; i++) {
+        const el = this.trainings[i];
+        applicantTraining.push({
+          trainingName: el.traName,
+          year: el.traYear,
+          trainingInstitution: el.traOrganizer,
+          trainingGrade: el.traGrade
+        })
+      }
+
+      var applicantLanguage = []
+      for (let i = 0; i < this.languages.length; i++) {
+        const el = this.languages[i];
+        applicantLanguage.push({
+          language: el.langName,
+          listening: el.langHear,
+          reading: el.langRead,
+          speaking: el.langSpeak,
+          written: el.langWrite,
+          toefl: el.langGrade
+        })
+      }
+
+      var applicantExperience = []
+      for (let i = 0; i < this.works.length; i++) {
+        const el = this.works[i];
+        const startYear = el.workPeriod.split('-')[0]
+        const endYear = el.workPeriod.split('-')[1]
+        applicantExperience.push({
+          company: el.workCompany,
+          startYear: startYear,
+          endYear: endYear,
+          companyContact: el.workNumber,
+          firstTitleRole: el.workFirstJob,
+          lastTitleRole: el.workLastJob,
+          directSupervisor: el.workLeader,
+          resignReason: el.workReason,
+          lastSalary: el.workSalary
+        })
+      }
+
+      var applicantAddress = []
+      for (let i = 0; i < this.works.length; i++) {
+        const el = this.works[i];
+        applicantAddress.push({
+          addressTypeId: 6,
+          detailAddress: el.workAddressDetail,
+          country: "Indonesia"
+        })
+      }
+
+      const data = {
+        applicantOrganization: applicantOrganization,
+        applicantTraining: applicantTraining,
+        applicantLanguage: applicantLanguage,
+        applicantExperience: applicantExperience,
+        applicantAddress: applicantAddress,
+        applicantDescription: {
+          experienceJobDesc: this.workJobDesc
+        }
+      }
+      this.$store.dispatch('setExperience', { examId: this.$route.params.examId, data })
+        .then(() => {
+          this.$router.push({ name: 'question', params: { examId: this.$route.params.examId } })
+        })
+    },
     reset () {
       console.log(this.valid)
       this.$refs.form.reset()
@@ -356,6 +453,9 @@ export default {
     dataInputTraining,
     dataInputLanguage,
     dataInputWork
+  },
+  created () {
+    this.$store.dispatch('getExperience', { examInfoId: this.$route.params.examId })
   }
 }
 </script>
