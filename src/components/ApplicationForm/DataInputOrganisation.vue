@@ -27,6 +27,7 @@
             id="orgPeriodStart"
             type="number"
             v-model="orgPeriodStart"
+            :rules="[rules.year]"
           ></v-text-field>
         </v-flex>
 
@@ -37,6 +38,7 @@
             id="orgPeriodEnd"
             type="number"
             v-model="orgPeriodEnd"
+            :rules="[rules.year]"
           ></v-text-field>
         </v-flex>
       </v-layout>
@@ -69,6 +71,9 @@ export default {
       orgPeriodStart: "",
       orgPeriodEnd: "",
       dialogValid: true,
+      rules: {
+        year: v => v >= 0 || 'Tahun tidak boleh di bawah nol!' //Using regex to allow only [0-9]
+      },
       data: {}
     }
   },

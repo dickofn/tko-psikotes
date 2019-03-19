@@ -15,7 +15,14 @@
 
       <v-layout row wrap mb-2>
         <v-flex md8 offset-md2 xs12>
-          <v-text-field label="Tahun" name="traYear" id="traYear" v-model="traYear" type="number"></v-text-field>
+          <v-text-field
+            label="Tahun"
+            name="traYear"
+            id="traYear"
+            v-model="traYear"
+            type="number"
+            :rules="[rules.year]"
+          ></v-text-field>
         </v-flex>
       </v-layout>
 
@@ -32,7 +39,13 @@
 
       <v-layout row wrap mb-2>
         <v-flex md8 offset-md2 xs12>
-          <v-text-field label="Peringkat/Grade" name="traGrade" id="traGrade" v-model="traGrade" type="number"></v-text-field>
+          <v-text-field
+            label="Peringkat/Grade"
+            name="traGrade"
+            id="traGrade"
+            v-model="traGrade"
+            type="number"
+          ></v-text-field>
         </v-flex>
       </v-layout>
 
@@ -64,6 +77,9 @@ export default {
       traOrganizer: "",
       traGrade: "",
       dialogValid: true,
+      rules: {
+        year: v => v >= 0 || 'Tahun tidak boleh di bawah nol!' //Using regex to allow only [0-9]
+      },
       data: {}
     }
   },
