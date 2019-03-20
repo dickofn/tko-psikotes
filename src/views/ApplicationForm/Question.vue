@@ -2,7 +2,16 @@
   <v-container grid-list-xs>
     <v-layout row>
       <v-flex xs12>
-        <v-card>
+        <v-card v-if="isCompleted">
+          <v-card-title primary-title>
+            <v-spacer></v-spacer>
+            <h1
+              class="headline text-uppercase font-weight-light text-xs-center"
+            >Data Pengalaman Sudah Pernah Diisi</h1>
+            <v-spacer></v-spacer>
+          </v-card-title>
+        </v-card>
+        <v-card v-else>
           <v-card-title primary-title>
             <v-spacer></v-spacer>
             <h1 class="headline text-uppercase font-weight-light text-xs-center">Questionnaire</h1>
@@ -10,7 +19,7 @@
           </v-card-title>
           <v-card-text>
             <v-container>
-              <v-form ref="form" v-model="valid">
+              <v-form ref="form" v-model="valid" @submit.prevent="submit">
                 <data-input-question
                   :text="'Apakah anda pernah melamar di perusahaan ini sebelumnya. Kapan & sebagai apa?'"
                   :q="q[0]"
@@ -194,7 +203,7 @@
 
                 <v-layout row wrap mt-5 justify-end>
                   <v-flex offset-md6 offset-lg7 offset-xl8>
-                    <v-btn :disabled="!valid" color="success">Submit</v-btn>
+                    <v-btn :disabled="!valid" color="success" type="submit">Submit</v-btn>
                     <v-btn color="error" @click="reset">Reset Form</v-btn>
                   </v-flex>
                 </v-layout>
@@ -213,12 +222,21 @@ import dataInputQuestion from '../../components/ApplicationForm/DataInputQuestio
 export default {
   data () {
     return {
-      q: new Array(13),
+      q: new Array(18),
       e: new Array(18),
       valid: true,
       rules: {
         required: v => !!v || 'Wajib diisi!',
       },
+    }
+  },
+  computed: {
+    isCompleted () {
+      if (this.$store.state.exam.isCompleted == 0) {
+        return false
+      } else {
+        return true
+      }
     }
   },
   methods: {
@@ -259,6 +277,32 @@ export default {
     updateQ17 (i) { this.q[17] = i; },
     updateE17 (i) { this.e[17] = i; },
     updateValid (i) { this.valid = i; },
+    submit () {
+      var examAnswer = []
+      for (let i = 0; i < this.e.length; i++) {
+        const el = this.e[i];
+        const no = i + 1;
+        if (this.q[i] == undefined || this.q[i] == null) {
+          this.q[i] = 'none'
+        }
+        examAnswer.push({
+          questionNo: no,
+          answer: this.q[i],
+          remarks: el
+        })
+      }
+
+      const data = {
+        examInfoId: this.$route.params.examId,
+        examTypeId: 8,
+        examAnswer: examAnswer
+      }
+
+      this.$store.dispatch('postAnswerList', data)
+        .then(() => {
+          this.$router.go()
+        })
+    },
     reset () {
       console.log(this.valid)
       this.$refs.form.reset()
@@ -275,5 +319,8 @@ export default {
   components: {
     dataInputQuestion
   },
+  created () {
+    this.$store.dispatch('getCompletedStatus', { examType: 8, examInfoId: this.$route.params.examId })
+  }
 }
 </script>
