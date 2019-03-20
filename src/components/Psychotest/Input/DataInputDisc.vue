@@ -177,6 +177,7 @@ export default {
       } else if (i == "C" || i == "CC") {
         i = { n: this.no, a: "M_C" }
       }
+      if (i == undefined) return //prevent update value when resetting form
       this.$emit('mUpdated', i)
       this.$emit('validUpdated', this.valid)
       this.sameRow ? this.$emit('validUpdated', false) : this.$emit('validUpdated', true)
@@ -193,6 +194,7 @@ export default {
       } else if (i == "C" || i == "CC") {
         i = { n: this.no, a: "L_C" }
       }
+      if (i == undefined) return //prevent update value when resetting form
       this.$emit('lUpdated', i)
       this.$emit('validUpdated', this.valid)
       this.sameRow ? this.$emit('validUpdated', false) : this.$emit('validUpdated', true)
