@@ -20,7 +20,7 @@
                       <b>&rarr;</b> Pilihlah 1 pola yang paling tepat untuk melengkapi 8 pola yang sudah terisi pada gambar utama.
                       <br>
                       <br>
-                      <b>&rarr;</b> Bagian ini terdiri dari 1 halaman dengan total 36 soal, mohon perhatikan waktu yang anda miliki!
+                      <b>&rarr;</b> Bagian ini terdiri dari 1 halaman dengan total 36 soal. Mohon diperhatikan sisa waktu yang berjalan ketika mengerjakan tes ini!
                     </p>
                   </v-flex>
                 </v-layout>
@@ -50,7 +50,7 @@
                     <template v-if="!isStarted && !isFinished">
                       <v-btn color="info" @click="startExam">Start</v-btn>
                       <span>
-                        <h2>Waktu pengerjaan {{ prettyTime }}</h2>
+                        <h2>Waktu pengerjaan {{ prettyTime }} menit</h2>
                       </span>
                     </template>
                     <v-btn :disabled="!valid" color="success" v-if="isStarted" type="submit">Submit</v-btn>

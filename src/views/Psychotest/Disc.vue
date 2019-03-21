@@ -15,14 +15,14 @@
                   <v-flex md8 offset-md2 xs12>
                     <h1>INSTRUKSI</h1>
                     <p>
-                      <b>&rarr;</b> Setiap kotak dibawah ini memuat empat kalimat. Bacalah dengan seksama setiap kalimat itu, lalu pilihlah salah satu tanda D, I, S, C, atau * di bawah kolom M, disamping kalimat yang
+                      <b>&rarr;</b> Setiap kotak dibawah ini memuat empat pernyataan. Bacalah dengan seksama setiap pernyataan itu, lalu pilihlah salah satu tanda D, I, S, C, atau * di bawah kolom M, disamping pernyataan yang
                       <b>PALING</b> menggambarkan diri Anda.
                       <br>
-                      <b>&rarr;</b> Selanjutanya pilihlah salah satu tanda D, I, S, C, atau * di bawah kolom M, disamping kalimat yang
-                      <b>PALING TIDAK</b> menggambarkan diri Anda. Untuk setiap kolom hanya dapat memilih satu saja.
+                      <b>&rarr;</b> Selanjutanya pilihlah salah satu tanda D, I, S, C, atau * di bawah kolom L, disamping pernyataan yang
+                      <b>PALING TIDAK</b> menggambarkan diri Anda. Untuk setiap baris hanya dapat memilih satu saja.
                       <br>
                       <br>
-                      <b>&rarr;</b> Bagian ini terdiri dari 1 halaman dengan total 24 soal, mohon perhatikan waktu yang anda miliki!
+                      <b>&rarr;</b> Bagian ini terdiri dari 1 halaman dengan total 24 soal. Mohon diperhatikan sisa waktu yang berjalan ketika mengerjakan tes ini!
                     </p>
                   </v-flex>
                 </v-layout>
@@ -377,7 +377,7 @@
                     <template v-if="!isStarted && !isFinished">
                       <v-btn color="info" @click="startExam">Start</v-btn>
                       <span>
-                        <h2>Waktu pengerjaan {{ prettyTime }}</h2>
+                        <h2>Waktu pengerjaan {{ prettyTime }} menit</h2>
                       </span>
                     </template>
                     <v-btn :disabled="!valid" color="success" v-if="isStarted" type="submit">Submit</v-btn>

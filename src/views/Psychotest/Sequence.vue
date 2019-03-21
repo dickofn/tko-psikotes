@@ -21,12 +21,14 @@
                       <br>
                       <b>&rarr;</b> Anda silahkan mengisi dua deret bilangan selanjutnya, sesuai dengan pola enam angka yang sudah diberikan.
                       <br>
-                      <b>&rarr;</b> Jika deret sudah menggunakan pecahan maka isi dengan pecahan ('/') tetapi jika tidak maka isi dengan desimal hingga dua angka desimal.
+                      <b>&rarr;</b> Jika deret sudah menggunakan pecahan maka isi dengan simbol pecahan ('/') tetapi jika tidak maka isi dengan desimal hingga dua angka desimal.
+                      <br>
+                      &nbsp;&nbsp;&nbsp;&nbsp; (contoh pecahan: 1/3; dan jika desimal contoh: 5.02; 5.41; dan jika lebih dari 2 angka desimal contoh: 5.6666 -> 5.67)
                       <br>
                       <b>&rarr;</b> Pemisah angka desimal menggunakan simbol titik ('.') dan bukan koma (',').
                       <br>
                       <br>
-                      <b>&rarr;</b> Bagian ini terdiri dari 1 halaman dengan total 25 soal, mohon perhatikan waktu yang anda miliki!
+                      <b>&rarr;</b> Bagian ini terdiri dari 1 halaman dengan total 25 soal. Mohon diperhatikan sisa waktu yang berjalan ketika mengerjakan tes ini!
                     </p>
                   </v-flex>
                 </v-layout>
@@ -295,7 +297,7 @@
                     <template v-if="!isStarted && !isFinished">
                       <v-btn color="info" @click="startExam">Start</v-btn>
                       <span>
-                        <h2>Waktu pengerjaan {{ prettyTime }}</h2>
+                        <h2>Waktu pengerjaan {{ prettyTime }} menit</h2>
                       </span>
                     </template>
                     <v-btn :disabled="!valid" color="success" v-if="isStarted" type="submit">Submit</v-btn>
