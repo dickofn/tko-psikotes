@@ -258,7 +258,6 @@ export default {
         questionNo: this.currPage,
         answer: i
       })
-      console.log(this.a)
     },
     reset () {
       console.log(this.valid)
