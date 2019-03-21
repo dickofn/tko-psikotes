@@ -20,8 +20,7 @@
                       <b>&rarr;</b> Soal merupakan soal cerita berhitung matematika. Baca soal dengan teliti lalu isi jawaban Anda di bawah soal tersebut.
                       <br>
                       <b>&rarr;</b> Jawaban merupakan angka, bila jawaban merupakan bilangan desimal maka jawablah hingga dua angka desimal.
-                      <br>
-                      &nbsp;&nbsp;&nbsp;&nbsp; (contoh: 5.02; 5.41; dan jika lebih dari 2 angka desimal contoh: 5.6666 -> 5.67)
+                      <br>&nbsp;&nbsp;&nbsp;&nbsp; (contoh: 5.02; 5.41; dan jika lebih dari 2 angka desimal contoh: 5.6666 -> 5.67)
                       <br>
                       <b>&rarr;</b> Pemisah angka desimal menggunakan simbol titik ('.') dan bukan koma (',').
                       <br>
@@ -264,7 +263,21 @@
       fixed
       v-if="isStarted && !isFinished"
       height="20"
-    >Hello {{ applicantName }}! Waktu yang tersisa {{ prettyTime }}</v-bottom-nav>
+      class="text-xs-center"
+    >
+      <v-spacer></v-spacer>
+      Hello {{ applicantName }}! Waktu yang tersisa
+      &nbsp;
+      <span
+        class="footer-span"
+      >{{ prettyTime }}</span>
+      &nbsp;&rarr; Sisa field yang masih kosong
+      &nbsp;
+      <span
+        class="footer-span"
+      >{{ leftOver }}</span>
+      <v-spacer></v-spacer>
+    </v-bottom-nav>
   </v-container>
 </template>
 
@@ -278,13 +291,14 @@ export default {
       timer: null,
       isStarted: false,
       isFinished: false,
+      leftOver: 20,
       a: new Array(20),
       answer: new Array,
       comKey: new Array,
       valid: true,
       rules: {
         required: v => !!v || 'Wajib diisi!',
-        number: v => /^[0-9.-]+$/.test(v) || 'Harus berupa angka!' //Using regex to allow only [0-9] [.] [/]
+        number: v => /^[0-9.-]+$/.test(v) || 'Harus berupa angka!' //Using regex to allow only [0-9] [.]
       }
     }
   },
@@ -329,26 +343,26 @@ export default {
         }, 1000)
       }
     },
-    updateA0 (i) { this.a[0] = i; },
-    updateA1 (i) { this.a[1] = i; },
-    updateA2 (i) { this.a[2] = i; },
-    updateA3 (i) { this.a[3] = i; },
-    updateA4 (i) { this.a[4] = i; },
-    updateA5 (i) { this.a[5] = i; },
-    updateA6 (i) { this.a[6] = i; },
-    updateA7 (i) { this.a[7] = i; },
-    updateA8 (i) { this.a[8] = i; },
-    updateA9 (i) { this.a[9] = i; },
-    updateA10 (i) { this.a[10] = i; },
-    updateA11 (i) { this.a[11] = i; },
-    updateA12 (i) { this.a[12] = i; },
-    updateA13 (i) { this.a[13] = i; },
-    updateA14 (i) { this.a[14] = i; },
-    updateA15 (i) { this.a[15] = i; },
-    updateA16 (i) { this.a[16] = i; },
-    updateA17 (i) { this.a[17] = i; },
-    updateA18 (i) { this.a[18] = i; },
-    updateA19 (i) { this.a[19] = i; },
+    updateA0 (i) { if (!this.a[0]) this.leftOver--; this.a[0] = i; if (!this.a[0]) this.leftOver++;},
+    updateA1 (i) { if (!this.a[1]) this.leftOver--; this.a[1] = i; if (!this.a[1]) this.leftOver++;},
+    updateA2 (i) { if (!this.a[2]) this.leftOver--; this.a[2] = i; if (!this.a[2]) this.leftOver++;},
+    updateA3 (i) { if (!this.a[3]) this.leftOver--; this.a[3] = i; if (!this.a[3]) this.leftOver++;},
+    updateA4 (i) { if (!this.a[4]) this.leftOver--; this.a[4] = i; if (!this.a[4]) this.leftOver++;},
+    updateA5 (i) { if (!this.a[5]) this.leftOver--; this.a[5] = i; if (!this.a[5]) this.leftOver++;},
+    updateA6 (i) { if (!this.a[6]) this.leftOver--; this.a[6] = i; if (!this.a[6]) this.leftOver++;},
+    updateA7 (i) { if (!this.a[7]) this.leftOver--; this.a[7] = i; if (!this.a[7]) this.leftOver++;},
+    updateA8 (i) { if (!this.a[8]) this.leftOver--; this.a[8] = i; if (!this.a[8]) this.leftOver++;},
+    updateA9 (i) { if (!this.a[9]) this.leftOver--; this.a[9] = i; if (!this.a[9]) this.leftOver++;},
+    updateA10 (i) { if (!this.a[10]) this.leftOver--; this.a[10] = i; if (!this.a[10]) this.leftOver++;},
+    updateA11 (i) { if (!this.a[11]) this.leftOver--; this.a[11] = i; if (!this.a[11]) this.leftOver++;},
+    updateA12 (i) { if (!this.a[12]) this.leftOver--; this.a[12] = i; if (!this.a[12]) this.leftOver++;},
+    updateA13 (i) { if (!this.a[13]) this.leftOver--; this.a[13] = i; if (!this.a[13]) this.leftOver++;},
+    updateA14 (i) { if (!this.a[14]) this.leftOver--; this.a[14] = i; if (!this.a[14]) this.leftOver++;},
+    updateA15 (i) { if (!this.a[15]) this.leftOver--; this.a[15] = i; if (!this.a[15]) this.leftOver++;},
+    updateA16 (i) { if (!this.a[16]) this.leftOver--; this.a[16] = i; if (!this.a[16]) this.leftOver++;},
+    updateA17 (i) { if (!this.a[17]) this.leftOver--; this.a[17] = i; if (!this.a[17]) this.leftOver++;},
+    updateA18 (i) { if (!this.a[18]) this.leftOver--; this.a[18] = i; if (!this.a[18]) this.leftOver++;},
+    updateA19 (i) { if (!this.a[19]) this.leftOver--; this.a[19] = i; if (!this.a[19]) this.leftOver++;},
     updateValid (i) { this.valid = i; },
     submit () {
       for (let index = 0; index < this.a.length; index++) {
@@ -375,6 +389,7 @@ export default {
     reset () {
       console.log(this.valid)
       this.$refs.form.reset()
+      this.leftOver = 20;
     },
     getAnswer (answerArr) {
       for (let index = 0; index < answerArr.length; index++) {
@@ -407,3 +422,13 @@ export default {
   }
 }
 </script>
+
+<style lang="scss" scoped>
+.footer-span {
+  padding: 0;
+  margin: 0;
+  flex: 0;
+  color: red;
+  cursor: default;
+}
+</style>

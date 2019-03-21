@@ -22,8 +22,7 @@
                       <b>&rarr;</b> Anda silahkan mengisi dua deret bilangan selanjutnya, sesuai dengan pola enam angka yang sudah diberikan.
                       <br>
                       <b>&rarr;</b> Jika deret sudah menggunakan pecahan maka isi dengan simbol pecahan ('/') tetapi jika tidak maka isi dengan desimal hingga dua angka desimal.
-                      <br>
-                      &nbsp;&nbsp;&nbsp;&nbsp; (contoh pecahan: 1/3; dan jika desimal contoh: 5.02; 5.41; dan jika lebih dari 2 angka desimal contoh: 5.6666 -> 5.67)
+                      <br>&nbsp;&nbsp;&nbsp;&nbsp; (contoh pecahan: 1/3; dan jika desimal contoh: 5.02; 5.41; dan jika lebih dari 2 angka desimal contoh: 5.6666 -> 5.67)
                       <br>
                       <b>&rarr;</b> Pemisah angka desimal menggunakan simbol titik ('.') dan bukan koma (',').
                       <br>
@@ -316,7 +315,21 @@
       fixed
       v-if="isStarted && !isFinished"
       height="20"
-    >Hello {{ applicantName }}! Waktu yang tersisa {{ prettyTime }}</v-bottom-nav>
+      class="text-xs-center"
+    >
+      <v-spacer></v-spacer>
+      Hello {{ applicantName }}! Waktu yang tersisa
+      &nbsp;
+      <span
+        class="footer-span"
+      >{{ prettyTime }}</span>
+      &nbsp;&rarr; Sisa field yang masih kosong
+      &nbsp;
+      <span
+        class="footer-span"
+      >{{ leftOver }}</span>
+      <v-spacer></v-spacer>
+    </v-bottom-nav>
   </v-container>
 </template>
 
@@ -330,6 +343,7 @@ export default {
       timer: null,
       isStarted: false,
       isFinished: false,
+      leftOver: 50,
       a: new Array(25),
       answer: new Array,
       comKey: new Array,
@@ -381,31 +395,181 @@ export default {
         }, 1000)
       }
     },
-    updateA0 (i) { this.a[0] = i; },
-    updateA1 (i) { this.a[1] = i; },
-    updateA2 (i) { this.a[2] = i; },
-    updateA3 (i) { this.a[3] = i; },
-    updateA4 (i) { this.a[4] = i; },
-    updateA5 (i) { this.a[5] = i; },
-    updateA6 (i) { this.a[6] = i; },
-    updateA7 (i) { this.a[7] = i; },
-    updateA8 (i) { this.a[8] = i; },
-    updateA9 (i) { this.a[9] = i; },
-    updateA10 (i) { this.a[10] = i; },
-    updateA11 (i) { this.a[11] = i; },
-    updateA12 (i) { this.a[12] = i; },
-    updateA13 (i) { this.a[13] = i; },
-    updateA14 (i) { this.a[14] = i; },
-    updateA15 (i) { this.a[15] = i; },
-    updateA16 (i) { this.a[16] = i; },
-    updateA17 (i) { this.a[17] = i; },
-    updateA18 (i) { this.a[18] = i; },
-    updateA19 (i) { this.a[19] = i; },
-    updateA20 (i) { this.a[20] = i; },
-    updateA21 (i) { this.a[21] = i; },
-    updateA22 (i) { this.a[22] = i; },
-    updateA23 (i) { this.a[23] = i; },
-    updateA24 (i) { this.a[24] = i; },
+    updateA0 (i) {
+      if (this.a[0] == undefined || !this.a[0].split(',')[0]) this.leftOver--;
+      if (this.a[0] == undefined || !this.a[0].split(',')[1]) this.leftOver--;
+      this.a[0] = i;
+      if (!this.a[0].split(',')[0]) this.leftOver++;
+      if (!this.a[0].split(',')[1]) this.leftOver++;
+    },
+    updateA1 (i) {
+      if (this.a[1] == undefined || !this.a[1].split(',')[0]) this.leftOver--;
+      if (this.a[1] == undefined || !this.a[1].split(',')[1]) this.leftOver--;
+      this.a[1] = i;
+      if (!this.a[1].split(',')[0]) this.leftOver++;
+      if (!this.a[1].split(',')[1]) this.leftOver++;
+    },
+    updateA2 (i) {
+      if (this.a[2] == undefined || !this.a[2].split(',')[0]) this.leftOver--;
+      if (this.a[2] == undefined || !this.a[2].split(',')[1]) this.leftOver--;
+      this.a[2] = i;
+      if (!this.a[2].split(',')[0]) this.leftOver++;
+      if (!this.a[2].split(',')[1]) this.leftOver++;
+    },
+    updateA3 (i) {
+      if (this.a[3] == undefined || !this.a[3].split(',')[0]) this.leftOver--;
+      if (this.a[3] == undefined || !this.a[3].split(',')[1]) this.leftOver--;
+      this.a[3] = i;
+      if (!this.a[3].split(',')[0]) this.leftOver++;
+      if (!this.a[3].split(',')[1]) this.leftOver++;
+    },
+    updateA4 (i) {
+      if (this.a[4] == undefined || !this.a[4].split(',')[0]) this.leftOver--;
+      if (this.a[4] == undefined || !this.a[4].split(',')[1]) this.leftOver--;
+      this.a[4] = i;
+      if (!this.a[4].split(',')[0]) this.leftOver++;
+      if (!this.a[4].split(',')[1]) this.leftOver++;
+    },
+    updateA5 (i) {
+      if (this.a[5] == undefined || !this.a[5].split(',')[0]) this.leftOver--;
+      if (this.a[5] == undefined || !this.a[5].split(',')[1]) this.leftOver--;
+      this.a[5] = i;
+      if (!this.a[5].split(',')[0]) this.leftOver++;
+      if (!this.a[5].split(',')[1]) this.leftOver++;
+    },
+    updateA6 (i) {
+      if (this.a[6] == undefined || !this.a[6].split(',')[0]) this.leftOver--;
+      if (this.a[6] == undefined || !this.a[6].split(',')[1]) this.leftOver--;
+      this.a[6] = i;
+      if (!this.a[6].split(',')[0]) this.leftOver++;
+      if (!this.a[6].split(',')[1]) this.leftOver++;
+    },
+    updateA7 (i) {
+      if (this.a[7] == undefined || !this.a[7].split(',')[0]) this.leftOver--;
+      if (this.a[7] == undefined || !this.a[7].split(',')[1]) this.leftOver--;
+      this.a[7] = i;
+      if (!this.a[7].split(',')[0]) this.leftOver++;
+      if (!this.a[7].split(',')[1]) this.leftOver++;
+    },
+    updateA8 (i) {
+      if (this.a[8] == undefined || !this.a[8].split(',')[0]) this.leftOver--;
+      if (this.a[8] == undefined || !this.a[8].split(',')[1]) this.leftOver--;
+      this.a[8] = i;
+      if (!this.a[8].split(',')[0]) this.leftOver++;
+      if (!this.a[8].split(',')[1]) this.leftOver++;
+    },
+    updateA9 (i) { 
+      if (this.a[9] == undefined || !this.a[9].split(',')[0]) this.leftOver--; 
+      if (this.a[9] == undefined || !this.a[9].split(',')[1]) this.leftOver--; 
+      this.a[9] = i; 
+      if (!this.a[9].split(',')[0]) this.leftOver++;
+      if (!this.a[9].split(',')[1]) this.leftOver++;
+      },
+    updateA10 (i) { 
+      if (this.a[10] == undefined || !this.a[10].split(',')[0]) this.leftOver--; 
+      if (this.a[10] == undefined || !this.a[10].split(',')[1]) this.leftOver--; 
+      this.a[10] = i; 
+      if (!this.a[10].split(',')[0]) this.leftOver++;
+      if (!this.a[10].split(',')[1]) this.leftOver++;
+      },
+    updateA11 (i) { 
+      if (this.a[11] == undefined || !this.a[11].split(',')[0]) this.leftOver--; 
+      if (this.a[11] == undefined || !this.a[11].split(',')[1]) this.leftOver--; 
+      this.a[11] = i; 
+      if (!this.a[11].split(',')[0]) this.leftOver++;
+      if (!this.a[11].split(',')[1]) this.leftOver++;
+      },
+    updateA12 (i) { 
+      if (this.a[12] == undefined || !this.a[12].split(',')[0]) this.leftOver--; 
+      if (this.a[12] == undefined || !this.a[12].split(',')[1]) this.leftOver--; 
+      this.a[12] = i; 
+      if (!this.a[12].split(',')[0]) this.leftOver++;
+      if (!this.a[12].split(',')[1]) this.leftOver++;
+      },
+    updateA13 (i) { 
+      if (this.a[13] == undefined || !this.a[13].split(',')[0]) this.leftOver--; 
+      if (this.a[13] == undefined || !this.a[13].split(',')[1]) this.leftOver--; 
+      this.a[13] = i; 
+      if (!this.a[13].split(',')[0]) this.leftOver++;
+      if (!this.a[13].split(',')[1]) this.leftOver++;
+      },
+    updateA14 (i) { 
+      if (this.a[14] == undefined || !this.a[14].split(',')[0]) this.leftOver--; 
+      if (this.a[14] == undefined || !this.a[14].split(',')[1]) this.leftOver--; 
+      this.a[14] = i; 
+      if (!this.a[14].split(',')[0]) this.leftOver++;
+      if (!this.a[14].split(',')[1]) this.leftOver++;
+      },
+    updateA15 (i) { 
+      if (this.a[15] == undefined || !this.a[15].split(',')[0]) this.leftOver--; 
+      if (this.a[15] == undefined || !this.a[15].split(',')[1]) this.leftOver--; 
+      this.a[15] = i; 
+      if (!this.a[15].split(',')[0]) this.leftOver++;
+      if (!this.a[15].split(',')[1]) this.leftOver++;
+      },
+    updateA16 (i) { 
+      if (this.a[16] == undefined || !this.a[16].split(',')[0]) this.leftOver--; 
+      if (this.a[16] == undefined || !this.a[16].split(',')[1]) this.leftOver--; 
+      this.a[16] = i; 
+      if (!this.a[16].split(',')[0]) this.leftOver++;
+      if (!this.a[16].split(',')[1]) this.leftOver++;
+      },
+    updateA17 (i) { 
+      if (this.a[17] == undefined || !this.a[17].split(',')[0]) this.leftOver--; 
+      if (this.a[17] == undefined || !this.a[17].split(',')[1]) this.leftOver--; 
+      this.a[17] = i; 
+      if (!this.a[17].split(',')[0]) this.leftOver++;
+      if (!this.a[17].split(',')[1]) this.leftOver++;
+      },
+    updateA18 (i) { 
+      if (this.a[18] == undefined || !this.a[18].split(',')[0]) this.leftOver--; 
+      if (this.a[18] == undefined || !this.a[18].split(',')[1]) this.leftOver--; 
+      this.a[18] = i; 
+      if (!this.a[18].split(',')[0]) this.leftOver++;
+      if (!this.a[18].split(',')[1]) this.leftOver++;
+      },
+    updateA19 (i) { 
+      if (this.a[19] == undefined || !this.a[19].split(',')[0]) this.leftOver--; 
+      if (this.a[19] == undefined || !this.a[19].split(',')[1]) this.leftOver--; 
+      this.a[19] = i; 
+      if (!this.a[19].split(',')[0]) this.leftOver++;
+      if (!this.a[19].split(',')[1]) this.leftOver++;
+      },
+    updateA20 (i) { 
+      if (this.a[20] == undefined || !this.a[20].split(',')[0]) this.leftOver--; 
+      if (this.a[20] == undefined || !this.a[20].split(',')[1]) this.leftOver--; 
+      this.a[20] = i; 
+      if (!this.a[20].split(',')[0]) this.leftOver++;
+      if (!this.a[20].split(',')[1]) this.leftOver++;
+      },
+    updateA21 (i) { 
+      if (this.a[21] == undefined || !this.a[21].split(',')[0]) this.leftOver--; 
+      if (this.a[21] == undefined || !this.a[21].split(',')[1]) this.leftOver--; 
+      this.a[21] = i; 
+      if (!this.a[21].split(',')[0]) this.leftOver++;
+      if (!this.a[21].split(',')[1]) this.leftOver++;
+      },
+    updateA22 (i) { 
+      if (this.a[22] == undefined || !this.a[22].split(',')[0]) this.leftOver--; 
+      if (this.a[22] == undefined || !this.a[22].split(',')[1]) this.leftOver--; 
+      this.a[22] = i; 
+      if (!this.a[22].split(',')[0]) this.leftOver++;
+      if (!this.a[22].split(',')[1]) this.leftOver++;
+      },
+    updateA23 (i) { 
+      if (this.a[23] == undefined || !this.a[23].split(',')[0]) this.leftOver--; 
+      if (this.a[23] == undefined || !this.a[23].split(',')[1]) this.leftOver--; 
+      this.a[23] = i; 
+      if (!this.a[23].split(',')[0]) this.leftOver++;
+      if (!this.a[23].split(',')[1]) this.leftOver++;
+      },
+    updateA24 (i) { 
+      if (this.a[24] == undefined || !this.a[24].split(',')[0]) this.leftOver--; 
+      if (this.a[24] == undefined || !this.a[24].split(',')[1]) this.leftOver--; 
+      this.a[24] = i; 
+      if (!this.a[24].split(',')[0]) this.leftOver++;
+      if (!this.a[24].split(',')[1]) this.leftOver++;
+      },
     updateValid (i) { this.valid = i; },
     submit () {
       for (let index = 0; index < this.a.length; index++) {
@@ -432,6 +596,7 @@ export default {
     reset () {
       console.log(this.valid)
       this.$refs.form.reset()
+      this.leftOver = 50;
     },
     getAnswer (answerArr) {
       for (let index = 0; index < answerArr.length; index++) {
@@ -464,3 +629,13 @@ export default {
   }
 }
 </script>
+
+<style lang="scss" scoped>
+.footer-span {
+  padding: 0;
+  margin: 0;
+  flex: 0;
+  color: red;
+  cursor: default;
+}
+</style>

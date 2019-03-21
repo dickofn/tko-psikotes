@@ -69,7 +69,21 @@
       fixed
       v-if="isStarted && !isFinished"
       height="20"
-    >Hello {{ applicantName }}! Waktu yang tersisa {{ prettyTime }}</v-bottom-nav>
+      class="text-xs-center"
+    >
+      <v-spacer></v-spacer>
+      Hello {{ applicantName }}! Waktu yang tersisa
+      &nbsp;
+      <span
+        class="footer-span"
+      >{{ prettyTime }}</span>
+      &nbsp;&rarr; Sisa field yang masih kosong
+      &nbsp;
+      <span
+        class="footer-span"
+      >{{ leftOver }}</span>
+      <v-spacer></v-spacer>
+    </v-bottom-nav>
   </v-container>
 </template>
 
@@ -83,6 +97,7 @@ export default {
       timer: null,
       isStarted: false,
       isFinished: false,
+      leftOver: 36,
       u: [
         "/assets/PSIKOTEST-01.webp",
         "/assets/PSIKOTEST-02.webp",
@@ -177,6 +192,7 @@ export default {
         const a = this.a[index].answer;
         if (n == i.n && a) {
           this.a.splice(index, 1);
+          this.leftOver++;
           break;
         }
       }
@@ -184,11 +200,13 @@ export default {
         questionNo: i.n,
         answer: i.a
       })
+      this.leftOver--;
     },
     updateValid (i) { this.valid = i; },
     reset () {
       console.log(this.valid)
       this.$refs.form.reset()
+      this.leftOver = 36;
     },
     submit () {
       const data = {
@@ -232,3 +250,13 @@ export default {
   }
 }
 </script>
+
+<style lang="scss" scoped>
+.footer-span {
+  padding: 0;
+  margin: 0;
+  flex: 0;
+  color: red;
+  cursor: default;
+}
+</style>

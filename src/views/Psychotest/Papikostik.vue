@@ -163,7 +163,17 @@
       fixed
       v-if="isStarted && !isFinished"
       height="20"
-    >Hello {{ applicantName }}! Waktu yang tersisa {{ prettyTime }}</v-bottom-nav>
+      class="text-xs-center"
+    >
+      <v-spacer></v-spacer>
+      Hello {{ applicantName }}! Waktu yang tersisa
+      &nbsp;
+      <span class="footer-span">{{ prettyTime }}</span>
+      &nbsp;&rarr; Sisa field yang masih kosong
+      &nbsp;
+      <span class="footer-span">{{ leftOver }}</span>
+      <v-spacer></v-spacer>
+    </v-bottom-nav>
   </v-container>
 </template>
 
@@ -258,6 +268,7 @@ export default {
         const a = this.answer[index].answer;
         if (n == i.index + 1 && a) {
           this.answer.splice(index, 1);
+          this.leftOver++;
           break;
         }
       }
@@ -265,6 +276,7 @@ export default {
         questionNo: i.index + 1,
         answer: i.i
       })
+      this.leftOver--;
     },
     updateA0 (i) { this.a[0] = i; this.checkA(); this.updateAnswer({ index: 0, i }) },
     updateA1 (i) { this.a[1] = i; this.checkA(); this.updateAnswer({ index: 1, i }) },
@@ -359,6 +371,7 @@ export default {
     reset () {
       console.log(this.valid)
       this.$refs.form.reset()
+      this.leftOver += 20;
     },
     pageBack () {
       if (this.currPage > 1) {
@@ -416,3 +429,13 @@ export default {
   }
 }
 </script>
+
+<style lang="scss" scoped>
+.footer-span {
+  padding: 0;
+  margin: 0;
+  flex: 0;
+  color: red;
+  cursor: default;
+}
+</style>

@@ -77,7 +77,21 @@
       fixed
       v-if="isStarted && !isFinished"
       height="20"
-    >Hello {{ applicantName }}! Waktu yang tersisa {{ prettyTime }}</v-bottom-nav>
+      class="text-xs-center"
+    >
+      <v-spacer></v-spacer>
+      Hello {{ applicantName }}! Waktu yang tersisa
+      &nbsp;
+      <span
+        class="footer-span"
+      >{{ prettyTime }}</span>
+      &nbsp;&rarr; Sisa field yang masih kosong
+      &nbsp;
+      <span
+        class="footer-span"
+      >{{ leftOver }}</span>
+      <v-spacer></v-spacer>
+    </v-bottom-nav>
   </v-container>
 </template>
 
@@ -92,6 +106,7 @@ export default {
       timer: null,
       isStarted: false,
       isFinished: false,
+      leftOver: 30,
       stories: [
         "Seorang penjaga kios dijatuhi hukuman mati oleh pengadilan tinggi Kuala Lumpur karena mengedarkan 384.17 gram kanabis tiga tahun lalu. Hakim pengadilan tinggi menyatakan Ismail Mohamad (disingkat IM), 22, bersalah melakukan pelanggaran ini pada 23 Juni 1987. Ismail tampak tenang tetapi ibunya menangis tersedu-sedu ketika vonis dijatuhkan. Undang-undang obat terlarang menuntut hukuman mati bagi siapa saja yang tertangkap dengan 15 gram atau lebih heroin, 200 gram kanabis, atau satu kilogram candu. Lebih dari 70 orang termasuk 26 orang asing, telah digantung karena.pelanggaran obat terlarang sejak 1975.",
         "Pengendalian hama memerlukan pengetahuan dan keterampilan khusus yang umumnya dimiliki oleh perusahaan pengendalian hama yang profesional. Meskipun telah digunakan sarana baku yang canggih. seperti penggunaan bahan kimia maupun cara mekanik, tetapi cara tradisional pun masih diterapkan bila perlu. Sebelum melaksanakan pembasmian, pemeriksaan lapangan dan identifikasi jenis hama perlu diadakan, yaitu melalui jejak kaki, jejak ekor, tinja atau urine. Ada tiga jenis hama yang dapat tinggal dalam satu bangunan, masing-masing mempunyai teritorial sendiri tanpa saling mengganggu. Ukuran badan, kesukaan makanan, dan jumlah kelahiran anak berbeda, namun sifat kecurigaan terhadap barang baru sama. Mereka sangat peka terhadap perubahan cahaya dan-mempunyai kebiasaan mengerat apa saja dari kayu, paralon, kabel sampai kasa kawat. Tujuan mengerat terutama untuk mengasah gigi pengeratnya yang selalu bertambah panjang (yang dapat menyebabkan kematiannya). Selain itu hama ini mengerat untuk dapat menembus benda yang menghalangi mereka keluar-masuk. Kebiasaan yang merupakan kelemahan mereka adalah tidak mengubah trayek lalu lintas mereka, kecuali dalam keadaan terpaksa.",
@@ -251,6 +266,7 @@ export default {
         const a = this.a[index].answer;
         if (n == this.currPage && a) {
           this.a.splice(index, 1);
+          this.leftOver++;
           break;
         }
       }
@@ -258,10 +274,12 @@ export default {
         questionNo: this.currPage,
         answer: i
       })
+      this.leftOver--;
     },
     reset () {
       console.log(this.valid)
       this.$refs.form.reset()
+      this.leftOver++;
     },
     pageBack () {
       if (this.currPage > 1) {
@@ -316,3 +334,13 @@ export default {
   }
 }
 </script>
+
+<style lang="scss" scoped>
+.footer-span {
+  padding: 0;
+  margin: 0;
+  flex: 0;
+  color: red;
+  cursor: default;
+}
+</style>

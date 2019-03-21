@@ -396,7 +396,17 @@
       fixed
       v-if="isStarted && !isFinished"
       height="20"
-    >Hello {{ applicantName }}! Waktu yang tersisa {{ prettyTime }}</v-bottom-nav>
+      class="text-xs-center"
+    >
+      <v-spacer></v-spacer>
+      Hello {{ applicantName }}! Waktu yang tersisa
+      &nbsp;
+      <span class="footer-span">{{ prettyTime }}</span>
+      &nbsp;&rarr; Sisa field yang masih kosong
+      &nbsp;
+      <span class="footer-span">{{ leftOver }}</span>
+      <v-spacer></v-spacer>
+    </v-bottom-nav>
   </v-container>
 </template>
 
@@ -410,6 +420,7 @@ export default {
       timer: null,
       isStarted: false,
       isFinished: false,
+      leftOver: 48,
       m: new Array,
       l: new Array,
       a: new Array,
@@ -465,17 +476,20 @@ export default {
       for (let index = 0; index < this.a.length; index++) {
         const n = this.a[index].questionNo;
         const a = this.a[index].answer;
-        if (a.substr(0,1) == i.a.substr(0,1) && n == i.n) {
+        if (a.substr(0, 1) == i.a.substr(0, 1) && n == i.n) {
           this.a.splice(index, 1);
+          this.leftOver++;
           break;
         }
       }
       this.a.push({ questionNo: i.n, answer: i.a });
+      this.leftOver--;
     },
     updateValid (i) { this.valid = i; },
     reset () {
       console.log(this.valid)
       this.$refs.form.reset()
+      this.leftOver = 48
     },
     submit () {
       const data = {
@@ -532,3 +546,13 @@ export default {
   }
 }
 </script>
+
+<style lang="scss" scoped>
+.footer-span {
+  padding: 0;
+  margin: 0;
+  flex: 0;
+  color: red;
+  cursor: default;
+}
+</style>
