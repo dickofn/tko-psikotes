@@ -148,7 +148,6 @@
                       </span>
                     </template>
                     <v-btn :disabled="!valid" color="success" v-if="isStarted" type="submit">Submit</v-btn>
-                    <v-btn color="error" @click="reset" v-if="isStarted && !isFinished">Reset Form</v-btn>
                   </v-flex>
                 </v-layout>
               </v-form>
@@ -377,11 +376,6 @@ export default {
     updateA87 (i) { this.a[87] = i; this.checkA(); this.updateAnswer({ index: 87, i }) },
     updateA88 (i) { this.a[88] = i; this.checkA(); this.updateAnswer({ index: 88, i }) },
     updateA89 (i) { this.a[89] = i; this.checkA(); this.updateAnswer({ index: 89, i }) },
-    reset () {
-      console.log(this.valid)
-      this.$refs.form.reset()
-      this.leftOver += 20;
-    },
     pageBack () {
       if (this.currPage > 1) {
         this.currPage--;

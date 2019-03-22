@@ -381,7 +381,6 @@
                       </span>
                     </template>
                     <v-btn :disabled="!valid" color="success" v-if="isStarted" type="submit">Submit</v-btn>
-                    <v-btn color="error" @click="reset" v-if="isStarted && !isFinished">Reset Form</v-btn>
                   </v-flex>
                 </v-layout>
               </v-form>
@@ -495,11 +494,6 @@ export default {
       this.leftOver--;
     },
     updateValid (i) { this.valid = i; },
-    reset () {
-      console.log(this.valid)
-      this.$refs.form.reset()
-      this.leftOver = 48
-    },
     submit () {
       const data = {
         examInfoId: this.$route.params.examId,
