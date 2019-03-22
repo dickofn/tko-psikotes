@@ -69,7 +69,7 @@
       <v-layout row wrap mb-2>
         <v-flex md8 offset-md2 xs12>
           <v-text-field
-            label="Keterangan"
+            label="Keterangan (Lulus/Tidak lulus/Sedang/Lainnya...)"
             name="eduDesc"
             id="eduDesc"
             v-model="eduDesc"
