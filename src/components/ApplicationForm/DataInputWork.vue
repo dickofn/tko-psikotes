@@ -62,11 +62,10 @@
       <v-layout row wrap mb-2>
         <v-flex md8 offset-md2 xs12>
           <v-text-field
-            label="Nomor Perusahaan"
+            label="Nomor Telephone Perusahaan"
             name="workNumber"
             id="workNumber"
             v-model="workNumber"
-            :rules="[rules.number]"
           ></v-text-field>
         </v-flex>
       </v-layout>
@@ -181,7 +180,7 @@ export default {
       rules: {
         required: v => !!v || "Wajib diisi!",
         number: v => /^[0-9]+$/.test(v) || "Harus berupa angka!", //Using regex to allow only [0-9]
-        year: v => v >= 0 || 'Tahun tidak boleh di bawah nol!' //Using regex to allow only [0-9]
+        year: v => v >= 0 || 'Tahun tidak boleh di bawah nol!'
       },
       data: {}
     }
