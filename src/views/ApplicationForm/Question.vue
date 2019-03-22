@@ -299,7 +299,7 @@ export default {
 
       this.$store.dispatch('postAnswerList', data)
         .then(() => {
-          this.$router.go()
+          this.$router.push({ name: 'experience' })
         })
     }
   },
