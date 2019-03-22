@@ -14,6 +14,8 @@ import Story from './views/Psychotest/Story.vue'
 import English from './views/Psychotest/English.vue'
 import Papikostik from './views/Psychotest/Papikostik.vue'
 
+import Finish from './views/Finish.vue'
+
 Vue.use(Router)
 
 export default new Router({
@@ -79,6 +81,11 @@ export default new Router({
       path: '/exam/pap/:examId',
       name: 'pap',
       component: Papikostik
+    },
+    {
+      path: '/finish',
+      name: 'finish',
+      component: Finish
     },
     {
       path: '/about',
