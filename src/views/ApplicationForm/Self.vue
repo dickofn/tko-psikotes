@@ -297,11 +297,13 @@
                         v-model="martialInfoDate"
                         label="Sejak Tanggal (YYYY-MM-DD)"
                         prepend-icon="event"
+                        readonly
                       ></v-text-field>
                       <v-date-picker
                         v-model="martialInfoDate"
                         @input="martialInfoDateMenu = false"
                         :rules="[rules.required]"
+                        :allowed-dates="allowedDates"
                       ></v-date-picker>
                     </v-menu>
                   </v-flex>
@@ -369,6 +371,7 @@ export default {
       martialInfoDate: "",
       martialInfoDateMenu: false,
       valid: true,
+      allowedDates: val => parseInt(val.split('-').join('')) <= parseInt(new Date().toISOString().substr(0, 10).split('-').join('')), // can only choose today or before
       rules: {
         required: v => !!v || 'Wajib diisi!',
         email: v => /.+@.+/.test(v) || 'Format email tidak sesuai!',

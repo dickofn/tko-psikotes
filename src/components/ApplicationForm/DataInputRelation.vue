@@ -49,8 +49,13 @@
               v-model="birthDate"
               label="Tanggal Lahir (YYYY-MM-DD)"
               prepend-icon="event"
+              readonly
             ></v-text-field>
-            <v-date-picker v-model="birthDate" @input="birthDateMenu = false"></v-date-picker>
+            <v-date-picker
+              v-model="birthDate"
+              @input="birthDateMenu = false"
+              :allowedDates="allowedDates"
+            ></v-date-picker>
           </v-menu>
         </v-flex>
       </v-layout>
@@ -139,6 +144,7 @@ export default {
       addressDetail: "",
       contactNumber: "",
       description: "",
+      allowedDates: val => parseInt(val.split('-').join('')) <= parseInt(new Date().toISOString().substr(0, 10).split('-').join('')), // can only choose today or before
       rules: {
         number: v => /^[0-9]+$/.test(v) || "Harus berupa angka!", //Using regex to allow only [0-9]
       },

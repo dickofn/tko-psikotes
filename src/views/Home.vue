@@ -54,12 +54,14 @@
                         label="Tanggal Lahir (YYYY-MM-DD)"
                         prepend-icon="event"
                         :rules="[rules.required]"
+                        readonly
                         required
                       ></v-text-field>
                       <v-date-picker
                         v-model="birthDate"
                         @input="birthDateMenu = false"
                         :rules="[rules.required]"
+                        :allowedDates="allowedDates"
                       ></v-date-picker>
                     </v-menu>
                   </v-flex>
@@ -90,6 +92,7 @@ export default {
       birthDate: "",
       birthDateMenu: false,
       valid: true,
+      allowedDates: val => parseInt(val.split('-').join('')) <= parseInt(new Date().toISOString().substr(0, 10).split('-').join('')), // can only choose today or before
       rules: {
         required: v => !!v || 'Wajib diisi!',
       }
