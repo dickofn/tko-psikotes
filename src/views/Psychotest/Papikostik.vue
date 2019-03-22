@@ -158,6 +158,11 @@
       </v-flex>
     </v-layout>
 
+    <v-snackbar v-model="timeReminder" color="error" timeout="5000" :vertical="mode === 'vertical'">
+      Sisa waktu Anda 2 menit harap percepat pengerjaan Anda!
+      <v-btn dark flat @click="timeReminder = false">Close</v-btn>
+    </v-snackbar>
+
     <v-bottom-nav
       :value="true"
       fixed
@@ -189,6 +194,7 @@ export default {
     return {
       time: 1200,
       timer: null,
+      timeReminder: false,
       isStarted: false,
       isFinished: false,
       currPage: 1,
@@ -249,6 +255,9 @@ export default {
             clearInterval(this.timer)
             this.isFinished = true;
             this.valid = true
+          }
+          if (this.time == 120){
+            this.timeReminder = true;
           }
         }, 1000)
       }
