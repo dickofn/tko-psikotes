@@ -30,6 +30,15 @@
           id="e"
           :value="e"
           @input="updateE"
+          v-if="q!='none'"
+        ></v-text-field>
+        <v-text-field
+          label="Penjelasan"
+          name="e"
+          id="e"
+          :value="e"
+          @input="updateE"
+          v-if="q=='none'"
           :rules="[rules.required]"
           required
         ></v-text-field>
@@ -44,7 +53,7 @@ export default {
   methods: {
     updateQ (i) {
       this.$emit('qUpdated', i),
-      this.$emit('validUpdated', this.valid)
+        this.$emit('validUpdated', this.valid)
     },
     updateE (i) {
       this.$emit('eUpdated', i)
