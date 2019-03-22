@@ -212,7 +212,7 @@
 
                 <v-layout row wrap mt-5 justify-end>
                   <v-flex offset-md6 offset-lg7 offset-xl8>
-                    <v-btn :disabled="!valid" color="success" type="submit">Submit</v-btn>
+                    <v-btn color="success" type="submit">Submit</v-btn>
                     <v-btn color="error" @click="reset">Reset Form</v-btn>
                   </v-flex>
                 </v-layout>
@@ -310,9 +310,6 @@ export default {
     }
   },
   computed: {
-    valid () {
-      return this.works.length <= 0 ? false : true
-    },
     isCompleted () {
       return this.$store.state.user.experience.isCompleted
     }
