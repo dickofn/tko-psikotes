@@ -242,11 +242,23 @@
                   </v-flex>
                   <v-flex md4 xs8>
                     <v-text-field
+                      v-if="idType!='Passport'"
                       label="No KTP/SIM/Passport"
                       name="idNumber"
                       id="idNumber"
                       v-model="idNumber"
                       :rules="[rules.required, rules.number]"
+                      :maxlength="idLength"
+                      required
+                    ></v-text-field>
+                    <v-text-field
+                      v-else
+                      label="No KTP/SIM/Passport"
+                      name="idNumber"
+                      id="idNumber"
+                      v-model="idNumber"
+                      :rules="[rules.required]"
+                      :maxlength="idLength"
                       required
                     ></v-text-field>
                   </v-flex>
@@ -380,8 +392,13 @@ export default {
     }
   },
   computed: {
+    idLength () {
+      if (this.idType == "KTP") return 16
+      else if (this.idType == "SIM") return 12
+      else return 8
+    },
     martial () {
-      if(this.martialStatus == "Belum Menikah"){
+      if (this.martialStatus == "Belum Menikah") {
         return false
       } else {
         return true

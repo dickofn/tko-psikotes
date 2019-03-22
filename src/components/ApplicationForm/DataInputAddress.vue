@@ -104,6 +104,7 @@
         :value="addressPos"
         @input="updatePos"
         :rules="[rules.required, rules.number]"
+        maxlength="5"
         required
       ></v-text-field>
     </v-flex>
