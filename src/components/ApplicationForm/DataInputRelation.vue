@@ -74,6 +74,7 @@
             name="contactNumber"
             id="contactNumber"
             v-model="contactNumber"
+            :rules="[rules.number]"
           ></v-text-field>
         </v-flex>
       </v-layout>
@@ -138,6 +139,9 @@ export default {
       addressDetail: "",
       contactNumber: "",
       description: "",
+      rules: {
+        number: v => /^[0-9]+$/.test(v) || "Harus berupa angka!", //Using regex to allow only [0-9]
+      },
       data: {}
     }
   },
