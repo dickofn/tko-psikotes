@@ -269,14 +269,22 @@
 
                 <v-layout row wrap mb-2>
                   <v-flex md4 offset-md2 xs12>
-                    <v-text-field
+                    <v-autocomplete
+                      v-model="nationality"
                       label="Kewarganegaraan"
                       name="nationality"
                       id="nationality"
-                      v-model="nationality"
+                      :items="nationalityItems"
+                      :loading="nationalityLoading"
+                      :search-input.sync="nationalitySearch"
+                      color="blue"
+                      hide-no-data
+                      hide-selected
+                      item-text="countryName"
+                      item-value="countryName"
                       :rules="[rules.required]"
                       required
-                    ></v-text-field>
+                    ></v-autocomplete>
                   </v-flex>
                   <v-flex md4 xs12>
                     <v-text-field label="Hobby" name="hobby" id="hobby" v-model="hobby"></v-text-field>
@@ -376,6 +384,9 @@ export default {
       idNumber: "",
       bloodTypes: ["A", "B", "AB", "O"],
       bloodType: "",
+      nationalityItems: [],
+      nationalityLoading: false,
+      nationalitySearch: null,
       nationality: "",
       hobby: "",
       martialStatuses: ["Belum Menikah", "Menikah", "Janda-Duda"],
@@ -415,6 +426,30 @@ export default {
     },
     isCompleted () {
       return this.$store.state.user.self.isCompleted
+    }
+  },
+  watch: {
+    // eslint-disable-next-line
+    nationalitySearch (val) {
+      // Items have already been loaded
+      if (this.nationalityItems.length > 0) return
+
+      // Items have already been requested
+      if (this.nationalityLoading) return
+
+      this.nationalityLoading = true
+
+      // Lazily load input items
+      fetch(process.env.VUE_APP_API_URL + '/administratif/get/country')
+        .then(res => res.json())
+        .then(res => {
+          const items = res.data
+          this.nationalityItems = items
+        })
+        .catch(err => {
+          console.log(err)
+        })
+        .finally(() => (this.nationalityLoading = false))
     }
   },
   methods: {
