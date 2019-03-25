@@ -146,7 +146,7 @@ export default {
       description: "",
       allowedDates: val => parseInt(val.split('-').join('')) <= parseInt(new Date().toISOString().substr(0, 10).split('-').join('')), // can only choose today or before
       rules: {
-        number: v => /^[0-9]+$/.test(v) || "Harus berupa angka!", //Using regex to allow only [0-9]
+        number: v => /^$|^[0-9]+$/.test(v) || "Harus berupa angka!", //Using regex to allow empty or only [0-9] 
       },
       data: {}
     }
