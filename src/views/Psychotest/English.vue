@@ -167,7 +167,7 @@
       </v-flex>
     </v-layout>
 
-    <v-snackbar v-model="timeReminder" color="error" timeout="5000" :vertical="mode === 'vertical'">
+    <v-snackbar v-model="timeReminder" color="error" :timeout="5000">
       Sisa waktu Anda 2 menit harap percepat pengerjaan Anda!
       <v-btn dark flat @click="timeReminder = false">Close</v-btn>
     </v-snackbar>
