@@ -272,7 +272,6 @@
                 <v-layout row wrap mt-5 justify-end>
                   <v-flex offset-md6 offset-lg7 offset-xl8>
                     <v-btn :disabled="!valid" color="success" type="submit">Submit</v-btn>
-                    <v-btn color="error" @click="reset">Reset Form</v-btn>
                   </v-flex>
                 </v-layout>
               </v-form>
@@ -662,10 +661,6 @@ export default {
         .then(() => {
           this.$router.push({ name: 'experience', params: { examId: this.$route.params.examId } })
         })
-    },
-    reset () {
-      console.log(this.valid);
-      this.$refs.form.reset();
     }
   },
   components: {

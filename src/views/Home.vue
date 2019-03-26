@@ -109,8 +109,8 @@ export default {
   methods: {
     submit () {
       const data = {
-        name: this.name,
-        placeBirth: this.birthPlace,
+        name: this.name.toUpperCase(),
+        placeBirth: this.birthPlace.toUpperCase(),
         dateBirth: this.birthDate
       }
       this.$store.dispatch('setApplicant', data)        
