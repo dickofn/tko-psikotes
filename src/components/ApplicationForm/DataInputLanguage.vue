@@ -23,11 +23,11 @@
         </v-flex>
 
         <v-flex md2 xs12 pr-1>
-          <v-select :items="mastery" label="Mendengar" v-model="langSpeak"></v-select>
+          <v-select :items="mastery" label="Berbicara" v-model="langSpeak"></v-select>
         </v-flex>
 
         <v-flex md2 xs12>
-          <v-select :items="mastery" label="Mendengar" v-model="langWrite"></v-select>
+          <v-select :items="mastery" label="Menulis" v-model="langWrite"></v-select>
         </v-flex>
       </v-layout>
 
