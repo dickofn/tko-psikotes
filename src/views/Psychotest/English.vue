@@ -269,6 +269,7 @@ export default {
             clearInterval(this.timer)
             this.isFinished = true;
             this.valid = true
+            this.submit()
           }
           if (this.time == 120){
             this.timeReminder = true;

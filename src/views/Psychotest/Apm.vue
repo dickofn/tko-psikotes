@@ -187,8 +187,9 @@ export default {
           } else {
             clearInterval(this.timer)
             this.isFinished = true;
+            this.submit()
           }
-          if (this.time == 120){
+          if (this.time == 120) {
             this.timeReminder = true;
           }
         }, 1000)

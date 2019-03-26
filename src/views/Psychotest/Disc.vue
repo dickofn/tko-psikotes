@@ -405,10 +405,14 @@
       <v-spacer></v-spacer>
       Hello {{ applicantName }}! Waktu yang tersisa
       &nbsp;
-      <span class="footer-span">{{ prettyTime }}</span>
+      <span
+        class="footer-span"
+      >{{ prettyTime }}</span>
       &nbsp;&rarr; Sisa field yang masih kosong
       &nbsp;
-      <span class="footer-span">{{ leftOver }}</span>
+      <span
+        class="footer-span"
+      >{{ leftOver }}</span>
       <v-spacer></v-spacer>
     </v-bottom-nav>
   </v-container>
@@ -473,8 +477,9 @@ export default {
           } else {
             clearInterval(this.timer)
             this.isFinished = true;
+            this.submit()
           }
-          if (this.time == 120){
+          if (this.time == 120) {
             this.timeReminder = true;
           }
         }, 1000)

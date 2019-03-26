@@ -344,33 +344,34 @@ export default {
           } else {
             clearInterval(this.timer)
             this.isFinished = true;
+            this.submit()
           }
-          if (this.time == 120){
+          if (this.time == 120) {
             this.timeReminder = true;
           }
         }, 1000)
       }
     },
-    updateA0 (i) { if (!this.a[0]) this.leftOver--; this.a[0] = i; if (!this.a[0]) this.leftOver++;},
-    updateA1 (i) { if (!this.a[1]) this.leftOver--; this.a[1] = i; if (!this.a[1]) this.leftOver++;},
-    updateA2 (i) { if (!this.a[2]) this.leftOver--; this.a[2] = i; if (!this.a[2]) this.leftOver++;},
-    updateA3 (i) { if (!this.a[3]) this.leftOver--; this.a[3] = i; if (!this.a[3]) this.leftOver++;},
-    updateA4 (i) { if (!this.a[4]) this.leftOver--; this.a[4] = i; if (!this.a[4]) this.leftOver++;},
-    updateA5 (i) { if (!this.a[5]) this.leftOver--; this.a[5] = i; if (!this.a[5]) this.leftOver++;},
-    updateA6 (i) { if (!this.a[6]) this.leftOver--; this.a[6] = i; if (!this.a[6]) this.leftOver++;},
-    updateA7 (i) { if (!this.a[7]) this.leftOver--; this.a[7] = i; if (!this.a[7]) this.leftOver++;},
-    updateA8 (i) { if (!this.a[8]) this.leftOver--; this.a[8] = i; if (!this.a[8]) this.leftOver++;},
-    updateA9 (i) { if (!this.a[9]) this.leftOver--; this.a[9] = i; if (!this.a[9]) this.leftOver++;},
-    updateA10 (i) { if (!this.a[10]) this.leftOver--; this.a[10] = i; if (!this.a[10]) this.leftOver++;},
-    updateA11 (i) { if (!this.a[11]) this.leftOver--; this.a[11] = i; if (!this.a[11]) this.leftOver++;},
-    updateA12 (i) { if (!this.a[12]) this.leftOver--; this.a[12] = i; if (!this.a[12]) this.leftOver++;},
-    updateA13 (i) { if (!this.a[13]) this.leftOver--; this.a[13] = i; if (!this.a[13]) this.leftOver++;},
-    updateA14 (i) { if (!this.a[14]) this.leftOver--; this.a[14] = i; if (!this.a[14]) this.leftOver++;},
-    updateA15 (i) { if (!this.a[15]) this.leftOver--; this.a[15] = i; if (!this.a[15]) this.leftOver++;},
-    updateA16 (i) { if (!this.a[16]) this.leftOver--; this.a[16] = i; if (!this.a[16]) this.leftOver++;},
-    updateA17 (i) { if (!this.a[17]) this.leftOver--; this.a[17] = i; if (!this.a[17]) this.leftOver++;},
-    updateA18 (i) { if (!this.a[18]) this.leftOver--; this.a[18] = i; if (!this.a[18]) this.leftOver++;},
-    updateA19 (i) { if (!this.a[19]) this.leftOver--; this.a[19] = i; if (!this.a[19]) this.leftOver++;},
+    updateA0 (i) { if (!this.a[0]) this.leftOver--; this.a[0] = i; if (!this.a[0]) this.leftOver++; },
+    updateA1 (i) { if (!this.a[1]) this.leftOver--; this.a[1] = i; if (!this.a[1]) this.leftOver++; },
+    updateA2 (i) { if (!this.a[2]) this.leftOver--; this.a[2] = i; if (!this.a[2]) this.leftOver++; },
+    updateA3 (i) { if (!this.a[3]) this.leftOver--; this.a[3] = i; if (!this.a[3]) this.leftOver++; },
+    updateA4 (i) { if (!this.a[4]) this.leftOver--; this.a[4] = i; if (!this.a[4]) this.leftOver++; },
+    updateA5 (i) { if (!this.a[5]) this.leftOver--; this.a[5] = i; if (!this.a[5]) this.leftOver++; },
+    updateA6 (i) { if (!this.a[6]) this.leftOver--; this.a[6] = i; if (!this.a[6]) this.leftOver++; },
+    updateA7 (i) { if (!this.a[7]) this.leftOver--; this.a[7] = i; if (!this.a[7]) this.leftOver++; },
+    updateA8 (i) { if (!this.a[8]) this.leftOver--; this.a[8] = i; if (!this.a[8]) this.leftOver++; },
+    updateA9 (i) { if (!this.a[9]) this.leftOver--; this.a[9] = i; if (!this.a[9]) this.leftOver++; },
+    updateA10 (i) { if (!this.a[10]) this.leftOver--; this.a[10] = i; if (!this.a[10]) this.leftOver++; },
+    updateA11 (i) { if (!this.a[11]) this.leftOver--; this.a[11] = i; if (!this.a[11]) this.leftOver++; },
+    updateA12 (i) { if (!this.a[12]) this.leftOver--; this.a[12] = i; if (!this.a[12]) this.leftOver++; },
+    updateA13 (i) { if (!this.a[13]) this.leftOver--; this.a[13] = i; if (!this.a[13]) this.leftOver++; },
+    updateA14 (i) { if (!this.a[14]) this.leftOver--; this.a[14] = i; if (!this.a[14]) this.leftOver++; },
+    updateA15 (i) { if (!this.a[15]) this.leftOver--; this.a[15] = i; if (!this.a[15]) this.leftOver++; },
+    updateA16 (i) { if (!this.a[16]) this.leftOver--; this.a[16] = i; if (!this.a[16]) this.leftOver++; },
+    updateA17 (i) { if (!this.a[17]) this.leftOver--; this.a[17] = i; if (!this.a[17]) this.leftOver++; },
+    updateA18 (i) { if (!this.a[18]) this.leftOver--; this.a[18] = i; if (!this.a[18]) this.leftOver++; },
+    updateA19 (i) { if (!this.a[19]) this.leftOver--; this.a[19] = i; if (!this.a[19]) this.leftOver++; },
     updateValid (i) { this.valid = i; },
     submit () {
       for (let index = 0; index < this.a.length; index++) {
