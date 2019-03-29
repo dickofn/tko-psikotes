@@ -123,6 +123,7 @@
             id="workSalary"
             v-model="workSalary"
             type="number"
+            :rules="[rules.number]"
           ></v-text-field>
         </v-flex>
       </v-layout>
@@ -179,7 +180,7 @@ export default {
       dialogValid: true,
       rules: {
         required: v => !!v || "Wajib diisi!",
-        number: v => /^[0-9]+$/.test(v) || "Harus berupa angka!", //Using regex to allow only [0-9]
+        number: v => /^[0-9]+$/.test(v) || "Harus berupa angka tanpa simbol!", //Using regex to allow only [0-9]
         year: v => v >= 0 || 'Tahun tidak boleh di bawah nol!'
       },
       data: {}
