@@ -91,7 +91,7 @@
       :a="a[76]"
       @aUpdated="updateA76"
       :no2="'78. '"
-      :c2="['I have read an interested story','I have read every book of the library']"
+      :c2="['I have read an interested story','I have read an interesting story']"
       :a2="a[77]"
       @a2Updated="updateA77"
     ></data-input-english>

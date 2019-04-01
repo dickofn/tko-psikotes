@@ -81,7 +81,7 @@
       :a="a[54]"
       @aUpdated="updateA54"
       :no2="'56. '"
-      :c2="['The come always late to school','The always come late to school']"
+      :c2="['They come always late to school','They always come late to school']"
       :a2="a[55]"
       @a2Updated="updateA55"
     ></data-input-english>
