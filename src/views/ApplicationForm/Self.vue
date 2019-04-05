@@ -538,7 +538,7 @@ export default {
           typeBlood: this.bloodType,
           nationality: this.nationality,
           martialStatus: this.martialStatus,
-          martialDate: this.martialDate,
+          martialDate: this.martialInfoDate,
           hobby: this.hobby
         },
         applicantAddress: [
@@ -577,6 +577,11 @@ export default {
       this.$store.dispatch('setSelf', data)
         .then(() => {
           this.$router.push({ name: 'detail', params: { examId: this.$route.params.examId }, query: { martial: this.martial } })
+          const routeData = {
+            examInfoId: this.$route.params.examId,
+            sharedValue: "/detail/" + this.$route.params.examId + "?martial=" + this.martial
+          }
+          this.$store.dispatch('setCurrentRoute', routeData)
         })
     },
   },

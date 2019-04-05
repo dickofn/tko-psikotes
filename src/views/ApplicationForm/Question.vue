@@ -300,6 +300,11 @@ export default {
       this.$store.dispatch('postAnswerList', data)
         .then(() => {
           this.$router.push({ name: 'finish' })
+          const routeData = {
+            examInfoId: this.$route.params.examId,
+            sharedValue: "/finish/"
+          }
+          this.$store.dispatch('setCurrentRoute', routeData)
         })
     }
   },

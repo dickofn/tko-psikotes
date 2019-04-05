@@ -304,6 +304,11 @@ export default {
       this.$store.dispatch('postAnswerList', data)
         .then(() => {
           this.$router.push({ name: 'math', params: { examId: this.$route.params.examId } })
+          const routeData = {
+            examInfoId: this.$route.params.examId,
+            sharedValue: "/exam/math/" + this.$route.params.examId
+          }
+          this.$store.dispatch('setCurrentRoute', routeData)
         })
     },
     getAnswer (answerArr) {

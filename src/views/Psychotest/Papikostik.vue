@@ -196,6 +196,7 @@ export default {
       timeReminder: false,
       isStarted: false,
       isFinished: false,
+      leftOver: 90,
       currPage: 1,
       a: new Array(90),
       answer: new Array,
@@ -396,6 +397,11 @@ export default {
       this.$store.dispatch('postAnswerList', data)
         .then(() => {
           this.$router.push({ name: 'self', params: { examId: this.$route.params.examId } })
+          const routeData = {
+            examInfoId: this.$route.params.examId,
+            sharedValue: "/self/" + this.$route.params.examId
+          }
+          this.$store.dispatch('setCurrentRoute', routeData)
         })
     },
     getAnswer (answerArr) {

@@ -113,17 +113,22 @@ export default {
         placeBirth: this.birthPlace.toUpperCase(),
         dateBirth: this.birthDate
       }
-      this.$store.dispatch('setApplicant', data)        
+      this.$store.dispatch('setApplicant', data)
     },
     reset () {
       console.log(this.valid)
       this.$refs.form.reset()
     }
   },
-  watch:{
-    examId(value){
+  watch: {
+    examId (value) {
       if (value != undefined || value != null) {
         this.$router.push({ name: 'disc', params: { examId: value } })
+        const routeData = {
+          examInfoId: value,
+          sharedValue: "/exam/disc/" + value
+        }
+        this.$store.dispatch('setCurrentRoute', routeData)
       }
     }
   }

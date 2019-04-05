@@ -437,6 +437,11 @@ export default {
       this.$store.dispatch('setExperience', { examId: this.$route.params.examId, data })
         .then(() => {
           this.$router.push({ name: 'question', params: { examId: this.$route.params.examId } })
+          const routeData = {
+            examInfoId: this.$route.params.examId,
+            sharedValue: "/question/" + this.$route.params.examId
+          }
+          this.$store.dispatch('setCurrentRoute', routeData)
         })
     }
   },
