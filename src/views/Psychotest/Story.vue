@@ -137,7 +137,7 @@ export default {
         "Pemeriksaan dilapangan guna pemberantasan hama tersebut dimaksudkan untuk mengenali : ",
         "Membasmi hama ini perlu memanfaatkan kebiasaan hama yang menetap, ialah cara mereka : ",
         "Gambaran keistimewaan hama ini adalah gigi serinya : ",
-        "Sejak undang-undang berlaku sampai ditulisnya baccan ini, RATA-RATA setiap tahun yang telah menjalani hukuman gantung sekitar : ",
+        "Hama ini peka terhadap : ",
         "Pentagon berarti  : ",
         "Departemen yang menghuni Pentagon adalah Departemen : ",
         "Tertulis dengan angka, banyaknya nol dalam “50 milyar” ada : ",
