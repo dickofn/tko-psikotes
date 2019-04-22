@@ -7,7 +7,7 @@
             <v-spacer></v-spacer>
             <h1
               class="headline text-uppercase font-weight-light text-xs-center"
-            >Data Pengalaman Sudah Pernah Diisi</h1>
+            >Kuisioner Sudah Pernah Diisi</h1>
             <v-spacer></v-spacer>
           </v-card-title>
         </v-card>
@@ -299,12 +299,12 @@ export default {
 
       this.$store.dispatch('postAnswerList', data)
         .then(() => {
-          this.$router.push({ name: 'finish' })
           const routeData = {
             examInfoId: this.$route.params.examId,
             sharedValue: "/finish/"
           }
           this.$store.dispatch('setCurrentRoute', routeData)
+          this.$router.push({ name: 'finish' })
         })
     }
   },
