@@ -58,7 +58,7 @@ export default {
       return this.$store.state.shared.currentRoute
     },
     toCurrentUrlRule () {
-      if (this.examInfoId == undefined || this.examInfoId == null || this.$route.path == this.currentUrlPath) {
+      if (this.examInfoId == undefined || this.examInfoId == null || this.$route.fullPath == this.currentUrlPath) {
         return false
       } else {
         return true
@@ -71,7 +71,7 @@ export default {
     }
   },
   created () {
-    this.$store.dispatch('getCurrentRoute', this.examInfoId)
+    if (this.$route.name != 'home') this.$store.dispatch('getCurrentRoute', this.examInfoId)
   }
 }
 </script>
