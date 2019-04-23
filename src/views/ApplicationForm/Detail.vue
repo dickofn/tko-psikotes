@@ -271,8 +271,17 @@
 
                 <v-layout row wrap mt-5 justify-end>
                   <v-flex offset-md6 offset-lg7 offset-xl8>
-                    <v-btn :disabled="!valid" color="success" type="submit">Submit</v-btn>
+                    <v-btn
+                      :disabled="!valid || !familiesEnough || !contactsEnough || !educationsEnough"
+                      color="success"
+                      type="submit"
+                    >Submit</v-btn>
                   </v-flex>
+                </v-layout>
+                <v-layout row wrap>
+                  <v-flex md8 offset-md2 xs12 text-xs-right style="color:red" v-if="!familiesEnough">* Data keluarga dibutuhkan : {{ 1 - families.length }}</v-flex>
+                  <v-flex md8 offset-md2 xs12 text-xs-right style="color:red" v-if="!contactsEnough">* Data yang dapat dihubungi dibutuhkan : {{ 4 - contacts.length }}</v-flex>
+                  <v-flex md8 offset-md2 xs12 text-xs-right style="color:red" v-if="!educationsEnough">* Data pendidikan dibutuhkan : {{ 1 - educations }}</v-flex>
                 </v-layout>
               </v-form>
             </v-container>
@@ -465,7 +474,16 @@ export default {
   computed: {
     isCompleted () {
       return this.$store.state.user.detail.isCompleted
-    }
+    },
+    familiesEnough () {
+      return this.families.length >= 1 ? true : false
+    },
+    contactsEnough () {
+      return this.contacts.length >= 4 ? true : false
+     },
+    educationsEnough () { 
+      return this.educations.length >= 1 ? true : false
+    },
   },
   methods: {
     relationshipTypeId (relation) {
