@@ -40,6 +40,7 @@
                     :rules="rules"
                     :valid="valid"
                     @validUpdated="updateValid"
+                    @sameRowCheck="checkSameRow"
                     :key="comKey[0]"
                   ></data-input-disc>
                   <data-input-disc
@@ -54,6 +55,7 @@
                     :rules="rules"
                     :valid="valid"
                     @validUpdated="updateValid"
+                    @sameRowCheck="checkSameRow"
                     :key="comKey[1]"
                   ></data-input-disc>
                   <data-input-disc
@@ -68,6 +70,7 @@
                     :rules="rules"
                     :valid="valid"
                     @validUpdated="updateValid"
+                    @sameRowCheck="checkSameRow"
                     :key="comKey[2]"
                   ></data-input-disc>
                   <data-input-disc
@@ -82,6 +85,7 @@
                     :rules="rules"
                     :valid="valid"
                     @validUpdated="updateValid"
+                    @sameRowCheck="checkSameRow"
                     :key="comKey[3]"
                   ></data-input-disc>
                   <data-input-disc
@@ -96,6 +100,7 @@
                     :rules="rules"
                     :valid="valid"
                     @validUpdated="updateValid"
+                    @sameRowCheck="checkSameRow"
                     :key="comKey[4]"
                   ></data-input-disc>
                   <data-input-disc
@@ -110,6 +115,7 @@
                     :rules="rules"
                     :valid="valid"
                     @validUpdated="updateValid"
+                    @sameRowCheck="checkSameRow"
                     :key="comKey[5]"
                   ></data-input-disc>
                   <data-input-disc
@@ -124,6 +130,7 @@
                     :rules="rules"
                     :valid="valid"
                     @validUpdated="updateValid"
+                    @sameRowCheck="checkSameRow"
                     :key="comKey[6]"
                   ></data-input-disc>
                   <data-input-disc
@@ -138,6 +145,7 @@
                     :rules="rules"
                     :valid="valid"
                     @validUpdated="updateValid"
+                    @sameRowCheck="checkSameRow"
                     :key="comKey[7]"
                   ></data-input-disc>
                   <data-input-disc
@@ -152,6 +160,7 @@
                     :rules="rules"
                     :valid="valid"
                     @validUpdated="updateValid"
+                    @sameRowCheck="checkSameRow"
                     :key="comKey[8]"
                   ></data-input-disc>
                   <data-input-disc
@@ -166,6 +175,7 @@
                     :rules="rules"
                     :valid="valid"
                     @validUpdated="updateValid"
+                    @sameRowCheck="checkSameRow"
                     :key="comKey[9]"
                   ></data-input-disc>
                   <data-input-disc
@@ -180,6 +190,7 @@
                     :rules="rules"
                     :valid="valid"
                     @validUpdated="updateValid"
+                    @sameRowCheck="checkSameRow"
                     :key="comKey[10]"
                   ></data-input-disc>
                   <data-input-disc
@@ -194,6 +205,7 @@
                     :rules="rules"
                     :valid="valid"
                     @validUpdated="updateValid"
+                    @sameRowCheck="checkSameRow"
                     :key="comKey[11]"
                   ></data-input-disc>
                   <data-input-disc
@@ -208,6 +220,7 @@
                     :rules="rules"
                     :valid="valid"
                     @validUpdated="updateValid"
+                    @sameRowCheck="checkSameRow"
                     :key="comKey[12]"
                   ></data-input-disc>
                   <data-input-disc
@@ -222,6 +235,7 @@
                     :rules="rules"
                     :valid="valid"
                     @validUpdated="updateValid"
+                    @sameRowCheck="checkSameRow"
                     :key="comKey[13]"
                   ></data-input-disc>
                   <data-input-disc
@@ -236,6 +250,7 @@
                     :rules="rules"
                     :valid="valid"
                     @validUpdated="updateValid"
+                    @sameRowCheck="checkSameRow"
                     :key="comKey[14]"
                   ></data-input-disc>
                   <data-input-disc
@@ -250,6 +265,7 @@
                     :rules="rules"
                     :valid="valid"
                     @validUpdated="updateValid"
+                    @sameRowCheck="checkSameRow"
                     :key="comKey[15]"
                   ></data-input-disc>
                   <data-input-disc
@@ -264,6 +280,7 @@
                     :rules="rules"
                     :valid="valid"
                     @validUpdated="updateValid"
+                    @sameRowCheck="checkSameRow"
                     :key="comKey[16]"
                   ></data-input-disc>
                   <data-input-disc
@@ -278,6 +295,7 @@
                     :rules="rules"
                     :valid="valid"
                     @validUpdated="updateValid"
+                    @sameRowCheck="checkSameRow"
                     :key="comKey[17]"
                   ></data-input-disc>
                   <data-input-disc
@@ -292,6 +310,7 @@
                     :rules="rules"
                     :valid="valid"
                     @validUpdated="updateValid"
+                    @sameRowCheck="checkSameRow"
                     :key="comKey[18]"
                   ></data-input-disc>
                   <data-input-disc
@@ -306,6 +325,7 @@
                     :rules="rules"
                     :valid="valid"
                     @validUpdated="updateValid"
+                    @sameRowCheck="checkSameRow"
                     :key="comKey[19]"
                   ></data-input-disc>
                   <data-input-disc
@@ -320,6 +340,7 @@
                     :rules="rules"
                     :valid="valid"
                     @validUpdated="updateValid"
+                    @sameRowCheck="checkSameRow"
                     :key="comKey[20]"
                   ></data-input-disc>
                   <data-input-disc
@@ -334,6 +355,7 @@
                     :rules="rules"
                     :valid="valid"
                     @validUpdated="updateValid"
+                    @sameRowCheck="checkSameRow"
                     :key="comKey[21]"
                   ></data-input-disc>
                   <data-input-disc
@@ -348,6 +370,7 @@
                     :rules="rules"
                     :valid="valid"
                     @validUpdated="updateValid"
+                    @sameRowCheck="checkSameRow"
                     :key="comKey[22]"
                   ></data-input-disc>
                   <data-input-disc
@@ -362,6 +385,7 @@
                     :rules="rules"
                     :valid="valid"
                     @validUpdated="updateValid"
+                    @sameRowCheck="checkSameRow"
                     :key="comKey[23]"
                   ></data-input-disc>
                 </template>
@@ -380,7 +404,12 @@
                         <h2>Waktu pengerjaan {{ prettyTime }} menit</h2>
                       </span>
                     </template>
-                    <v-btn :disabled="!valid" color="success" v-if="isStarted" type="submit">Submit</v-btn>
+                    <v-btn
+                      :disabled="!valid || sameRow"
+                      color="success"
+                      v-if="isStarted"
+                      type="submit"
+                    >Submit</v-btn>
                   </v-flex>
                 </v-layout>
               </v-form>
@@ -434,6 +463,8 @@ export default {
       l: new Array,
       a: new Array,
       valid: true,
+      sameRow: false,
+      rowCheck: new Array(24),
       comKey: new Array,
       rules: {
         required: v => !!v || '',
@@ -499,6 +530,16 @@ export default {
       this.leftOver--;
     },
     updateValid (i) { this.valid = i; },
+    checkSameRow (i) {
+      this.rowCheck[i.index] = i.status
+      this.sameRow = false
+      for (let index = 0; index < this.rowCheck.length; index++) {
+        if (this.rowCheck[index]) {
+          const sameRowStatus = this.rowCheck[index];
+          if (sameRowStatus == true) { this.sameRow = true; break }
+        }
+      }
+    },
     submit () {
       const data = {
         examInfoId: this.$route.params.examId,

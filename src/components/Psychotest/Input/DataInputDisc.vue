@@ -1,15 +1,18 @@
 <template>
   <span>
     <v-layout row wrap mt-5>
-      <v-flex md1 offset-md2 xs2 text-xs-center>M
+      <v-flex md1 offset-md2 xs2 text-xs-center>
+        M
         <v-divider></v-divider>
       </v-flex>
 
-      <v-flex md1 xs2 text-xs-center>L
+      <v-flex md1 xs2 text-xs-center>
+        L
         <v-divider></v-divider>
       </v-flex>
 
-      <v-flex md6 xs8>&nbsp;
+      <v-flex md6 xs8>
+        &nbsp;
         <v-divider></v-divider>
       </v-flex>
     </v-layout>
@@ -180,7 +183,7 @@ export default {
       if (i == undefined) return //prevent update value when resetting form
       this.$emit('mUpdated', i)
       this.$emit('validUpdated', this.valid)
-      this.sameRow ? this.$emit('validUpdated', false) : this.$emit('validUpdated', true)
+      this.sameRow ? this.$emit('sameRowCheck', { index: this.no - 1, status: true }) : this.$emit('sameRowCheck', { index: this.no - 1, status: false })
     },
     updateL (i) {
       if (i == "*" || i == "**") {
@@ -197,7 +200,7 @@ export default {
       if (i == undefined) return //prevent update value when resetting form
       this.$emit('lUpdated', i)
       this.$emit('validUpdated', this.valid)
-      this.sameRow ? this.$emit('validUpdated', false) : this.$emit('validUpdated', true)
+      this.sameRow ? this.$emit('sameRowCheck', { index: this.no - 1, status: true }) : this.$emit('sameRowCheck', { index: this.no - 1, status: false })
 
     }
   }
