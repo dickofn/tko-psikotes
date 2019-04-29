@@ -61,16 +61,19 @@ export default {
   },
   actions: {
     setApplicant({ commit }, applicantData) {
-      commit("UPDATE_LOADING", true);
-      Axios.post(process.env.VUE_APP_API_URL + "/exam/start", applicantData)
-        .then(res => {
-          commit("UPDATE_EXAMAPP", res.data.data);
-          commit("UPDATE_LOADING", false);
-        })
-        .catch(e => {
-          console.log(e);
-          commit("UPDATE_LOADING", false);
-        });
+      return new Promise ((resolve, reject)=>{
+        commit("UPDATE_LOADING", true);
+        Axios.post(process.env.VUE_APP_API_URL + "/exam/start", applicantData)
+          .then(res => {
+            commit("UPDATE_EXAMAPP", res.data.data);
+            commit("UPDATE_LOADING", false);
+            resolve(res)
+          })
+          .catch(e => {
+            commit("UPDATE_LOADING", false);
+            reject(e);
+          });
+      })
     },
     getApplicant({ commit }, applicantExamId) {
       commit("UPDATE_LOADING", true);
