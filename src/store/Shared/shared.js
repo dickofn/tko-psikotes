@@ -52,7 +52,7 @@ export default {
         sharedName: "END_ROUTE"
       })
         .then(() => {
-          commit("UPDATE_CURRENTROUTE", routeData.sharedValue);
+          commit("UPDATE_CURRENTENDROUTE", routeData.sharedValue);
           commit("UPDATE_LOADING", false);
         })
         .catch(e => {
