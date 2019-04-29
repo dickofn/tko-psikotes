@@ -12,7 +12,7 @@
           </v-card-title>
           <v-card-text>
             <v-container>
-              <v-form ref="form" v-model="valid" @submit.prevent="submit">
+              <v-form ref="form" v-model="valid">
                 <v-layout row wrap mb-2>
                   <v-flex md8 offset-md2 xs12>
                     <v-text-field
@@ -69,8 +69,16 @@
 
                 <v-layout row wrap mt-5 justify-end>
                   <v-flex offset-md6 offset-lg7 offset-xl8>
-                    <v-btn :disabled="!valid || isLoading" color="success" type="submit">Submit</v-btn>
-                    <v-btn color="error" @click="reset">Reset Form</v-btn>
+                    <v-btn
+                      :disabled="!valid || isLoading"
+                      color="success"
+                      @click="submit(0)"
+                    >Kerjakan Test</v-btn>
+                    <v-btn
+                      :disabled="!valid || isLoading"
+                      color="success"
+                      @click="submit(1)"
+                    >Isi Data Diri</v-btn>
                   </v-flex>
                 </v-layout>
               </v-form>
@@ -107,30 +115,48 @@ export default {
     }
   },
   methods: {
-    submit () {
+    submit (type) {
       const data = {
         name: this.name.toUpperCase(),
         placeBirth: this.birthPlace.toUpperCase(),
         dateBirth: this.birthDate
       }
-      this.$store.dispatch('setApplicant', data)
+      if (type == 0) {
+        this.$store.dispatch('setApplicant', data)
+          .then(() => {
+            const routeData = {
+              examInfoId: this.examId,
+              sharedValue: "/exam/disc/" + this.examId
+            }
+            this.$store.dispatch('setCurrentRoute', routeData)
+            const endRouteData = {
+              examInfoId: this.examId,
+              sharedValue: "exam"
+            }
+            this.$store.dispatch('setCurrentEndRoute', endRouteData)
+            this.$router.push({ name: 'disc', params: { examId: this.examId } })
+          })
+      } else {
+        this.$store.dispatch('setApplicant', data)
+          .then(() => {
+            const routeData = {
+              examInfoId: this.examId,
+              sharedValue: "/self/" + this.examId
+            }
+            this.$store.dispatch('setCurrentRoute', routeData)
+            const endRouteData = {
+              examInfoId: this.examId,
+              sharedValue: "self"
+            }
+            this.$store.dispatch('setCurrentEndRoute', endRouteData)
+            this.$router.push({ name: 'self', params: { examId: this.examId } })
+          })
+      }
     },
     reset () {
       console.log(this.valid)
       this.$refs.form.reset()
     }
   },
-  watch: {
-    examId (value) {
-      if (value != undefined || value != null) {
-        this.$router.push({ name: 'disc', params: { examId: value } })
-        const routeData = {
-          examInfoId: value,
-          sharedValue: "/exam/disc/" + value
-        }
-        this.$store.dispatch('setCurrentRoute', routeData)
-      }
-    }
-  }
 }
 </script>

@@ -236,6 +236,9 @@ export default {
       } else {
         return true
       }
+    },
+    endRoute () {
+      return this.$store.state.shared.currentEndRoute
     }
   },
   methods: {
@@ -299,12 +302,21 @@ export default {
 
       this.$store.dispatch('postAnswerList', data)
         .then(() => {
-          const routeData = {
-            examInfoId: this.$route.params.examId,
-            sharedValue: "/finish/"
+          if (this.endRoute == "self") {
+            const routeData = {
+              examInfoId: this.$route.params.examId,
+              sharedValue: "/exam/disc/" + this.$route.params.examId
+            }
+            this.$store.dispatch('setCurrentRoute', routeData)
+            this.$router.push({ name: 'disc', params: { examId: this.$route.params.examId } })
+          } else {
+            const routeData = {
+              examInfoId: this.$route.params.examId,
+              sharedValue: "/finish/"
+            }
+            this.$store.dispatch('setCurrentRoute', routeData)
+            this.$router.push({ name: 'finish' })
           }
-          this.$store.dispatch('setCurrentRoute', routeData)
-          this.$router.push({ name: 'finish' })
         })
     }
   },
@@ -321,6 +333,7 @@ export default {
   },
   created () {
     this.$store.dispatch('getCompletedStatus', { examType: 8, examInfoId: this.$route.params.examId })
+    this.$store.dispatch('getShared', { examInfoId: this.$route.params.examId })
   }
 }
 </script>

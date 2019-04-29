@@ -172,10 +172,14 @@
       <v-spacer></v-spacer>
       Hello {{ applicantName }}! Waktu yang tersisa
       &nbsp;
-      <span class="footer-span">{{ prettyTime }}</span>
+      <span
+        class="footer-span"
+      >{{ prettyTime }}</span>
       &nbsp;&rarr; Sisa field yang masih kosong
       &nbsp;
-      <span class="footer-span">{{ leftOver }}</span>
+      <span
+        class="footer-span"
+      >{{ leftOver }}</span>
       <v-spacer></v-spacer>
     </v-bottom-nav>
   </v-container>
@@ -242,6 +246,9 @@ export default {
     },
     answerList () {
       return this.$store.state.exam.answerList
+    },
+    endRoute () {
+      return this.$store.state.shared.currentEndRoute
     }
   },
   methods: {
@@ -257,7 +264,7 @@ export default {
             this.valid = true
             this.submit()
           }
-          if (this.time == 120){
+          if (this.time == 120) {
             this.timeReminder = true;
           }
         }, 1000)
@@ -396,12 +403,21 @@ export default {
       }
       this.$store.dispatch('postAnswerList', data)
         .then(() => {
-          const routeData = {
-            examInfoId: this.$route.params.examId,
-            sharedValue: "/self/" + this.$route.params.examId
+          if (this.endRoute == "self") {
+            const routeData = {
+              examInfoId: this.$route.params.examId,
+              sharedValue: "/finish/"
+            }
+            this.$store.dispatch('setCurrentRoute', routeData)
+            this.$router.push({ name: 'finish' })
+          } else {
+            const routeData = {
+              examInfoId: this.$route.params.examId,
+              sharedValue: "/self/" + this.$route.params.examId
+            }
+            this.$store.dispatch('setCurrentRoute', routeData)
+            this.$router.push({ name: 'self', params: { examId: this.$route.params.examId } })
           }
-          this.$store.dispatch('setCurrentRoute', routeData)
-          this.$router.push({ name: 'self', params: { examId: this.$route.params.examId } })
         })
     },
     getAnswer (answerArr) {
@@ -414,7 +430,7 @@ export default {
       }
     }
   },
-   watch: {
+  watch: {
     answerList (value) {
       if (value != null || value != undefined) {
         this.getAnswer(value)
@@ -436,6 +452,7 @@ export default {
           this.$store.dispatch('getAnswerList', { examType: 7, examInfoId: this.$route.params.examId })
         }
       })
+    this.$store.dispatch('getShared', { examInfoId: this.$route.params.examId })
   }
 }
 </script>
