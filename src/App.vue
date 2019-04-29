@@ -71,7 +71,7 @@ export default {
     }
   },
   created () {
-    if (this.$route.name != 'home') this.$store.dispatch('getCurrentRoute', this.examInfoId)
+    if (this.$route.name != 'home') this.$store.dispatch('getShared', this.examInfoId)
   }
 }
 </script>

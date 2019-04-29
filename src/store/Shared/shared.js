@@ -4,7 +4,8 @@ export default {
   state: {
     isError: false,
     isLoading: false,
-    currentRoute: null
+    currentRoute: null,
+    currentEndRoute: null,
   },
   mutations: {
     UPDATE_ERROR(state, payload) {
@@ -15,6 +16,9 @@ export default {
     },
     UPDATE_CURRENTROUTE(state, payload) {
       state.currentRoute = payload;
+    },
+    UPDATE_CURRENTENDROUTE(state, payload) {
+      state.currentEndRoute = payload;
     }
   },
   actions: {
@@ -26,7 +30,7 @@ export default {
     },
     setCurrentRoute({ commit }, routeData) {
       commit("UPDATE_LOADING", true);
-      Axios.post(process.env.VUE_APP_API_URL + "/shared/update/current/route", {
+      Axios.post(process.env.VUE_APP_API_URL + "/shared/update", {
         examInfoId: routeData.examInfoId,
         sharedValue: routeData.sharedValue,
         sharedName: "CURRENT_ROUTES"
@@ -40,19 +44,36 @@ export default {
           commit("UPDATE_LOADING", false);
         });
     },
-    getCurrentRoute({ commit }, applicantExamId) {
+    setCurrentEndRoute({ commit }, routeData) {
       commit("UPDATE_LOADING", true);
-      Axios.get(
-        process.env.VUE_APP_API_URL + "/shared/get/all/" + applicantExamId
-      )
-        .then(res => {
-          commit("UPDATE_CURRENTROUTE", res.data.data[0].sharedValue);
+      Axios.post(process.env.VUE_APP_API_URL + "/shared/new", {
+        examInfoId: routeData.examInfoId,
+        sharedValue: routeData.sharedValue,
+        sharedName: "END_ROUTE"
+      })
+        .then(() => {
+          commit("UPDATE_CURRENTROUTE", routeData.sharedValue);
           commit("UPDATE_LOADING", false);
         })
         .catch(e => {
           console.log(e);
           commit("UPDATE_LOADING", false);
         });
-    }
+    },
+    getShared({ commit }, applicantExamId) {
+      commit("UPDATE_LOADING", true);
+      Axios.get(
+        process.env.VUE_APP_API_URL + "/shared/get/all/" + applicantExamId
+      )
+        .then(res => {
+          commit("UPDATE_CURRENTROUTE", res.data.data[0].sharedValue);
+          commit("UPDATE_CURRENTENDROUTE", res.data.data[1].sharedValue);
+          commit("UPDATE_LOADING", false);
+        })
+        .catch(e => {
+          console.log(e);
+          commit("UPDATE_LOADING", false);
+        });
+    },
   }
 };
