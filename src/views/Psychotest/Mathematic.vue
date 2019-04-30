@@ -378,10 +378,12 @@ export default {
         const el = this.a[index];
         const qNo = index + 1;
         if (el != null || el != undefined) {
-          this.answer.push({
-            questionNo: qNo,
-            answer: el
-          })
+          if (el.trim() != "") {
+            this.answer.push({
+              questionNo: qNo,
+              answer: el
+            })
+          }
         }
       }
 
