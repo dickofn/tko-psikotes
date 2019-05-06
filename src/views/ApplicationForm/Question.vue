@@ -301,22 +301,28 @@ export default {
       }
 
       this.$store.dispatch('postAnswerList', data)
-        .then(() => {
-          if (this.endRoute == "self") {
-            const routeData = {
-              examInfoId: this.$route.params.examId,
-              sharedValue: "/exam/disc/" + this.$route.params.examId
+        .then(res => {
+          if (res.status == 200) {
+            if (this.endRoute == "self") {
+              const routeData = {
+                examInfoId: this.$route.params.examId,
+                sharedValue: "/exam/disc/" + this.$route.params.examId
+              }
+              this.$store.dispatch('setCurrentRoute', routeData)
+              this.$router.push({ name: 'disc', params: { examId: this.$route.params.examId } })
+            } else {
+              const routeData = {
+                examInfoId: this.$route.params.examId,
+                sharedValue: "/finish/"
+              }
+              this.$store.dispatch('setCurrentRoute', routeData)
+              this.$router.push({ name: 'finish' })
             }
-            this.$store.dispatch('setCurrentRoute', routeData)
-            this.$router.push({ name: 'disc', params: { examId: this.$route.params.examId } })
-          } else {
-            const routeData = {
-              examInfoId: this.$route.params.examId,
-              sharedValue: "/finish/"
-            }
-            this.$store.dispatch('setCurrentRoute', routeData)
-            this.$router.push({ name: 'finish' })
           }
+        })
+        .catch(e => {
+          console.log(e)
+          alert("Ada kesalahan teknis, hubungi HRD / karyawan terkait!")
         })
     }
   },

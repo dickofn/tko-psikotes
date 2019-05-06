@@ -402,22 +402,28 @@ export default {
         examAnswer: this.answer
       }
       this.$store.dispatch('postAnswerList', data)
-        .then(() => {
-          if (this.endRoute == "self") {
-            const routeData = {
-              examInfoId: this.$route.params.examId,
-              sharedValue: "/finish/"
+        .then(res => {
+          if (res.status == 200) {
+            if (this.endRoute == "self") {
+              const routeData = {
+                examInfoId: this.$route.params.examId,
+                sharedValue: "/finish/"
+              }
+              this.$store.dispatch('setCurrentRoute', routeData)
+              this.$router.push({ name: 'finish' })
+            } else {
+              const routeData = {
+                examInfoId: this.$route.params.examId,
+                sharedValue: "/self/" + this.$route.params.examId
+              }
+              this.$store.dispatch('setCurrentRoute', routeData)
+              this.$router.push({ name: 'self', params: { examId: this.$route.params.examId } })
             }
-            this.$store.dispatch('setCurrentRoute', routeData)
-            this.$router.push({ name: 'finish' })
-          } else {
-            const routeData = {
-              examInfoId: this.$route.params.examId,
-              sharedValue: "/self/" + this.$route.params.examId
-            }
-            this.$store.dispatch('setCurrentRoute', routeData)
-            this.$router.push({ name: 'self', params: { examId: this.$route.params.examId } })
           }
+        })
+        .catch(e => {
+          console.log(e)
+          alert("Ada kesalahan teknis, hubungi HRD / karyawan terkait!")
         })
     },
     getAnswer (answerArr) {

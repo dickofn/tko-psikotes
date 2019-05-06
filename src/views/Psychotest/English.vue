@@ -271,7 +271,7 @@ export default {
             this.valid = true
             this.submit()
           }
-          if (this.time == 120){
+          if (this.time == 120) {
             this.timeReminder = true;
           }
         }, 1000)
@@ -419,13 +419,19 @@ export default {
         examAnswer: this.answer
       }
       this.$store.dispatch('postAnswerList', data)
-        .then(() => {
-          const routeData = {
-            examInfoId: this.$route.params.examId,
-            sharedValue: "/exam/story/" + this.$route.params.examId
+        .then(res => {
+          if (res.status) {
+            const routeData = {
+              examInfoId: this.$route.params.examId,
+              sharedValue: "/exam/story/" + this.$route.params.examId
+            }
+            this.$store.dispatch('setCurrentRoute', routeData)
+            this.$router.push({ name: 'story', params: { examId: this.$route.params.examId } })
           }
-          this.$store.dispatch('setCurrentRoute', routeData)
-          this.$router.push({ name: 'story', params: { examId: this.$route.params.examId } })
+        })
+        .catch(e => {
+          console.log(e)
+          alert("Ada kesalahan teknis, hubungi HRD / karyawan terkait!")
         })
     },
     getAnswer (answerArr) {

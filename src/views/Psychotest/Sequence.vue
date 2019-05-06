@@ -598,13 +598,19 @@ export default {
         examAnswer: this.answer
       }
       this.$store.dispatch('postAnswerList', data)
-        .then(() => {
-          const routeData = {
-            examInfoId: this.$route.params.examId,
-            sharedValue: "/exam/pap/" + this.$route.params.examId
+        .then(res => {
+          if (res.status == 200) {
+            const routeData = {
+              examInfoId: this.$route.params.examId,
+              sharedValue: "/exam/pap/" + this.$route.params.examId
+            }
+            this.$store.dispatch('setCurrentRoute', routeData)
+            this.$router.push({ name: 'pap', params: { examId: this.$route.params.examId } })
           }
-          this.$store.dispatch('setCurrentRoute', routeData)
-          this.$router.push({ name: 'pap', params: { examId: this.$route.params.examId } })
+        })
+        .catch(e => {
+          console.log(e)
+          alert("Ada kesalahan teknis, hubungi HRD / karyawan terkait!")
         })
     },
     getAnswer (answerArr) {
