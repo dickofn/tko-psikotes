@@ -30,16 +30,19 @@ export default {
         });
     },
     postAnswerList({ commit }, answerInfo) {
-      commit("UPDATE_LOADING", true);
-      Axios.post(process.env.VUE_APP_API_URL + "/exam/answer/new", answerInfo)
-        .then(res => {
-          commit("UPDATE_ANSWERLIST", res.data.data.examAnswer);
-          commit("UPDATE_LOADING", false);
-        })
-        .catch(e => {
-          console.log(e);
-          commit("UPDATE_LOADING", false);
-        });
+      return new Promise((resolve, reject) => {
+        commit("UPDATE_LOADING", true);
+        Axios.post(process.env.VUE_APP_API_URL + "/exam/answer/new", answerInfo)
+          .then(res => {
+            commit("UPDATE_ANSWERLIST", res.data.data.examAnswer);
+            commit("UPDATE_LOADING", false);
+            resolve(res);
+          })
+          .catch(e => {
+            commit("UPDATE_LOADING", false);
+            reject(e);
+          });
+      });
     },
     getAnswerList({ commit }, examInfo) {
       commit("UPDATE_LOADING", true);
