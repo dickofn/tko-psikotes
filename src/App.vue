@@ -1,6 +1,6 @@
 <template>
   <v-app>
-    <v-toolbar app>
+    <v-toolbar app extension-height="7">
       <v-img
         :src="'/assets/logo-big.png'"
         max-height="70%"
@@ -18,6 +18,14 @@
         height="100%"
         :contain="(screenSize=='xs' || screenSize=='sm')"
       ></v-img>
+      <v-progress-linear
+        v-if="isLoading"
+        background-color="#f5f5f5"
+        color="red darken-2"
+        slot="extension"
+        :indeterminate="isLoading"
+        class="ma-0"
+      ></v-progress-linear>
     </v-toolbar>
 
     <v-content>
@@ -48,6 +56,9 @@
 export default {
   name: 'App',
   computed: {
+    isLoading () {
+      return this.$store.state.shared.isLoading
+    },
     screenSize () {
       return this.$vuetify.breakpoint.name
     },
@@ -75,3 +86,9 @@ export default {
   }
 }
 </script>
+
+<style lang="scss">
+.v-toolbar__extension {
+  padding: 0px !important;
+}
+</style>
