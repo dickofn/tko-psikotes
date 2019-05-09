@@ -21,7 +21,7 @@
           </v-card-title>
           <v-card-text>
             <v-container>
-              <v-form ref="form" v-model="valid" @submit.prevent="submit">
+              <v-form ref="form" v-model="valid">
                 <v-layout row wrap mb-2>
                   <v-flex md8 offset-md2 xs12>
                     <v-text-field
@@ -331,7 +331,7 @@
 
                 <v-layout row wrap mt-5 justify-end>
                   <v-flex offset-md6 offset-lg7 offset-xl8>
-                    <v-btn :disabled="!valid" color="success" type="submit">Submit</v-btn>
+                    <v-btn :disabled="!valid" color="success" @click="submit">Submit</v-btn>
                   </v-flex>
                 </v-layout>
               </v-form>

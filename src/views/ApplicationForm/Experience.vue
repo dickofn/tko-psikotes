@@ -19,7 +19,7 @@
           </v-card-title>
           <v-card-text>
             <v-container>
-              <v-form ref="form" @submit.prevent="submit">
+              <v-form ref="form">
                 <v-layout row wrap mb-2>
                   <v-flex md8 offset-md2 xs12>
                     <h4>Pengalaman Organisasi</h4>
@@ -212,7 +212,7 @@
 
                 <v-layout row wrap mt-5 justify-end>
                   <v-flex offset-md6 offset-lg7 offset-xl8>
-                    <v-btn color="success" type="submit">Submit</v-btn>
+                    <v-btn color="success" @click="submit">Submit</v-btn>
                   </v-flex>
                 </v-layout>
               </v-form>

@@ -19,7 +19,7 @@
           </v-card-title>
           <v-card-text>
             <v-container>
-              <v-form ref="form" v-model="valid" @submit.prevent="submit">
+              <v-form ref="form" v-model="valid">
                 <data-input-question
                   :text="'Apakah anda pernah melamar di perusahaan ini sebelumnya. Kapan & sebagai apa?'"
                   :q="q[0]"
@@ -203,7 +203,7 @@
 
                 <v-layout row wrap mt-5 justify-end>
                   <v-flex offset-md6 offset-lg7 offset-xl8>
-                    <v-btn :disabled="!valid" color="success" type="submit">Submit</v-btn>
+                    <v-btn :disabled="!valid" color="success" @click="submit">Submit</v-btn>
                   </v-flex>
                 </v-layout>
               </v-form>

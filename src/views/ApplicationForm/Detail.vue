@@ -19,7 +19,7 @@
           </v-card-title>
           <v-card-text>
             <v-container>
-              <v-form ref="form" v-model="valid" @submit.prevent="submit">
+              <v-form ref="form" v-model="valid">
                 <v-layout row wrap mb-2>
                   <v-flex md8 offset-md2 xs12>
                     <h4>Kontak yang dapat dihubungi dalam keadaan darurat</h4>
@@ -274,7 +274,7 @@
                     <v-btn
                       :disabled="!valid || !familiesEnough || !contactsEnough || !educationsEnough"
                       color="success"
-                      type="submit"
+                      @click="submit"
                     >Submit</v-btn>
                   </v-flex>
                 </v-layout>
