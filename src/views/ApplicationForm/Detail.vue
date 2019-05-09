@@ -279,9 +279,30 @@
                   </v-flex>
                 </v-layout>
                 <v-layout row wrap>
-                  <v-flex md8 offset-md2 xs12 text-xs-right style="color:red" v-if="!familiesEnough">* Data keluarga dibutuhkan : {{ 1 - families.length }}</v-flex>
-                  <v-flex md8 offset-md2 xs12 text-xs-right style="color:red" v-if="!contactsEnough">* Data yang dapat dihubungi dibutuhkan : {{ 4 - contacts.length }}</v-flex>
-                  <v-flex md8 offset-md2 xs12 text-xs-right style="color:red" v-if="!educationsEnough">* Data pendidikan dibutuhkan : {{ 1 - educations }}</v-flex>
+                  <v-flex
+                    md8
+                    offset-md2
+                    xs12
+                    text-xs-right
+                    style="color:red"
+                    v-if="!familiesEnough"
+                  >* Data keluarga dibutuhkan : {{ 1 - families.length }}</v-flex>
+                  <v-flex
+                    md8
+                    offset-md2
+                    xs12
+                    text-xs-right
+                    style="color:red"
+                    v-if="!contactsEnough"
+                  >* Data yang dapat dihubungi dibutuhkan : {{ 4 - contacts.length }}</v-flex>
+                  <v-flex
+                    md8
+                    offset-md2
+                    xs12
+                    text-xs-right
+                    style="color:red"
+                    v-if="!educationsEnough"
+                  >* Data pendidikan dibutuhkan : {{ 1 - educations }}</v-flex>
                 </v-layout>
               </v-form>
             </v-container>
@@ -480,8 +501,8 @@ export default {
     },
     contactsEnough () {
       return this.contacts.length >= 4 ? true : false
-     },
-    educationsEnough () { 
+    },
+    educationsEnough () {
       return this.educations.length >= 1 ? true : false
     },
   },
@@ -676,13 +697,19 @@ export default {
         }
       };
       this.$store.dispatch('setDetail', { examId: this.$route.params.examId, data })
-        .then(() => {
-          const routeData = {
-            examInfoId: this.$route.params.examId,
-            sharedValue: "/experience/" + this.$route.params.examId
+        .then(res => {
+          if (res.status == 200) {
+            const routeData = {
+              examInfoId: this.$route.params.examId,
+              sharedValue: "/experience/" + this.$route.params.examId
+            }
+            this.$store.dispatch('setCurrentRoute', routeData)
+            this.$router.push({ name: 'experience', params: { examId: this.$route.params.examId } })
           }
-          this.$store.dispatch('setCurrentRoute', routeData)
-          this.$router.push({ name: 'experience', params: { examId: this.$route.params.examId } })
+        })
+        .catch(e => {
+          console.log(e)
+          alert("Ada kesalahan teknis, hubungi HRD / karyawan terkait!")
         })
     }
   },

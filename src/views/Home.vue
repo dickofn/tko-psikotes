@@ -123,33 +123,45 @@ export default {
       }
       if (type == 0) {
         this.$store.dispatch('setApplicant', data)
-          .then(() => {
-            const routeData = {
-              examInfoId: this.examId,
-              sharedValue: "/exam/disc/" + this.examId
+          .then(res => {
+            if (res.status == 200) {
+              const routeData = {
+                examInfoId: this.examId,
+                sharedValue: "/exam/disc/" + this.examId
+              }
+              this.$store.dispatch('setCurrentRoute', routeData)
+              const endRouteData = {
+                examInfoId: this.examId,
+                sharedValue: "exam"
+              }
+              this.$store.dispatch('setCurrentEndRoute', endRouteData)
+              this.$router.push({ name: 'disc', params: { examId: this.examId } })
             }
-            this.$store.dispatch('setCurrentRoute', routeData)
-            const endRouteData = {
-              examInfoId: this.examId,
-              sharedValue: "exam"
-            }
-            this.$store.dispatch('setCurrentEndRoute', endRouteData)
-            this.$router.push({ name: 'disc', params: { examId: this.examId } })
+          })
+          .catch(e => {
+            console.log(e)
+            alert("Ada kesalahan teknis, hubungi pihak Tokoonderdil")
           })
       } else {
         this.$store.dispatch('setApplicant', data)
-          .then(() => {
-            const routeData = {
-              examInfoId: this.examId,
-              sharedValue: "/self/" + this.examId
+          .then(res => {
+            if (res.status == 200) {
+              const routeData = {
+                examInfoId: this.examId,
+                sharedValue: "/self/" + this.examId
+              }
+              this.$store.dispatch('setCurrentRoute', routeData)
+              const endRouteData = {
+                examInfoId: this.examId,
+                sharedValue: "self"
+              }
+              this.$store.dispatch('setCurrentEndRoute', endRouteData)
+              this.$router.push({ name: 'self', params: { examId: this.examId } })
             }
-            this.$store.dispatch('setCurrentRoute', routeData)
-            const endRouteData = {
-              examInfoId: this.examId,
-              sharedValue: "self"
-            }
-            this.$store.dispatch('setCurrentEndRoute', endRouteData)
-            this.$router.push({ name: 'self', params: { examId: this.examId } })
+          })
+          .catch(e => {
+            console.log(e)
+            alert("Ada kesalahan teknis, hubungi HRD / karyawan terkait!")
           })
       }
     },

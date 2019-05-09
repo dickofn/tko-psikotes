@@ -575,13 +575,19 @@ export default {
         ]
       }
       this.$store.dispatch('setSelf', data)
-        .then(() => {
-          const routeData = {
-            examInfoId: this.$route.params.examId,
-            sharedValue: "/detail/" + this.$route.params.examId + "?martial=" + this.martial
+        .then(res => {
+          if (res.status == 200) {
+            const routeData = {
+              examInfoId: this.$route.params.examId,
+              sharedValue: "/detail/" + this.$route.params.examId + "?martial=" + this.martial
+            }
+            this.$store.dispatch('setCurrentRoute', routeData)
+            this.$router.push({ name: 'detail', params: { examId: this.$route.params.examId }, query: { martial: this.martial } })
           }
-          this.$store.dispatch('setCurrentRoute', routeData)
-          this.$router.push({ name: 'detail', params: { examId: this.$route.params.examId }, query: { martial: this.martial } })
+        })
+        .catch(e => {
+          console.log(e)
+          alert("Ada kesalahan teknis, hubungi HRD / karyawan terkait!")
         })
     },
   },
