@@ -410,14 +410,14 @@ export default {
                 sharedValue: "/finish/"
               }
               this.$store.dispatch('setCurrentRoute', routeData)
-              this.$router.push({ name: 'finish' })
+              this.$router.replace({ name: 'finish' })
             } else {
               const routeData = {
                 examInfoId: this.$route.params.examId,
                 sharedValue: "/self/" + this.$route.params.examId
               }
               this.$store.dispatch('setCurrentRoute', routeData)
-              this.$router.push({ name: 'self', params: { examId: this.$route.params.examId } })
+              this.$router.replace({ name: 'self', params: { examId: this.$route.params.examId } })
             }
           }
         })

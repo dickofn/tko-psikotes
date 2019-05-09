@@ -135,7 +135,7 @@ export default {
                 sharedValue: "exam"
               }
               this.$store.dispatch('setCurrentEndRoute', endRouteData)
-              this.$router.push({ name: 'disc', params: { examId: this.examId } })
+              this.$router.replace({ name: 'disc', params: { examId: this.examId } })
             }
           })
           .catch(e => {
@@ -156,7 +156,7 @@ export default {
                 sharedValue: "self"
               }
               this.$store.dispatch('setCurrentEndRoute', endRouteData)
-              this.$router.push({ name: 'self', params: { examId: this.examId } })
+              this.$router.replace({ name: 'self', params: { examId: this.examId } })
             }
           })
           .catch(e => {

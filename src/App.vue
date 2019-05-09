@@ -78,7 +78,7 @@ export default {
   },
   methods: {
     toCurrentUrl () {
-      this.$router.push({ path: this.currentUrlPath })
+      this.$router.replace({ path: this.currentUrlPath })
     }
   },
   created () {

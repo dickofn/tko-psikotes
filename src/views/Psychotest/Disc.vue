@@ -554,7 +554,7 @@ export default {
               sharedValue: "/exam/apm/" + this.$route.params.examId
             }
             this.$store.dispatch('setCurrentRoute', routeData)
-            this.$router.push({ name: 'apm', params: { examId: this.$route.params.examId } })
+            this.$router.replace({ name: 'apm', params: { examId: this.$route.params.examId } })
           }
         })
         .catch(e => {

@@ -226,7 +226,7 @@ export default {
               sharedValue: "/exam/eng/" + this.$route.params.examId
             }
             this.$store.dispatch('setCurrentRoute', routeData)
-            this.$router.push({ name: 'eng', params: { examId: this.$route.params.examId } })
+            this.$router.replace({ name: 'eng', params: { examId: this.$route.params.examId } })
           }
         })
         .catch(e => {

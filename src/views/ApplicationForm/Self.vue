@@ -582,7 +582,7 @@ export default {
               sharedValue: "/detail/" + this.$route.params.examId + "?martial=" + this.martial
             }
             this.$store.dispatch('setCurrentRoute', routeData)
-            this.$router.push({ name: 'detail', params: { examId: this.$route.params.examId }, query: { martial: this.martial } })
+            this.$router.replace({ name: 'detail', params: { examId: this.$route.params.examId }, query: { martial: this.martial } })
           }
         })
         .catch(e => {
