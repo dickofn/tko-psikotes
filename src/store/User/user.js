@@ -61,19 +61,19 @@ export default {
   },
   actions: {
     setApplicant({ commit }, applicantData) {
-      return new Promise ((resolve, reject)=>{
+      return new Promise((resolve, reject) => {
         commit("UPDATE_LOADING", true);
         Axios.post(process.env.VUE_APP_API_URL + "/exam/start", applicantData)
           .then(res => {
             commit("UPDATE_EXAMAPP", res.data.data);
             commit("UPDATE_LOADING", false);
-            resolve(res)
+            resolve(res);
           })
           .catch(e => {
             commit("UPDATE_LOADING", false);
             reject(e);
           });
-      })
+      });
     },
     getApplicant({ commit }, applicantExamId) {
       commit("UPDATE_LOADING", true);
@@ -88,18 +88,24 @@ export default {
         });
     },
     setSelf({ commit }, selfData) {
-      commit("UPDATE_LOADING", true);
-      Axios.post(process.env.VUE_APP_API_URL + "/applicant/new/self", selfData)
-        .then(res => {
-          commit("UPDATE_APPLICANTID", res.data.data);
-          commit("UPDATE_SELF", selfData);
-          commit("UPDATE_SELFSTATUS", true);
-          commit("UPDATE_LOADING", false);
-        })
-        .catch(e => {
-          console.log(e);
-          commit("UPDATE_LOADING", false);
-        });
+      return new Promise((resolve, reject) => {
+        commit("UPDATE_LOADING", true);
+        Axios.post(
+          process.env.VUE_APP_API_URL + "/applicant/new/self",
+          selfData
+        )
+          .then(res => {
+            commit("UPDATE_APPLICANTID", res.data.data);
+            commit("UPDATE_SELF", selfData);
+            commit("UPDATE_SELFSTATUS", true);
+            commit("UPDATE_LOADING", false);
+            resolve(res);
+          })
+          .catch(e => {
+            commit("UPDATE_LOADING", false);
+            reject(e);
+          });
+      });
     },
     getSelf({ commit }, applicantExamId) {
       commit("UPDATE_LOADING", true);
@@ -117,21 +123,26 @@ export default {
         });
     },
     setDetail({ commit }, payload) {
-      commit("UPDATE_LOADING", true);
-      Axios.post(
-        process.env.VUE_APP_API_URL + "/applicant/new/detail/" + payload.examId,
-        payload.data
-      )
-        .then(res => {
-          commit("UPDATE_APPLICANTID", res.data.data);
-          commit("UPDATE_DETAIL", payload.data);
-          commit("UPDATE_DETAILSTATUS", true);
-          commit("UPDATE_LOADING", false);
-        })
-        .catch(e => {
-          console.log(e);
-          commit("UPDATE_LOADING", false);
-        });
+      return new Promise((resolve, reject) => {
+        commit("UPDATE_LOADING", true);
+        Axios.post(
+          process.env.VUE_APP_API_URL +
+            "/applicant/new/detail/" +
+            payload.examId,
+          payload.data
+        )
+          .then(res => {
+            commit("UPDATE_APPLICANTID", res.data.data);
+            commit("UPDATE_DETAIL", payload.data);
+            commit("UPDATE_DETAILSTATUS", true);
+            commit("UPDATE_LOADING", false);
+            resolve(res);
+          })
+          .catch(e => {
+            commit("UPDATE_LOADING", false);
+            reject(e);
+          });
+      });
     },
     getDetail({ commit }, applicantExamId) {
       commit("UPDATE_LOADING", true);
@@ -151,7 +162,9 @@ export default {
     setExperience({ commit }, payload) {
       commit("UPDATE_LOADING", true);
       Axios.post(
-        process.env.VUE_APP_API_URL + "/applicant/new/experience/" + payload.examId,
+        process.env.VUE_APP_API_URL +
+          "/applicant/new/experience/" +
+          payload.examId,
         payload.data
       )
         .then(res => {
