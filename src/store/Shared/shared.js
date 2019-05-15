@@ -22,10 +22,10 @@ export default {
     }
   },
   actions: {
-    loadingError({ commit }, status) {
+    setError({ commit }, status) {
       commit("UPDATE_ERROR", status);
     },
-    loadingStatus({ commit }, status) {
+    setLoading({ commit }, status) {
       commit("UPDATE_LOADING", status);
     },
     setCurrentRoute({ commit }, routeData) {
