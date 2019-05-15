@@ -242,7 +242,7 @@
                 <v-layout row wrap mt-5 justify-end v-if="!isCompleted">
                   <v-flex offset-md6 offset-lg7 offset-xl8>
                     <template v-if="!isStarted && !isFinished">
-                      <v-btn color="info" @click="startExam">Start</v-btn>
+                      <v-btn color="info" @click="startExam" :disabled="time == null">Start</v-btn>
                       <span>
                         <h2>Waktu pengerjaan {{ prettyTime }} menit</h2>
                       </span>
@@ -291,7 +291,7 @@ import dataInputMath from '../../components/Psychotest/Input/DataInputMath'
 export default {
   data () {
     return {
-      time: 900,
+      time: null,
       timer: null,
       timeReminder: false,
       isStarted: false,
@@ -430,6 +430,15 @@ export default {
   },
   created () {
     this.$store.dispatch('getApplicant', { examInfoId: this.$route.params.examId })
+    this.axios.get(process.env.VUE_APP_API_URL + "/exam/type/5")
+      .then(res => {
+        this.$store.dispatch('setLoading', false)
+        this.time = res.data.data.examTime * 60
+      })
+      .catch(e => {
+        this.$store.dispatch('setLoading', false)
+        console.log(e)
+      })
     this.$store.dispatch('getCompletedStatus', { examType: 5, examInfoId: this.$route.params.examId })
       .then(() => {
         if (this.isCompleted) {
