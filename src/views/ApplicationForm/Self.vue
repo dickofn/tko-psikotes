@@ -582,7 +582,14 @@ export default {
               sharedValue: "/detail/" + this.$route.params.examId + "?martial=" + this.martial
             }
             this.$store.dispatch('setCurrentRoute', routeData)
-            this.$router.replace({ name: 'detail', params: { examId: this.$route.params.examId }, query: { martial: this.martial } })
+              .then(() => {
+                this.$router.replace({ name: 'detail', params: { examId: this.$route.params.examId }, query: { martial: this.martial } })
+              })
+              .catch(e => {
+                console.log("hint below")
+                console.log(e)
+                alert("Ada kesalahan teknis, hubungi HRD / karyawan terkait!")
+              })
           }
         })
         .catch(e => {
