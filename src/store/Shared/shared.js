@@ -30,19 +30,23 @@ export default {
     },
     setCurrentRoute({ commit }, routeData) {
       commit("UPDATE_LOADING", true);
-      Axios.post(process.env.VUE_APP_API_URL + "/shared/update", {
-        examInfoId: routeData.examInfoId,
-        sharedValue: routeData.sharedValue,
-        sharedName: "CURRENT_ROUTES"
-      })
-        .then(() => {
-          commit("UPDATE_CURRENTROUTE", routeData.sharedValue);
-          commit("UPDATE_LOADING", false);
+      return new Promise ((resolve, reject) => {
+        Axios.post(process.env.VUE_APP_API_URL + "/shared/update", {
+          examInfoId: routeData.examInfoId,
+          sharedValue: routeData.sharedValue,
+          sharedName: "CURRENT_ROUTES"
         })
-        .catch(e => {
-          console.log(e);
-          commit("UPDATE_LOADING", false);
-        });
+          .then(res => {
+            commit("UPDATE_CURRENTROUTE", routeData.sharedValue);
+            commit("UPDATE_LOADING", false);
+            resolve(res);
+          })
+          .catch(e => {
+            commit("UPDATE_LOADING", false);
+            console.log(e);
+            reject(e)
+          });
+      })
     },
     setCurrentEndRoute({ commit }, routeData) {
       commit("UPDATE_LOADING", true);
