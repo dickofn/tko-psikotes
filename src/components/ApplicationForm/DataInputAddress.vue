@@ -179,6 +179,7 @@ export default {
     // eslint-disable-next-line
     addressPropinsiSearch (val) {
       if (this.addressSelectedPropinsi != "" && this.addressSelectedPropinsi != this.addressPropinsi) {
+        console.log("a")
         this.updateKota("")
         this.addressKotaItems = []
         this.addressSelectedKota = ""
@@ -217,7 +218,7 @@ export default {
     // eslint-disable-next-line
     addressKotaSearch (val) {
       if (
-        (this.addressSelectedKota != "" && this.addressSelectedKota != this.addressKota) &&
+        (this.addressSelectedKota != "" && this.addressSelectedKota != this.addressKota) ||
         (this.addressSelectedPropinsi != "" && this.addressSelectedPropinsi != this.addressPropinsi)
       ) {
         this.updateKecamatan("")
@@ -258,8 +259,8 @@ export default {
     // eslint-disable-next-line
     addressKecamatanSearch (val) {
       if (
-        (this.addressSelectedKecamatan != "" && this.addressSelectedKecamatan != this.addressKecamatan) &&
-        (this.addressSelectedKota != "" && this.addressSelectedKota != this.addressKota) &&
+        (this.addressSelectedKecamatan != "" && this.addressSelectedKecamatan != this.addressKecamatan) ||
+        (this.addressSelectedKota != "" && this.addressSelectedKota != this.addressKota) ||
         (this.addressSelectedPropinsi != "" && this.addressSelectedPropinsi != this.addressPropinsi)
       ) {
         this.updateKelurahan("")
@@ -296,9 +297,9 @@ export default {
     // eslint-disable-next-line
     addressKelurahanSearch (val) {
       if (
-        (this.addressSelectedKelurahan != "" && this.addressSelectedKelurahan != this.addressKelurahan) &&
-        (this.addressSelectedKecamatan != "" && this.addressSelectedKecamatan != this.addressKecamatan) &&
-        (this.addressSelectedKota != "" && this.addressSelectedKota != this.addressKota) &&
+        (this.addressSelectedKelurahan != "" && this.addressSelectedKelurahan != this.addressKelurahan) ||
+        (this.addressSelectedKecamatan != "" && this.addressSelectedKecamatan != this.addressKecamatan) ||
+        (this.addressSelectedKota != "" && this.addressSelectedKota != this.addressKota) ||
         (this.addressSelectedPropinsi != "" && this.addressSelectedPropinsi != this.addressPropinsi)
       ) {
         this.addressPos = ""
