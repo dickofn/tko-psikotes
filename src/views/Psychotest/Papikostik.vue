@@ -467,7 +467,7 @@ export default {
           this.$store.dispatch('getAnswerList', { examType: 7, examInfoId: this.$route.params.examId })
         }
       })
-    this.$store.dispatch('getShared', { examInfoId: this.$route.params.examId })
+    this.$store.dispatch('getShared',  this.$route.params.examId)
   }
 }
 </script>

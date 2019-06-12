@@ -191,7 +191,7 @@
                   @validUpdated="updateValid"
                 ></data-input-question>
                 <data-input-question
-                  :text="'Tambahkan informasi tambahan (jika ada)'"
+                  :text="'Tambahkan informasi tambahan (jika tidak ada isi \'-\' / \'tidak ada\')'"
                   :q="'none'"
                   :e="e[17]"
                   @qUpdated="updateQ17"
@@ -339,7 +339,7 @@ export default {
   },
   created () {
     this.$store.dispatch('getCompletedStatus', { examType: 8, examInfoId: this.$route.params.examId })
-    this.$store.dispatch('getShared', { examInfoId: this.$route.params.examId })
+    this.$store.dispatch('getShared', this.$route.params.examId)
   }
 }
 </script>
